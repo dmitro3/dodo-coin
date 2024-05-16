@@ -43,14 +43,16 @@ class DodoSession {
 
 	async menus(): Promise<BotCommand[]> {
 		const commands = await this.commands();
-		const lastItem = (c: DodoCommand) => (typeof c.name === 'string' ? [c.name]:c.name)?.at?.(-1)
-		return commands.filter(c => !lastItem(c)?.includes(" ")).map(c => {
+		const lastItem = (c: DodoCommand) => (typeof c.name === 'string' ? [c.name]:c.name)?.at?.(-1);
+		const final = commands.filter(c => !lastItem(c)?.includes(" ")).map(c => {
 			const last = lastItem(c) || "404"
 			return  ({
 				command: last.toLowerCase(),
 				description:last
 			})
 		});
+		console.log(final);
+		return final;
 	}
 }
 
