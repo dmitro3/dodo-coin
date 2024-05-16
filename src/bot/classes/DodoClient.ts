@@ -53,7 +53,7 @@ class DodoClient extends DodoSession {
 			{
 				name: 'Wallet',
 				handler: async () => {
-					await ctx.reply(`میزان موجودی شما: ${user.wallet}DODO`);
+					await ctx.reply(`Balance: ${user.wallet}DODO`);
 				}
 			},
 			{
@@ -65,9 +65,9 @@ class DodoClient extends DodoSession {
 
 					url.searchParams.set('token', user.token);
 					console.log(origin, url.toString());
-					await ctx.reply('', {
+					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp('کسب درآمد',url.toString())
+							Markup.button.webApp('Play!',url.toString())
 						])
 					});
 				}
