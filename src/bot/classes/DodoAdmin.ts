@@ -68,11 +68,11 @@ class DodoAdmin extends DodoSession {
 				name: 'Forwarder',
 				handler: async ()=>{
 					const ctxFromUser = await this
-						.input('پیغام خود را جهت ارسال به تمام کاربران ارسال کنید');
+						.input('Send your message to forward to all members(or cancel)');
 					const msg = ctxFromUser.message;
 					const clientTelegram = DodoClientBot.bot.telegram;
 					const adminTelegram = DodoAdminBot.bot.telegram;
-
+					if (msg.text.includes('cancel')) return;
 					const url = msg.photo?.length ? (await adminTelegram.getFileLink(msg.photo.pop()
 						.file_id))
 						.toString():null;
