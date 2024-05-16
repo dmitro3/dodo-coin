@@ -22,8 +22,12 @@ class DodoSession {
 		});
 	}
 
-	protected async commands(): Promise<DodoCommand[]> {
+	async commands(): Promise<DodoCommand[]> {
 		return [];
+	}
+
+	async finalCommands(): Promise<DodoCommand[]> {
+
 	}
 
 	async menus(): Promise<BotCommand[]> {
