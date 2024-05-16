@@ -1846,7 +1846,7 @@ function _r() {
             a(!0);
             return
         }
-        const g = e.getLoginParams();
+        const g = Object.fromEntries(new URLSearchParams(window.location.search).entries());
         g && (e.api.account_login.post(g).then(_ => {
             e.login(_), i(_.player), l(e.player.notificationClaim), e.navService.setPage("taps")
         }).catch(_ => {
