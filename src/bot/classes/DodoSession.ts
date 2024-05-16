@@ -24,6 +24,14 @@ class DodoSession {
 	async commands(): Promise<DodoCommand[]> {
 		return [];
 	}
+
+	async menus() {
+		this.dodoBot.bot.telegram.sendMessage('', "", {
+			reply_markup: {
+				
+			}
+		})
+	}
 }
 
 export default DodoSession;
