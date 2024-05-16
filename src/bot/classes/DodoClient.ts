@@ -35,7 +35,16 @@ class DodoClient extends DodoSession {
 			{
 				name:[ '/start','Home'],
 				handler: async () => {
-					await ctx.reply('خوش آمدید', DodoBot.renderButtons(startButton));
+					await ctx.reply(`
+					Hey, @${user.username}! Welcome to DodoCoin!
+Tap on the coin and see your balance rise.
+
+DodoCoin is a Decentralized Exchange on the Solana Blockchain. The biggest part of DodoCoin Token TAPS distribution will occur among the players here.
+
+Got friends, relatives, co-workers?
+Bring them all into the game.
+More buddies, more coins.
+					`, DodoBot.renderButtons(startButton));
 				},
 				buttons: startButton,
 			},
