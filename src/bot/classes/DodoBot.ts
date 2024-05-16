@@ -94,7 +94,7 @@ class DodoBot {
 				}
 
 				const session = new this.sessionType(ctx as TheMessageContext, this);
-				const commands = await session.commands();
+				const commands = await session.finalCommands();
 				const notFound = async (ctx: Context) => {
 					const buttons = commands.find(c =>
 						!!c.buttons?.length,

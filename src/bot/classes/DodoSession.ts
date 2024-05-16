@@ -42,7 +42,15 @@ class DodoSession {
 	}
 
 	async menus(): Promise<BotCommand[]> {
-		return [];
+		const commands = await this.commands();
+		const lastItem = (c: DodoCommand) => (typeof c.name === 'string' ? [c.name]:c.name)?.at?.(-1)
+		return commands.filter(c => !lastItem(c)?.includes(" ")).map(c => {
+
+			return  ({
+				command: lastItem(c)?.toLowerCase()+"",
+				description: ""
+			})
+		});
 	}
 }
 
