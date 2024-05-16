@@ -8,7 +8,7 @@ export default class UpgradeHandler extends Handler {
 	async handler() {
 		const user = await this.getUser();
 		if (!user) throw(401);
-
+		await CLIENT_BOT.waitToReady();
 		const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user.id}`
 		await CLIENT_BOT.telegram.sendMessage(user.chatId, `${link}\n🎁 +2.5k Shares as a first-time gift`)
 		return {}
