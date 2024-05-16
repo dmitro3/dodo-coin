@@ -8,6 +8,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {BotCommand} from "@telegraf/types";
 import {User} from "@prisma/client";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
+import { merge } from 'lodash';
 
 class DodoClient extends DodoSession {
 
@@ -44,7 +45,11 @@ DodoCoin is a Decentralized Exchange on the Solana Blockchain. The biggest part 
 Got friends, relatives, co-workers?
 Bring them all into the game.
 More buddies, more coins.
-					`, DodoBot.renderButtons(startButton));
+					`, merge(DodoBot.renderButtons(startButton), {
+						...Markup.inlineKeyboard([
+							Markup.button.webApp("Play!", getWebAppUrl(user))
+						])
+					}));
 				},
 				buttons: startButton,
 			},
@@ -84,15 +89,10 @@ Type /help to access this guide.
 			{
 				name: "Earn",
 				async handler() {
-					const origin = env.WEB_ORIGIN;
-					log(origin);
-					const url = new URL(origin);
-
-					url.searchParams.set('token', user.token);
-					console.log(origin, url.toString());
+					const url = getWebAppUrl(user);
 					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp('Play!',url.toString())
+							Markup.button.webApp('Play!',url)
 						])
 					});
 				}
@@ -135,5 +135,13 @@ Type /help to access this guide.
 
 }
 
+export function getWebAppUrl(user: User) {
+	const origin = env.WEB_ORIGIN;
+	log(origin);
+	const url = new URL(origin);
+
+	url.searchParams.set('token', user.token);
+	return url.toString();
+}
 
 export default DodoClient;
