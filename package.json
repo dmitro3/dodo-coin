@@ -6,19 +6,53 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "next build && next start",
+    "prebuild": "npx prisma generate",
+    "prisma-studi": "npx prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21",
+    "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.3"
+    "telegraf": "^4.16.3",
+    "ts-appconfig": "^1.2.0",
+    "ts-async-bootstrap": "^2.1.0",
+    "ts-error-handler": "^1.0.2",
+    "ts-tiny-log": "^1.1.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jasmine": "^4.3.0",
+    "@types/lodash": "^4.17.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
+    "i": "^0.3.7",
+    "jasmine": "^4.5.0",
+    "nodemon": "^3.0.1",
+    "nyc": "^15.1.0",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "prettier": "^2.8.0",
+    "prettier-eslint": "^15.0.1",
+    "prettier-eslint-cli": "^7.1.0",
+    "prisma": "^5.13.0",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5"
+  },
+  "typescript-template": {
+    "base": "1.0.1",
+    "jasmine": "1.0.0",
+    "node": "1.0.1"
   }
 }
