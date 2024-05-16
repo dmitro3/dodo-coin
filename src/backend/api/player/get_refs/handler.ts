@@ -20,7 +20,7 @@ export default class UpgradeHandler extends Handler {
 				"id": u.id,
 				"name": u.username,
 				"full_name": u.username,
-				"earned": 1000,
+				"earned": 4000,
 				"rewards": 20
 			})),
 			has_more: false
