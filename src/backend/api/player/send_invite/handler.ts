@@ -14,7 +14,7 @@ export default class UpgradeHandler extends Handler {
 		const text = `${link}\n🎁 +2.5k Shares as a first-time gift`;
 		await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 			...Markup.inlineKeyboard([
-				Markup.button.switchToChat("Invite Friends!",text, false)
+				Markup.button.switchToChat("Invite Friends!",text, true)
 			])
 		})
 		return {}
