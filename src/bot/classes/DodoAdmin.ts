@@ -23,20 +23,20 @@ class DodoAdmin extends DodoSession {
 
 		return [
 			{
-				name: '/start',
+				name: 'Panel',
 				handler: async () => {
 					await ctx.reply('پنل ادمین', DodoBot.renderButtons(startButtons));
 				},
 				buttons: startButtons,
 			},
 			{
-				name: 'افزایش موجودی',
+				name: '',
 				handler: () => {
 
 				},
 			},
 			{
-				name: ['بلاک کاربر', 'انبلاک کاربر'],
+				name: ['Block', 'Unblock'],
 				handler: async () => {
 					const username = (await this.input('نام کاربری فرد مورد نظر را وارد کنید'))
 						?.text
