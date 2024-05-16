@@ -14,7 +14,7 @@ class DodoClient extends DodoSession {
 
 	async commands(): Promise<DodoCommand[]> {
 		const ctx = this.ctx;
-		const user = ctx ? await prisma.user.findUnique({
+		const user = ctx?.telegram ? await prisma.user.findUnique({
 			where: {
 				id: ctx.from?.id
 			}
