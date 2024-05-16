@@ -45,10 +45,10 @@ class DodoSession {
 		const commands = await this.commands();
 		const lastItem = (c: DodoCommand) => (typeof c.name === 'string' ? [c.name]:c.name)?.at?.(-1)
 		return commands.filter(c => !lastItem(c)?.includes(" ")).map(c => {
-
+			const last = lastItem(c) || "404"
 			return  ({
-				command: lastItem(c)?.toLowerCase()+"",
-				description: ""
+				command: last.toLowerCase(),
+				description:last
 			})
 		});
 	}
