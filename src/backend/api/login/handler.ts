@@ -41,8 +41,8 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
             "stat": {
                 "taps": 475,
                 "ref_in": refs,
-                "ref_out": 0,
-                "ref_cnt": 0,
+                "ref_out": refs,
+                "ref_cnt": refs,
                 "earned": 0,
                 "reward": 0,
                 "spent": 0
