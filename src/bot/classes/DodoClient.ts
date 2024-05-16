@@ -92,16 +92,16 @@ class DodoClient extends DodoSession {
 			{
 				name: "برداشت موجودی",
 				handler:async ()=> {
-					if (user.wallet < 100) throw("");
+					if (user.wallet < 100) throw("Infusion Balance");
 
-					const address = (await this.input("آدرس کیف پول خود را وارد کنید")).text;
-					const amount = +((await this.input('مقدار برداشت را وارد کنید (حداقل 100dodo)'))?.text || "");
+					const address = (await this.input("Enter wallet address")).text;
+					const amount = +((await this.input('Enter Amount (min: 100):'))?.text || "");
 
-					if (!address || isNaN(amount) || amount < 100) throw("لطفا در وارد کردن اطلاعات دقت کنید");
+					if (!address || isNaN(amount) || amount < 100) throw("Something Wrong!");
 
 
 					/*TODO: Handle this*/
-					await ctx.reply("باموفیقت واریز شد!")
+					await ctx.reply("Request Sent!")
 				}
 			}
 		];
