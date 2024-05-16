@@ -22,7 +22,7 @@ class DodoSession {
 		});
 	}
 
-	async commands(): Promise<DodoCommand[]> {
+	protected async commands(): Promise<DodoCommand[]> {
 		return [];
 	}
 
