@@ -13,10 +13,16 @@ export default class UpgradeHandler extends Handler {
 				refs: true
 			}
 		});
+		if (!user) throw(401);
 
-		
 		return {
-			refs: [],
+			refs: user.refs.map(u => ({
+				"id": u.id,
+				"name": u.username,
+				"full_name": u.username,
+				"earned": u.wallet,
+				"rewards": 0
+			})),
 			has_more: false
 		}
 	}
