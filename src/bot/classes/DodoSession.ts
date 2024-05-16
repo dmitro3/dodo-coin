@@ -2,6 +2,7 @@ import { Context } from 'telegraf';
 import { DodoCommand, TheMessageContext } from './types/dodo';
 import DodoBot from './DodoBot';
 import { User } from '@prisma/client';
+import {BotCommand} from "@telegraf/types";
 
 class DodoSession {
 	ctx: TheMessageContext;
@@ -22,6 +23,10 @@ class DodoSession {
 	}
 
 	async commands(): Promise<DodoCommand[]> {
+		return [];
+	}
+
+	async menus(): Promise<BotCommand[]> {
 		return [];
 	}
 }

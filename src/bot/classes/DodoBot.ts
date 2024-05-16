@@ -5,7 +5,7 @@ import { DodoCommand, TheMessageContext } from './types/dodo';
 
 import DodoSession from './DodoSession';
 import { ParseMode } from 'telegraf/types';
-import { log } from 'console';
+import {error, log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
 class DodoBot {
@@ -23,6 +23,13 @@ class DodoBot {
 		this.isAdmin = sessionType.name.includes('Admin');
 		console.log(bot.me?.username, 'Registered as', sessionType.name);
 		this.registerCommands();
+
+		console.log('Registering Commands...');
+		const tempSession = new sessionType({} as unknown as TheMessageContext, {} as unknown as DodoBot);
+		tempSession.menus().then(commands => {
+			this.bot.telegram.setMyCommands(commands).catch(error)
+		})
+
 	}
 
 	registerCommands() {
