@@ -43,7 +43,7 @@ More buddies, more coins.
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
 						])
-					},DodoBot.renderButtons(startButton)));
+					}));
 				},
 				buttons: startButton,
 			},
