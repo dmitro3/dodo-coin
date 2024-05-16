@@ -27,7 +27,12 @@ class DodoSession {
 	}
 
 	async menus(): Promise<BotCommand[]> {
-		return [];
+		return [
+			{
+				command: "/wallet",
+				description: "test"
+			}
+		];
 	}
 }
 
