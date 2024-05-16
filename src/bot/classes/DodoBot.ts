@@ -94,7 +94,7 @@ class DodoBot {
 					)?.buttons || [];
 
 					if (buttons?.length) {
-						await ctx.reply('دستور یافت نشد!', DodoBot.renderButtons(buttons));
+						await ctx.reply('Unknown Command', DodoBot.renderButtons(buttons));
 					}
 				};
 
