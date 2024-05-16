@@ -4,10 +4,18 @@
 
   var locationHash = '';
   try {
-    locationHash = location.search.toString();
+    locationHash = location.hash.toString();
   } catch (e) {}
 
   var initParams = urlParseHashParams(locationHash);
+  var storedParams = sessionStorageGet('initParams');
+  if (storedParams) {
+    for (var key in storedParams) {
+      if (typeof initParams[key] === 'undefined') {
+        initParams[key] = storedParams[key];
+      }
+    }
+  }
   sessionStorageSet('initParams', initParams);
 
   var isIframe = false, iFrameStyle;
