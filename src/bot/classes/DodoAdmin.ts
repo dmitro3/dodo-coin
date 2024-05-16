@@ -32,7 +32,7 @@ class DodoAdmin extends DodoSession {
 			{
 				name: ['Block', 'Unblock'],
 				handler: async () => {
-					const username = (await this.input('نام کاربری فرد مورد نظر را وارد کنید'))
+					const username = (await this.input('Enter target username'))
 						?.text
 						?.replace('@', '');
 					const user = await prisma.user.findUnique(({
@@ -42,7 +42,7 @@ class DodoAdmin extends DodoSession {
 					}));
 
 					if (!user) {
-						await reply('کاربر مورد نظر یافت نشد');
+						await reply('User not found');
 						return;
 					}
 
@@ -55,13 +55,13 @@ class DodoAdmin extends DodoSession {
 						}
 					});
 
-					await reply(`کاربر باموفقیت ${newUser.blocked ? 'بلاک':'انبلاک'} شد`);
+					await reply(`User has been ${newUser.blocked ? 'block':'Unblock'}ed`);
 				},
 			},
 			{
 				name: 'Stats',
 				handler: async () => {
-					await reply(`تعداد کاربران: ${await prisma.user.count()}`);
+					await reply(`User Count: ${await prisma.user.count()}`);
 				}
 			},
 			{
