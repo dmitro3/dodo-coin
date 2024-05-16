@@ -21,7 +21,7 @@ export default class UpgradeHandler extends Handler {
 				"name": u.username,
 				"full_name": u.username,
 				"earned": Math.round(u.wallet * 0.1),
-				"rewards": 0
+				"rewards": 2
 			})),
 			has_more: false
 		}
