@@ -7,6 +7,7 @@ import { log } from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 import {BotCommand} from "@telegraf/types";
 import {User} from "@prisma/client";
+import {sendInvite} from "@backend/api/player/send_invite/handler";
 
 class DodoClient extends DodoSession {
 
@@ -41,7 +42,7 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/refs', 'Refs'],
 				handler: async () => {
-
+					await sendInvite(user);
 				},
 			},
 			{
