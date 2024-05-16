@@ -21,7 +21,7 @@ export default class UpgradeHandler extends Handler {
 				"name": u.username,
 				"full_name": u.username,
 				"earned": u.wallet,
-				"rewards": 0
+				"rewards": 20
 			})),
 			has_more: false
 		}
