@@ -4,7 +4,7 @@
 
   var locationHash = '';
   try {
-    locationHash = location.hash.toString();
+    locationHash = location.search.toString();
   } catch (e) {}
 
   var initParams = urlParseHashParams(locationHash);
