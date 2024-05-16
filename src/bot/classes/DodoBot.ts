@@ -139,7 +139,7 @@ class DodoBot {
 
 		return {
 			parse_mode: 'HTML' as ParseMode,
-			...Markup.keyboard(final as string[]).oneTime(true).resize(true),
+			...Markup.keyboard(final as string[]).oneTime().resize(true),
 		};
 	}
 
