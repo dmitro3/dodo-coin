@@ -123,7 +123,16 @@ Type /help to access this guide.
 					await ctx.reply("Request Sent!")
 				}
 			}
-		];
+		].map(c => {
+			let name = typeof c.name === 'string' ? [c.name]:c.name;
+			const target = name.at(-1);
+			name.push(`/${target?.toLowerCase()}`);
+			
+			return {
+				...c,
+				name
+			}
+		});
 	}
 
 
