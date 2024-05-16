@@ -12,12 +12,6 @@ import { merge } from 'lodash';
 
 class DodoClient extends DodoSession {
 
-	async menus(): Promise<BotCommand[]> {
-		return [
-
-		]
-	}
-
 	async commands(): Promise<DodoCommand[]> {
 		const ctx = this.ctx;
 		const user = ctx ? await prisma.user.findUnique({
@@ -115,7 +109,7 @@ Type /help to access this guide.
 				}
 			},
 			{
-				name: "برداشت موجودی",
+				name: "Send Withdraw Request",
 				handler:async ()=> {
 					if (user.wallet < 100) throw("Infusion Balance");
 
