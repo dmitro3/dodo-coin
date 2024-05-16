@@ -8,8 +8,15 @@ export const TapLevels = Array.from({length: 10}).map((_,n) => ({
     "price": 50 * n
 }))
 
-export function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUnique>>) {
+export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUnique>>) {
     if (!user) return null;
+
+    const refs = await prisma.user.count({
+        where: {
+            refId: user.id
+        }
+    })
+
     return {
         "access_token": user.token,
         "player": {
@@ -33,12 +40,12 @@ export function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUniq
             ],
             "stat": {
                 "taps": 475,
-                "ref_in": 0,
+                "ref_in": refs,
                 "ref_out": 0,
                 "ref_cnt": 0,
-                "earned": 5890,
-                "reward": 101000,
-                "spent": 88400
+                "earned": 0,
+                "reward": 0,
+                "spent": 0
             }
         },
         "account": {
