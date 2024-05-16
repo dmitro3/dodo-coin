@@ -585,6 +585,10 @@
     background: #828282
 }
 
+#app > div > div._container_1rd9h_1 > div._listContainer_1519s_1 > button > div._listItemBody_qewdd_23 > div._infoContainer_1shkw_1 > div > div._priceLevel_1shkw_36 > div._hr_1shkw_42 {
+    display: none;
+}
+
 ._level_1shkw_48 {
     color: var(--text-secondary)
 }
@@ -593,6 +597,10 @@
     display: flex;
     align-items: center;
     color: var(--text-secondary)
+}
+
+#app > div > div._container_1rd9h_1 > div._listContainer_1519s_1 > button > div._listItemBody_qewdd_23 > div._infoContainer_1shkw_1 > div > div._priceLevel_1shkw_36 > div._ligue_1shkw_52 {
+    display: none;
 }
 
 ._ligue_1shkw_52 img {
