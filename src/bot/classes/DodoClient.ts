@@ -39,11 +39,11 @@ DodoCoin is a Decentralized Exchange on the Solana Blockchain. The biggest part 
 Got friends, relatives, co-workers?
 Bring them all into the game.
 More buddies, more coins.
-					`, merge(DodoBot.renderButtons(startButton), {
+					`, merge({
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
 						])
-					}));
+					},DodoBot.renderButtons(startButton)));
 				},
 				buttons: startButton,
 			},
