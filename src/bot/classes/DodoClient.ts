@@ -5,32 +5,41 @@ import DodoSession from './DodoSession';
 import { env } from '../env';
 import { log } from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
+import {BotCommand} from "@telegraf/types";
+import {User} from "@prisma/client";
 
 class DodoClient extends DodoSession {
+
+	async menus(): Promise<BotCommand[]> {
+		return [
+
+		]
+	}
+
 	async commands(): Promise<DodoCommand[]> {
 		const ctx = this.ctx;
-		const user = await prisma.user.findUnique({
+		const user = ctx ? await prisma.user.findUnique({
 			where: {
 				id: ctx.from?.id
 			}
-		});
+		}) || ({} as User):{} as User;
 		const startButton = [
 			['Earn'],
 			['Refs','Wallet'],
-			['برداشت','Help'],
+			['Withdraw','Help'],
 		];
-		if (!user) return [];
+
 
 		return [
 			{
-				name:[ '/start','بازگشت'],
+				name:[ '/start','Home'],
 				handler: async () => {
 					await ctx.reply('خوش آمدید', DodoBot.renderButtons(startButton));
 				},
 				buttons: startButton,
 			},
 			{
-				name: 'زیر مجموعه گیری',
+				name: ['/refs', 'Refs'],
 				handler: async () => {
 					const host = 'https://t.me/';
 					const link = `${host}${ctx.botInfo.username}?start=${ctx.from?.id}`;
@@ -38,11 +47,11 @@ class DodoClient extends DodoSession {
 				},
 			},
 			{
-				name: 'راهنما',
+				name: 'Help',
 				handler: async () => ctx.reply('متن 2 راهنما'),
 			},
 			{
-				name: 'کیف پول',
+				name: 'Wallet',
 				handler: async () => {
 					await ctx.reply(`میزان موجودی شما: ${user.wallet}DODO`);
 				}
@@ -64,18 +73,18 @@ class DodoClient extends DodoSession {
 				}
 			},
 			{
-				name: "برداشت",
+				name: "Withdraw",
 				async handler() {
 					await ctx.reply(`
-					💸 توجه داشته باشید حداقل برداشت موجودی dodo100 می‌باشد.
-
-برای برداشت موجودی خود روی دکمه زیر کلیک کنید 👇
+					Minimum Coin Required to send withdraw request: 100dodo
+					
+					Are you sure?
 					`
 						.split("\n")
 						.map(s=>s.trim())
 						.join("\n"),
 						DodoBot.renderButtons([
-							['بازگشت','برداشت موجودی']
+							['Home','Send Withdraw Request']
 						])
 					)
 				}
@@ -83,7 +92,7 @@ class DodoClient extends DodoSession {
 			{
 				name: "برداشت موجودی",
 				handler:async ()=> {
-					if (user.wallet < 100) throw("موجودی حساب شما کافی نمیباشد");
+					if (user.wallet < 100) throw("");
 
 					const address = (await this.input("آدرس کیف پول خود را وارد کنید")).text;
 					const amount = +((await this.input('مقدار برداشت را وارد کنید (حداقل 100dodo)'))?.text || "");
