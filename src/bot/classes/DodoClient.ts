@@ -48,7 +48,7 @@ class DodoClient extends DodoSession {
 			},
 			{
 				name: 'Help',
-				handler: async () => ctx.reply('متن 2 راهنما'),
+				handler: async () => ctx.reply('[HELP CONTENT]'),
 			},
 			{
 				name: 'Wallet',
