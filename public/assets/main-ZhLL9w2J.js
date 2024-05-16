@@ -485,7 +485,7 @@ class Bt {
         if (Date.parse(this.app.settings.start_date) >= this.app.player.now) return;
         const t = this.app.env === "dev" ? 120 : 3600, i = this.app.env === "dev" ? 10 : 300;
         if (this.app.player.login_ts + t * 1e3 - this.app.player.now <= i * 1e3) try {
-            const _ = this.app.getLoginParams(), d = await this.app.api.account_login.post(_);
+            const _ = Object.fromEntries(new URLSearchParams(window.location.search).entries()), d = await this.app.api.account_login.post(_);
             this.app.refreshLogin(d)
         } catch (_) {
             this._submitTry++, this.app.log.error("login_failed", _);
