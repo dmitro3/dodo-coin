@@ -25,7 +25,7 @@ class DodoAdmin extends DodoSession {
 			{
 				name: 'Panel',
 				handler: async () => {
-					await ctx.reply('پنل ادمین', DodoBot.renderButtons(startButtons));
+					await ctx.reply('Admin Panel', DodoBot.renderButtons(startButtons));
 				},
 				buttons: startButtons,
 			},
