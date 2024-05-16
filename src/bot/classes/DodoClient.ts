@@ -41,9 +41,7 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/refs', 'Refs'],
 				handler: async () => {
-					const host = 'https://t.me/';
-					const link = `${host}${ctx.botInfo.username}?start=${ctx.from?.id}`;
-					await ctx.reply(link);
+
 				},
 			},
 			{
