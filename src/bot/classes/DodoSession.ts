@@ -27,7 +27,7 @@ class DodoSession {
 	}
 
 	async menus(): Promise<BotCommand[]> {
-
+		return [];
 	}
 }
 
