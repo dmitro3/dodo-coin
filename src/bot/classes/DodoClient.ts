@@ -65,7 +65,7 @@ class DodoClient extends DodoSession {
 
 					url.searchParams.set('token', user.token);
 					console.log(origin, url.toString());
-					await ctx.reply('جهت بازکردن پنجره کسب درآمد روی دکمه زیر کلیک کنید', {
+					await ctx.reply('', {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp('کسب درآمد',url.toString())
 						])
