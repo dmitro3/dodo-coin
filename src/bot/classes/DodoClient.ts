@@ -16,8 +16,8 @@ class DodoClient extends DodoSession {
 		});
 		const startButton = [
 			['Earn'],
-			['زیر مجموعه گیری','کیف پول'],
-			['برداشت','راهنما'],
+			['Refs','Wallet'],
+			['برداشت','Help'],
 		];
 		if (!user) return [];
 
