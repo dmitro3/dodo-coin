@@ -10,7 +10,7 @@ export default class UpgradeHandler extends Handler {
 		if (!user) throw(401);
 
 		const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user.id}`
-		CLIENT_BOT.telegram.sendMessage(user.chatId, `${link}\n`)
+		await CLIENT_BOT.telegram.sendMessage(user.chatId, `${link}\n🎁 +2.5k Shares as a first-time gift`)
 		return {}
 	}
 }
