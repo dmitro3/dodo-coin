@@ -48,7 +48,24 @@ class DodoClient extends DodoSession {
 			},
 			{
 				name: 'Help',
-				handler: async () => ctx.reply('[HELP CONTENT]'),
+				handler: async () => ctx.reply(`
+				Tap to Earn:
+DodoCoin is an addictive clicker game where you accumulate Shares by tapping the screen.
+
+Leagues:
+Climb the ranks by earning more Shares and outperforming others in the leagues.
+
+Boosts:
+Unlock boosts and complete tasks to maximize your Shares earnings.
+
+Friends:
+Invite others and both of you will receive bonuses. Assist your friends in advancing to higher leagues for bigger Shares rewards.
+
+The Purpose:
+Collect as many Shares as possible and exchange them for TAPS, DodoCoin Token on Solana Blockchain.
+
+Type /help to access this guide.
+				`),
 			},
 			{
 				name: 'Wallet',
