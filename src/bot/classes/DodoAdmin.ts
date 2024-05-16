@@ -8,14 +8,14 @@ class DodoAdmin extends DodoSession {
 	async commands() {
 		const ctx = this.ctx;
 		const startButtons = [
-			'امار ربات',
-			'اعطای کوین',
-			'حذف کوین',
-			'بلاک کاربر',
-			'انبلاک کاربر',
-			'قفل توییتر',
-			'قفل کانال',
-			'ارسال و فروارد همگانی',
+			'Stats',
+			'Add Coin',
+			'Remove Coin',
+			'Block',
+			'Unblock',
+			'Twitter Lock',
+			'Channel Lock',
+			'Forwarder',
 		];
 		const reply = async (txt: string) => {
 			return ctx.reply(txt);
@@ -28,12 +28,6 @@ class DodoAdmin extends DodoSession {
 					await ctx.reply('پنل ادمین', DodoBot.renderButtons(startButtons));
 				},
 				buttons: startButtons,
-			},
-			{
-				name: '',
-				handler: () => {
-
-				},
 			},
 			{
 				name: ['Block', 'Unblock'],
@@ -65,13 +59,13 @@ class DodoAdmin extends DodoSession {
 				},
 			},
 			{
-				name: 'امار ربات',
+				name: 'Stats',
 				handler: async () => {
 					await reply(`تعداد کاربران: ${await prisma.user.count()}`);
 				}
 			},
 			{
-				name: 'ارسال و فروارد همگانی',
+				name: 'Forwarder',
 				handler: async ()=>{
 					const ctxFromUser = await this
 						.input('پیغام خود را جهت ارسال به تمام کاربران ارسال کنید');
@@ -104,22 +98,22 @@ class DodoAdmin extends DodoSession {
 				}
 			},
 			{
-				name: ['اعطای کوین','حذف کوین'],
+				name: ['Add Coin','Remove Coin'],
 				handler: async ()=>{
-					const username = (await this.input('نام کاربر مورد نظر را وارد کنید')).text;
+					const username = (await this.input('Enter target username:')).text;
 					const user = await prisma.user.findUnique(({
 						where: {
 							username
 						}
 					}));
-					if (!user) throw('کاربر یافت نشد');
+					if (!user) throw("Doesn't exist");
 
-					await reply(`میزان اعتبار ارزی کاربر: ${user.wallet}`);
+					await reply(`User Balance: ${user.wallet}`);
 
-					const amount = +((await this.input('تعداد ارز مورد نظر'))?.text || "");
-					if (isNaN(amount)) throw('لطفا عدد را به انگلیسی تایپ کنید');
+					const amount = +((await this.input('Enter Coin Amount'))?.text || "");
+					if (isNaN(amount)) throw("Please enter valid number");
 
-					const decrease = ctx.text?.includes('حذف');
+					const decrease = ctx.text?.includes('Add');
 					const final = decrease ? user.wallet - amount:user.wallet + amount;
 
 					await prisma.user.update({
@@ -130,7 +124,7 @@ class DodoAdmin extends DodoSession {
 							wallet: Math.max(0, final)
 						}
 					});
-					await reply(`باموفقیت تعداد ارز مورد نظر ${decrease? 'کم':'اضافه'} شد`);
+					await reply(`The Operation was Successful. ${decrease? '-':'+'}${final}dodo`);
 				}
 			}
 		];
