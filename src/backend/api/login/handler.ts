@@ -105,7 +105,7 @@ export const EnergyLevels = Array.from({length: 30}).map((_, n) => {
 
     return {
         "limit": n * 250,
-        "price": n * 50
+        "price": n * (Math.round(500 * (n / 2)))
     }
 });
 export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUnique>>) {
