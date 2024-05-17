@@ -108,7 +108,7 @@ class DodoBot {
 					text = text.split(' ')?.shift();
 				}
 
-				const cmd = commands.find(c => c.name === text || c.name?.includes?.(text + ""));
+				const cmd = commands.find(c => c.name === text || c.name?.includes?.(text + "")) || commands.find(c => c.menu?.includes(text));
 				if (!cmd) {
 					await notFound(ctx);
 					return;
