@@ -127,7 +127,7 @@ class DodoAdmin extends DodoSession {
 							wallet: Math.max(0, final)
 						}
 					});
-					await reply(`The Operation was Successful. ${decrease? '-':'+'}${final}dodo`);
+					await reply(`The Operation was Successful. ${decrease? '-':'+'}${amount}dodo\nUser Balance:${final}`);
 				}
 			},
 			{
