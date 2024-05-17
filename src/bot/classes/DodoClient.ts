@@ -15,7 +15,7 @@ import {CallbackQuery} from "@telegraf/types";
 
 class DodoClient extends DodoSession {
 
-	async callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & {data: string}>>) {
+	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
 				id: e.from?.id
@@ -30,16 +30,16 @@ class DodoClient extends DodoSession {
 			const chat = await CLIENT_BOT.telegram.getChatMember(lock, user.id);
 			const joined = !(chat.status === 'kicked' || chat.status === 'left');
 			if (!joined) {
-				await e.reply( "You should join our community!");
+				await e.reply("You should join our community!");
 				return;
 			}
 
 			if (user.lockReward) {
-				await e.reply( "You already take the Community Gift!");
+				await e.reply("You already take the Community Gift!");
 				return;
 			}
 
-			await  prisma.user.update({
+			await prisma.user.update({
 				where: {
 					id: user.id
 				},
@@ -58,11 +58,11 @@ class DodoClient extends DodoSession {
 			where: {
 				id: ctx.from?.id
 			}
-		}) || ({} as User):{} as User;
+		}) || ({} as User) : {} as User;
 		const startButton = [
 			['Earn'],
-			['Refs','Wallet'],
-			['Withdraw','Help'],
+			['Refs', 'Wallet'],
+			['Withdraw', 'Help'],
 		];
 
 		if (user?.id) {
@@ -71,13 +71,13 @@ class DodoClient extends DodoSession {
 			if (enabled) {
 				const channel = await prisma.botChannel.findFirst({
 					where: {
-						botUsername: CLIENT_BOT.me?.username+"",
+						botUsername: CLIENT_BOT.me?.username + "",
 						OR: [
 							{
-								channelId: enabled+""
+								channelId: enabled + ""
 							},
 							{
-								chatId: enabled+""
+								chatId: enabled + ""
 							}
 						]
 					}
@@ -90,11 +90,11 @@ class DodoClient extends DodoSession {
 					if (!chat || (chat.status === 'kicked' || chat.status === 'left')) {
 						await ctx.reply(`Join our community and receive 2k dodo coin!`, {
 							...Markup.inlineKeyboard([
-								Markup.button.url(`Join to ${channel.title}`,`https://t.me/${tChannel.username}`),
+								Markup.button.url(`Join to ${channel.title}`, `https://t.me/${tChannel.username}`),
 								Markup.button.callback("Receive 2k", 'lock_check')
 							])
 						});
-						throw("");
+						throw ("");
 					}
 				}
 			}
@@ -103,9 +103,10 @@ class DodoClient extends DodoSession {
 
 		return [
 			{
-				name:[ '/start','Home'],
+				name: ['/start', 'Home'],
 				handler: async () => {
-					await ctx.replyWithPhoto(`
+					await ctx.replyWithPhoto('', {
+						caption: `
 					Hi, @${user.username}! 
 This is Dodo, the real one.
 
@@ -116,7 +117,8 @@ How much is Dodo worth? No one knows, probably something.
 Got any friends? Get them in the game. That way you'll get even more coins together.
 
 Dodo is everything you ever wanted . That's all you need to know.
-					`, {
+					`
+						,
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
 						])
@@ -162,7 +164,7 @@ Type /help to access this guide.
 					const url = getWebAppUrl(user);
 					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp('Play!',url)
+							Markup.button.webApp('Play!', url)
 						])
 					});
 				}
@@ -175,24 +177,24 @@ Type /help to access this guide.
 					
 					Are you sure?
 					`
-						.split("\n")
-						.map(s=>s.trim())
-						.join("\n"),
+							.split("\n")
+							.map(s => s.trim())
+							.join("\n"),
 						DodoBot.renderButtons([
-							['Home','Send Withdraw Request']
+							['Home', 'Send Withdraw Request']
 						])
 					)
 				}
 			},
 			{
 				name: "Send Withdraw Request",
-				handler:async ()=> {
-					if (user.wallet < 100) throw("Infusion Balance");
+				handler: async () => {
+					if (user.wallet < 100) throw ("Infusion Balance");
 
 					const address = (await this.input("Enter wallet address")).text;
 					const amount = +((await this.input('Enter Amount (min: 100):'))?.text || "");
 
-					if (!address || isNaN(amount) || amount < 100) throw("Something Wrong!");
+					if (!address || isNaN(amount) || amount < 100) throw ("Something Wrong!");
 
 
 					/*TODO: Handle this*/
@@ -201,7 +203,7 @@ Type /help to access this guide.
 			},
 			{
 				name: "Refs",
-				handler:async ()=> {
+				handler: async () => {
 					await sendInvite(user)
 				}
 			}
