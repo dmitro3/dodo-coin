@@ -53,7 +53,7 @@ class DodoClient extends DodoSession {
 								Markup.button.callback("Receive 2k", 'lock_check')
 							])
 						});
-						return [];
+						throw("");
 					}
 				}
 			}
