@@ -356,7 +356,6 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
 
 export default class LoginHandler extends Handler {
     async handler() {
-        throw(500);
         const token = this.get('token', "Token Required");
         const user = await prisma.user.findUnique({
             where: {
