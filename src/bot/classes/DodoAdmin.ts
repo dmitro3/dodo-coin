@@ -158,7 +158,7 @@ class DodoAdmin extends DodoSession {
 							botUsername: CLIENT_BOT.me?.username+""
 						}
 					});
-					
+
 					await ctx.reply(`
 					Channel List:
 					${channels.map((c,i) => `${i+1}. ${c.title}`).join('\n')}
@@ -168,7 +168,7 @@ class DodoAdmin extends DodoSession {
 
 					const input = await this.input("Enter Channel Number to enable or type (cancel) to disable:");
 
-					const target = channels?.[+input + 1];
+					const target = channels?.[+input - 1];
 					if (target) {
 						await CLIENT_BOT.setSetting('CHANNEL_LOCK', target.channelId);
 						await ctx.reply(`Channel Lock enabled on ${target.title}`);
