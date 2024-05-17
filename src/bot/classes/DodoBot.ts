@@ -33,7 +33,10 @@ class DodoBot {
 	}
 
 	registerCommands() {
-		this.bot.
+		this.bot.on('callback_query', (e)=>{
+			const session = new this.sessionType(e as any,this);
+			session.callBack(e);
+		})
 		this.bot.onMessage(async (ctx) => {
 			const telUser = ctx.from!;
 			let user = await prisma.user.findUnique({

@@ -1,8 +1,9 @@
-import { Context } from 'telegraf';
+import {Context, NarrowedContext} from 'telegraf';
 import { DodoCommand, TheMessageContext } from './types/dodo';
 import DodoBot from './DodoBot';
 import { User } from '@prisma/client';
-import {BotCommand} from "@telegraf/types";
+import {BotCommand, CallbackQuery} from "@telegraf/types";
+import {Update} from "telegraf/typings/core/types/typegram";
 
 class DodoSession {
 	ctx: TheMessageContext;
@@ -14,6 +15,9 @@ class DodoSession {
 
 	}
 
+	callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery>>) {
+		
+	}
 
 	async input(txt: string): Promise<TheMessageContext> {
 		await this.ctx.reply(txt);
