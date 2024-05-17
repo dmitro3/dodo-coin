@@ -7,20 +7,13 @@ export const TapLevels = Array.from({length: 10}).map((_,n) => ({
     "energy": (n+1)*2,
     "price": 50 * n
 }));
-export const ChargeLevels = [
-    {
-        "rate": 1,
-        "price": 500
-    },
-    {
-        "rate": 2,
-        "price": 2000
-    },
-    {
-        "rate": 3,
-        "price": 10000
-    }
-];
+export const ChargeLevels = Array.from({length: 10}).map((_,i) => {
+    const n = Math.max(1, Math.round(i * 1.5))
+    return {
+        "rate": i,
+        "price": n * 10000
+    };
+});
 export const Leagues = [
     {
         "name": "wood",
