@@ -5,7 +5,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 export const TapLevels = Array.from({length: 30}).map((_,n) => ({
     "rate": n+1,
     "energy": (n+1)*2,
-    "price": 100 * (Math.round(n * (n/2)))
+    "price": 100 * (Math.round(n * (n/10)))
 }));
 export const ChargeLevels = Array.from({length: 10}).map((_,i) => {
     const n = Math.max(1, Math.round(i * 3.5))
