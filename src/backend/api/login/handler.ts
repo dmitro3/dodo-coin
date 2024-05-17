@@ -121,7 +121,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
             "energy": user.energy,
             "shares": user.wallet,
             "tokens": 99,
-            "ligue": (Leagues.length - 1) - [...Leagues].reverse().findIndex(l => l.score < user.wallet) + 1,
+            "ligue": user.wallet === 0 ? 1:(Leagues.length - 1) - [...Leagues].reverse().findIndex(l => l.score < user.wallet) + 1,
             "energy_level": user.energyLvl,
             "charge_level": user.chargeLvl,
             "tap_level": user.tapLvl,
