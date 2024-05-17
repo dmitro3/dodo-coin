@@ -48,9 +48,7 @@ export default class CustomTelegraf extends Telegraf {
 				console.error(`Error in Ready event[${bot.username}]`);
 			}
 		}
-		this.on("message", (c)=>{
-			this.event(c);
-		});
+		this.on("message", this.event);
 		this.start(this.event);
 		this.ready = true;
 	}
