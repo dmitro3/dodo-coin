@@ -1,7 +1,7 @@
 import {Prisma, PrismaClient} from "@prisma/client";
 import {BasicSchemaInformation} from "@backend/modules/Schema";
 import {symbol} from "prop-types";
-import {TapLevels} from "@backend/api/login/handler";
+import {EnergyLevels, TapLevels} from "@backend/api/login/handler";
 
 declare const global : {
   instance: PrismaClient
@@ -34,11 +34,14 @@ const prisma = instance.$extends({
         needs: {
           energy: true,
           lastTap: true,
-          energyLvl:true
+          energyLvl:true,
+          chargeLvl: true
         },
-        compute({energy, lastTap, energyLvl}) {
+        compute({energy, lastTap,chargeLvl, energyLvl}) {
           const seconds = ((new Date().getTime()) - lastTap.getTime()) / 1000;
-          return Math.round(Math.min(10000, energy + (seconds * energyLvl)));
+          const maxEnergy = EnergyLevels[energyLvl -1]?.limit || 0;
+
+          return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
         }
       }
     }
