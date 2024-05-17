@@ -12,6 +12,7 @@ import {CLIENT_BOT} from "@/bot/main";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
 import {Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
+import * as fs from "node:fs";
 
 class DodoClient extends DodoSession {
 
@@ -105,7 +106,9 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/start', 'Home'],
 				handler: async () => {
-					await ctx.replyWithPhoto(ctx.telegram.send, {
+					await ctx.replyWithPhoto({
+						source: fs.readFileSync(process.cwd()+"/public/banner.png")
+					}, {
 						caption: `
 					Hi, @${user.username}! 
 This is Dodo, the real one.
