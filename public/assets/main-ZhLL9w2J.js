@@ -3280,11 +3280,12 @@ function _r() {
         }
         ).catch(_=>{
             e.log.error("login_failed", _)
+                B();
         }
         ),
         e.navService.init(),
-        Telegram.WebApp.setHeaderColor("#251F33"),
-        Telegram.WebApp.setBackgroundColor("#251F33"),
+        Telegram.WebApp.setHeaderColor("#142883"),
+        Telegram.WebApp.setBackgroundColor("#15277a"),
         Telegram.WebApp.ready())
     }
     ),
