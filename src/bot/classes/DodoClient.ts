@@ -46,9 +46,9 @@ class DodoClient extends DodoSession {
 				console.log('channel', channel);
 				if (channel) {
 					const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
-					console.log('chat', chat);
+
 					const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as any;
-					if (!chat) {
+					if (!chat || (chat.status === 'kicked' || chat.status === 'left')) {
 						await ctx.reply(`Join our community and receive 2k dodo coin!`, {
 							...Markup.inlineKeyboard([
 								Markup.button.url(`Join to ${channel.title}`,`https://t.me/${tChannel.username}`),
