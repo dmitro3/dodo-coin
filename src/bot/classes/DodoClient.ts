@@ -43,7 +43,7 @@ class DodoClient extends DodoSession {
 				});
 				if (channel) {
 					const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
-					const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as ChannelChat;
+					const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId);
 					if (!chat) {
 						await ctx.reply(`Join our community and receive 2k dodo coin!`, {
 							...Markup.inlineKeyboard([
