@@ -114,4 +114,8 @@ export default class CustomTelegraf extends Telegraf {
 			});
 		});
 	}
+
+	getSetting(key: SettingKey) {
+
+	}
 }

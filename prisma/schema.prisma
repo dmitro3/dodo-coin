@@ -40,3 +40,15 @@ model BotChannel {
 
   @@unique([botUsername, channelId])
 }
+
+model BotSetting {
+  botUsername String     @id
+  key         SettingKey
+  value       String
+
+  @@unique([botUsername, key])
+}
+
+enum SettingKey {
+  CHANNEL_LOCK
+}
