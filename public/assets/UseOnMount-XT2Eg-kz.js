@@ -1865,7 +1865,9 @@ const We = {
             body2: "+500 energy limit for each level."
         },
         charge: {
-            title: "Recharging energy",
+            title: "Recharging speed",
+            body1: "Increase speed of recharge",
+            body2: "+1 per second."
         },
         tap_bot: {
             title: "Tap Bot",
