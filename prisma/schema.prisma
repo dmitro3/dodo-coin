@@ -42,7 +42,8 @@ model BotChannel {
 }
 
 model BotSetting {
-  botUsername String     @id
+  id          Int        @default(autoincrement())
+  botUsername String
   key         SettingKey
   value       String
 
