@@ -3272,7 +3272,8 @@ function _r() {
             return
         }
         const g = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-        g && (e.api.account_login.post(g).then(_=>{
+        function login() {
+            (e.api.account_login.post(g).then(_=>{
             e.login(_),
             i(_.player),
             l(e.player.notificationClaim),
@@ -3280,9 +3281,11 @@ function _r() {
         }
         ).catch(_=>{
             e.log.error("login_failed", _)
-                B();
+                login();
         }
-        ),
+        )
+        }
+        login(),
         e.navService.init(),
         Telegram.WebApp.setHeaderColor("#142883"),
         Telegram.WebApp.setBackgroundColor("#15277a"),
