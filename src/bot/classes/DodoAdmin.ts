@@ -32,6 +32,7 @@ class DodoAdmin extends DodoSession {
 			},
 			{
 				name: ['Block', 'Unblock'],
+				menu: ['block:Block User', 'unblock:Unblock User'],
 				handler: async () => {
 					const username = (await this.input('Enter target username'))
 						?.text
