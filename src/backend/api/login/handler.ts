@@ -119,7 +119,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
                 "L2"
             ],
             "stat": {
-                "taps": 475,
+                "taps": user.wallet / user.tapLvl,
                 "ref_in": refs,
                 "ref_out": refs,
                 "ref_cnt": refs,
