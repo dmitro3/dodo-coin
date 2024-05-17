@@ -99,9 +99,6 @@ class DodoBot {
 
 				const session = new this.sessionType(ctx as TheMessageContext, this);
 				const commands = await session.finalCommands();
-				const notFound = async (ctx: Context) => {
-					await ctx.reply('Unknown Command');
-				};
 
 				let text = ctx.text ?? ctx?.message?.text;
 				if (text?.includes('/')) {
@@ -111,10 +108,7 @@ class DodoBot {
 				const cmd = commands.find(c => c.name === text || c.name?.includes?.(text + "")) || commands.find(c =>
 					!!c.menu?.find(s => s.includes(text.replace("/","")))
 				);
-				if (!cmd) {
-					await notFound(ctx);
-					return;
-				}
+				if (!cmd) return;
 
 				cmd.handler.bind(session)(ctx)?.catch?.((e: any) => {
 					ctx.reply(e?.message ?? e).catch(console.error);
