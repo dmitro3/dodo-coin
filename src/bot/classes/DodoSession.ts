@@ -18,12 +18,7 @@ class DodoSession {
 	}
 
 	async callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery>>) {
-		const user = await prisma.user.findUnique({
-			where: {
-				id: e.from?.id
-			}
-		})
-		console.log(e);
+
 	}
 
 	async input(txt: string): Promise<TheMessageContext> {

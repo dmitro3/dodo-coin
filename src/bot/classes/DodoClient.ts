@@ -1,6 +1,6 @@
 import DodoBot from './DodoBot';
 import {DodoCommand} from './types/dodo';
-import {Markup} from 'telegraf';
+import {Context, Markup, NarrowedContext} from 'telegraf';
 import DodoSession from './DodoSession';
 import {env} from '../env';
 import {log} from 'console';
@@ -10,8 +10,26 @@ import {User} from "@prisma/client";
 
 import {CLIENT_BOT} from "@/bot/main";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
+import {Update} from "telegraf/types";
+import {CallbackQuery} from "@telegraf/types";
 
 class DodoClient extends DodoSession {
+
+	async callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & {data: string}>>) {
+		const user = await prisma.user.findUnique({
+			where: {
+				id: e.from?.id
+			}
+		});
+		if (!user) return;
+
+		if (e.update.callback_query.data === 'lock_check') {
+			const lock = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
+			if (!lock) return;
+
+			const joined = await CLIENT_BOT.telegram.getChatMember(lock, user.id)
+		}
+	}
 
 	async commands(): Promise<DodoCommand[]> {
 		const ctx = this.ctx;

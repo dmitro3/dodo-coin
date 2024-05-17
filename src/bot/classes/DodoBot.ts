@@ -118,7 +118,7 @@ class DodoBot {
 					ctx.reply(e?.message ?? e).catch(console.error);
 				});
 			} catch (e: any) {
-				await ctx.reply(e?.message ?? e);
+				ctx.reply(e?.message ?? e).catch(e);
 				console.error(e);
 			}
 		});
