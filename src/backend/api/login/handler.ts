@@ -10,7 +10,7 @@ export const TapLevels = Array.from({length: 30}).map((_,n) => ({
 export const ChargeLevels = Array.from({length: 10}).map((_,i) => {
     const n = Math.max(1, Math.round(i * 3.5))
     return {
-        "rate": i,
+        "rate": i+1,
         "price": n * 1000
     };
 });
