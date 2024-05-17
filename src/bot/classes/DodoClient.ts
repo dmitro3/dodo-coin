@@ -5,11 +5,10 @@ import DodoSession from './DodoSession';
 import {env} from '../env';
 import {log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
-import {Chat} from "@telegraf/types";
+
 import {User} from "@prisma/client";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
 import {CLIENT_BOT} from "@/bot/main";
-import ChannelChat = Chat.ChannelChat;
 
 class DodoClient extends DodoSession {
 
