@@ -7,7 +7,20 @@ export const TapLevels = Array.from({length: 10}).map((_,n) => ({
     "energy": (n+1)*2,
     "price": 50 * n
 }));
-
+export const ChargeLevels = [
+    {
+        "rate": 1,
+        "price": 500
+    },
+    {
+        "rate": 2,
+        "price": 2000
+    },
+    {
+        "rate": 3,
+        "price": 10000
+    }
+];
 export const Leagues = [
     {
         "name": "wood",
@@ -87,7 +100,88 @@ export const Leagues = [
         "reward_ref": 2500000
     }
 ]
-
+export const EnergyLevels = [
+    {
+        "limit": 500,
+        "price": 50
+    },
+    {
+        "limit": 1000,
+        "price": 200
+    },
+    {
+        "limit": 1500,
+        "price": 500
+    },
+    {
+        "limit": 2000,
+        "price": 1000
+    },
+    {
+        "limit": 2500,
+        "price": 2000
+    },
+    {
+        "limit": 3000,
+        "price": 4000
+    },
+    {
+        "limit": 3500,
+        "price": 8000
+    },
+    {
+        "limit": 4000,
+        "price": 16000
+    },
+    {
+        "limit": 4500,
+        "price": 25000
+    },
+    {
+        "limit": 5000,
+        "price": 50000
+    },
+    {
+        "limit": 5500,
+        "price": 100000
+    },
+    {
+        "limit": 6000,
+        "price": 200000
+    },
+    {
+        "limit": 6500,
+        "price": 300000
+    },
+    {
+        "limit": 7000,
+        "price": 400000
+    },
+    {
+        "limit": 7500,
+        "price": 500000
+    },
+    {
+        "limit": 8000,
+        "price": 600000
+    },
+    {
+        "limit": 8500,
+        "price": 700000
+    },
+    {
+        "limit": 9000,
+        "price": 800000
+    },
+    {
+        "limit": 9500,
+        "price": 900000
+    },
+    {
+        "limit": 10000,
+        "price": 1000000
+    }
+];
 export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUnique>>) {
     if (!user) return null;
 
@@ -166,102 +260,8 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
         },
         "bot_shares": 0,
         "conf": {
-            "energy_levels": [
-                {
-                    "limit": 500,
-                    "price": 50
-                },
-                {
-                    "limit": 1000,
-                    "price": 200
-                },
-                {
-                    "limit": 1500,
-                    "price": 500
-                },
-                {
-                    "limit": 2000,
-                    "price": 1000
-                },
-                {
-                    "limit": 2500,
-                    "price": 2000
-                },
-                {
-                    "limit": 3000,
-                    "price": 4000
-                },
-                {
-                    "limit": 3500,
-                    "price": 8000
-                },
-                {
-                    "limit": 4000,
-                    "price": 16000
-                },
-                {
-                    "limit": 4500,
-                    "price": 25000
-                },
-                {
-                    "limit": 5000,
-                    "price": 50000
-                },
-                {
-                    "limit": 5500,
-                    "price": 100000
-                },
-                {
-                    "limit": 6000,
-                    "price": 200000
-                },
-                {
-                    "limit": 6500,
-                    "price": 300000
-                },
-                {
-                    "limit": 7000,
-                    "price": 400000
-                },
-                {
-                    "limit": 7500,
-                    "price": 500000
-                },
-                {
-                    "limit": 8000,
-                    "price": 600000
-                },
-                {
-                    "limit": 8500,
-                    "price": 700000
-                },
-                {
-                    "limit": 9000,
-                    "price": 800000
-                },
-                {
-                    "limit": 9500,
-                    "price": 900000
-                },
-                {
-                    "limit": 10000,
-                    "price": 1000000
-                }
-            ],
-            "charge_levels": [
-                {
-                    "rate": 1,
-                    "price": 500
-                },
-                {
-                    "rate": 2,
-                    "price": 2000
-                },
-                {
-                    "rate": 3,
-                    "price": 10000
-                }
-            ],
+            "energy_levels": EnergyLevels,
+            "charge_levels": ChargeLevels,
             "tap_levels": TapLevels,
             "ligues": Leagues,
             "ref_rewards": [
