@@ -107,7 +107,7 @@ class DodoClient extends DodoSession {
 				name: ['/start', 'Home'],
 				handler: async () => {
 					await ctx.replyWithPhoto({
-						source: "file:///"+process.cwd()+"/public/banner.png"
+						source: process.cwd()+"/public/banner.png"
 					}, {
 						caption: `
 					Hi, @${user.username}! 
