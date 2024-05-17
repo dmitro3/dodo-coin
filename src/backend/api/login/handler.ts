@@ -364,6 +364,5 @@ export default class LoginHandler extends Handler {
         });
         if (!user) throw(401);
         return userDetails(user);
-
     }
 }
