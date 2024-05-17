@@ -1,8 +1,9 @@
 import DodoBot from './DodoBot';
 import DodoSession from './DodoSession';
 
-import { DodoAdminBot, DodoClientBot } from '../main';
+import {CLIENT_BOT, DodoAdminBot, DodoClientBot} from '../main';
 import prisma from "@backend/modules/prisma/Prisma";
+import {TheMessageContext} from "@/bot/classes/types/dodo";
 
 class DodoAdmin extends DodoSession {
 	async commands() {
@@ -125,6 +126,61 @@ class DodoAdmin extends DodoSession {
 						}
 					});
 					await reply(`The Operation was Successful. ${decrease? '-':'+'}${final}dodo`);
+				}
+			},
+			{
+				name: "Lock",
+				handler: async (etx: TheMessageContext) => {
+					await CLIENT_BOT.waitToReady();
+					const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
+
+					if (enabled) {
+						const channel = await prisma.botChannel.findFirst({
+							where: {
+								botUsername: CLIENT_BOT.me?.username+"",
+								OR: [
+									{
+										channelId: enabled+""
+									},
+									{
+										chatId: enabled+""
+									}
+								]
+							}
+						});
+						if (channel) {
+							await ctx.reply(`Channel Lock Enabled on ${channel.title}`)
+						}
+					}
+
+					const channels = await prisma.botChannel.findMany({
+						where: {
+							botUsername: CLIENT_BOT.me?.username+""
+						}
+					});
+					await ctx.reply(`
+					Channel List:
+					${channels.map((c,i) => `${i+1}. ${c.title}`).join('\n')}
+					
+					Note: if channel doesn't exists its means the bot doesn't receive any message from that channel
+					`.trim().replaceAll("  ", ""))
+
+					const input = await this.input("Enter Channel Number to enable or type (cancel) to disable:");
+
+					const target = channels?.[+input];
+					if (target) {
+						await CLIENT_BOT.setSetting('CHANNEL_LOCK', target.channelId);
+						await ctx.reply(`Channel Lock enabled on ${target.title}`);
+					} else {
+						await prisma.botSetting.delete({
+							where: {
+								botUsername_key: {
+									key: "CHANNEL_LOCK",
+									botUsername: CLIENT_BOT.me?.username
+								}
+							}
+						})
+					}
 				}
 			}
 		];
