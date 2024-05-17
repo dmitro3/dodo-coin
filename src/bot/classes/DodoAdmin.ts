@@ -158,7 +158,7 @@ class DodoAdmin extends DodoSession {
 							botUsername: CLIENT_BOT.me?.username+""
 						}
 					});
-					console.log(channels);
+					
 					await ctx.reply(`
 					Channel List:
 					${channels.map((c,i) => `${i+1}. ${c.title}`).join('\n')}
@@ -173,14 +173,17 @@ class DodoAdmin extends DodoSession {
 						await CLIENT_BOT.setSetting('CHANNEL_LOCK', target.channelId);
 						await ctx.reply(`Channel Lock enabled on ${target.title}`);
 					} else {
-						await prisma.botSetting.delete({
-							where: {
-								botUsername_key: {
-									key: "CHANNEL_LOCK",
-									botUsername: CLIENT_BOT.me?.username+""
+						try {
+							await prisma.botSetting.delete({
+								where: {
+									botUsername_key: {
+										key: "CHANNEL_LOCK",
+										botUsername: CLIENT_BOT.me?.username+""
+									}
 								}
-							}
-						})
+							})
+						} catch {}
+						await ctx.reply("Disabled");
 					}
 				}
 			}
