@@ -130,22 +130,34 @@ export default class CustomTelegraf extends Telegraf {
 
 	async setSetting(key: SettingKey, value: string) {
 		const me = await this.waitToReady();
-		const exs = await this.getSetting(key);
+		const exs = await prisma.botSetting.findFirst({
+			where: {
+				botUsername: me.username+"",
+				key
+			}
+		});
 
 		const wh = {
 			key: key,
-			botUsername: me.username+""
+			botUsername: me.username+"",
 		};
 		const v = {
 			value
 		};
 		if (exs) {
 			await prisma.botSetting.update({
-				where: wh,
+				where: {
+					id: exs.id
+				},
 				data: v
 			})
 		} else {
-			await prisma.bo
+			await prisma.botSetting.create({
+				data: {
+					...wh,
+					...v
+				}
+			})
 		}
 	}
 }
