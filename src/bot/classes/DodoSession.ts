@@ -4,6 +4,7 @@ import DodoBot from './DodoBot';
 import { User } from '@prisma/client';
 import {BotCommand, CallbackQuery} from "@telegraf/types";
 import {Update} from "telegraf/typings/core/types/typegram";
+import prisma from "@backend/modules/prisma/Prisma";
 
 class DodoSession {
 	ctx: TheMessageContext;
@@ -15,8 +16,15 @@ class DodoSession {
 
 	}
 
-	callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery>>) {
-		if (e.callbackQuery === 'lock_check')
+	async callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery>>) {
+		const user = await prisma.user.findUnique({
+			where: {
+				id: e.from?.id
+			}
+		})
+		if (e.callbackQuery === 'lock_check') {
+
+		}
 	}
 
 	async input(txt: string): Promise<TheMessageContext> {
