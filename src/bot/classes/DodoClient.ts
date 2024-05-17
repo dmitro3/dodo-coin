@@ -28,6 +28,7 @@ class DodoClient extends DodoSession {
 
 		if (user?.id) {
 			const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
+			console.log('enabled', enabled)
 			if (enabled) {
 				const channel = await prisma.botChannel.findFirst({
 					where: {
@@ -42,6 +43,7 @@ class DodoClient extends DodoSession {
 						]
 					}
 				});
+				console.log('channel', channel);
 				if (channel) {
 					const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
 					const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as any;
