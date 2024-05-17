@@ -57,8 +57,9 @@ export default class CustomTelegraf extends Telegraf {
 			return this.event(e);
 		}
 		this.on('channel_post', e => {
-			console.log("POST CREATION")
+
 			this.waitToReady().then((me)=>{
+				console.log("POST CREATION",me)
 				try {
 					prisma.botChannel.create({
 						data: {
