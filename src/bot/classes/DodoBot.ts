@@ -1,10 +1,10 @@
 import CustomTelegraf from './CustomTelegraf';
-import { Context, Markup } from 'telegraf';
-import { DodoCommand, TheMessageContext } from './types/dodo';
+import {Context, Markup} from 'telegraf';
+import {DodoCommand, TheMessageContext} from './types/dodo';
 
 
 import DodoSession from './DodoSession';
-import { ParseMode } from 'telegraf/types';
+import {ParseMode} from 'telegraf/types';
 import {error, log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
@@ -39,7 +39,7 @@ class DodoBot {
 				where: {
 					id: telUser.id,
 				},
-			}) || await prisma.user.findUnique({ where: { username: telUser.username } });
+			}) || await prisma.user.findUnique({where: {username: telUser.username}});
 			try {
 				if (!user && !this.isAdmin) {
 					let refId;
@@ -65,7 +65,8 @@ class DodoBot {
 								refId = fromUser.id
 							}
 						}
-					}catch{}
+					} catch {
+					}
 
 					user = await prisma.user.create({
 						data: {
@@ -76,8 +77,7 @@ class DodoBot {
 						},
 					});
 				}
-			}
-			catch (e) {
+			} catch (e) {
 				console.error(e);
 			}
 
@@ -96,21 +96,15 @@ class DodoBot {
 				const session = new this.sessionType(ctx as TheMessageContext, this);
 				const commands = await session.finalCommands();
 				const notFound = async (ctx: Context) => {
-					const buttons = commands.find(c =>
-						!!c.buttons?.length,
-					)?.buttons || [];
-
-					if (buttons?.length) {
-						await ctx.reply('Unknown Command', DodoBot.renderButtons(buttons));
-					}
+					await ctx.reply('Unknown Command');
 				};
 
-				let text = ctx.text;
+				let text = ctx.text ?? ctx?.message?.text;
 				if (text?.includes('/')) {
 					text = text.split(' ')?.shift();
 				}
 
-				const cmd = commands.find(c => c.name === text || c.name?.includes?.(text+""));
+				const cmd = commands.find(c => c.name === text || c.name?.includes?.(text + ""));
 				if (!cmd) {
 					await notFound(ctx);
 					return;
@@ -119,8 +113,7 @@ class DodoBot {
 				cmd.handler.bind(session)(ctx)?.catch?.((e: any) => {
 					ctx.reply(e?.message ?? e).catch(console.error);
 				});
-			}
-			catch (e: any) {
+			} catch (e: any) {
 				await ctx.reply(e?.message ?? e);
 				console.error(e);
 			}
@@ -134,7 +127,7 @@ class DodoBot {
 
 		const final = Array.isArray(buttons?.[0]) ?
 			buttons :
-			Array.from({ length: row }).map((_, i) => {
+			Array.from({length: row}).map((_, i) => {
 				i++;
 				const start = Math.round((i - 1) * column);
 				const end = Math.round(i * column);
