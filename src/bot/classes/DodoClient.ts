@@ -1,14 +1,13 @@
 import DodoBot from './DodoBot';
-import { DodoCommand } from './types/dodo';
-import { Markup } from 'telegraf';
+import {DodoCommand} from './types/dodo';
+import {Markup} from 'telegraf';
 import DodoSession from './DodoSession';
-import { env } from '../env';
-import { log } from 'console';
+import {env} from '../env';
+import {log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
-import {BotCommand, Chat} from "@telegraf/types";
+import {Chat} from "@telegraf/types";
 import {User} from "@prisma/client";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
-import { merge } from 'lodash';
 import {CLIENT_BOT} from "@/bot/main";
 import ChannelChat = Chat.ChannelChat;
 
