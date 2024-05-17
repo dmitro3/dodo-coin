@@ -158,6 +158,7 @@ class DodoAdmin extends DodoSession {
 							botUsername: CLIENT_BOT.me?.username+""
 						}
 					});
+					console.log(channels);
 					await ctx.reply(`
 					Channel List:
 					${channels.map((c,i) => `${i+1}. ${c.title}`).join('\n')}

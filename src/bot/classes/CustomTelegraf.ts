@@ -61,7 +61,7 @@ export default class CustomTelegraf extends Telegraf {
 			this.waitToReady().then((me)=>{
 				console.log("POST CREATION",me)
 				try {
-					prisma.botChannel.create({
+					await prisma.botChannel.create({
 						data: {
 							botUsername: me?.username || this.id,
 							channelId: e.chat.id+"",
