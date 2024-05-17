@@ -105,7 +105,7 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/start', 'Home'],
 				handler: async () => {
-					await ctx.replyWithPhoto('', {
+					await ctx.replyWithPhoto(ctx.telegram.send, {
 						caption: `
 					Hi, @${user.username}! 
 This is Dodo, the real one.
