@@ -120,8 +120,10 @@ export default class CustomTelegraf extends Telegraf {
 		const me = await this.waitToReady();
 		const record = await prisma.botSetting.findUnique({
 			where: {
-				botUsername: me.username,
-				key: key
+				botUsername_key: {
+					key,
+					botUsername:me.username+""
+				}
 			}
 		});
 
