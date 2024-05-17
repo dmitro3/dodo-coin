@@ -122,6 +122,12 @@ Type /help to access this guide.
 					/*TODO: Handle this*/
 					await ctx.reply("Request Sent!")
 				}
+			},
+			{
+				name: "Refs",
+				handler:async ()=> {
+					await sendInvite(user)
+				}
 			}
 		];
 	}

@@ -5,6 +5,7 @@ import {getToken} from "@backend/utils/user";
 import {CLIENT_BOT} from "@/bot/main";
 import {Markup} from "telegraf";
 import {User} from "@prisma/client";
+import {getWebAppUrl} from "@/bot/classes/DodoClient";
 
 export default class UpgradeHandler extends Handler {
 	async handler() {
@@ -22,6 +23,7 @@ export async function sendInvite(user: User) {
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 		...Markup.inlineKeyboard([
 			Markup.button.switchToChat("Invite Friends!",text),
+			Markup.button.webApp("Play!", getWebAppUrl(user))
 		])
 	})
 }
