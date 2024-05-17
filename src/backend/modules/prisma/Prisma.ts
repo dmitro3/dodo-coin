@@ -33,11 +33,12 @@ const prisma = instance.$extends({
       energy: {
         needs: {
           energy: true,
-          lastTap: true
+          lastTap: true,
+          energyLvl:true
         },
-        compute({energy, lastTap}) {
+        compute({energy, lastTap, energyLvl}) {
           const seconds = ((new Date().getTime()) - lastTap.getTime()) / 1000;
-          return Math.round(Math.min(10000, energy + seconds));
+          return Math.round(Math.min(10000, energy + (seconds * energyLvl)));
         }
       }
     }

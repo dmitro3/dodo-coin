@@ -25,7 +25,7 @@ export default class UpgradeHandler extends Handler {
 			const lvl = Math.min(user.energyLvl+1, EnergyLevels.length);
 			const lvlInfo = EnergyLevels[lvl-1];
 			if (lvlInfo.price > user.wallet) throw("IB");
-			
+
 			user = await prisma.user.update({
 				where: {
 					id: user.id
