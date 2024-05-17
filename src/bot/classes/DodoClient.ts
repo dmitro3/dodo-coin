@@ -106,7 +106,8 @@ class DodoClient extends DodoSession {
 				name:[ '/start','Home'],
 				handler: async () => {
 					await ctx.reply(`
-					This is $Dodocoin, the real one.
+					Hi, @${user.username}! 
+This is $Dodocoin, the real one.
 
 Tap on the coin and watch your balance grow.
 
