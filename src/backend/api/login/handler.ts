@@ -123,7 +123,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
                 "ref_in": refs,
                 "ref_out": refs,
                 "ref_cnt": refs,
-                "earned": 0,
+                "earned": user.wallet,
                 "reward": 0,
                 "spent": 0
             }
