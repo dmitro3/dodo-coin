@@ -26,7 +26,7 @@ class DodoClient extends DodoSession {
 			['Withdraw','Help'],
 		];
 
-		if (user) {
+		if (user?.id) {
 			const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
 			if (enabled) {
 				const channel = await prisma.botChannel.findFirst({
