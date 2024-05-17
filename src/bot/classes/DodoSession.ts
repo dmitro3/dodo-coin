@@ -57,6 +57,15 @@ class DodoSession {
 				description:last
 			})
 		});
+		const final2 = [
+			...final,
+			...commands?.filter?.(c => !!c.menu?.length).map(c => (
+				c.menu?.map(s => ({
+					command: s.split(":")[0],
+					description: s.split(":")[1]
+				})).flat()
+			)).flat()
+		]
 		console.log(final);
 		return final;
 	}
