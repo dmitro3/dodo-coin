@@ -49,9 +49,9 @@ export default class CustomTelegraf extends Telegraf {
 			}
 		}
 		this.on("message", (c)=>{
-			console.log("MSG", this.id);
 			this.event(c);
 		});
+		this.start(this.event);
 		this.ready = true;
 	}
 
