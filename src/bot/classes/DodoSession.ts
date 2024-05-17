@@ -3,8 +3,9 @@ import { DodoCommand, TheMessageContext } from './types/dodo';
 import DodoBot from './DodoBot';
 import { User } from '@prisma/client';
 import {BotCommand, CallbackQuery} from "@telegraf/types";
-import {Update} from "telegraf/typings/core/types/typegram";
+
 import prisma from "@backend/modules/prisma/Prisma";
+import { Update } from 'telegraf/types';
 
 class DodoSession {
 	ctx: TheMessageContext;
@@ -22,9 +23,7 @@ class DodoSession {
 				id: e.from?.id
 			}
 		})
-		if (e.callbackQuery === 'lock_check') {
-
-		}
+		console.log(e);
 	}
 
 	async input(txt: string): Promise<TheMessageContext> {
