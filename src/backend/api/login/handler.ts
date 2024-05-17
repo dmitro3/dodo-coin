@@ -2,7 +2,7 @@ import Handler from "@backend/modules/Handler";
 import {NextResponse} from "next/server";
 import prisma from "@backend/modules/prisma/Prisma";
 
-export const TapLevels = Array.from({length: 10}).map((_,n) => ({
+export const TapLevels = Array.from({length: 30}).map((_,n) => ({
     "rate": n+1,
     "energy": (n+1)*2,
     "price": 50 * (Math.round(n * 2.5))
