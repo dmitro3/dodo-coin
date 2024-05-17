@@ -1,11 +1,8 @@
 import {Context, NarrowedContext} from 'telegraf';
-import { DodoCommand, TheMessageContext } from './types/dodo';
+import {DodoCommand, TheMessageContext} from './types/dodo';
 import DodoBot from './DodoBot';
-import { User } from '@prisma/client';
 import {BotCommand, CallbackQuery} from "@telegraf/types";
-
-import prisma from "@backend/modules/prisma/Prisma";
-import { Update } from 'telegraf/types';
+import {Update} from 'telegraf/types';
 
 class DodoSession {
 	ctx: TheMessageContext;
@@ -63,11 +60,11 @@ class DodoSession {
 				c.menu?.map(s => ({
 					command: s.split(":")[0],
 					description: s.split(":")[1]
-				})).flat()
-			)).flat()
+				})).flat() || []
+			))?.flat?.() || []
 		]
-		console.log(final);
-		return final;
+		console.log(final2);
+		return final2;
 	}
 }
 
