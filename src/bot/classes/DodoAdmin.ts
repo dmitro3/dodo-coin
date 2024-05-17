@@ -117,14 +117,13 @@ class DodoAdmin extends DodoSession {
 					if (isNaN(amount)) throw("Please enter valid number");
 
 					const decrease = ctx.text?.includes('Add');
-					const final = decrease ? user.wallet - amount:user.wallet + amount;
-
+					const final = Math.max(0,decrease ? user.wallet - amount:user.wallet + amount);
 					await prisma.user.update({
 						where: {
 							username
 						},
 						data: {
-							wallet: Math.max(0, final)
+							wallet: final
 						}
 					});
 					await reply(`The Operation was Successful. ${decrease? '-':'+'}${amount}dodo\nUser Balance:${final}`);
