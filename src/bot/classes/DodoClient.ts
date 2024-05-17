@@ -106,14 +106,15 @@ class DodoClient extends DodoSession {
 				name:[ '/start','Home'],
 				handler: async () => {
 					await ctx.reply(`
-					Hey, @${user.username}! Welcome to DodoCoin!
-Tap on the coin and see your balance rise.
+					This is $Dodocoin, the real one.
 
-DodoCoin is a Decentralized Exchange on the Solana Blockchain. The biggest part of DodoCoin Token TAPS distribution will occur among the players here.
+Tap on the coin and watch your balance grow.
 
-Got friends, relatives, co-workers?
-Bring them all into the game.
-More buddies, more coins.
+How much is $Dodocoin worth? No one knows, probably something.
+
+Got any friends? Get them in the game. That way you'll get even more coins together.
+
+$Dodocoin is everything you ever wanted . That's all you need to know.
 					`, {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
