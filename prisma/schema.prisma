@@ -30,3 +30,12 @@ model User {
   ref       User?    @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
   token     String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), gen_random_uuid()))::TEXT"))
 }
+
+model BotChannel {
+  id          Int     @default(autoincrement()) @id
+  botUsername String
+  channelId   String
+  chatId      String?
+
+  @@unique([botUsername, channelId])
+}
