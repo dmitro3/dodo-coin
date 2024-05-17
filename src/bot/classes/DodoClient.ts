@@ -191,7 +191,7 @@ Type /help to access this guide.
 						])
 					)
 				}
-			},*/
+			}, TODO: Should be on the client side not bot*/
 			{
 				name: "Send Withdraw Request",
 				handler: async () => {
