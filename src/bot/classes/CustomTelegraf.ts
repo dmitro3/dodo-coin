@@ -147,7 +147,11 @@ export default class CustomTelegraf extends Telegraf {
 		if (exs) {
 			await prisma.botSetting.update({
 				where: {
-					id: exs.id
+					id: exs.id,
+					botUsername_key: {
+						key,
+						botUsername: me.username+""
+					}
 				},
 				data: v
 			})
