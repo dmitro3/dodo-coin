@@ -8,7 +8,7 @@ export default class UpgradeHandler extends Handler {
 		const type = this.get('type', "Type Required");
 
 		if (type === "tap") {
-			const lvl = Math.min(user.tapLvl+1, user.maxTapLvl);
+			const lvl = Math.min(user.tapLvl+1, TapLevels.length);
 			const lvlInfo = TapLevels[lvl-1];
 			if (!lvlInfo) throw("Invalid LVL");
 

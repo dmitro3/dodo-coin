@@ -22,6 +22,7 @@ model User {
   chatId    Float    @unique
   tapLvl    Int      @default(1)
   energy    Int      @default(10000)
+  energyLvl Int      @default(1)
   lastTap   DateTime @default(now())
   refs      User[]   @relation("Ref")
   refId     Float?
