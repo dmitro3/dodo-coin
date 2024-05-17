@@ -4,7 +4,7 @@ import { Message, Update } from 'telegraf/typings/core/types/typegram';
 export type DodoCommand = {
 	name: string | string[],
 	handler: ((ctx: TheMessageContext) => Promise) | (() => (string[])),
-	buttons?: (string | string[])[]
+	menu?: string[]
 }
 
 
