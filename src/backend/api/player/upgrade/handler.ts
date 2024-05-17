@@ -1,6 +1,6 @@
 import Handler from "@backend/modules/Handler";
 import prisma from "@backend/modules/prisma/Prisma";
-import {EnergyLevels, TapLevels, userDetails} from "@backend/api/login/handler";
+import {ChargeLevels, EnergyLevels, TapLevels, userDetails} from "@backend/api/login/handler";
 
 export default class UpgradeHandler extends Handler {
 	async handler() {
@@ -22,6 +22,20 @@ export default class UpgradeHandler extends Handler {
 				}
 			})
 		} else if (type === "charge") {
+			const lvl = Math.min(user.chargeLvl+1, ChargeLevels.length);
+			const lvlInfo = ChargeLevels[lvl-1];
+			if (lvlInfo.price > user.wallet) throw("IB");
+
+			user = await prisma.user.update({
+				where: {
+					id: user.id
+				},
+				data: {
+					chargeLvl: lvl,
+					wallet: user.wallet - lvlInfo.price
+				}
+			})
+		} else if (type === "energy") {
 			const lvl = Math.min(user.energyLvl+1, EnergyLevels.length);
 			const lvlInfo = EnergyLevels[lvl-1];
 			if (lvlInfo.price > user.wallet) throw("IB");
