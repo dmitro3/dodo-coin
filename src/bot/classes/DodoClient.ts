@@ -41,7 +41,11 @@ class DodoClient extends DodoSession {
 							}
 						]
 					}
-				})
+				});
+				if (channel) {
+					const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
+					console.log(chat);
+				}
 			}
 		}
 
