@@ -108,7 +108,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
             "energy": user.energy,
             "shares": user.wallet,
             "tokens": 0,
-            "ligue": 3,
+            "ligue": 0,
             "energy_level": 20,
             "charge_level": 1,
             "tap_level": user.tapLvl,
