@@ -1,11 +1,8 @@
 import Handler from "@backend/modules/Handler";
-import prisma from "@backend/modules/prisma/Prisma";
-import {userDetails} from "@backend/api/login/handler";
-import {getToken} from "@backend/utils/user";
 import {CLIENT_BOT} from "@/bot/main";
 import {Markup} from "telegraf";
 import {User} from "@prisma/client";
-import {getWebAppUrl} from "@/bot/classes/DodoClient";
+import {communityButton, getWebAppUrl} from "@/bot/classes/DodoClient";
 
 export default class UpgradeHandler extends Handler {
 	async handler() {
@@ -18,12 +15,16 @@ export default class UpgradeHandler extends Handler {
 
 export async function sendInvite(user: User) {
 	await CLIENT_BOT.waitToReady();
-	const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user.id}`
-	const text = `${link}\n🎁 +2.5k Shares as a first-time gift`;
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 		...Markup.inlineKeyboard([
-			Markup.button.switchToChat("Invite Friends!",text),
-			Markup.button.webApp("Play!", getWebAppUrl(user))
+			Markup.button.switchToChat("Invite Friends!",await getInviteText(user)),
+			Markup.button.webApp("Play!", getWebAppUrl(user)),
+			...(await communityButton())
 		])
 	})
+}
+
+export async function getInviteText(user: User) {
+	const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user.id}`
+	return `${link}\n🎁 +2.5k Shares as a first-time gift`;
 }

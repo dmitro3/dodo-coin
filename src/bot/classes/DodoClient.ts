@@ -9,10 +9,46 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {User} from "@prisma/client";
 
 import {CLIENT_BOT} from "@/bot/main";
-import {sendInvite} from "@backend/api/player/send_invite/handler";
+import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler";
 import {Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
 import * as fs from "node:fs";
+
+export async function communityButton(final = false) {
+	const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
+	if (!enabled) return [];
+
+	const channel = await prisma.botChannel.findFirst({
+		where: {
+			botUsername: CLIENT_BOT.me?.username + "",
+			OR: [
+				{
+					channelId: enabled + ""
+				},
+				{
+					chatId: enabled + ""
+				}
+			]
+		}
+	});
+
+	if (!channel) return [];
+
+	const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
+
+	const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as any;
+
+	if (final) {
+		return [
+			Markup.button.url(`Join to ${channel.title}`, `https://t.me/${tChannel.username}`),
+			Markup.button.callback("Receive 2k", 'lock_check')
+		]
+	} else {
+		return [
+			Markup.button.callback("Join our community", 'community')
+		]
+	}
+}
 
 class DodoClient extends DodoSession {
 
@@ -24,7 +60,8 @@ class DodoClient extends DodoSession {
 		});
 		if (!user) return;
 
-		if (e.update.callback_query.data === 'lock_check') {
+		const data = e?.update?.callback_query?.data || ""
+		if (data === 'lock_check') {
 			const lock = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
 			if (!lock) return;
 
@@ -49,7 +86,12 @@ class DodoClient extends DodoSession {
 					lockReward: true
 				}
 			});
-			await e.reply("You receive 2K coin, now you can continue using the bot");
+			await e.reply("You receive 2K dodo");
+		}
+		else if (data === 'community') {
+			await e.reply("Join our community and receive 2k dodo coin!", {
+				...Markup.inlineKeyboard(await communityButton(true))
+			})
 		}
 	}
 
@@ -66,48 +108,13 @@ class DodoClient extends DodoSession {
 			['Withdraw', 'Help'],
 		];
 
-		if (user?.id) {
-			const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
-			console.log('enabled', enabled)
-			if (enabled) {
-				const channel = await prisma.botChannel.findFirst({
-					where: {
-						botUsername: CLIENT_BOT.me?.username + "",
-						OR: [
-							{
-								channelId: enabled + ""
-							},
-							{
-								chatId: enabled + ""
-							}
-						]
-					}
-				});
-				console.log('channel', channel);
-				if (channel) {
-					const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
-
-					const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as any;
-					if (!chat || (chat.status === 'kicked' || chat.status === 'left')) {
-						await ctx.reply(`Join our community and receive 2k dodo coin!`, {
-							...Markup.inlineKeyboard([
-								Markup.button.url(`Join to ${channel.title}`, `https://t.me/${tChannel.username}`),
-								Markup.button.callback("Receive 2k", 'lock_check')
-							])
-						});
-						throw ("");
-					}
-				}
-			}
-		}
-
 
 		return [
 			{
 				name: ['/start', 'Home'],
 				handler: async () => {
 					await ctx.replyWithPhoto({
-						source: process.cwd()+"/public/banner.png"
+						source: process.cwd() + "/public/banner.png"
 					}, {
 						caption: `
 					Hi, @${user.username}! 
@@ -123,7 +130,9 @@ Dodo is everything you ever wanted . That's all you need to know.
 					`.trim()
 						,
 						...Markup.inlineKeyboard([
-							Markup.button.webApp("Play!", getWebAppUrl(user))
+							Markup.button.webApp("Play!", getWebAppUrl(user)),
+							Markup.button.switchToChat("Invite Friends!", await getInviteText(user)),
+							...(await communityButton())
 						])
 					});
 				},
@@ -167,7 +176,8 @@ Type /help to access this guide.
 					const url = getWebAppUrl(user);
 					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp('Play!', url)
+							Markup.button.webApp('Play!', url),
+							...(await communityButton())
 						])
 					});
 				}
