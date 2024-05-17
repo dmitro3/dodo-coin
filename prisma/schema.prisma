@@ -21,7 +21,7 @@ model User {
   username   String?  @unique
   chatId     Float    @unique
   tapLvl     Int      @default(1)
-  energy     Int      @default(10000)
+  energy     Int      @default(250)
   energyLvl  Int      @default(1)
   chargeLvl  Int      @default(1)
   lastTap    DateTime @default(now())
