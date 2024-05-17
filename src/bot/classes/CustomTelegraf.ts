@@ -3,6 +3,7 @@ import * as console from 'console';
 import { UserFromGetMe } from 'telegraf/types';
 import { TheMessageContext } from './types/dodo';
 import prisma from "@backend/modules/prisma/Prisma";
+import {SettingKey} from "@prisma/client";
 
 declare global {
 	var CT_BOTS: {
@@ -115,7 +116,15 @@ export default class CustomTelegraf extends Telegraf {
 		});
 	}
 
-	getSetting(key: SettingKey) {
+	async getSetting(key: SettingKey): Promise<string | undefined> {
+		const me = await this.waitToReady();
+		const record = await prisma.botSetting.findUnique({
+			where: {
+				botUsername: me.username,
+				key: key
+			}
+		});
 
+		return record?.value;
 	}
 }
