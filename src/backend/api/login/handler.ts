@@ -125,7 +125,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
                 "ref_cnt": refs,
                 "earned": user.wallet,
                 "reward": 0,
-                "spent": 0
+                "spent": user.wallet / user.tapLvl
             }
         },
         "account": {
