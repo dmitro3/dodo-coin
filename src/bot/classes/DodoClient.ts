@@ -52,7 +52,8 @@ class DodoClient extends DodoSession {
 								Markup.button.url(`Join to ${channel.title}`,`https://t.me/${tChannel.username}`),
 								Markup.button.callback("Receive 2k", 'lock_check')
 							])
-						})
+						});
+						return [];
 					}
 				}
 			}
