@@ -145,7 +145,7 @@ export default class CustomTelegraf extends Telegraf {
 			value
 		};
 		if (exs) {
-			await prisma.botSetting.update({
+			return await prisma.botSetting.update({
 				where: {
 					id: exs.id,
 					botUsername_key: {
@@ -156,7 +156,7 @@ export default class CustomTelegraf extends Telegraf {
 				data: v
 			})
 		} else {
-			await prisma.botSetting.create({
+			return await prisma.botSetting.create({
 				data: {
 					...wh,
 					...v
