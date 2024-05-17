@@ -68,7 +68,7 @@ export default class CustomTelegraf extends Telegraf {
 						}
 					})
 				} catch (e) {
-
+					console.error(e);
 				}
 			})
 		})
