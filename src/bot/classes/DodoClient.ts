@@ -175,6 +175,23 @@ Type /help to access this guide.
 					});
 				}
 			},
+			/*{
+				name: "Withdraw",
+				async handler() {
+					await ctx.reply(`
+					Minimum Coin Required to send withdraw request: 100dodo
+
+					Are you sure?
+					`
+							.split("\n")
+							.map(s => s.trim())
+							.join("\n"),
+						DodoBot.renderButtons([
+							['Home', 'Send Withdraw Request']
+						])
+					)
+				}
+			},*/
 			{
 				name: "Send Withdraw Request",
 				handler: async () => {
