@@ -9,6 +9,7 @@ import {BotCommand} from "@telegraf/types";
 import {User} from "@prisma/client";
 import {sendInvite} from "@backend/api/player/send_invite/handler";
 import { merge } from 'lodash';
+import {CLIENT_BOT} from "@/bot/main";
 
 class DodoClient extends DodoSession {
 
@@ -24,6 +25,25 @@ class DodoClient extends DodoSession {
 			['Refs','Wallet'],
 			['Withdraw','Help'],
 		];
+
+		if (user) {
+			const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
+			if (enabled) {
+				const channel = await prisma.botChannel.findFirst({
+					where: {
+						botUsername: CLIENT_BOT.me?.username+"",
+						OR: [
+							{
+								channelId: enabled+""
+							},
+							{
+								chatId: enabled+""
+							}
+						]
+					}
+				})
+			}
+		}
 
 
 		return [
