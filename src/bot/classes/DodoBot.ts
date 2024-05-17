@@ -34,8 +34,8 @@ class DodoBot {
 
 	registerCommands() {
 		this.bot.on('callback_query', (e)=>{
-			const session = new this.sessionType(e as any,this);
-			session.callBack(e);
+			const session = new this.sessionType(e,this);
+			session.callBack(e as any);
 		})
 		this.bot.onMessage(async (ctx) => {
 			const telUser = ctx.from!;

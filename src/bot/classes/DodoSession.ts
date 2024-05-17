@@ -16,7 +16,7 @@ class DodoSession {
 	}
 
 	callBack(e:  NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery>>) {
-		
+		if (e.callbackQuery === 'lock_check')
 	}
 
 	async input(txt: string): Promise<TheMessageContext> {
