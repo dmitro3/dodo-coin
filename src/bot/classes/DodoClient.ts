@@ -27,7 +27,28 @@ class DodoClient extends DodoSession {
 			const lock = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
 			if (!lock) return;
 
-			const joined = await CLIENT_BOT.telegram.getChatMember(lock, user.id)
+			const chat = await CLIENT_BOT.telegram.getChatMember(lock, user.id);
+			const joined = !(chat.status === 'kicked' || chat.status === 'left');
+			if (!joined) {
+				await e.reply( "You should join our community!");
+				return;
+			}
+
+			if (user.lockReward) {
+				await e.reply( "You already take the Community Gift!");
+				return;
+			}
+
+			await  prisma.user.update({
+				where: {
+					id: user.id
+				},
+				data: {
+					wallet: user.wallet + 2000,
+					lockReward: true
+				}
+			});
+			await e.reply("You receive 2K coin, now you can continue using the bot");
 		}
 	}
 
