@@ -107,15 +107,15 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					await ctx.reply(`
 					Hi, @${user.username}! 
-This is $Dodocoin, the real one.
+This is DodoCoin, the real one.
 
 Tap on the coin and watch your balance grow.
 
-How much is $Dodocoin worth? No one knows, probably something.
+How much is DodoCoin worth? No one knows, probably something.
 
 Got any friends? Get them in the game. That way you'll get even more coins together.
 
-$Dodocoin is everything you ever wanted . That's all you need to know.
+DodoCoin is everything you ever wanted . That's all you need to know.
 					`, {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
