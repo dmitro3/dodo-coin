@@ -99,7 +99,8 @@ class DodoAdmin extends DodoSession {
 				}
 			},
 			{
-				name: ['Add Coin','Remove Coin'],
+				name: ['add_coin','remove_coin','coin'],
+				menu: ['add_coin:Add Coin to User', 'remove_coin:Remove Coin From User'],
 				handler: async ()=>{
 					const username = (await this.input('Enter target username:')).text;
 					const user = await prisma.user.findUnique(({
