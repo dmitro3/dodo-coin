@@ -117,7 +117,7 @@ How much is Dodo worth? No one knows, probably something.
 Got any friends? Get them in the game. That way you'll get even more coins together.
 
 Dodo is everything you ever wanted . That's all you need to know.
-					`
+					`.trim()
 						,
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
