@@ -1,7 +1,6 @@
-import { log } from "console";
-import { HotReloadTelegramBot, StartDodoBot } from "./bot/main";
+import {HotReloadTelegramBot} from "./bot/main";
 
 
 export async function register() {
-	
+	HotReloadTelegramBot();
 }
