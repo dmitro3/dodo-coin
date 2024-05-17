@@ -34,8 +34,6 @@ export async function communityButton(final = false) {
 
 	if (!channel) return [];
 
-	const chat = await CLIENT_BOT.telegram.getChatMember(channel.channelId, user.id);
-
 	const tChannel = await CLIENT_BOT.telegram.getChat(channel.channelId) as any;
 
 	if (final) {
@@ -102,11 +100,6 @@ class DodoClient extends DodoSession {
 				id: ctx.from?.id
 			}
 		}) || ({} as User) : {} as User;
-		const startButton = [
-			['Earn'],
-			['Refs', 'Wallet'],
-			['Withdraw', 'Help'],
-		];
 
 
 		return [
