@@ -25,7 +25,7 @@ class DodoClient extends DodoSession {
 			['Withdraw','Help'],
 		];
 
-		this.dodoBot.bot.telegram.get
+		await this.dodoBot.bot.telegram.
 
 
 		return [
