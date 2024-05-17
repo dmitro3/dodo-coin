@@ -107,7 +107,7 @@ export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.fi
             "time": 1715204732230,
             "energy": user.energy,
             "shares": user.wallet,
-            "tokens": 0,
+            "tokens": 99,
             "ligue": Leagues.reverse().findIndex(l => l.score < user.wallet ) + 1,
             "energy_level": 20,
             "charge_level": 1,
