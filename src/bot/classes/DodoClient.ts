@@ -107,15 +107,15 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					await ctx.replyWithPhoto(`
 					Hi, @${user.username}! 
-This is DodoCoin, the real one.
+This is Dodo, the real one.
 
 Tap on the coin and watch your balance grow.
 
-How much is DodoCoin worth? No one knows, probably something.
+How much is Dodo worth? No one knows, probably something.
 
 Got any friends? Get them in the game. That way you'll get even more coins together.
 
-DodoCoin is everything you ever wanted . That's all you need to know.
+Dodo is everything you ever wanted . That's all you need to know.
 					`, {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user))
@@ -133,7 +133,7 @@ DodoCoin is everything you ever wanted . That's all you need to know.
 				name: 'Help',
 				handler: async () => ctx.reply(`
 				Tap to Earn:
-DodoCoin is an addictive clicker game where you accumulate Shares by tapping the screen.
+Dodo is an addictive clicker game where you accumulate Shares by tapping the screen.
 
 Leagues:
 Climb the ranks by earning more Shares and outperforming others in the leagues.
@@ -145,7 +145,7 @@ Friends:
 Invite others and both of you will receive bonuses. Assist your friends in advancing to higher leagues for bigger Shares rewards.
 
 The Purpose:
-Collect as many Shares as possible and exchange them for TAPS, DodoCoin Token on Solana Blockchain.
+Collect as many Shares as possible and exchange them for TAPS, Dodo Token on Solana Blockchain.
 
 Type /help to access this guide.
 				`),
