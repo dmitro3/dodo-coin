@@ -11,7 +11,7 @@ export const ChargeLevels = Array.from({length: 10}).map((_,i) => {
     const n = Math.max(1, Math.round(i * 3.5))
     return {
         "rate": i,
-        "price": n * 10000
+        "price": n * 5000
     };
 });
 export const Leagues = [
