@@ -974,7 +974,6 @@
     color: var(--text-secondary);
     text-transform: capitalize;
     cursor: pointer;
-    display: none;
 }
 
 ._ligueBtn_8b3n6_1 svg path {
