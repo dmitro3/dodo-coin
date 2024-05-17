@@ -120,7 +120,6 @@ More buddies, more coins.
 						])
 					});
 				},
-				buttons: startButton,
 			},
 			{
 				name: ['/refs', 'Refs'],
