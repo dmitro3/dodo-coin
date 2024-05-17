@@ -20,7 +20,7 @@ function prop<T>(value: T) {
 const prisma = instance.$extends({
   result: {
     user: {
-      maxTapLvl: prop(10),
+      maxTapLvl: prop(TapLevels.length),
       maxEnergy: prop(10000),
       lvlInfo: {
         needs: {
