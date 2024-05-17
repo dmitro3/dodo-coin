@@ -495,7 +495,7 @@
 }
 
 #app > div > div._container_1rd9h_1 > div._container_vghyc_6 > div > button:nth-child(4) {
-    display: block;
+    display: none;
 }
 
 ._listItem_1icg4_1:active {
@@ -509,7 +509,6 @@
 }
 
 #app > div > div._container_1rd9h_1 > div._container_vghyc_6 > div > button:nth-child(2) {
-    display: none;
 }
 
 ._listItem_1icg4_1:disabled ._reward_1icg4_21 {
