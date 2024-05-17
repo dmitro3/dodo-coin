@@ -176,7 +176,7 @@ class DodoAdmin extends DodoSession {
 							where: {
 								botUsername_key: {
 									key: "CHANNEL_LOCK",
-									botUsername: CLIENT_BOT.me?.username
+									botUsername: CLIENT_BOT.me?.username+""
 								}
 							}
 						})
