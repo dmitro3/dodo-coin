@@ -7,7 +7,7 @@ import {log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
 import {User} from "@prisma/client";
-import {sendInvite} from "@backend/api/player/send_invite/handler";
+import {sendInvite} from "@backend/api/player/send_invit/handler";
 import {CLIENT_BOT} from "@/bot/main";
 
 class DodoClient extends DodoSession {
