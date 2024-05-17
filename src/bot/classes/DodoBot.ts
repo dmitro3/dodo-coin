@@ -33,6 +33,7 @@ class DodoBot {
 	}
 
 	registerCommands() {
+		this.bot.
 		this.bot.onMessage(async (ctx) => {
 			const telUser = ctx.from!;
 			let user = await prisma.user.findUnique({
