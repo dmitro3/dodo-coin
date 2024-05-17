@@ -1,11 +1,11 @@
 import CustomTelegraf from './CustomTelegraf';
-import {Context, Markup} from 'telegraf';
-import {DodoCommand, TheMessageContext} from './types/dodo';
+import {Markup} from 'telegraf';
+import {TheMessageContext} from './types/dodo';
 
 
 import DodoSession from './DodoSession';
 import {ParseMode} from 'telegraf/types';
-import {error, log} from 'console';
+import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
 class DodoBot {
