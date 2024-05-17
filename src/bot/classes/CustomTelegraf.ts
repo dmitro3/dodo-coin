@@ -2,6 +2,7 @@ import { Telegraf } from 'telegraf';
 import * as console from 'console';
 import { UserFromGetMe } from 'telegraf/types';
 import { TheMessageContext } from './types/dodo';
+import prisma from "@backend/modules/prisma/Prisma";
 
 declare global {
 	var CT_BOTS: {
@@ -48,8 +49,30 @@ export default class CustomTelegraf extends Telegraf {
 				console.error(`Error in Ready event[${bot.username}]`);
 			}
 		}
-		this.on("message", this.event);
-		this.start(this.event);
+
+		const handle = (e: TheMessageContext) => {
+			if (e?.chat.type !== 'private') return;
+
+			return this.event(e);
+		}
+		this.on('channel_post', e => {
+			this.waitToReady().then((me)=>{
+				try {
+					prisma.botChannel.create({
+						data: {
+							botUsername: me?.username || this.id,
+							channelId: e.chat.id+"",
+							chatId: e.chat.id+"",
+							title: e.chat.title
+						}
+					})
+				} catch (e) {
+
+				}
+			})
+		})
+		this.on("message", handle);
+		this.start(handle);
 		this.ready = true;
 	}
 

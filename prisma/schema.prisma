@@ -36,6 +36,7 @@ model BotChannel {
   botUsername String
   channelId   String
   chatId      String?
+  title       String?
 
   @@unique([botUsername, channelId])
 }
