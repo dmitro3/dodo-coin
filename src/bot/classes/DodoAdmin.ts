@@ -166,7 +166,7 @@ class DodoAdmin extends DodoSession {
 					Note: if channel doesn't exists its means the bot doesn't receive any message from that channel
 					`.trim().replaceAll("  ", ""))
 
-					const input = await this.input("Enter Channel Number to enable or type (cancel) to disable:");
+					const input = (await this.input("Enter Channel Number to enable or type (cancel) to disable:")).text || "-1";
 
 					const target = channels?.[+input - 1];
 					if (target) {
