@@ -101,10 +101,10 @@ export const Leagues = [
     }
 ]
 export const EnergyLevels = Array.from({length: 30}).map((_, n) => {
-    n++;
+    n = Math.min(1, Math.round(n * 1.5));
 
     return {
-        "limit": n * 500,
+        "limit": n * 250,
         "price": n * 50
     }
 });
