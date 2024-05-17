@@ -116,7 +116,7 @@ class DodoAdmin extends DodoSession {
 					const amount = +((await this.input('Enter Coin Amount'))?.text || "");
 					if (isNaN(amount)) throw("Please enter valid number");
 
-					const decrease = ctx.text?.includes('add');
+					const decrease = ctx.text?.includes('remove');
 					const final = Math.max(0,decrease ? user.wallet - amount:user.wallet + amount);
 					await prisma.user.update({
 						where: {
