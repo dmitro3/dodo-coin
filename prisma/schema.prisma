@@ -18,7 +18,7 @@ model User {
   joined_at  DateTime @default(now())
   blocked    Boolean  @default(false)
   wallet     Float    @default(0)
-  username   String?  @unique
+  username   String?
   chatId     Float    @unique
   tapLvl     Int      @default(1)
   energy     Int      @default(250)
