@@ -1,7 +1,7 @@
 import Handler from "@backend/modules/Handler";
 import {NextResponse} from "next/server";
-import prisma from "@backend/modules/prisma/Prisma";
-import {ChargeLevels, EnergyLevels, Leagues, TapLevels} from "@/instrumentation";
+import prisma, {ChargeLevels, EnergyLevels, Leagues, TapLevels} from "@backend/modules/prisma/Prisma";
+
 
 export async function userDetails(user: Awaited<ReturnType<typeof prisma.user.findUnique>>) {
     if (!user) return null;
