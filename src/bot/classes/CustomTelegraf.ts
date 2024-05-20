@@ -53,7 +53,7 @@ export default class CustomTelegraf extends Telegraf {
 
 		const handle = (e: TheMessageContext) => {
 			if (e?.chat.type !== 'private') return;
-			e.update.payload = {};
+			e.payload = {};
 
 			try {
 				return this.event(e);
