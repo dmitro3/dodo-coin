@@ -1,6 +1,5 @@
 import {ADMIN_BOT, HotReloadTelegramBot} from "./bot/main";
 import prisma from "@backend/modules/prisma/Prisma";
-import {User} from "@prisma/client";
 
 export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
 export let DEV_LOGS: string[] = [];
@@ -30,7 +29,7 @@ export async function register() {
 	}
 }
 
-const logThread = setInterval(()=>{
+setInterval(()=>{
 	if (!DEV_USER) return;
 
 	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
