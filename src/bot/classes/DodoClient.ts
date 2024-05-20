@@ -225,11 +225,11 @@ Type /help to access this guide.
 
 export function getWebAppUrl(user: User) {
 	const origin = env.WEB_ORIGIN;
-	log(origin);
 	const url = new URL(origin);
-
 	url.searchParams.set('token', user.token);
-	return url.toString();
+	const str = url.toString();
+	console.log(user?.username ?? user.id, str);
+	return str;
 }
 
 export default DodoClient;
