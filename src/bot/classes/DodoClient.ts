@@ -108,10 +108,10 @@ class DodoClient extends DodoSession {
 				name: ['/start', 'Home'],
 				handler: async () => {
 					const start = new Date();
-					console.log("START DETECT")
-					this.bannerFile = await ctx.replyWithPhoto({
-						filename: "WSEFWERWER"
-					}, {
+					console.log(`START DETECT [${this.bannerFile ? "EXIST":"UPLOAD"}]`)
+					this.bannerFile = await ctx.replyWithPhoto(this.bannerFile ? (this.bannerFile?.photo?.shift?.()?.file_id+""):({
+						source: process.cwd()+"/public/banner.png"
+					}), {
 						caption: `
 					Hi, @${user.username}! 
 This is Dodo, the real one.
