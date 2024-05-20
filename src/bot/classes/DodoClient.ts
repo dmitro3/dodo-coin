@@ -12,7 +12,8 @@ import {CLIENT_BOT} from "@/bot/main";
 import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler";
 import {Message, Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
-import PhotoMessage = Message.PhotoMessage;
+import dodoBot from "./DodoBot";
+
 
 export async function communityButton(final = false) {
 	const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
@@ -49,7 +50,7 @@ export async function communityButton(final = false) {
 }
 
 class DodoClient extends DodoSession {
-	bannerFile: PhotoMessage | null = this.dodoBot.variables['banner'];
+	bannerFile: Awaited<ReturnType<typeof this.dodoBot.bot.telegram.sendPhoto>> | null = this.dodoBot.variables['banner'];
 	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
