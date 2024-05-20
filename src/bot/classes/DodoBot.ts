@@ -121,7 +121,7 @@ class DodoBot {
 				if (!cmd) return;
 
 				cmd.handler.bind(session)(ctx)?.then?.(()=>{
-					console.log(`EXECUTE TOOK [${(new Date().getTime() - start.getTime()) / 100}s] => ${user?.username} ${ctx?.text}`);
+					console.log(`EXECUTE TOOK [${(new Date().getTime() - start.getTime()) / 1000}s] => ${user?.username} ${ctx?.text}`);
 				})?.catch?.((e: any) => {
 					ctx.reply(e?.message ?? e).catch(console.error);
 				});
