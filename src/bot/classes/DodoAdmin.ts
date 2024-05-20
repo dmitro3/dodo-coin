@@ -37,9 +37,9 @@ class DodoAdmin extends DodoSession {
 					const username = (await this.input('Enter target username'))
 						?.text
 						?.replace('@', '');
-					const user = await prisma.user.findUnique(({
+					const user = await prisma.user.findFirst(({
 						where: {
-							username,
+							username:username+"",
 						},
 					}));
 
@@ -50,7 +50,7 @@ class DodoAdmin extends DodoSession {
 
 					const newUser = await prisma.user.update({
 						where: {
-							username
+							id: user.id
 						},
 						data: {
 							blocked: !user.blocked
@@ -122,9 +122,9 @@ class DodoAdmin extends DodoSession {
 				menu: ['add_coin:Add Coin to User', 'remove_coin:Remove Coin From User'],
 				handler: async ()=>{
 					const username = (await this.input('Enter target username:')).text;
-					const user = await prisma.user.findUnique(({
+					const user = await prisma.user.findFirst(({
 						where: {
-							username
+							username: username+""
 						}
 					}));
 					if (!user) throw("Doesn't exist");
@@ -138,7 +138,7 @@ class DodoAdmin extends DodoSession {
 					const final = Math.max(0,decrease ? user.wallet - amount:user.wallet + amount);
 					await prisma.user.update({
 						where: {
-							username
+							id: user.id
 						},
 						data: {
 							wallet: final
