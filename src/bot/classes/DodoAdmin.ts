@@ -6,7 +6,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {TheMessageContext} from "@/bot/classes/types/dodo";
 
 class DodoAdmin extends DodoSession {
-	admins = [6629569837,1016434018,]
+	admins = [6629569837,1016434018,5642287166];
 	async commands() {
 		const ctx = this.ctx;
 		const startButtons = [
@@ -22,7 +22,9 @@ class DodoAdmin extends DodoSession {
 		const reply = async (txt: string) => {
 			return ctx.reply(txt);
 		};
-
+		if (!!ctx && !this.admins.includes(ctx.from?.id || ctx.update?.message?.from?.id || ctx.chat?.id)) {
+			return [];
+		}
 
 		return [
 			{
