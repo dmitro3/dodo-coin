@@ -87,7 +87,7 @@ class DodoAdmin extends DodoSession {
 					const doForward = async ()=>{
 						const to = start+take;
 						const array = users?.slice?.(start, to);
-						if (!array && thread) clearInterval(thread);
+						if (!array?.length && thread) clearInterval(thread);
 						for (const user of array) {
 							try {
 								if (url) {
