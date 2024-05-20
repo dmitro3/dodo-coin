@@ -107,7 +107,7 @@ class DodoClient extends DodoSession {
 				name: ['/start', 'Home'],
 				handler: async () => {
 					await ctx.replyWithPhoto({
-						url: ""
+						url: "https://cdn.discordapp.com/attachments/1242076247333539882/1242076369710747718/banner.png?ex=664c8543&is=664b33c3&hm=51a5b1e450b12193a8ad4904e758e7565e650a1936e7f06486646e5c23a05bc0&"
 					}, {
 						caption: `
 					Hi, @${user.username}! 
