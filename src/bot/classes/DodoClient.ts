@@ -125,7 +125,7 @@ Dodo is everything you ever wanted . That's all you need to know.
 					`.trim()
 						,
 						...(Markup.inlineKeyboard([
-							Markup.button.webApp("Play!", getWebAppUrl(user)),
+							Markup.button.webApp("Play!", await getWebAppUrl(user)),
 							Markup.button.switchToChat("Invite Friends!", await getInviteText(user)),
 							...(await communityButton())
 						],{
@@ -170,7 +170,7 @@ Type /help to access this guide.
 			{
 				name: "Earn",
 				async handler() {
-					const url = getWebAppUrl(user);
+					const url = await getWebAppUrl(user);
 					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp('Play!', url),

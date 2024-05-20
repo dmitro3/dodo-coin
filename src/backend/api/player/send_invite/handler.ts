@@ -18,7 +18,7 @@ export async function sendInvite(user: User) {
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 		...Markup.inlineKeyboard([
 			Markup.button.switchToChat("Invite Friends!",await getInviteText(user)),
-			Markup.button.webApp("Play!", getWebAppUrl(user)),
+			Markup.button.webApp("Play!", await getWebAppUrl(user)),
 			...(await communityButton())
 		])
 	})
