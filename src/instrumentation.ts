@@ -2,23 +2,24 @@ import {ADMIN_BOT, HotReloadTelegramBot} from "./bot/main";
 import prisma from "@backend/modules/prisma/Prisma";
 import {User} from "@prisma/client";
 
-export let DEV_USER: User;
-export const DEV_LOGS: string[] = [];
+export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
+export let DEV_LOGS: string[] = [];
 export async function register() {
 	HotReloadTelegramBot();
 
-	const admin = await prisma.user.findFirst({
+	DEV_USER = await prisma.user.findFirst({
 		where: {
 			username: "itzunity"
 		}
 	});
+
 	type keyType = 'error' | 'log' | 'warn';
 	const registerLog = (key: keyType) => {
 		const origin = console[key] as typeof console.error;
 		return (...args: any[])=>{
 			const R = origin(...args);
 			ADMIN_BOT.waitToReady().then(async (me)=>{
-				adminLog(args.map(o => o+"").join("\n"));
+				adminLog(`[${key}]`+args.map(o => o+"").join("\n"));
 			}).catch(origin);
 			return R;
 		};
@@ -28,6 +29,14 @@ export async function register() {
 		console[key as keyType] = registerLog(key as keyType);
 	}
 }
+
+const logThread = setInterval(()=>{
+	if (!DEV_USER) return;
+
+	ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
+		DEV_LOGS = [];
+	}).catch(()=>null)
+}, 2000);
 
 export function adminLog(msg: string) {
 	DEV_LOGS.push(msg);
