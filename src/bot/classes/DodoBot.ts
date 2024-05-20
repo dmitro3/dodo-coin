@@ -15,7 +15,9 @@ class DodoBot {
 		[userId: number]: (ctx: TheMessageContext) => void
 	} = {};
 	isAdmin: boolean;
-
+	variables: {
+		[key: string]: any
+	}
 
 	constructor(bot: CustomTelegraf, sessionType: typeof DodoSession) {
 		this.bot = bot;
@@ -29,7 +31,7 @@ class DodoBot {
 		tempSession.menus().then(commands => {
 			this.bot.telegram.setMyCommands(commands).catch(error)
 		})
-
+		this.variables = {};
 	}
 
 	registerCommands() {

@@ -12,7 +12,6 @@ import {CLIENT_BOT} from "@/bot/main";
 import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler";
 import {Message, Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
-import * as fs from "node:fs";
 import PhotoMessage = Message.PhotoMessage;
 
 export async function communityButton(final = false) {
@@ -50,7 +49,7 @@ export async function communityButton(final = false) {
 }
 
 class DodoClient extends DodoSession {
-	bannerFile: PhotoMessage | null =  null;
+	bannerFile: PhotoMessage | null = this.dodoBot.variables['banner'];
 	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
@@ -109,7 +108,7 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					const start = new Date();
 					console.log(`START DETECT [${this.bannerFile ? "EXIST":"UPLOAD"}]`)
-					this.bannerFile = await ctx.replyWithPhoto(this.bannerFile ? (this.bannerFile?.photo?.shift?.()?.file_id+""):({
+					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(this.bannerFile ? (this.bannerFile?.photo?.shift?.()?.file_id+""):({
 						source: process.cwd()+"/public/banner.png"
 					}), {
 						caption: `
