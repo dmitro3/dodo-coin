@@ -108,7 +108,6 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					const start = new Date();
 					const bannerFile = this.dodoBot.variables['banner'];
-					console.log(`START DETECT [${bannerFile ? "EXIST":"UPLOAD"}]`)
 					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(bannerFile ? (bannerFile?.photo?.shift?.()?.file_id+""):({
 						source: process.cwd()+"/public/banner.png"
 					}), {
@@ -131,8 +130,6 @@ Dodo is everything you ever wanted . That's all you need to know.
 							...(await communityButton())
 						])
 					});
-					console.log(`UPLOAD: ${(new Date().getTime() - start.getTime()) / 1000}s`)
-
 				},
 			},
 			{
