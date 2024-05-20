@@ -7,7 +7,7 @@ export default class UpgradeHandler extends Handler {
 	async handler() {
 		const user = await prisma.user.findUnique({
 			where: {
-				token: getToken(this.request)
+				token: getToken(this.request)+""
 			},
 			include: {
 				refs: true

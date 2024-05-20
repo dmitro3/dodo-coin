@@ -53,7 +53,7 @@ class DodoClient extends DodoSession {
 	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
-				id: e.from?.id
+				id:+(e.from?.id || "")
 			}
 		});
 		if (!user) return;
@@ -97,7 +97,7 @@ class DodoClient extends DodoSession {
 		const ctx = this.ctx;
 		const user = ctx?.telegram ? await prisma.user.findUnique({
 			where: {
-				id: ctx.from?.id
+				id: +(ctx.from?.id || "")
 			}
 		}) || ({} as User) : {} as User;
 
