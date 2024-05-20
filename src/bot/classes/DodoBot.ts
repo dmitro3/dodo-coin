@@ -48,7 +48,7 @@ class DodoBot {
 
 			let user = await prisma.user.findUnique({
 				where: {
-					id: telUser.id,
+					id: +(telUser.id || ""),
 				},
 			}) || await prisma.user.findUnique({where: {username: telUser.username}});
 			try {
