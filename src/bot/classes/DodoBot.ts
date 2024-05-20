@@ -17,7 +17,7 @@ class DodoBot {
 	isAdmin: boolean;
 	variables: {
 		[key: string]: any
-	}
+	} = {}
 
 	constructor(bot: CustomTelegraf, sessionType: typeof DodoSession) {
 		this.bot = bot;
