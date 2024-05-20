@@ -47,7 +47,7 @@ class DodoBot {
 				return;
 			}
 			if (!telUser?.username) {
-				ctx.payload.nonUsername = true;
+				if (ctx?.payload) ctx.payload.nonUsername = true;
 			}
 			telUser.username ||= telUser?.first_name || telUser?.last_name || telUser?.name
 			let user = await prisma.user.findUnique({
