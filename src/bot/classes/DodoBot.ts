@@ -41,12 +41,14 @@ class DodoBot {
 		})
 		this.bot.onMessage(async (ctx) => {
 
-			let telUser = {...((ctx.from || ctx?.update?.message?.from || ctx?.chat?.from || ctx?.message?.from) || {})};
+			let telUser = ctx.from || ctx?.update?.message?.from || ctx?.chat?.from || ctx?.message?.from;
 			if(!telUser || !telUser?.id) {
 				console.error("USER NOT FOUND");
 				return;
 			}
-
+			if (!telUser?.username) {
+				ctx.
+			}
 			telUser.username ||= telUser?.first_name || telUser?.last_name || telUser?.name
 			let user = await prisma.user.findUnique({
 				where: {

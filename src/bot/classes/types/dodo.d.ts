@@ -24,4 +24,8 @@ export type TheMessageContext =
 				(Update.New & Update.NonChannel & Message.TextMessage)
 				& ({ photo?: PhotoMedia[], caption?: string }),
 			update_id: number
-		}>)
+		}>) & {
+	payload: {
+		[key: string]: any
+	}
+}
