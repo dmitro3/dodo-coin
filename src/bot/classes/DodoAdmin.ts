@@ -22,7 +22,9 @@ class DodoAdmin extends DodoSession {
 		const reply = async (txt: string) => {
 			return ctx.reply(txt);
 		};
-		if (!!ctx && !this.admins.includes(ctx.from?.id || ctx.update?.message?.from?.id || ctx.chat?.id)) {
+		const id = ctx.from?.id || ctx.update?.message?.from?.id || ctx.chat?.id;
+		if (!!ctx && !this.admins.includes(id)) {
+			console.error('ACCESS DENIED',id)
 			return [];
 		}
 
