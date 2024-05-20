@@ -50,7 +50,6 @@ export async function communityButton(final = false) {
 }
 
 class DodoClient extends DodoSession {
-	bannerFile: Awaited<ReturnType<typeof this.dodoBot.bot.telegram.sendPhoto>> | null = this.dodoBot.variables['banner'];
 	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
@@ -108,6 +107,7 @@ class DodoClient extends DodoSession {
 				name: ['/start', 'Home'],
 				handler: async () => {
 					const start = new Date();
+					const bannerFile = this.dodoBot.variables['banner'];
 					console.log(`START DETECT [${this.bannerFile ? "EXIST":"UPLOAD"}]`)
 					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(this.bannerFile ? (this.bannerFile?.photo?.shift?.()?.file_id+""):({
 						source: process.cwd()+"/public/banner.png"
