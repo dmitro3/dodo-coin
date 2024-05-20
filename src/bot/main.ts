@@ -76,8 +76,9 @@ async function telegramInit() {
 		log("READY")
 		DodoAdminBot = new DodoBot(ADMIN_BOT, DodoAdmin);
 		DodoClientBot = new DodoBot(CLIENT_BOT, DodoClient);
-	} catch {
+	} catch (e) {
 		log("BOT ERROR");
+		console.error(e);
 		await RestartTelegramBot()
 	}
 }
