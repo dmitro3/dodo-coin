@@ -107,7 +107,6 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/start', 'Home'],
 				handler: async () => {
-					const start = new Date();
 					const bannerFile = this.dodoBot.variables['banner'];
 					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(bannerFile ? (bannerFile?.photo?.shift?.()?.file_id+""):({
 						source: process.cwd()+"/public/banner.png"
