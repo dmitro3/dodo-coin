@@ -113,7 +113,7 @@ class DodoClient extends DodoSession {
 						source: process.cwd()+"/public/banner.png"
 					}), {
 						caption: `
-					Hi, @${user.username}! 
+					Hi, ${ctx?.from?.username ? "@":""}${user.username}! 
 This is Dodo, the real one.
 
 Tap on the coin and watch your balance grow.

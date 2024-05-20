@@ -46,7 +46,7 @@ class DodoBot {
 				console.error("USER NOT FOUND");
 				return;
 			}
-			
+
 			telUser.username ||= telUser?.first_name || telUser?.last_name || telUser?.name
 			let user = await prisma.user.findUnique({
 				where: {
