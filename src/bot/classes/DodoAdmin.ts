@@ -89,6 +89,7 @@ class DodoAdmin extends DodoSession {
 						const array = users?.slice?.(start, to);
 						if (!array?.length && thread) {
 							clearInterval(thread);
+							await ctx.reply(`Forwarded to ${users?.length} successful`);
 							return;
 						}
 						for (const user of array) {
