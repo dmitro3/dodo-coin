@@ -29,7 +29,7 @@ model User {
   refs       User[]   @relation("Ref")
   refId      Float?
   ref        User?    @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
-  token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), gen_random_uuid()))::TEXT"))
+  token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 }
 
 model BotChannel {
