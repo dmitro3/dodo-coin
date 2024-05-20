@@ -25,7 +25,7 @@ export type TheMessageContext =
 				& ({ photo?: PhotoMedia[], caption?: string }),
 			update_id: number
 		}>) & {
-	payload: {
+	payload?: {
 		[key: string]: any
 	}
 }

@@ -62,7 +62,6 @@ export default class CustomTelegraf extends Telegraf {
 			}
 		}
 		this.on('channel_post', async e => {
-
 			await this.waitToReady().then( async (me)=>{
 				console.log("POST CREATION",me)
 				try {
@@ -80,7 +79,7 @@ export default class CustomTelegraf extends Telegraf {
 			})
 		})
 		this.on("message", handle);
-		this.start(handle);
+		this.start(handle as any);
 		this.ready = true;
 	}
 
