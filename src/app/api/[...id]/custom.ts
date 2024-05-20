@@ -8,8 +8,6 @@ import {Prisma} from "@prisma/client";
 const isFlat = true;
 
 export async function CustomApiHandler(request: NextRequest, fetch: NextFetchEvent) {
-	await PrismaSubscription();
-
 	const paths = request.nextUrl.pathname.split("/").slice(2);
 	let code = 200;
 	let R: any = {};
