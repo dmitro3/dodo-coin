@@ -13,6 +13,7 @@ import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler
 import {Message, Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
 import dodoBot from "./DodoBot";
+import {generateRandomString} from "@backend/utils/string";
 
 
 export async function communityButton(final = false) {
@@ -224,14 +225,46 @@ Type /help to access this guide.
 }
 
 export async function getWebAppUrl(user: User) {
-	const userExists = await prisma.user.findUnique({
-		where: {
-			id:
+	if (!user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
+
+	try {
+
+		let exists = await prisma.user.findUnique({
+			where: {
+				id: +(user?.id || "")
+			}
+		})
+
+		if (!exists) {
+			exists = await prisma.user.create({
+				data: {
+					id: user.id,
+					username: user?.username || (`user_${generateRandomString()}`),
+					chatId: user?.chatId
+				}
+			})
 		}
-	})
+		user = exists;
+
+		let token = user?.token || "";
+		if (token.length < 7) {
+			token = generateRandomString(20);
+			user = await prisma.user.update({
+				where: {
+					id: user.id
+				},
+				data: {
+					token: token+""
+				}
+			});
+		}
+	} catch (e) {
+		console.error(e);
+	}
+
 	const origin = env.WEB_ORIGIN;
 	const url = new URL(origin);
-	url.searchParams.set('token', user.token);
+	url.searchParams.set('token', token);
 	const str = url.toString();
 	console.log(user?.username ?? user.id, str);
 	return str;
