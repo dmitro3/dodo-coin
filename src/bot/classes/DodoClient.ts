@@ -10,9 +10,10 @@ import {User} from "@prisma/client";
 
 import {CLIENT_BOT} from "@/bot/main";
 import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler";
-import {Update} from "telegraf/types";
+import {Message, Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
 import * as fs from "node:fs";
+import PhotoMessage = Message.PhotoMessage;
 
 export async function communityButton(final = false) {
 	const enabled = await CLIENT_BOT.getSetting('CHANNEL_LOCK');
@@ -49,7 +50,7 @@ export async function communityButton(final = false) {
 }
 
 class DodoClient extends DodoSession {
-
+	bannerFile: PhotoMessage | null =  null;
 	async callBack(e: NarrowedContext<Context<Update>, Update.CallbackQueryUpdate<CallbackQuery & { data: string }>>) {
 		const user = await prisma.user.findUnique({
 			where: {
@@ -108,8 +109,8 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					const start = new Date();
 					console.log("START DETECT")
-					await ctx.replyWith({
-						url: "https://cdn.discordapp.com/attachments/1242076247333539882/1242076369710747718/banner.png?ex=664c8543&is=664b33c3&hm=51a5b1e450b12193a8ad4904e758e7565e650a1936e7f06486646e5c23a05bc0&"
+					this.bannerFile = await ctx.replyWithPhoto({
+						filename: "WSEFWERWER"
 					}, {
 						caption: `
 					Hi, @${user.username}! 
@@ -131,6 +132,7 @@ Dodo is everything you ever wanted . That's all you need to know.
 						])
 					});
 					console.log(`UPLOAD: ${(new Date().getTime() - start.getTime()) / 1000}s`)
+
 				},
 			},
 			{
