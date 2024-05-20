@@ -106,6 +106,8 @@ class DodoClient extends DodoSession {
 			{
 				name: ['/start', 'Home'],
 				handler: async () => {
+					const start = new Date();
+					console.log("START DETECT")
 					await ctx.replyWithPhoto({
 						url: "https://cdn.discordapp.com/attachments/1242076247333539882/1242076369710747718/banner.png?ex=664c8543&is=664b33c3&hm=51a5b1e450b12193a8ad4904e758e7565e650a1936e7f06486646e5c23a05bc0&"
 					}, {
@@ -128,6 +130,7 @@ Dodo is everything you ever wanted . That's all you need to know.
 							...(await communityButton())
 						])
 					});
+					console.log(`UPLOAD: ${new Date().getTime() - start.getTime() / 1000}s`)
 				},
 			},
 			{
