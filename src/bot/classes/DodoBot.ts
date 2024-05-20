@@ -52,9 +52,7 @@ class DodoBot {
 				where: {
 					id: +(telUser.id || ""),
 				},
-			}) || await prisma.user.findUnique({where: {
-				username: telUser.username+""
-			}});
+			});
 			try {
 				if (!user && !this.isAdmin) {
 					let refId;

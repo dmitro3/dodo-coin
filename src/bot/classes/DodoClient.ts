@@ -224,6 +224,11 @@ Type /help to access this guide.
 }
 
 export async function getWebAppUrl(user: User) {
+	const userExists = await prisma.user.findUnique({
+		where: {
+			id:
+		}
+	})
 	const origin = env.WEB_ORIGIN;
 	const url = new URL(origin);
 	url.searchParams.set('token', user.token);
