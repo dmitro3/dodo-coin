@@ -33,7 +33,7 @@ export async function register() {
 const logThread = setInterval(()=>{
 	if (!DEV_USER) return;
 
-	ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
+	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
 		DEV_LOGS = [];
 	}).catch(()=>null)
 }, 2000);
