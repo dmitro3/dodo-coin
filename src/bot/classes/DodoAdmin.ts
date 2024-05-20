@@ -110,7 +110,7 @@ class DodoAdmin extends DodoSession {
 						start+=take;
 					}
 					await doForward();
-					thread = setInterval(doForward, 30 * 1000);
+					thread = setInterval(doForward, 5 * 1000);
 				}
 			},
 			{
