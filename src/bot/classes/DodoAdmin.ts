@@ -81,7 +81,7 @@ class DodoAdmin extends DodoSession {
 					const users = await prisma.user.findMany();
 					let FirstUploaded: any | null;
 					let start = 0;
-					let take = 50;
+					let take = 1;
 					let thread: ReturnType<typeof setInterval>;
 
 					const doForward = async ()=>{
