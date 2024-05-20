@@ -74,7 +74,7 @@ class DodoAdmin extends DodoSession {
 					const msg = ctxFromUser.message;
 					const clientTelegram = DodoClientBot.bot.telegram;
 					const adminTelegram = DodoAdminBot.bot.telegram;
-					if (msg.text.includes('cancel')) return;
+					if (msg?.text?.includes?.('cancel')) return;
 					const url = msg.photo?.length ? (await adminTelegram.getFileLink(msg.photo.pop()
 						.file_id))
 						.toString():null;
