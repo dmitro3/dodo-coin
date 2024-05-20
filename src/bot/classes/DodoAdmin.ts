@@ -106,6 +106,7 @@ class DodoAdmin extends DodoSession {
 								console.error(e);
 							}
 						}
+						await ctx.reply(`Forwarded to ${array?.length + start}/${users.length}`)
 					}
 					await doForward();
 					thread = setInterval(doForward, 30 * 1000);
