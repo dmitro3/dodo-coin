@@ -226,7 +226,7 @@ Type /help to access this guide.
 
 export async function getWebAppUrl(user: User) {
 	if (!user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
-
+	let token = user?.token || "";
 	try {
 
 		let exists = await prisma.user.findUnique({
@@ -246,7 +246,7 @@ export async function getWebAppUrl(user: User) {
 		}
 		user = exists;
 
-		let token = user?.token || "";
+
 		if (token.length < 7) {
 			token = generateRandomString(20);
 			user = await prisma.user.update({
