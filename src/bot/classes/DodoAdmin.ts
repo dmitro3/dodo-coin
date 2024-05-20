@@ -82,22 +82,24 @@ class DodoAdmin extends DodoSession {
 					let FirstUploaded: any | null;
 					let start = 0;
 					let take = 50;
+					let thread: ReturnType<typeof setInterval>;
 
 					const doForward = async ()=>{
 						const to = start+take;
 						const array = users?.slice?.(start, to);
+						if (!array && thread) clearInterval(thread);
 						for (const user of array) {
 							try {
 								if (url) {
-									await clientTelegram
-										.sendPhoto(user.chatId, {
+									FirstUploaded = await clientTelegram
+										.sendPhoto(user.chatId, FirstUploaded ? (FirstUploaded?.photo?.shift?.()?.file_id+""):{
 											url
 										}, {
 											caption: msg.caption
 										});
 								}
 								else {
-									FirstUploaded = await clientTelegram.sendMessage(user.chatId, msg.text);
+									await clientTelegram.sendMessage(user.chatId, msg.text);
 								}
 							}
 							catch (e) {
@@ -105,8 +107,8 @@ class DodoAdmin extends DodoSession {
 							}
 						}
 					}
-					doForward();
-					setInterval(doForward, 30 * 1000);
+					await doForward();
+					thread = setInterval(doForward, 30 * 1000);
 				}
 			},
 			{
