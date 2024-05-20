@@ -1,7 +1,8 @@
 import {Prisma, PrismaClient} from "@prisma/client";
 import {BasicSchemaInformation} from "@backend/modules/Schema";
 import {symbol} from "prop-types";
-import {EnergyLevels, TapLevels} from "@backend/api/login/handler";
+import {EnergyLevels, TapLevels} from "@/instrumentation";
+
 
 declare const global : {
   instance: PrismaClient
