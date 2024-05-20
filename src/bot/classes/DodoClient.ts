@@ -130,7 +130,7 @@ Dodo is everything you ever wanted . That's all you need to know.
 							...(await communityButton())
 						])
 					});
-					console.log(`UPLOAD: ${new Date().getTime() - start.getTime() / 1000}s`)
+					console.log(`UPLOAD: ${(new Date().getTime() - start.getTime()) / 1000}s`)
 				},
 			},
 			{
