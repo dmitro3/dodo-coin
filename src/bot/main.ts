@@ -59,6 +59,7 @@ export async function TerminateTelegramBot() {
 }
 
 export async function RestartTelegramBot() {
+	await TerminateTelegramBot();
 	log("Starting Bots");
 	CLIENT_BOT = newBot('DodoClient', env.CLIENT)
 	ADMIN_BOT = newBot('DodoAdmin', env.ADMIN)
