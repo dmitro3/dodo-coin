@@ -91,6 +91,7 @@ class DodoBot {
 				await ctx.reply('This account blocked by administrator');
 				return;
 			}
+			const start = new Date();
 			try {
 				const inputEvent = this.inputsEvent[telUser.id];
 				if (inputEvent) {
@@ -116,8 +117,10 @@ class DodoBot {
 					ctx.reply(e?.message ?? e).catch(console.error);
 				});
 			} catch (e: any) {
-				ctx.reply(e?.message ?? e).catch(()=>null);
+				console.error(e);
+				ctx.reply(e?.message ?? e).catch(console.error);
 			}
+			console.log(`EXECUTE TOOK [${(new Date().getTime() - start.getTime()) / 100}s] => ${user?.username} ${ctx?.text}`);
 		});
 	}
 
