@@ -6,6 +6,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {TheMessageContext} from "@/bot/classes/types/dodo";
 
 class DodoAdmin extends DodoSession {
+	admins = [6629569837,]
 	async commands() {
 		const ctx = this.ctx;
 		const startButtons = [
@@ -21,6 +22,7 @@ class DodoAdmin extends DodoSession {
 		const reply = async (txt: string) => {
 			return ctx.reply(txt);
 		};
+
 
 		return [
 			{
