@@ -124,11 +124,13 @@ Got any friends? Get them in the game. That way you'll get even more coins toget
 Dodo is everything you ever wanted . That's all you need to know.
 					`.trim()
 						,
-						...Markup.inlineKeyboard([
+						...(Markup.inlineKeyboard([
 							Markup.button.webApp("Play!", getWebAppUrl(user)),
 							Markup.button.switchToChat("Invite Friends!", await getInviteText(user)),
 							...(await communityButton())
-						])
+						],{
+							columns: 1
+						}))
 					});
 				},
 			},
