@@ -78,25 +78,35 @@ class DodoAdmin extends DodoSession {
 					const url = msg.photo?.length ? (await adminTelegram.getFileLink(msg.photo.pop()
 						.file_id))
 						.toString():null;
+					const users = await prisma.user.findMany();
+					let FirstUploaded: any | null;
+					let start = 0;
+					let take = 50;
 
-					for (const user of (await prisma.user.findMany())) {
-						try {
-							if (url) {
-								await clientTelegram
-									.sendPhoto(user.chatId, {
-										url
-									}, {
-										caption: msg.caption
-									});
+					const doForward = async ()=>{
+						const to = start+take;
+						const array = users?.slice?.(start, to);
+						for (const user of array) {
+							try {
+								if (url) {
+									await clientTelegram
+										.sendPhoto(user.chatId, {
+											url
+										}, {
+											caption: msg.caption
+										});
+								}
+								else {
+									FirstUploaded = await clientTelegram.sendMessage(user.chatId, msg.text);
+								}
 							}
-							else {
-								await clientTelegram.sendMessage(user.chatId, msg.text);
+							catch (e) {
+								console.error(e);
 							}
-						}
-						catch (e) {
-							console.error(e);
 						}
 					}
+					doForward();
+					setInterval(doForward, 30 * 1000);
 				}
 			},
 			{
