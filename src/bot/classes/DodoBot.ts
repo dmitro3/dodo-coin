@@ -41,7 +41,7 @@ class DodoBot {
 		})
 		this.bot.onMessage(async (ctx) => {
 
-			let telUser = ctx.from || ctx?.update?.message?.from || ctx?.chat?.from || ctx?.message?.from;
+			let telUser = {...((ctx.from || ctx?.update?.message?.from || ctx?.chat?.from || ctx?.message?.from) || {})};
 			if(!telUser || !telUser?.id) {
 				console.error("USER NOT FOUND");
 				return;
