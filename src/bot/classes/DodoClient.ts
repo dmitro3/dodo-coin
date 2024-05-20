@@ -223,7 +223,7 @@ Type /help to access this guide.
 
 }
 
-export function getWebAppUrl(user: User) {
+export async function getWebAppUrl(user: User) {
 	const origin = env.WEB_ORIGIN;
 	const url = new URL(origin);
 	url.searchParams.set('token', user.token);
