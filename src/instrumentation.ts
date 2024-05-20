@@ -19,7 +19,7 @@ export async function register() {
 		return (...args: any[])=>{
 			const R = origin(...args);
 			ADMIN_BOT.waitToReady().then(async (me)=>{
-				adminLog(`[${key}]`+args.map(o => o+"").join("\n"));
+				adminLog(`[${key}] `+args.map(o => o+"").join("\n"));
 			}).catch(origin);
 			return R;
 		};
