@@ -108,8 +108,8 @@ class DodoClient extends DodoSession {
 				handler: async () => {
 					const start = new Date();
 					const bannerFile = this.dodoBot.variables['banner'];
-					console.log(`START DETECT [${this.bannerFile ? "EXIST":"UPLOAD"}]`)
-					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(this.bannerFile ? (this.bannerFile?.photo?.shift?.()?.file_id+""):({
+					console.log(`START DETECT [${bannerFile ? "EXIST":"UPLOAD"}]`)
+					this.dodoBot.variables['banner'] = await ctx.replyWithPhoto(bannerFile ? (bannerFile?.photo?.shift?.()?.file_id+""):({
 						source: process.cwd()+"/public/banner.png"
 					}), {
 						caption: `
