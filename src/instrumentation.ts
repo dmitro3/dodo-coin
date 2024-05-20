@@ -4,6 +4,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 
 export async function register() {
 	HotReloadTelegramBot();
+
 	const origin = console.error;
 	const admin = await prisma.user.findFirst({
 		where: {
