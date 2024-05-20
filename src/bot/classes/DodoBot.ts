@@ -113,7 +113,7 @@ class DodoBot {
 				);
 				if (!cmd) return;
 
-				cmd.handler.bind(session)(ctx)?.catch?.((e: any) => {
+				await cmd.handler.bind(session)(ctx)?.catch?.((e: any) => {
 					ctx.reply(e?.message ?? e).catch(console.error);
 				});
 			} catch (e: any) {
