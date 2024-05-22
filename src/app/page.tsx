@@ -12,7 +12,7 @@ const Page = () => {
 			<button onClick={()=>open.open()}>
 				open
 			</button>
-			{wallet.walletInfo?.icon}
+			<img src={wallet.walletInfo?.icon} />
 		</Web3Modal>
 	)
 };
