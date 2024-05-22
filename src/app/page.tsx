@@ -28,6 +28,8 @@ const Page = () => {
 			{account.address}
 			<br/>
 			{account.chainId}
+			<br/>
+			
 		</div>
 	)
 };
