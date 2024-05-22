@@ -71,6 +71,14 @@ const Page = () => {
 						}
 					]
 				}
+
+				const domainData = {
+					name: "Polytrade",
+					version: "1.0",
+					chainId: chainId,
+					verifyingContract:
+					verifyingContractAddress
+				};
 				const result = await signTypedData(config, {
 
 
