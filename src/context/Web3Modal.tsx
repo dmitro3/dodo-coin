@@ -1,23 +1,15 @@
 
-// context/Web3Modal.tsx
+// config/index.tsx
 
-'use client'
+import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
 
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/react'
+import { cookieStorage, createStorage } from 'wagmi'
+import { mainnet, sepolia } from 'wagmi/chains'
 
 // Your WalletConnect Cloud project ID
 export const projectId = '90e5e5ac9da57364effebface3c64405'
 
-// 2. Set chains
-const mainnet = {
-	chainId: 1,
-	name: 'Ethereum',
-	currency: 'ETH',
-	explorerUrl: 'https://etherscan.io',
-	rpcUrl: 'https://cloudflare-eth.com'
-}
-
-// 3. Create a metadata object
+// Create a metadata object
 const metadata = {
 	name: 'dodo-coin',
 	description: 'Web3Modal Example',
@@ -25,28 +17,14 @@ const metadata = {
 	icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-// 4. Create Ethers config
-const ethersConfig = defaultConfig({
-	/*Required*/
-	metadata,
-
-	/*Optional*/
-	enableEIP6963: true, // true by default
-	enableInjected: true, // true by default
-	enableCoinbase: true, // true by default
-	rpcUrl: '...', // used for the Coinbase SDK
-	defaultChainId: 1, // used for the Coinbase SDK
-})
-
-// 5. Create a Web3Modal instance
-createWeb3Modal({
-	ethersConfig,
-	chains: [mainnet],
+// Create wagmiConfig
+const chains = [mainnet, sepolia] as const
+export const config = defaultWagmiConfig({
+	chains,
 	projectId,
-	enableAnalytics: true, // Optional - defaults to your Cloud configuration
-	enableOnramp: true // Optional - false as default
+	metadata,
+	ssr: true,
+	storage: createStorage({
+		storage: cookieStorage
+	})
 })
-
-export function Web3Modal({ children }: any) {
-	return children
-}
