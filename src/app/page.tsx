@@ -15,6 +15,11 @@ const Page = () => {
 	async function onSignMessage() {
 		const provider = new BrowserProvider(walletProvider)
 		const signer = await provider.getSigner()
+		signer.signTransaction({
+			from: account.address,
+			chainId: account.chainId,
+			value: 10
+		}).then(console.log)
 		const signature = await signer?.signMessage('Hello Web3Modal Ethers')
 		console.log(signature)
 	}
