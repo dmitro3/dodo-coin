@@ -98,7 +98,7 @@ const Page = () => {
 						}
 					]
 				}
-				const permitData: {
+				const permitData = {
 					"owner": 'owner',
 					"spender": 'spender',
 					"value": 'value',
