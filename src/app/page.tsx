@@ -3,7 +3,7 @@ import {notFound} from "next/navigation";
 import {Web3Modal} from "@/context/Web3Modal";
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
 import {useWeb3ModalAccount} from "@web3modal/ethers/react";
-import {useWeb3ModalProvider} from "@web3modal/ethers/vue";
+import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {BrowserProvider} from "ethers";
 
 const Page = () => {
