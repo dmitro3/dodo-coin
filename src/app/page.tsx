@@ -74,7 +74,7 @@ const Page = () => {
 						},
 						"message": {
 							"owner": account.address,
-							"spender": "0x5cCdd46c8e3Cd25c4a5A23E53C98285d49082FdE",
+							"spender": account.address,
 							"value": "1000000000000000000",
 							"nonce": 0,
 							"deadline": 1625256000
