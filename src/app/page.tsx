@@ -60,7 +60,7 @@ const Page = () => {
 							{ name: 'contents', type: 'string' },
 						],
 					},
-					primaryType: 'Mail',
+					primaryType: 'Person',
 					message: {
 						from: {
 							name: 'Cow',
