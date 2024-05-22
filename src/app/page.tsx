@@ -1,13 +1,8 @@
 'use client';
-import {notFound} from "next/navigation";
-
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
-import {useWeb3ModalAccount} from "@web3modal/ethers/react";
-import {useWeb3ModalProvider} from "@web3modal/ethers/react";
-import {BrowserProvider} from "ethers";
-import Web3ModalProvider from "@/context/Web3Modal";
-import {useAccount, useSendTransaction, useSignMessage} from "wagmi";
+import { useAccount, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
+
 
 const Page = () => {
 	const open = useWeb3Modal();
