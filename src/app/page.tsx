@@ -42,7 +42,9 @@ const Page = () => {
 			>
 				Transfer
 			</button>
-			<button onClick={disconnect}>
+			<button onClick={()=>{
+				await disconnect();
+			}}>
 				DC
 			</button>
 		</div>
