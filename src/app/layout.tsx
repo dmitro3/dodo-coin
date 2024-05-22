@@ -1,13 +1,15 @@
 import {HotReloadTelegramBot} from "@/bot/main";
 import * as fs from "node:fs";
 import {ReactNode} from "react";
+import {cookieToInitialState} from "wagmi";
+import {config} from "@/context/config";
+import {headers} from "next/headers";
 
 export default function RootLayout(props: {
      children: ReactNode[]
 }) {
-	const files = fs.readdirSync(process.cwd() + "/public/assets").filter(f =>
-          f.endsWith(".js") || f.endsWith(".css")
-     ).map(f => `/assets/${f}`);
+
+	const initialState = cookieToInitialState(config, headers().get('cookie'))
 
 	return (
 		<html>
