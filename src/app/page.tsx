@@ -3,7 +3,9 @@ import {Web3Modal} from "@/context/Web3Modal";
 
 const Page = () => {
 	return (
-		<Web3Modal/>
+		<Web3Modal>
+			
+		</Web3Modal>
 	)
 };
 
