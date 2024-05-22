@@ -1,7 +1,7 @@
 'use client';
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
 import {useAccount, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
-import {parseEther} from "viem";
+import {getContractAddress, parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 
@@ -49,7 +49,7 @@ const Page = () => {
 
 			</button>
 			<button onClick={async ()=>{
-				sign
+				getContractAddress()
 			}}>
 				SIGN TYPED DATA
 			</button>
