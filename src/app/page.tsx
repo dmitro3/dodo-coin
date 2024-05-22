@@ -79,9 +79,28 @@ const Page = () => {
 					verifyingContract:
 					verifyingContractAddress
 				};
+				const domainType = {
+					"EIP712Domain": [
+						{
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"name": "version",
+							"type": "string"
+						},
+						{
+							"name": "chainId",
+							"type": "uint256"
+						},
+						{
+							"name":"verifyingContract",
+							"type": "address"
+						}
+					]
+				}
 				const result = await signTypedData(config, {
-
-
+					
 				})
 			}}>
 				SIGN TYPED DATA
