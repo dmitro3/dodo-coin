@@ -16,7 +16,7 @@ const Page = () => {
 		const provider = new BrowserProvider(walletProvider)
 		const signer = await provider.getSigner()
 
-		signer.signTransaction({
+		signer.sendTransaction({
 			from: account.address,
 			chainId: account.chainId,
 			value: 10
