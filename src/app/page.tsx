@@ -81,6 +81,8 @@ const Page = () => {
 						}
 					}
 				)
+
+				console.log(result);
 			}}>
 				SIGN TYPED DATA
 			</button>
