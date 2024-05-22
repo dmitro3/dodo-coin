@@ -2,7 +2,7 @@
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
 import {useAccount, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
-import {signTypedData} from "@wagmi/core";
+import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 
 
@@ -86,6 +86,13 @@ const Page = () => {
 				console.log(result);
 			}}>
 				SIGN TYPED DATA
+			</button>
+			<button onClick={()=>{
+				getBalance(config,{
+					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+				})
+			}}>
+				balance
 			</button>
 		</div>
 	)
