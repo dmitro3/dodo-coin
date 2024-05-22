@@ -6,13 +6,13 @@ import {useWeb3ModalAccount} from "@web3modal/ethers/react";
 import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {BrowserProvider} from "ethers";
 import Web3ModalProvider from "@/context/Web3Modal";
-import {useAccount} from "wagmi";
+import {useAccount, useSignMessage} from "wagmi";
 
 const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useAccount();
-
+	const { signMessage } = useSignMessage()
 
 	return (
 		<div>
@@ -21,7 +21,7 @@ const Page = () => {
 			</button>
 			<img src={wallet.walletInfo?.icon} />
 			<br/>
-			<button onClick={() => onSignMessage()}>Sign Message</button>
+			<button onClick={() => signMessage('test')}>Sign Message</button>
 			<br/>
 			{account.isConnected+""}
 			<br/>
@@ -29,7 +29,7 @@ const Page = () => {
 			<br/>
 			{account.chainId}
 			<br/>
-			
+
 		</div>
 	)
 };
