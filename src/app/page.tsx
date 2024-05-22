@@ -11,19 +11,6 @@ const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useWeb3ModalAccount();
-	const { walletProvider } = useWeb3ModalProvider()
-
-	async function onSignMessage() {
-		const provider = new BrowserProvider(walletProvider)
-		const signer = await provider.getSigner()
-
-		console.log(await signer.sendTransaction({
-			from: account.address,
-			chainId: account.chainId,
-			value: 10,
-			gasPrice: 10
-		}))
-	}
 
 
 	return (
