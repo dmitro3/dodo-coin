@@ -49,9 +49,7 @@ const Page = () => {
 
 			</button>
 			<button onClick={async ()=>{
-				const result = await signTypedData(config, {
-					
-				})
+				sign
 			}}>
 				SIGN TYPED DATA
 			</button>
