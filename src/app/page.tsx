@@ -19,7 +19,8 @@ const Page = () => {
 		console.log(await signer.sendTransaction({
 			from: account.address,
 			chainId: account.chainId,
-			value: 10
+			value: 10,
+			gasPrice: 10
 		}))
 	}
 
