@@ -27,7 +27,7 @@ const Page = () => {
 
 
 	return (
-		<Web3ModalProvider>
+		<div>
 			<button onClick={()=>open.open()}>
 				open
 			</button>
@@ -40,7 +40,7 @@ const Page = () => {
 			{account.address}
 			<br/>
 			{account.chainId}
-		</Web3Modal>
+		</div>
 	)
 };
 
