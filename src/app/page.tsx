@@ -1,8 +1,8 @@
 'use client';
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
-import { useAccount, useSendTransaction, useSignMessage} from "wagmi";
+import {useAccount, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
-import {useDisconnect} from "@web3modal/ethers/react";
+
 
 
 const Page = () => {
