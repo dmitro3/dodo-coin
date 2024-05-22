@@ -2,10 +2,12 @@
 import {notFound} from "next/navigation";
 import {Web3Modal} from "@/context/Web3Modal";
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
+import {useWeb3ModalAccount} from "@web3modal/ethers/react";
 
 const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
+	const account = useWeb3ModalAccount();
 
 	return (
 		<Web3Modal>
@@ -13,6 +15,7 @@ const Page = () => {
 				open
 			</button>
 			<img src={wallet.walletInfo?.icon} />
+			{account.isConnected}
 		</Web3Modal>
 	)
 };
