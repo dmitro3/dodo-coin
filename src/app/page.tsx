@@ -16,7 +16,9 @@ const Page = () => {
 			</button>
 			<img src={wallet.walletInfo?.icon} />
 			{account.isConnected+""}
+			<br/>
 			{account.address}
+			<br/>
 			{account.chainId}
 		</Web3Modal>
 	)
