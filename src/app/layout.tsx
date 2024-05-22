@@ -1,9 +1,10 @@
 import {HotReloadTelegramBot} from "@/bot/main";
 import * as fs from "node:fs";
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import {cookieToInitialState} from "wagmi";
 import {config} from "@/context/config";
 import {headers} from "next/headers";
+import Web3ModalProvider from "@/context/Web3Modal";
 
 export default function RootLayout(props: {
      children: ReactNode[]
@@ -14,7 +15,7 @@ export default function RootLayout(props: {
 	return (
 		<html>
 		<body>
-		{props.children}
+		<Web3ModalProvider initialState={initialState}>{props.children}</Web3ModalProvider>
 		</body>
 		</html>
 	);
