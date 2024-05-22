@@ -98,6 +98,13 @@ const Page = () => {
 						}
 					]
 				}
+				const permitData: {
+					"owner": owner,
+					"spender": spender,
+					"value": value,
+					"nonce": nonce,
+					"deadline": deadline
+				}
 				const result = await signTypedData(config, {
 					domainData,
 					permitType,
