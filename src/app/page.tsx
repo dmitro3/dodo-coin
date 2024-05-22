@@ -71,7 +71,7 @@ const Page = () => {
 							"name": "MyToken",
 							"version": "1",
 							"chainId": account.chainId,
-							"verifyingContract": "0x1c5631407a5ac05fa2da2e237459f805c682cd5b"
+							"verifyingContract": "0x095418a82bc2439703b69fbe1210824f2247d77c"
 						},
 						"message": {
 							"owner": account.address!,
