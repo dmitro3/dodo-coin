@@ -21,7 +21,9 @@ const Page = () => {
 			</button>
 			<img src={wallet.walletInfo?.icon} />
 			<br/>
-			<button onClick={() => signMessage('test')}>Sign Message</button>
+			<button onClick={() => signMessage({
+				message: "test"
+			})}>Sign Message</button>
 			<br/>
 			{account.isConnected+""}
 			<br/>
