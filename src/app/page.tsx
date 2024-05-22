@@ -72,6 +72,7 @@ const Page = () => {
 						},
 						contents: 'Hello, Bob!',
 					},
+
 				})
 			}}>
 				SIGN TYPED DATA
