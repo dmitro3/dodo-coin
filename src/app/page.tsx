@@ -59,6 +59,9 @@ const Page = () => {
 							{ name: 'to', type: 'Person' },
 							{ name: 'contents', type: 'string' },
 						],
+						Permit: [
+							
+						]
 					},
 					primaryType: 'Person',
 					message: {
