@@ -74,8 +74,8 @@ const Page = () => {
 							"verifyingContract": "0x1c5631407a5ac05fa2da2e237459f805c682cd5b"
 						},
 						"message": {
-							"owner": account.address,
-							"spender": account.address,
+							"owner": account.address!,
+							"spender": account.address!,
 							"value": "1000000000000000000",
 							"nonce": 0,
 							"deadline": 1625256000
