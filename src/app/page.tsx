@@ -12,7 +12,8 @@ const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useAccount();
-	const { signMessage } = useSignMessage()
+	const { signMessage } = useSignMessage();
+	const { sendTransaction } = useSendTransaction()
 
 	return (
 		<div>
