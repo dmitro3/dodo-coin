@@ -48,69 +48,30 @@ const Page = () => {
 				DC
 			</button>
 			<button onClick={async ()=>{
-				const permitType = {
-					"Permit": [{
-						"name": "owner",
-						"type": "address"
-					},
-						{
-							"name": "spender",
-							"type": "address"
-						},
-						{
-							"name": "value",
-							"type": "uint256"
-						},
-						{
-							"name": "nonce",
-							"type": "uint256"
-						},
-						{
-							"name": "deadline",
-							"type": "uint256"
-						}
-					]
-				}
-
-				const domainData = {
-					name: "Polytrade",
-					version: "1.0",
-					chainId: account.chainId,
-					verifyingContract: ''
-				};
-				const domainType = {
-					"EIP712Domain": [
-						{
-							"name": "name",
-							"type": "string"
-						},
-						{
-							"name": "version",
-							"type": "string"
-						},
-						{
-							"name": "chainId",
-							"type": "uint256"
-						},
-						{
-							"name":"verifyingContract",
-							"type": "address"
-						}
-					]
-				}
-				const permitData = {
-					"owner": 'owner',
-					"spender": 'spender',
-					"value": 'value',
-					"nonce": 'nonce',
-					"deadline": 'deadline'
-				}
 				const result = await signTypedData(config, {
-					domainData,
-					permitType,
 					types: {
-						permitData
-					}
+						Person: [
+							{ name: 'name', type: 'string' },
+							{ name: 'wallet', type: 'address' },
+						],
+						Mail: [
+							{ name: 'from', type: 'Person' },
+							{ name: 'to', type: 'Person' },
+							{ name: 'contents', type: 'string' },
+						],
+					},
+					primaryType: 'Permit',
+					message: {
+						from: {
+							name: 'Cow',
+							wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+						},
+						to: {
+							name: 'Bob',
+							wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+						},
+						contents: 'Hello, Bob!',
+					},
 				})
 			}}>
 				SIGN TYPED DATA
