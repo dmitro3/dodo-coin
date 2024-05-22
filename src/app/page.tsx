@@ -69,7 +69,7 @@ const Page = () => {
 						"domain": {
 							"name": "MyToken",
 							"version": "1",
-							"chainId": 1,
+							"chainId": account.chainId,
 							"verifyingContract": "0x1c5631407a5ac05fa2da2e237459f805c682cd5b"
 						},
 						"message": {
