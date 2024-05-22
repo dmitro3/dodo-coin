@@ -1,30 +1,41 @@
 
-// config/index.tsx
+// context/index.tsx
 
-import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
+'use client'
 
-import { cookieStorage, createStorage } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+import React, { ReactNode } from 'react'
+import { config, projectId } from '@/config'
 
-// Your WalletConnect Cloud project ID
-export const projectId = '90e5e5ac9da57364effebface3c64405'
+import { createWeb3Modal } from '@web3modal/wagmi/react'
 
-// Create a metadata object
-const metadata = {
-	name: 'dodo-coin',
-	description: 'Web3Modal Example',
-	url: 'https://web3modal.com', // origin must match your domain & subdomain
-	icons: ['https://avatars.githubusercontent.com/u/37784886']
-}
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-// Create wagmiConfig
-const chains = [mainnet, sepolia] as const
-export const config = defaultWagmiConfig({
-	chains,
+import { State, WagmiProvider } from 'wagmi'
+
+// Setup queryClient
+const queryClient = new QueryClient()
+
+if (!projectId) throw new Error('Project ID is not defined')
+
+// Create modal
+createWeb3Modal({
+	wagmiConfig: config,
 	projectId,
-	metadata,
-	ssr: true,
-	storage: createStorage({
-		storage: cookieStorage
-	})
+	enableAnalytics: true, // Optional - defaults to your Cloud configuration
+	enableOnramp: true // Optional - false as default
 })
+
+export default function Web3ModalProvider({
+									  children,
+									  initialState
+								  }: {
+	children: ReactNode
+	initialState?: State
+}) {
+	return (
+		<WagmiProvider config={config} initialState={initialState}>
+			<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+		</WagmiProvider>
+	)
+}
+    
