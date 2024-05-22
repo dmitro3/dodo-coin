@@ -49,6 +49,7 @@ const Page = () => {
 
 			</button>
 			<button onClick={async ()=>{
+				if (!account) return;
 				const result = await signTypedData(config, {
 						"types": {
 							"EIP712Domain": [
