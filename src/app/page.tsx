@@ -6,11 +6,12 @@ import {useWeb3ModalAccount} from "@web3modal/ethers/react";
 import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {BrowserProvider} from "ethers";
 import Web3ModalProvider from "@/context/Web3Modal";
+import {useAccount} from "wagmi";
 
 const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
-	const account = useWeb3ModalAccount();
+	const account = useAccount();
 
 
 	return (
