@@ -49,7 +49,9 @@ const Page = () => {
 
 			</button>
 			<button onClick={async ()=>{
-				getContractAddress()
+				getContractAddress({
+					
+				})
 			}}>
 				SIGN TYPED DATA
 			</button>
