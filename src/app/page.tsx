@@ -2,6 +2,7 @@
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
 import { useAccount, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
+import {useDisconnect} from "@web3modal/ethers/react";
 
 
 const Page = () => {
@@ -10,6 +11,7 @@ const Page = () => {
 	const account = useAccount();
 	const { signMessage } = useSignMessage();
 	const { sendTransaction } = useSendTransaction()
+	const {disconnect} = useDisconnect();
 
 	return (
 		<div>
@@ -39,6 +41,9 @@ const Page = () => {
 				})}
 			>
 				Transfer
+			</button>
+			<button onClick={disconnect}>
+				DC
 			</button>
 		</div>
 	)
