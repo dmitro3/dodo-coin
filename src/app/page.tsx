@@ -75,7 +75,7 @@ const Page = () => {
 				const domainData = {
 					name: "Polytrade",
 					version: "1.0",
-					chainId: chainId,
+					chainId: account.chainId,
 					verifyingContract: ''
 				};
 				const domainType = {
@@ -99,11 +99,11 @@ const Page = () => {
 					]
 				}
 				const permitData: {
-					"owner": owner,
-					"spender": spender,
-					"value": value,
-					"nonce": nonce,
-					"deadline": deadline
+					"owner": 'owner',
+					"spender": 'spender',
+					"value": 'value',
+					"nonce": 'nonce',
+					"deadline": 'deadline'
 				}
 				const result = await signTypedData(config, {
 					domainData,
