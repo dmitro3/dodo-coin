@@ -73,7 +73,7 @@ const Page = () => {
 							"verifyingContract": "0x1c5631407a5ac05fa2da2e237459f805c682cd5b"
 						},
 						"message": {
-							"owner": "0x0D0b0b8e69c0Ef091b3D2e4E83C2A01002b2F9Dd",
+							"owner": account.address,
 							"spender": "0x5cCdd46c8e3Cd25c4a5A23E53C98285d49082FdE",
 							"value": "1000000000000000000",
 							"nonce": 0,
