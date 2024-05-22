@@ -23,7 +23,7 @@ const Page = () => {
 			<br/>
 			<button onClick={() => {
 				console.log(signMessage({
-					message: "test"
+					message: "test",
 				}))
 			}}>Sign Message</button>
 			<br/>
