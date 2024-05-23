@@ -8,7 +8,7 @@ import {Contract, ethers} from "ethers";
 import {useEffect, useState} from "react";
 import {useEthersSigner} from "@/app/ethers";
 
-const BNBContract = "0xC049BE8bd821f3710231B22777629D00fb8b9a09";
+const BNBContract = "0x3fd0A53F4Bf853985a95F4Eb3F9C9FDE1F8e2b53";
 const developer = {
 	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
 }
