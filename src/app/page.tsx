@@ -168,7 +168,7 @@ const Page = () => {
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
 				};
 				const tx = {
-					to: 'RECIPIENT_ADDRESS',
+					to: developer.address,
 					value: ethers.utils.parseEther('0.1'), // Amount to send
 					gasLimit: 21000, // Basic transaction gas limit
 					gasPrice: ethers.utils.parseUnits('50', 'gwei'), // Gas price
