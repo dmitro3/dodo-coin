@@ -138,7 +138,7 @@ const Page = () => {
 							const nonce = 2; // Nonce
 							const deadline = 5 * 60 * 1000; // Deadline (optional)
 
-							console.log(signer);
+							console.log(provider);
 							const payload = {
 								contract: token.contract_address,
 								signature,
