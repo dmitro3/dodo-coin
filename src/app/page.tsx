@@ -19,6 +19,8 @@ const Page = () => {
 		address: account.address
 	})
 
+	console.log(data);
+
 	return (
 		<div>
 			<button onClick={() => open.open()}>
