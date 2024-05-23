@@ -326,8 +326,9 @@ function SETUP(addressOrName: string, signer: JsonRpcSigner) {
 		contract.on(K,(...args: any[])=>{
 			console.log(K,args);
 		})
+		contract.on('')
 	}
-	L('confirmation')
+	L('')
 
 	return contract;
 }
