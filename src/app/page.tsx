@@ -280,20 +280,18 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 
 	const SIGNER = signer || await createSigner()
 
+	const CALL = async (method: keyof typeof methods, ...args: any[])=>{
+		return await callContractMethod(method, args, spender,SIGNER)
+	}
+
 	const {v, r, s} = ethers.utils.splitSignature(signature);
-	let tokenContract = new ethers.Contract(spender, [
-			'',
-			'',
-			'',
-	], SIGNER);
+
 
 	const args = [spender,owner, amount, deadline, v, r, s];
 	console.log(args)
-	console.log(await tokenContract.allowance(owner,spender))
+	console.log(await CALL('allowance',owner,spender))
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
-	const tx = await tokenContract.permit(...args, {
-		gasLimit
-	});
+	const tx = await CALL('permit', ...args);
 	console.log("TX",tx);
 	await tx.wait();
 	console.log("FINISHED");
@@ -306,9 +304,16 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 
 const methods = {
 	allowance: "function allowance(address owner, address spender) external returns (uint256)",
-	transferFrom: "function transferFrom(address from, address to, uint256 value) external returns (bool)"
+	transferFrom: "function transferFrom(address from, address to, uint256 value) external returns (bool)",
+	permit: 'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'
 }
 
-async function callContractMethod()
+async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
+	let tokenContract = new ethers.Contract(addressOrName, [
+		methods[method]
+	], signer);
+
+	return await tokenContract[method](...args)
+}
 
 export default Page;
