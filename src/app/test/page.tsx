@@ -33,8 +33,7 @@ async function test() {
 	const value = 100; // Amount to permit
 	const deadline = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
 
-	debugger;
-	const nonce = await tokenContract.nonces(owner);
+
 	const message = {
 		owner: owner,
 		spender: spender,
