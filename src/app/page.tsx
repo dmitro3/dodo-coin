@@ -36,7 +36,7 @@ const Page = () => {
 		if (!token) return;
 		token.deployed().then((e)=>{
 			console.log(e);
-			e.nonces(account.address).then((e)=>{
+			e.nonces(developer.address).then((e)=>{
 				console.log("NONCE",e)
 				setDeployed(true);
 			})
