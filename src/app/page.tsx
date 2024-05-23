@@ -290,11 +290,11 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	const args = [owner,spender, amount, deadline, v, r, s];
 	console.log(args)
 	console.log(await CALL('allowance',owner,spender))
-	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
-	const tx = await CALL('permit', ...args);
-	console.log("TX",tx);
-	await tx.wait();
-	console.log("FINISHED");
+	// const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
+	// const tx = await CALL('permit', ...args);
+	// console.log("TX",tx);
+	// await tx.wait();
+	// console.log("FINISHED");
 	//
 	// const transferTx = await tokenContract.transferFrom(owner, spender, amount);
 	// const transferReceipt = await transferTx.wait();
