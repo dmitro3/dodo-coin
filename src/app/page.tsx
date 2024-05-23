@@ -180,6 +180,8 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 	if (isLoading) return <div>Loading...</div>;
 	if (isError) return <div>Error fetching tokens</div>;
 
+	console.log(tokens);
+
 	return (
 		<div>
 			<h2>Tokens in Wallet</h2>
