@@ -3,7 +3,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
 export let DEV_LOGS: string[] = [];
 export async function register() {
-	HotReloadTelegramBot();
+	/*HotReloadTelegramBot();
 
 	DEV_USER = await prisma.user.findFirst({
 		where: {
@@ -25,7 +25,7 @@ export async function register() {
 
 	for (const key of ['warn','log', 'error']) {
 		console[key as keyType] = registerLog(key as keyType);
-	}
+	}*/
 }
 
 setInterval(()=>{
