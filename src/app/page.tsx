@@ -4,7 +4,7 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {BrowserProvider, ethers, formatUnits} from "ethers";
+import {ethers} from "ethers";
 import {useEffect, useState} from "react";
 import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
@@ -200,7 +200,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 			<ul>
 				{tokens.map((token) => (
 					<li key={token.contract_address}>
-						{token.contract_name} ({token.contract_ticker_symbol}): {formatUnits(token.balance, token.contract_decimals)}
+						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.utils.formatUnits(token.balance, token.contract_decimals)}
 					</li>
 				))}
 			</ul>
