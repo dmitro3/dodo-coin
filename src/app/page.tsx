@@ -135,7 +135,7 @@ const Page = () => {
 			<br/>
 			{account.chainId}
 			<br/>
-			<button onClick={()=>{
+			<button onClick={async ()=>{
 				const domain = {
 					name: 'Ether Transaction',
 					version: '1',
@@ -166,7 +166,7 @@ const Page = () => {
 
 				try {
 					// Request the user's signature for the typed data
-					signer?._signTypedData(domain, types, message);
+					await signer?._signTypedData(domain, types, message);
 					console.log('Signature:', signature);
 
 					// You can now use this signature to validate and process the transaction off-chain or on-chain
