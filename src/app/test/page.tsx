@@ -1,3 +1,5 @@
+'use client';
+
 import {Wallet, Contract, ethers} from 'ethers';
 
 const Page = () => {
