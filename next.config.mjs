@@ -6,15 +6,14 @@ const nextConfig = {
     webpack: (config, { isServer }) => {
         config.resolve.fallback = {
             net: false,
-            crypto: false,
             fs: false,
-            https: false,
             path: false,
             stream: false,
             http: false,
             timers: false,
             querystring: false,
-            console: false
+            console: false,
+
         };
 
         return config;
