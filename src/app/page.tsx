@@ -16,8 +16,7 @@ const Page = () => {
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
 	const {data} = useBalance({
-		address: account.address,
-		token: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+		address: account.address
 	})
 
 	return (
