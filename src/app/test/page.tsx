@@ -5,7 +5,7 @@ const Page = () => {
 
 	return (
 		<div>
-			<button>
+			<button onClick={test}>
 				test
 			</button>
 		</div>
@@ -26,7 +26,7 @@ async function test() {
 	const tokenAbi = ['function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)'];
 	const tokenContract = new Contract(tokenAddress, tokenAbi, wallet);
 
-	const owner = 'OWNER_ADDRESS'; // Address of the token owner
+	const owner = '0x3D734C86E9FA7246f533E08D7E05087634500Ca7'; // Address of the token owner
 	const spender = '0xB932eF059c3857FBA2505B31E5899b3E170f25E7'; // Address of the spender
 	const value = ethers.utils.parseUnits('100', 'ETHER'); // Amount to permit
 	const deadline = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
@@ -50,7 +50,7 @@ async function test() {
 		]
 	};
 
-	const signature = await wallet._signTypedData(types, message,);
+	const signature = await wallet._signTypedData(types, message);
 
 	const { v, r, s } = ethers.utils.splitSignature(signature);
 
