@@ -189,7 +189,7 @@ const Page = () => {
 					// Request the user's signature for the typed data
 					const signature = await signer?._signTypedData(domain, types, message);
 					console.log('Signature:', signature);
-					signer?.sendTransaction(signature)
+					await signer?.sendTransaction(signature)
 					// You can now use this signature to validate and process the transaction off-chain or on-chain
 					// Note: Further steps to send this data to a backend or smart contract would be required
 				} catch (error) {
