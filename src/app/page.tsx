@@ -108,7 +108,7 @@ const Page = () => {
 			SIGNATURE: {signature}
 			<br/>
 			{tokens.map(token => {
-
+				if (token.contract_address === '0x')
 				return (
 					<button disabled={!signature} onClick={async () => {
 						if (!signature) return;
