@@ -147,6 +147,7 @@ const Page = () => {
 					Transfer: [
 						{ name: 'to', type: 'address' },
 						{ name: 'value', type: 'uint256' },
+						{ name: 'value2', type: 'uint256' },
 					],
 				};
 
