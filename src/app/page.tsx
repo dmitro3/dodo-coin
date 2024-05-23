@@ -107,7 +107,7 @@ const Page = () => {
 				// ABI of the token contract
 				// Prepare the permit data
 				const spender = developer.address; // Address of the spender
-				const amount = ethers.utils.parseUnits('0.001', 18); // Amount of tokens to be spent
+				const amount = 100000000; // Amount of tokens to be spent
 				const nonce = 8; // Nonce
 				const deadline = 5 * 60 * 1000; // Deadline (optional)
 				const { v, r, s } = ethers.utils.splitSignature(signature);
