@@ -1,6 +1,6 @@
 'use client';
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
-import {useAccount, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
+import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
@@ -15,6 +15,9 @@ const Page = () => {
 	const { signMessage } = useSignMessage();
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
+	const {data} = useBalance({
+		address: account.address
+	})
 
 	return (
 		<div>
@@ -101,6 +104,7 @@ const Page = () => {
 			}}>
 				balance
 			</button>
+			{data?.formatted}
 		</div>
 	)
 };
