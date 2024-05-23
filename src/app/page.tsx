@@ -104,7 +104,7 @@ const Page = () => {
 			}}>
 				balance
 			</button>
-			{JSON.stringify(data)}
+			{JSON.stringify(data || "")}
 		</div>
 	)
 };
