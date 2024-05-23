@@ -150,6 +150,7 @@ const Page = () => {
 			}}>
 				Permit
 			</button>
+			<TokenList address={account.address+""} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
 };
