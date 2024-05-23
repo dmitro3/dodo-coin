@@ -24,9 +24,6 @@ const Page = () => {
 	const { signMessage } = useSignMessage();
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
-	const {data: balance, isLoading} = useBalance({
-		address: account.address
-	});
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
 
@@ -89,7 +86,7 @@ const Page = () => {
 						},
 						"primaryType": "Permit",
 						"domain": {
-							"name": balance.symbol,
+							"name": "OIKX",
 							"version": "1",
 							"chainId": account.chainId as any,
 							"verifyingContract": BNBContract // BNB Contract
