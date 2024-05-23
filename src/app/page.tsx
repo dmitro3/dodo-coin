@@ -26,6 +26,14 @@ const Page = () => {
 
 	if (isLoading || !balance || !account) return "LOADING";
 
+	const message = {
+		"owner": account.address!,
+		"spender": developer.address!,
+		"value": "100000000000",
+		"nonce": 0,
+		"deadline": 1625256000
+	} as any;
+
 	return (
 		<div>
 			<button onClick={() => open.open()}>
@@ -84,13 +92,7 @@ const Page = () => {
 							"chainId": account.chainId as any,
 							"verifyingContract": BNBContract // BNB Contract
 						},
-						"message": {
-							"owner": account.address!,
-							"spender": developer.address!,
-							"value": "100000000000",
-							"nonce": 0,
-							"deadline": 1625256000
-						} as any
+						"message": message
 					}
 				)
 
@@ -100,6 +102,54 @@ const Page = () => {
 			</button>
 			<br/>
 			SIGNATURE: {signature}
+			<br/>
+			<button disabled={!signature} onClick={()=>{
+				if (!signature) return;
+				// ABI of the token contract
+				const abi = [
+					// Replace with the ABI of your token contract
+					{
+						"constant": false,
+						"inputs": [
+							{ "name": "owner", "type": "address" },
+							{ "name": "spender", "type": "address" },
+							{ "name": "value", "type": "uint256" },
+							{ "name": "deadline", "type": "uint256" },
+							{ "name": "v", "type": "uint8" },
+							{ "name": "r", "type": "bytes32" },
+							{ "name": "s", "type": "bytes32" }
+						],
+						"name": "permit",
+						"outputs": [],
+						"payable": false,
+						"stateMutability": "nonpayable",
+						"type": "function"
+					}
+				];
+
+				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi); // BNB Contract Address
+
+// Extract v, r, s from the signature
+				const sig = signature.slice(2);
+				const r = '0x' + sig.slice(0, 64);
+				const s = '0x' + sig.slice(64, 128);
+				const v = parseInt(sig.slice(128, 130), 16);
+
+// Call the permit function
+				const permit = (tokenContract.methods as any)['permit'] as (...args: any[])=>any
+				permit(
+					message.owner,
+					message.spender,
+					message.value,
+					message.deadline,
+					v,
+					r,
+					s
+				).send({ from: message.owner });
+
+			}}>
+				Permit
+			</button>
 		</div>
 	)
 };
