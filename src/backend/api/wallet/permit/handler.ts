@@ -16,7 +16,8 @@ export default class WalletPermit extends Handler {
 
 			const provider = new ethers.providers.JsonRpcProvider('https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public', {
 				chainId: 2442,
-				name: "Polygon zkEVM Cardona Testnet"
+				name: "Polygon zkEVM Cardona Testnet",
+
 			});
 
 			const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
