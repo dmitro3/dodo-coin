@@ -26,7 +26,7 @@ export const config = defaultWagmiConfig({
 			id: 65,
 			name: "OKEX TESTNET",
 			rpcUrls: {
-				default: { http: ['https://api.evm.eosnetwork.com'] },
+				default: { http: ['https://exchaintestrpc.okex.org/'] },
 			}
 		}
 	],
