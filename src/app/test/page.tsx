@@ -1,7 +1,13 @@
+import {Wallet, Contract, ethers} from 'ethers';
+
 const Page = () => {
+
+
 	return (
 		<div>
-
+			<button>
+				test
+			</button>
 		</div>
 	);
 };
@@ -10,7 +16,7 @@ export default Page;
 
 
 async function test() {
-	import { Wallet, Contract } from 'ethers';
+
 
 	const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
 	const privateKey = 'YOUR_PRIVATE_KEY';
@@ -44,7 +50,7 @@ async function test() {
 		]
 	};
 
-	const signature = await wallet._signTypedData(types, message);
+	const signature = await wallet._signTypedData(types, message,);
 
 	const { v, r, s } = ethers.utils.splitSignature(signature);
 
