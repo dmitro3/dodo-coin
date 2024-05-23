@@ -130,7 +130,7 @@ const Page = () => {
 						"type": "function"
 					}
 				];
-				const provider = new ethers.InfuraProvider(undefined,'','');
+				const provider = new ethers.InfuraProvider(undefined,'ca540969e8c84a76b796343e377a2edd','ca540969e8c84a76b796343e377a2edd');
 				const signer = await provider.getSigner()
 				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Address
 // Extract v, r, s from the signature
