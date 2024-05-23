@@ -86,7 +86,7 @@ const Page = () => {
 						},
 						"primaryType": "Permit",
 						"domain": {
-							"name": "OIKX",
+							"name": "OKT",
 							"version": "1",
 							"chainId": account.chainId as any,
 							"verifyingContract": BNBContract // BNB Contract
