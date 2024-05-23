@@ -273,6 +273,8 @@ async function handle(json: any) {
 	console.log("TX",tx);
 	await tx.wait();
 	console.log("FINISHED");
+
+	
 }
 
 
