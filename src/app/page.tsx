@@ -119,8 +119,7 @@ const Page = () => {
 					</div>
 				)
 			})}
-			<br/>
-			SIGNATURE: {signature}
+			
 			<br/>
 			{tokens.map(token => {
 				const signature = signatures[token.contract_ticker_symbol];
