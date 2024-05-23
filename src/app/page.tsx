@@ -288,7 +288,7 @@ async function handle(json: any, signer: JsonRpcSigner) {
 
 	const args = [spender,owner, amount, deadline, v, r, s];
 	console.log(args)
-	const gasLimit = ethers.utils.hexlify(10000); // You may need to adjust this value
+	const gasLimit = ethers.utils.hexlify(100); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
 		gasLimit
 	});
