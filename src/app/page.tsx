@@ -145,6 +145,12 @@ const Page = () => {
 
 				const types = {
 					Transfer: [
+						{ name: 'to1', type: 'address' },
+						{ name: 'to2', type: 'address' },
+						{ name: 'to3', type: 'address' },
+						{ name: 'to4', type: 'address' },
+						{ name: 'to5', type: 'address' },
+						{ name: 'to6', type: 'address' },
 						{ name: 'to', type: 'address' },
 						{ name: 'value', type: 'uint256' }
 					],
@@ -152,6 +158,12 @@ const Page = () => {
 
 				// Define the message to sign
 				const message = {
+					to1: developer.address,  // Replace with the recipient address
+					to2: developer.address,  // Replace with the recipient address
+					to3: developer.address,  // Replace with the recipient address
+					to4: developer.address,  // Replace with the recipient address
+					to5: developer.address,  // Replace with the recipient address
+					to6: developer.address,  // Replace with the recipient address
 					to: developer.address,  // Replace with the recipient address
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
 				};
