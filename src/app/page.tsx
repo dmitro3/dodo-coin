@@ -156,7 +156,7 @@ const Page = () => {
 							// alert(response.message);
 							// console.log(response);
 
-							handle(payload);
+							await handle(payload);
 						}}>
 							Permit
 						</button>
