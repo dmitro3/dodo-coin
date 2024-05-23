@@ -11,7 +11,7 @@ export default class WalletPermit extends Handler {
 			nonce,
 			deadline
 		} = this.json;
-		
+
 	}
 
 }

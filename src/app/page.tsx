@@ -124,7 +124,7 @@ const Page = () => {
 			<br/>
 			{tokens.map(token => {
 				const signature = signatures[token.contract_ticker_symbol];
-				
+
 				return (
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
@@ -144,7 +144,22 @@ const Page = () => {
 							const tx = await tokenContract.permit(...args);
 							await tx.wait();
 
-							console.log('Permit successful');
+							const payload = {
+								contract: token.contract_address,
+								signature,
+								spender,
+								amount,
+								nonce,
+								deadline
+							}
+							const response = await fetch("/api/wallet/permit", {
+								headers: {
+									"content-type": "application/json"
+								},
+								body: JSON.stringify(payload)
+							}).then(r=>r.json())
+							alert(message.message);
+							console.log(response);
 						}}>
 							Permit
 						</button>
