@@ -311,28 +311,14 @@ const methods = {
 let _CONTRACT =
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
 	console.log("CALL", method,args);
-	let tokenContract = _CONTRACT || SETUP(addressOrName,signer);
+	let tokenContract = new ethers.Contract(addressOrName,[
+		methods[method]
+	], signer);
 
 	const op = await tokenContract[method](...args)
 	return new Promise((r)=>{
 
 	});
-}
-
-function SETUP(addressOrName: string, signer: JsonRpcSigner) {
-	const contract = new ethers.Contract(addressOrName, Object.values(methods), signer)
-
-	signer.on
-
-	const L = (K:  string | ethers.EventFilter) => {
-		contract.on(K,(...args: any[])=>{
-			console.log(K,args);
-		})
-
-	}
-	L('')
-
-	return contract;
 }
 
 export default Page;
