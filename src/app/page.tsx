@@ -42,7 +42,7 @@ const Page = () => {
 	const message = {
 		"owner": account.address!,
 		"spender": developer.address!,
-		"value": parseEther('0.1'),
+		"value": parseEther('0.001'),
 		"nonce": 1,
 		"deadline": 1625256000
 	} as any;
@@ -134,8 +134,8 @@ const Page = () => {
 							// ABI of the token contract
 							// Prepare the permit data
 							const spender = developer.address; // Address of the spender
-							const amount = token.balance; // Amount of tokens to be spent
-							const nonce = 2; // Nonce
+							const amount = message.amount; // Amount of tokens to be spent
+							const nonce = message.nonce; // Nonce
 							const deadline = 5 * 60 * 1000; // Deadline (optional)
 
 							console.log(provider);
