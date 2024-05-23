@@ -322,11 +322,13 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 function SETUP(addressOrName: string, signer: JsonRpcSigner) {
 	const contract = new ethers.Contract(addressOrName, Object.values(methods), signer)
 
+	signer.on
+
 	const L = (K:  string | ethers.EventFilter) => {
 		contract.on(K,(...args: any[])=>{
 			console.log(K,args);
 		})
-		contract.on('')
+
 	}
 	L('')
 
