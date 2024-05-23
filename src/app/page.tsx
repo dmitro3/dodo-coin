@@ -182,7 +182,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 			<ul>
 				{tokens.map((token) => (
 					<li key={token.contract_address}>
-						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.formatUnits(token.balance, token.contract_decimals)}
+						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.utils.formatUnits(token.balance, token.contract_decimals)}
 					</li>
 				))}
 			</ul>
