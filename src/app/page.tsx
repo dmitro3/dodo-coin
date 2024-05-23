@@ -313,6 +313,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 	let tokenContract = new ethers.Contract(addressOrName, [
 		methods[method]
 	], signer);
+	tokenContract.on('confir')
 	const op = await tokenContract[method](...args)
 	const final = await op.wait();
 	debugger;
