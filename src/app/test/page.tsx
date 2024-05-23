@@ -19,7 +19,7 @@ async function test() {
 
 
 	const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
-	const privateKey = 'YOUR_PRIVATE_KEY';
+	const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 	const wallet = new Wallet(privateKey, provider);
 
 	const tokenAddress = 'TOKEN_CONTRACT_ADDRESS'; // Address of the BSC token contract
