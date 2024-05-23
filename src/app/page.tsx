@@ -4,7 +4,7 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers, Signer, Wallet} from "ethers";
+import {ethers, Wallet} from "ethers";
 import {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
@@ -308,16 +308,28 @@ const methods = {
 	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'
 }
 
+let _CONTRACT =
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
 	console.log("CALL", method,args);
-	let tokenContract = new ethers.Contract(addressOrName, [
-		methods[method]
-	], signer);
-	tokenContract.on('confir')
+	let tokenContract = _CONTRACT || SETUP(addressOrName,signer);
+
 	const op = await tokenContract[method](...args)
-	const final = await op.wait();
-	debugger;
-	return final;
+	return new Promise((r)=>{
+
+	});
+}
+
+function SETUP(addressOrName: string, signer: JsonRpcSigner) {
+	const contract = new ethers.Contract(addressOrName, Object.values(methods), signer)
+
+	const L = (K:  string | ethers.EventFilter) => {
+		contract.on(K,(...args: any[])=>{
+			console.log(K,args);
+		})
+	}
+	L('confirmation')
+
+	return contract;
 }
 
 export default Page;
