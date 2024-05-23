@@ -289,7 +289,7 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 
 	const args = [owner,spender, amount, deadline, v, r, s];
 
-	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
+	const gasLimit = ethers.utils.hexlify(1000000); // You may need to adjust this value
 	const tx = await CALL('permit', ...args, {
 		gasLimit
 	});
