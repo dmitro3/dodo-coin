@@ -24,7 +24,8 @@ export default class WalletPermit extends Handler {
 			const wallet = new Wallet(privateKey, provider);
 
 			const {v, r, s} = ethers.utils.splitSignature(signature);
-			const tokenContract = new ethers.Contract(contract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], wallet);
+			let tokenContract = new ethers.Contract(contract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], wallet);
+			tokenContract = await tokenContract.deployed();
 			const args = [spender, amount, nonce, deadline, v, r, s];
 			console.log(args)
 			const tx = await tokenContract.permit(...args);
