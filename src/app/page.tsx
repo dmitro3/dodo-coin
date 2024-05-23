@@ -4,6 +4,7 @@ import {useAccount, useDisconnect, useSendTransaction, useSignMessage} from "wag
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
+import {formatUnits} from "ethers";
 
 
 
@@ -91,7 +92,9 @@ const Page = () => {
 				getBalance(config,{
 					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
 					chainId: account.chainId
-				}).then(console.log)
+				}).then(e => {
+					console.log(formatUnits(e.value, e.decimals));
+				})
 			}}>
 				balance
 			</button>
