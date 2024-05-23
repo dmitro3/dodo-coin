@@ -108,27 +108,18 @@ const Page = () => {
 			<button disabled={!signature} onClick={async ()=>{
 				if (!signature) return;
 				// ABI of the token contract
+				// Prepare the permit data
+				const spender = developer.address; // Address of the spender
+				const amount = ethers.utils.parseUnits('0.001', 18); // Amount of tokens to be spent
+				const nonce = 0; // Nonce
+				const deadline = 5 * 60 * 1000; // Deadline (optional)
+				const { v, r, s } = ethers.utils.splitSignature(signature);
+// Call the permit method
+				const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
+				const tx = await tokenContract.permit(spender, amount, nonce, deadline, v, r, s);
+				await tx.wait();
 
-				let token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
-				token = await token.deployed();
-				debugger;
-				const sig = signature.slice(2);
-				const r = '0x' + sig.slice(0, 64);
-				const s = '0x' + sig.slice(64, 128);
-				const v = parseInt(sig.slice(128, 130), 16);
-
-				const permit = token.permit;
-				console.log(permit)
-				console.log(await permit(
-					message.owner,
-					message.spender,
-					message.value,
-					message.deadline,
-					v,
-					r,
-					s
-				))
-
+				console.log('Permit successful');
 			}}>
 				Permit
 			</button>
