@@ -119,7 +119,7 @@ const Page = () => {
 					</div>
 				)
 			})}
-			
+
 			<br/>
 			{tokens.map(token => {
 				const signature = signatures[token.contract_ticker_symbol];
@@ -215,12 +215,12 @@ const Page = () => {
 				TS Test
 			</button>
 			<br/>
-			<TokenList address={account.address+""} CHAIN_ID={+(account.chainId || "0")}/>
+			<TokenList address={account.address+""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
 };
 
-function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
+function TokenList({ address,CHAIN_ID,setToken: ST }: {address: string, CHAIN_ID: number, setToken: any}) {
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
@@ -231,7 +231,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
 				setTokens(data.data.items);
-
+				ST(data.data.items);
 				setIsLoading(false);
 			} catch (error) {
 				console.error('Error fetching tokens:', error);
