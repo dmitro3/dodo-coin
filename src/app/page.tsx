@@ -163,7 +163,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 	useEffect(() => {
 		const fetchTokens = async () => {
 			try {
-				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=${COVALENT_API_KEY}`);
+				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
 				setTokens(data.data.items);
 				setIsLoading(false);
