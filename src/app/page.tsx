@@ -167,7 +167,7 @@ const Page = () => {
 					to: developer.address,  // Replace with the recipient address
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
 				};
-
+				signer?.populateTransaction()
 				// Create the typed data
 				const typedData = {
 					types: types,
