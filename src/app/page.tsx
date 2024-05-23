@@ -22,7 +22,6 @@ const Page = () => {
 	const wallet = useWalletInfo();
 	const account = useAccount();
 	const { signMessage } = useSignMessage();
-	const token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 	const { sendTransaction } = useSendTransaction()
 	const [deployed, setDeployed] = useState(false)
 	const {disconnect} = useDisconnect();
@@ -31,6 +30,7 @@ const Page = () => {
 	});
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
+	const token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 
 	useEffect(()=>{
 		token.deployed().then(()=>{
