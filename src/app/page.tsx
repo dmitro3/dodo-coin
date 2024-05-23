@@ -252,7 +252,7 @@ async function handle(json: any) {
 		deadline
 	} = json;
 
-	const provider = new ethers.providers.JsonRpcProvider('https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public', {
+	const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/', {
 		chainId: 2442,
 		name: "Polygon zkEVM Cardona Testnet",
 
