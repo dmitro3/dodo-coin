@@ -35,6 +35,7 @@ const Page = () => {
 	useEffect(()=>{
 		if (!token) return;
 		token.deployed().then((e)=>{
+			console.log(e);
 			e.nonce(account.address).then((e)=>{
 				console.log("NONCE",e)
 				setDeployed(true);
