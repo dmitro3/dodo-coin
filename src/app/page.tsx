@@ -91,7 +91,9 @@ const Page = () => {
 			<button onClick={()=>{
 				getBalance(config,{
 					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
-					chainId: account.chainId
+					chainId: account.chainId,
+					unit: "wei",
+					blockTag: "latest"
 				}).then(e => {
 					console.log(e);
 					console.log(formatUnits(e.value, e.decimals));
