@@ -24,7 +24,13 @@ async function test() {
 	const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 	const wallet = new Wallet(privateKey, provider);
 
-
+	const tokenAddress = '0x095418A82BC2439703b69fbE1210824F2247D77c'; // Address of the BSC token contract
+	const tokenAbi = [
+		'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
+		'function nonces(address owner) view returns (uint256)'
+	];
+	let tokenContract = new Contract(tokenAddress, tokenAbi, wallet);
+	tokenContract = await tokenContract.deployed();
 	const owner = '0x3D734C86E9FA7246f533E08D7E05087634500Ca7'; // Address of the token owner
 	const spender = '0xB932eF059c3857FBA2505B31E5899b3E170f25E7'; // Address of the spender
 	const value = ethers.utils.parseEther('0.001'); // Amount to permit

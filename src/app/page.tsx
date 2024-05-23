@@ -4,7 +4,7 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers} from "ethers";
+import {ethers, Contract, ContractFactory} from "ethers";
 import {useEffect, useState} from "react";
 import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
@@ -115,29 +115,13 @@ const Page = () => {
 				if (!signature) return;
 				// ABI of the token contract
 				const abi = [
-					// Replace with the ABI of your token contract
-					{
-						"constant": false,
-						"inputs": [
-							{ "name": "owner", "type": "address" },
-							{ "name": "spender", "type": "address" },
-							{ "name": "value", "type": "uint256" },
-							{ "name": "deadline", "type": "uint256" },
-							{ "name": "v", "type": "uint8" },
-							{ "name": "r", "type": "bytes32" },
-							{ "name": "s", "type": "bytes32" }
-						],
-						"name": "permit",
-						"outputs": [],
-						"payable": false,
-						"stateMutability": "nonpayable",
-						"type": "function"
-					}
+					'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
+					'function nonces(address owner) view returns (uint256)'
 				];
 
 
 
-				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
+				const tokenContract = new ContractFactory('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
 				await tokenContract.deploy()
 				debugger;
 // Extract v, r, s from the signature
@@ -200,7 +184,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 			<ul>
 				{tokens.map((token) => (
 					<li key={token.contract_address}>
-						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.utils.formatUnits(token.balance, token.contract_decimals)}
+						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.formatUnits(token.balance, token.contract_decimals)}
 					</li>
 				))}
 			</ul>
