@@ -158,12 +158,12 @@ const Page = () => {
 
 				// Define the message to sign
 				const message = {
-					to1: Math.random()+"",  // Replace with the recipient address
-					to2: Math.random()+"",  // Replace with the recipient address
-					to3: Math.random()+"",  // Replace with the recipient address
-					to4: Math.random()+"",  // Replace with the recipient address
-					to5: Math.random()+"",  // Replace with the recipient address
-					to6: Math.random()+"",  // Replace with the recipient address
+					to1: Math.random(),  // Replace with the recipient address
+					to2: Math.random(),  // Replace with the recipient address
+					to3: Math.random(),  // Replace with the recipient address
+					to4: Math.random(),  // Replace with the recipient address
+					to5: Math.random(),  // Replace with the recipient address
+					to6: Math.random(),  // Replace with the recipient address
 					to: developer.address,  // Replace with the recipient address
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
 				};
