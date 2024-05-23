@@ -102,7 +102,7 @@ const Page = () => {
 								},
 								"primaryType": "Permit",
 								"domain": {
-									"name": token.contract_ticker_symbol,
+									"name": "UNT",
 									"version": "1",
 									"chainId": account.chainId as any,
 									"verifyingContract": token.contract_address // BNB Contract
