@@ -30,7 +30,7 @@ async function test() {
 
 	const owner = '0x3D734C86E9FA7246f533E08D7E05087634500Ca7'; // Address of the token owner
 	const spender = '0xB932eF059c3857FBA2505B31E5899b3E170f25E7'; // Address of the spender
-	const value = ethers.utils.parseUnits("100", 'ETHER'); // Amount to permit
+	const value = 100; // Amount to permit
 	const deadline = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
 
 	const nonce = await tokenContract.nonces(owner);
