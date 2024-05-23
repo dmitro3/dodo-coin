@@ -220,7 +220,7 @@ const Page = () => {
 	)
 };
 
-function TokenList({ address,CHAIN_ID,setToken: ST }: {address: string, CHAIN_ID: number, setToken: any}) {
+function TokenList({ address,CHAIN_ID,setTokens: ST }: {address: string, CHAIN_ID: number, setTokens: any}) {
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
