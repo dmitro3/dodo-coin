@@ -134,7 +134,7 @@ const Page = () => {
 				];
 
 
-				const signer = provider;
+				const signer = provider.getSigner(account.address);
 				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Address
 // Extract v, r, s from the signature
 				const sig = signature.slice(2);
