@@ -15,7 +15,6 @@ export default function RootLayout(props: {
 	return (
 		<html>
 		<body>
-		<Web3ModalProvider initialState={initialState}>{props.children}</Web3ModalProvider>
 		</body>
 		</html>
 	);
