@@ -271,7 +271,7 @@ async function handle(json: any) {
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)'
 	], wallet);
 
-	const args = [owner,spender, amount, nonce, deadline, v, r, s];
+	const args = [owner,spender, amount, deadline, v, r, s];
 	console.log(args)
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
