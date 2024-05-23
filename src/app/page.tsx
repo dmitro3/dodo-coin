@@ -281,7 +281,7 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	const SIGNER = signer || await createSigner()
 
 	const CALL = async (method: keyof typeof methods, ...args: any[])=>{
-		return await callContractMethod(method, args, spender,SIGNER)
+		return await callContractMethod(method, args, owner,SIGNER)
 	}
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
