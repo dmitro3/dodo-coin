@@ -52,7 +52,7 @@ async function test() {
 		]
 	};
 
-	const signature = await wallet._signTypedData(types, message);
+	const signature = '';
 
 	const { v, r, s } = ethers.utils.splitSignature(signature);
 
