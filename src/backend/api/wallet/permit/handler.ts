@@ -16,6 +16,7 @@ export default class WalletPermit extends Handler {
 			} = this.json;
 
 			const provider = new ethers.providers.JsonRpcProvider(rpc);
+			console.log(provider);
 			await provider.detectNetwork()
 			const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 			const wallet = new Wallet(privateKey, provider);
