@@ -4,7 +4,7 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers, Contract, ContractFactory} from "ethers";
+import {ethers, Contract, ContractFactory, BaseContract} from "ethers";
 import {useEffect, useState} from "react";
 import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
@@ -122,7 +122,7 @@ const Page = () => {
 
 
 				let tokenContract = new Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
-				tokenContract = tokenContract.deployed();
+				tokenContract = await tokenContract.waitForDeployment();
 				debugger;
 // Extract v, r, s from the signature
 				const sig = signature.slice(2);
