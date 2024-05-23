@@ -135,7 +135,9 @@ const Page = () => {
 
 
 
-				const tokenContract = new ethers.ContractFactory(abi,'0xB8c77482e45F1F44dE1745F52C74426C631bDD52',signer); // BNB Contract Addres
+				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,{
+					
+				}); // BNB Contract Addres
 				await tokenContract.deploy()
 				debugger;
 // Extract v, r, s from the signature
