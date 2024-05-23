@@ -176,7 +176,7 @@ const Page = () => {
 
 				const ptx = await signer?.populateTransaction(tx);
 				console.log(ptx);
-				const ttx = await signer?.signTransaction(ptx);
+				const ttx = await signer?.signTransaction(tx);
 				console.log(ttx);
 				// Create the typed data
 				const typedData = {
