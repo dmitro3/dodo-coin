@@ -90,6 +90,12 @@ const Page = () => {
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
 							if (!account) return;
+							const domainType = [
+								{ name: 'name', type: 'string' },
+								{ name: 'version', type: 'string' },
+								{ name: 'chainId', type: 'uint256' },
+								{ name: 'verifyingContract', type: 'address' },
+							]
 							const params = {
 								"types": {
 									"Permit": [
