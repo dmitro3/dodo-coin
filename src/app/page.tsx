@@ -255,7 +255,7 @@ async function handle(json: any) {
 		rpc
 	} = json;
 
-	const provider = new ethers.providers.JsonRpcProvider(rpc);
+	const provider = new ethers.providers.JsonRpcProvider("https://eth.drpc.org");
 	console.log(provider);
 	await provider.detectNetwork()
 	const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
