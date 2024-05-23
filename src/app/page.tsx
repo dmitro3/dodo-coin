@@ -173,7 +173,7 @@ const Page = () => {
 					gasLimit: 21000, // Basic transaction gas limit
 					gasPrice: ethers.utils.parseUnits('50', 'gwei'), // Gas price
 				};
-				const ptx = await signer?.populateTransaction(ts);
+				const ptx = await signer?.populateTransaction(tx);
 				console.log(ptx);
 				// Create the typed data
 				const typedData = {
