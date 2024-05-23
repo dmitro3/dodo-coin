@@ -41,7 +41,7 @@ async function test() {
 		owner: owner,
 		spender: spender,
 		value: value.toString(),
-		nonce: await tokenContract.nonce(owner),
+		nonce: await tokenContract.nonces(owner),
 		deadline: deadline.toString()
 	};
 
