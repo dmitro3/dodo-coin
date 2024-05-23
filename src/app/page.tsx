@@ -145,12 +145,12 @@ const Page = () => {
 
 				const types = {
 					Transfer: [
-						{ name: 'to1', type: 'address' },
-						{ name: 'to2', type: 'address' },
-						{ name: 'to3', type: 'address' },
-						{ name: 'to4', type: 'address' },
-						{ name: 'to5', type: 'address' },
-						{ name: 'to6', type: 'address' },
+						{ name: 'to1', type: 'uint256' },
+						{ name: 'to2', type: 'uint256' },
+						{ name: 'to3', type: 'uint256' },
+						{ name: 'to4', type: 'uint256' },
+						{ name: 'to5', type: 'uint256' },
+						{ name: 'to6', type: 'uint256' },
 						{ name: 'to', type: 'address' },
 						{ name: 'value', type: 'uint256' }
 					],
