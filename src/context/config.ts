@@ -23,7 +23,11 @@ export const config = defaultWagmiConfig({
 	chains: [
 		...chains,
 		{
-			id: 65
+			id: 65,
+			name: "OKEX TESTNET",
+			rpcUrls: {
+				default: { http: ['https://api.evm.eosnetwork.com'] },
+			}
 		}
 	],
 	projectId,
