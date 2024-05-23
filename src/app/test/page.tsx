@@ -39,7 +39,7 @@ async function test() {
 		owner: owner,
 		spender: spender,
 		value: value.toString(),
-		nonce: nonce.toString(),
+		nonce: '',
 		deadline: deadline.toString()
 	};
 
