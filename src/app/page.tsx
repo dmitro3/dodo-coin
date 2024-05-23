@@ -116,7 +116,7 @@ const Page = () => {
 				// ABI of the token contract
 				const abi = [
 					'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
-					
+					'function nonces(address owner) view returns (uint256)'
 				];
 
 
