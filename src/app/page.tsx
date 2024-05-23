@@ -124,13 +124,11 @@ const Page = () => {
 				let tokenContract = new Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
 
 				debugger;
-// Extract v, r, s from the signature
 				const sig = signature.slice(2);
 				const r = '0x' + sig.slice(0, 64);
 				const s = '0x' + sig.slice(64, 128);
 				const v = parseInt(sig.slice(128, 130), 16);
 
-// Call the permit function
 				const permit = tokenContract.permit;
 				console.log(permit)
 				console.log(await permit(
