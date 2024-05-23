@@ -22,7 +22,9 @@ export default class WalletPermit extends Handler {
 		const args = [spender, amount, nonce, deadline, v, r, s];
 		console.log(args)
 		const tx = await tokenContract.permit(...args);
+		console.log("TX",tx);
 		await tx.wait();
+		console.log("FINISHED");
 	}
 
 }
