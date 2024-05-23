@@ -6,7 +6,7 @@ import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {BrowserProvider, ethers, formatUnits} from "ethers";
 import {useEffect, useState} from "react";
-import {useWeb3ModalProvider} from "@web3modal/ethers/vue";
+import {useWeb3ModalProvider} from "@web3modal/ethers/react";
 
 const BNBContract = "0x095418A82BC2439703b69fbE1210824F2247D77c";
 const developer = {
