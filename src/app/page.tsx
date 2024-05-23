@@ -82,7 +82,6 @@ const Page = () => {
 			<br/>
 			<br/>
 			{tokens.map(token => {
-				if (token.contract_address === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee') token.contract_address = BNBContract;
 
 				return (
 					<div className={'flex gap-2'}>
@@ -125,11 +124,10 @@ const Page = () => {
 			<br/>
 			{tokens.map(token => {
 				const signature = signatures[token.contract_ticker_symbol];
-
-
+				
 				return (
 					<div className={'flex gap-2'}>
-						<p>{token.contract_ticker_symbol}</p>
+						{token.contract_ticker_symbol}
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
 							// ABI of the token contract
