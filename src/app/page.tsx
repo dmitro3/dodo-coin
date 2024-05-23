@@ -104,7 +104,7 @@ const Page = () => {
 								"domain": {
 									"name": "UNT",
 									"version": "1",
-									"chainId": "1",
+									"chainId": account.chainId,
 									"verifyingContract": "0xa91B61D526D1Ec730241b32db2f4C2B79D50CA35" // BNB Contract
 								},
 								"message": message
