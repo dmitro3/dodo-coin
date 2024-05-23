@@ -28,14 +28,14 @@ export async function register() {
 	}*/
 }
 
-setInterval(()=>{
-	if (!DEV_USER) return;
-
-	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
-		DEV_LOGS = [];
-	}).catch(()=>null)
-}, 2000);
-
-export function adminLog(msg: string) {
-	DEV_LOGS.push(msg);
-}
+// setInterval(()=>{
+// 	if (!DEV_USER) return;
+//
+// 	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
+// 		DEV_LOGS = [];
+// 	}).catch(()=>null)
+// }, 2000);
+//
+// export function adminLog(msg: string) {
+// 	DEV_LOGS.push(msg);
+// }
