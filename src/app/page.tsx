@@ -103,7 +103,7 @@ const Page = () => {
 			<br/>
 			SIGNATURE: {signature}
 			<br/>
-			<button disabled={!signature} onClick={()=>{
+			<button disabled={!signature} onClick={async ()=>{
 				if (!signature) return;
 				// ABI of the token contract
 				const abi = [
@@ -136,8 +136,8 @@ const Page = () => {
 				const v = parseInt(sig.slice(128, 130), 16);
 
 // Call the permit function
-				const permit = (tokenContract.methods as any)['permit'] as (...args: any[])=>any
-				permit(
+				const permit = tokenContract.getFunction("permit");
+				(await permit(
 					message.owner,
 					message.spender,
 					message.value,
@@ -145,7 +145,7 @@ const Page = () => {
 					v,
 					r,
 					s
-				).send({ from: message.owner });
+				)).send({ from: message.owner });
 
 			}}>
 				Permit
