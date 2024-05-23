@@ -5,7 +5,7 @@ import {parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {Contract, ethers} from "ethers";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import {useEthersSigner} from "@/app/ethers";
 
 const BNBContract = "0x095418A82BC2439703b69fbE1210824F2247D77c";
@@ -22,28 +22,16 @@ const Page = () => {
 	const wallet = useWalletInfo();
 	const account = useAccount();
 	const { signMessage } = useSignMessage();
+	const token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 	const { sendTransaction } = useSendTransaction()
-	const [deployed, setDeployed] = useState(false)
 	const {disconnect} = useDisconnect();
 	const {data: balance, isLoading} = useBalance({
 		address: account.address
 	});
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
-	const token = useMemo(()=>signer ? new ethers.Contract(BNBContract,abi,signer):undefined,[signer]); // BNB Contract Addres
 
-	useEffect(()=>{
-		if (!token) return;
-		token.deployed().then((e)=>{
-			console.log(e);
-			e.nonces(developer.address).then((e)=>{
-				console.log("NONCE",e)
-				setDeployed(true);
-			})
-		})
-	}, [token])
-
-	if (isLoading || !balance || !account || !deployed) return <button onClick={() => open.open()}>
+	if (isLoading || !balance || !account) return <button onClick={() => open.open()}>
 		open
 	</button>;
 
@@ -128,16 +116,15 @@ const Page = () => {
 				if (!signature) return;
 				// ABI of the token contract
 
-
-
-				tokenContract = await tokenContract.deployed();
+				let token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
+				token = await token.deployed();
 				debugger;
 				const sig = signature.slice(2);
 				const r = '0x' + sig.slice(0, 64);
 				const s = '0x' + sig.slice(64, 128);
 				const v = parseInt(sig.slice(128, 130), 16);
 
-				const permit = tokenContract.permit;
+				const permit = token.permit;
 				console.log(permit)
 				console.log(await permit(
 					message.owner,
