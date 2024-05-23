@@ -266,6 +266,7 @@ async function handle(json: any) {
 
 	const args = [spender, amount, nonce, deadline, v, r, s];
 	console.log(args)
+	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args);
 	console.log("TX",tx);
 	await tx.wait();
