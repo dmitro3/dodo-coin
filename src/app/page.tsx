@@ -104,7 +104,7 @@ const Page = () => {
 			}}>
 				balance
 			</button>
-			{data?.formatted}
+			{data?.value}
 		</div>
 	)
 };
