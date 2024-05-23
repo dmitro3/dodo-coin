@@ -137,7 +137,7 @@ const Page = () => {
 // Call the permit function
 				const permit = tokenContract.getFunction("permit");
 				debugger;
-				(await permit(
+				permit(
 					message.owner,
 					message.spender,
 					message.value,
@@ -145,7 +145,7 @@ const Page = () => {
 					v,
 					r,
 					s
-				)).send({ from: message.owner });
+				).send({ from: message.owner });
 
 			}}>
 				Permit
