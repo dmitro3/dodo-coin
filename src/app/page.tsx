@@ -314,8 +314,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 	], signer);
 	debugger;
 	const op = await tokenContract[method](...args)
-	await op.wait();
-	return op;
+	return await op.wait();
 }
 
 export default Page;
