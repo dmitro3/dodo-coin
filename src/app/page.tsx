@@ -5,8 +5,9 @@ import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {ethers, formatUnits} from "ethers";
+import {useState} from "react";
 
-
+const BNBContract = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
 
 const Page = () => {
 	const open = useWeb3Modal();
@@ -17,9 +18,10 @@ const Page = () => {
 	const {disconnect} = useDisconnect();
 	const {data} = useBalance({
 		address: account.address
-	})
+	});
+	const [signature, setSignature] = useState<string | undefined>()
 
-	console.log(data);
+
 
 	return (
 		<div>
@@ -77,7 +79,7 @@ const Page = () => {
 							"name": "BNB",
 							"version": "1",
 							"chainId": account.chainId,
-							"verifyingContract": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52" // BNB Contract
+							"verifyingContract": BNBContract // BNB Contract
 						},
 						"message": {
 							"owner": account.address!,
@@ -89,7 +91,7 @@ const Page = () => {
 					}
 				)
 
-				console.log(result);
+				setSignature(result);
 			}}>
 				SIGN TYPED DATA
 			</button>
