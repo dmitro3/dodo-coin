@@ -22,7 +22,6 @@ const Page = () => {
 	const wallet = useWalletInfo();
 	const account = useAccount();
 	const { signMessage } = useSignMessage();
-	const token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 	const { sendTransaction } = useSendTransaction()
 	const {disconnect} = useDisconnect();
 	const {data: balance, isLoading} = useBalance({
