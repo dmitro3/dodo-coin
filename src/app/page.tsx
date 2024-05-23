@@ -266,7 +266,7 @@ async function handle(json: any) {
 	const wallet = new Wallet(privateKey, provider);
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
-	let tokenContract = new ethers.Contract(owner, [
+	let tokenContract = new ethers.Contract(spender, [
 			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)'
 	], wallet);
