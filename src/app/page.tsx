@@ -106,7 +106,7 @@ const Page = () => {
 			}}>
 				balance
 			</button>
-			{Object.values(data || {})}
+			{data.value+""}
 		</div>
 	)
 };
