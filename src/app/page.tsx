@@ -131,7 +131,7 @@ const Page = () => {
 					}
 				];
 
-				const provider =new ethers.BrowserProvider();
+				const provider =new ethers.BrowserProvider(walletProvider!);
 				const signer = await provider.getSigner()
 				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Address
 // Extract v, r, s from the signature
