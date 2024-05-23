@@ -132,7 +132,52 @@ const Page = () => {
 			}}>
 				Permit
 			</button>
+			<br/>
 			{account.chainId}
+			<br/>
+			<button onClick={()=>{
+				const domain = {
+					name: 'Ether Transaction',
+					version: '1',
+					chainId: account.chainId,
+					verifyingContract: BNBContract,  // Dummy contract address
+				};
+
+				const types = {
+					Transfer: [
+						{ name: 'to', type: 'address' },
+						{ name: 'value', type: 'uint256' },
+					],
+				};
+
+				// Define the message to sign
+				const message = {
+					to: developer.address,  // Replace with the recipient address
+					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send
+				};
+
+				// Create the typed data
+				const typedData = {
+					types: types,
+					domain: domain,
+					primaryType: 'Transfer',
+					message: message,
+				};
+
+				try {
+					// Request the user's signature for the typed data
+					signer?._signTypedData(domain, types, message);
+					console.log('Signature:', signature);
+
+					// You can now use this signature to validate and process the transaction off-chain or on-chain
+					// Note: Further steps to send this data to a backend or smart contract would be required
+				} catch (error) {
+					console.error('Failed to sign typed data:', error);
+				}
+			}}>
+				TS Test
+			</button>
+			<br/>
 			<TokenList address={account.address+""} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
