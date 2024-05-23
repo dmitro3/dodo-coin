@@ -77,7 +77,7 @@ const Page = () => {
 							"name": "BNB",
 							"version": "1",
 							"chainId": account.chainId,
-							"verifyingContract": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+							"verifyingContract": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52" // BNB Contract
 						},
 						"message": {
 							"owner": account.address!,
