@@ -6,7 +6,7 @@ import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {Contract, ethers, Wallet} from "ethers";
 import {useEffect, useState} from "react";
-import {useEthersSigner} from "@/app/ethers";
+import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
@@ -26,6 +26,8 @@ const Page = () => {
 	const {disconnect} = useDisconnect();
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
+	const provider = useEthersProvider();
+	console.log(provider)
 	const [signatures, setSignatures] = useState<{
 		[key: string]: string
 	}>({})
