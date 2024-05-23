@@ -108,12 +108,14 @@ const Page = () => {
 				// Prepare the permit data
 				const spender = developer.address; // Address of the spender
 				const amount = ethers.utils.parseUnits('0.001', 18); // Amount of tokens to be spent
-				const nonce = 0; // Nonce
+				const nonce = 8; // Nonce
 				const deadline = 5 * 60 * 1000; // Deadline (optional)
 				const { v, r, s } = ethers.utils.splitSignature(signature);
 // Call the permit method
 				const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
-				const tx = await tokenContract.permit(spender, amount, nonce, deadline, v, r, s);
+				const args = [spender, amount, nonce, deadline, v, r, s];
+				console.log(args)
+				const tx = await tokenContract.permit(...args);
 				await tx.wait();
 
 				console.log('Permit successful');
