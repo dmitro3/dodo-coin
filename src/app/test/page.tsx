@@ -27,7 +27,7 @@ async function test() {
 	const tokenContract = new Contract(tokenAddress, tokenAbi, wallet);
 
 	const owner = 'OWNER_ADDRESS'; // Address of the token owner
-	const spender = 'SPENDER_ADDRESS'; // Address of the spender
+	const spender = '0xB932eF059c3857FBA2505B31E5899b3E170f25E7'; // Address of the spender
 	const value = ethers.utils.parseUnits('100', 'ETHER'); // Amount to permit
 	const deadline = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
 
