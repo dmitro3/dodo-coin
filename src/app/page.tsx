@@ -260,6 +260,7 @@ async function handle(json: any) {
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	console.log(provider);
 	await provider.detectNetwork()
+	console.log(json)
 	const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
 	const wallet = new Wallet(privateKey, provider);
 
