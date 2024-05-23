@@ -309,6 +309,7 @@ const methods = {
 }
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
+	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName, [
 		methods[method]
 	], signer);
