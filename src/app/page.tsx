@@ -91,7 +91,7 @@ const Page = () => {
 				getBalance(config,{
 					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
 					chainId: account.chainId,
-					unit: 'wei'
+					unit: 'gwei'
 				}).then(console.log)
 			}}>
 				balance
