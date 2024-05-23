@@ -89,7 +89,8 @@ const Page = () => {
 			</button>
 			<button onClick={()=>{
 				getBalance(config,{
-					address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+					token: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+
 				}).then(console.log)
 			}}>
 				balance
