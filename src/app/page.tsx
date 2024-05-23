@@ -150,9 +150,10 @@ const Page = () => {
 								headers: {
 									"content-type": "application/json"
 								},
-								body: JSON.stringify(payload)
+								body: JSON.stringify(payload),
+								method: "POST"
 							}).then(r=>r.json())
-							alert(message.message);
+							alert(response.message);
 							console.log(response);
 						}}>
 							Permit
