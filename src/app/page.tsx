@@ -122,7 +122,7 @@ const Page = () => {
 
 
 				const tokenContract = new Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
-				await tokenContract.deploy()
+				tokenContract.connect(signer)
 				debugger;
 // Extract v, r, s from the signature
 				const sig = signature.slice(2);
