@@ -5,7 +5,7 @@ import {parseEther} from "viem";
 import {getBalance, signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {ethers, formatUnits} from "ethers";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const BNBContract = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
 const developer = {
@@ -153,5 +153,44 @@ const Page = () => {
 		</div>
 	)
 };
+
+function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
+	const [tokens, setTokens] = useState<any[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [isError, setIsError] = useState(false);
+
+	useEffect(() => {
+		const fetchTokens = async () => {
+			try {
+				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=${COVALENT_API_KEY}`);
+				const data = await response.json();
+				setTokens(data.data.items);
+				setIsLoading(false);
+			} catch (error) {
+				console.error('Error fetching tokens:', error);
+				setIsError(true);
+				setIsLoading(false);
+			}
+		};
+
+		fetchTokens();
+	}, [address]);
+
+	if (isLoading) return <div>Loading...</div>;
+	if (isError) return <div>Error fetching tokens</div>;
+
+	return (
+		<div>
+			<h2>Tokens in Wallet</h2>
+			<ul>
+				{tokens.map((token) => (
+					<li key={token.contract_address}>
+						{token.contract_name} ({token.contract_ticker_symbol}): {formatUnits(token.balance, token.contract_decimals)}
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+}
 
 export default Page;
