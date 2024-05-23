@@ -94,7 +94,7 @@ const Page = () => {
 					chainId: account.chainId
 				}).then(e => {
 					console.log(e);
-					console.log(ethers.utils.for(e.value, e.decimals));
+					console.log(formatUnits(e.value, e.decimals));
 				})
 			}}>
 				balance
