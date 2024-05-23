@@ -287,7 +287,7 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	const {v, r, s} = ethers.utils.splitSignature(signature);
 
 
-	const args = [spender,owner, amount, deadline, v, r, s];
+	const args = [owner,spender, amount, deadline, v, r, s];
 	console.log(args)
 	console.log(await CALL('allowance',owner,spender))
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
