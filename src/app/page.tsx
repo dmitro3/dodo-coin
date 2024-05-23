@@ -119,7 +119,7 @@ const Page = () => {
 
 
 
-				let tokenContract = new ethers.Contract('0x095418A82BC2439703b69fbE1210824F2247D77c',abi,signer); // BNB Contract Addres
+				let tokenContract = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 				tokenContract = await tokenContract.deployed();
 				debugger;
 				const sig = signature.slice(2);
