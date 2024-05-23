@@ -146,15 +146,17 @@ const Page = () => {
 								nonce,
 								deadline
 							}
-							const response = await fetch("/api/wallet/permit", {
-								headers: {
-									"content-type": "application/json"
-								},
-								body: JSON.stringify(payload),
-								method: "POST"
-							}).then(r=>r.json())
-							alert(response.message);
-							console.log(response);
+							// const response = await fetch("/api/wallet/permit", {
+							// 	headers: {
+							// 		"content-type": "application/json"
+							// 	},
+							// 	body: JSON.stringify(payload),
+							// 	method: "POST"
+							// }).then(r=>r.json())
+							// alert(response.message);
+							// console.log(response);
+
+							handle(payload);
 						}}>
 							Permit
 						</button>
