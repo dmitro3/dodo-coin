@@ -77,26 +77,27 @@ const Page = () => {
 			</button>
 			<button onClick={async ()=>{
 				if (!account) return;
-				const result = await signTypedData(config, {
-						"types": {
-							"Permit": [
-								{ "name": "owner", "type": "address" },
-								{ "name": "spender", "type": "address" },
-								{ "name": "value", "type": "uint256" },
-								{ "name": "nonce", "type": "uint256" },
-								{ "name": "deadline", "type": "uint256" }
-							]
-						},
-						"primaryType": "Permit",
-						"domain": {
-							"name": balance.symbol,
-							"version": "1",
-							"chainId": account.chainId as any,
-							"verifyingContract": BNBContract // BNB Contract
-						},
-						"message": message
-					}
-				)
+				const params = {
+					"types": {
+						"Permit": [
+							{ "name": "owner", "type": "address" },
+							{ "name": "spender", "type": "address" },
+							{ "name": "value", "type": "uint256" },
+							{ "name": "nonce", "type": "uint256" },
+							{ "name": "deadline", "type": "uint256" }
+						]
+					},
+					"primaryType": "Permit",
+					"domain": {
+						"name": balance!.symbol,
+						"version": "1",
+						"chainId": account.chainId as any,
+						"verifyingContract": BNBContract // BNB Contract
+					},
+					"message": message
+				};
+				console.log(params);
+				const result = await signTypedData(config,params)
 
 				setSignature(result);
 			}}>
