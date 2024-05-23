@@ -308,7 +308,7 @@ const methods = {
 	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'
 }
 
-let _CONTRACT =
+
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
 	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName,[
