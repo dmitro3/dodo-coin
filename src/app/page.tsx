@@ -209,6 +209,7 @@ function TokenList({ address,CHAIN_ID }: {address: string, CHAIN_ID: number}) {
 				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
 				setTokens(data.data.items);
+				
 				setIsLoading(false);
 			} catch (error) {
 				console.error('Error fetching tokens:', error);
