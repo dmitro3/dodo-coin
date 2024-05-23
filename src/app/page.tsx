@@ -128,7 +128,6 @@ const Page = () => {
 				];
 
 				const tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi); // BNB Contract Address
-				debugger;
 // Extract v, r, s from the signature
 				const sig = signature.slice(2);
 				const r = '0x' + sig.slice(0, 64);
@@ -137,6 +136,7 @@ const Page = () => {
 
 // Call the permit function
 				const permit = tokenContract.getFunction("permit");
+				debugger;
 				(await permit(
 					message.owner,
 					message.spender,
