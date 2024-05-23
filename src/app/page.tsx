@@ -275,8 +275,7 @@ async function handle(json: any) {
 	console.log(args)
 	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
 	const tx = await tokenContract.permit(...args, {
-		gasLimit,
-		value: amount
+		gasLimit
 	});
 	console.log("TX",tx);
 	await tx.wait();
