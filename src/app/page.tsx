@@ -113,7 +113,7 @@ const Page = () => {
 				const { v, r, s } = ethers.utils.splitSignature(signature);
 // Call the permit method
 				const tokenContract = new ethers.Contract(BNBContract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
-				const args = [spender, amount, nonce, deadline, v, r, s,''];
+				const args = [spender, amount, nonce, deadline, v, r, s];
 				console.log(args)
 				const tx = await tokenContract.permit(...args);
 				await tx.wait();
