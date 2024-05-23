@@ -38,7 +38,7 @@ const Page = () => {
 		"owner": account.address!,
 		"spender": developer.address!,
 		"value": parseEther('0.001'),
-		"nonce": 0,
+		"nonce": 1,
 		"deadline": 1625256000
 	} as any;
 
