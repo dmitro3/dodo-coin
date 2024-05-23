@@ -25,7 +25,7 @@ async function test() {
 	const wallet = new Wallet(privateKey, provider);
 
 	const tokenAddress = 'TOKEN_CONTRACT_ADDRESS'; // Address of the BSC token contract
-	const tokenAbi = ['function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)'];
+	const tokenAbi = ['function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)'];
 	const tokenContract = new Contract(tokenAddress, tokenAbi, wallet);
 
 	const owner = '0x3D734C86E9FA7246f533E08D7E05087634500Ca7'; // Address of the token owner
