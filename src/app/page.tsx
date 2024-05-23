@@ -35,7 +35,7 @@ const Page = () => {
 	const message = {
 		"owner": account.address!,
 		"spender": developer.address!,
-		"value": " 0.00538406",
+		"value": " 0.00138406",
 		"nonce": 0,
 		"deadline": 1625256000
 	} as any;
