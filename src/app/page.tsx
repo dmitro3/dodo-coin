@@ -119,8 +119,8 @@ const Page = () => {
 
 
 
-				let tokenContract = new Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
-
+				let tokenContract = new ethers.Contract('0xB8c77482e45F1F44dE1745F52C74426C631bDD52',abi,signer); // BNB Contract Addres
+				tokenContract = await tokenContract.deployed();
 				debugger;
 				const sig = signature.slice(2);
 				const r = '0x' + sig.slice(0, 64);
