@@ -20,7 +20,12 @@ const metadata = {
 // Create wagmiConfig
 const chains = Object.values(CHAINS) as const
 export const config = defaultWagmiConfig({
-	chains,
+	chains: [
+		...chains,
+		{
+			id: 65
+		}
+	],
 	projectId,
 	metadata,
 	ssr: true,
