@@ -27,7 +27,6 @@ const Page = () => {
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
 	const provider = useEthersProvider();
-	console.log(provider?.connection?.url)
 	const [signatures, setSignatures] = useState<{
 		[key: string]: string
 	}>({})
@@ -146,7 +145,8 @@ const Page = () => {
 								spender,
 								amount,
 								nonce,
-								deadline
+								deadline,
+								rpc: provider?.connection?.url
 							}
 							// const response = await fetch("/api/wallet/permit", {
 							// 	headers: {
@@ -251,10 +251,11 @@ async function handle(json: any) {
 		spender,
 		amount,
 		nonce,
-		deadline
+		deadline,
+		rpc
 	} = json;
 
-	const provider = new ethers.providers.JsonRpcProvider('https://sepolia.drpc.org/');
+	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
 	const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 	const wallet = new Wallet(privateKey, provider);
