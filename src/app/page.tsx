@@ -2,12 +2,11 @@
 import {useWalletInfo, useWeb3Modal} from "@web3modal/scaffold-react";
 import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessage} from "wagmi";
 import {parseEther} from "viem";
-import {getBalance, signTypedData} from "@wagmi/core";
+import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers, Contract, ContractFactory, BaseContract} from "ethers";
+import {Contract, ethers} from "ethers";
 import {useEffect, useState} from "react";
-import {useWeb3ModalProvider} from "@web3modal/ethers/react";
-import {useEthersProvider, useEthersSigner} from "@/app/ethers";
+import {useEthersSigner} from "@/app/ethers";
 
 const BNBContract = "0x095418A82BC2439703b69fbE1210824F2247D77c";
 const developer = {
@@ -18,7 +17,6 @@ const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useAccount();
-	const { walletProvider } = useWeb3ModalProvider()
 	const { signMessage } = useSignMessage();
 
 
