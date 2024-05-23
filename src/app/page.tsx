@@ -155,7 +155,7 @@ const Page = () => {
 				const message = {
 					to: developer.address,  // Replace with the recipient address
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
-					value2: ""
+					value2: 10000
 				};
 
 				// Create the typed data
