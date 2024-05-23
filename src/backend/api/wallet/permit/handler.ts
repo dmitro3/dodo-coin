@@ -14,13 +14,17 @@ export default class WalletPermit extends Handler {
 				deadline
 			} = this.json;
 
-			const provider = new ethers.providers.JsonRpcProvider('https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public');
+			const provider = new ethers.providers.JsonRpcProvider('https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public', {
+				chainId: 2442,
+				name: "Polygon zkEVM Cardona Testnet",
+
+			});
 			await provider.detectNetwork()
 			const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 			const wallet = new Wallet(privateKey, provider);
 
 			const {v, r, s} = ethers.utils.splitSignature(signature);
-			let tokenContract = new ethers.Contract(contract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], provider);
+			let tokenContract = new ethers.Contract(contract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], wallet);
 			tokenContract = await tokenContract.deployed();
 			const args = [spender, amount, nonce, deadline, v, r, s];
 			console.log(args)
