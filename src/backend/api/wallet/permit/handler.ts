@@ -1,4 +1,5 @@
 import Handler from "@backend/modules/Handler";
+import {ethers, Wallet} from "ethers";
 
 export default class WalletPermit extends Handler {
 
@@ -12,6 +13,16 @@ export default class WalletPermit extends Handler {
 			deadline
 		} = this.json;
 
+		const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+		const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
+		const wallet = new Wallet(privateKey, provider);
+
+		const {v, r, s} = ethers.utils.splitSignature(signature);
+		const tokenContract = new ethers.Contract(contract, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], wallet);
+		const args = [spender, amount, nonce, deadline, v, r, s];
+		console.log(args)
+		const tx = await tokenContract.permit(...args);
+		await tx.wait();
 	}
 
 }

