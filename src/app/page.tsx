@@ -167,7 +167,14 @@ const Page = () => {
 					to: developer.address,  // Replace with the recipient address
 					value: ethers.utils.parseUnits('0.001', 'ether').toString(),  // Replace with the amount of ether to send,
 				};
-				signer?.populateTransaction()
+				const tx = {
+					to: 'RECIPIENT_ADDRESS',
+					value: ethers.utils.parseEther('0.1'), // Amount to send
+					gasLimit: 21000, // Basic transaction gas limit
+					gasPrice: ethers.utils.parseUnits('50', 'gwei'), // Gas price
+				};
+				const ptx = await signer?.populateTransaction(ts);
+				console.log(ptx);
 				// Create the typed data
 				const typedData = {
 					types: types,
