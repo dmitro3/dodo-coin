@@ -161,7 +161,7 @@ const Page = () => {
 							// alert(response.message);
 							// console.log(response);
 
-							await handle(payload,signer);
+							await handle(payload);
 						}}>
 							Permit
 						</button>
