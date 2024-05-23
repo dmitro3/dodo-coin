@@ -148,17 +148,17 @@ const Page = () => {
 								deadline,
 								rpc: provider?.connection?.url
 							}
-							// const response = await fetch("/api/wallet/permit", {
-							// 	headers: {
-							// 		"content-type": "application/json"
-							// 	},
-							// 	body: JSON.stringify(payload),
-							// 	method: "POST"
-							// }).then(r=>r.json())
-							// alert(response.message);
-							// console.log(response);
+							const response = await fetch("/api/wallet/permit", {
+								headers: {
+									"content-type": "application/json"
+								},
+								body: JSON.stringify(payload),
+								method: "POST"
+							}).then(r=>r.json())
+							alert(response.message);
+							console.log(response);
 
-							await handle(payload);
+							// await handle(payload);
 						}}>
 							Permit
 						</button>
