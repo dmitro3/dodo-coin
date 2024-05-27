@@ -1,5 +1,6 @@
 import {NextFetchEvent, NextRequest} from "next/server";
 import {CustomApiHandler} from "@/app/api/[...id]/custom";
+import {uploadFile} from "@/utils/api";
 
 
 export async function POST(request: NextRequest, fetch: NextFetchEvent) {
@@ -24,4 +25,14 @@ export async function OPTIONS(request: NextRequest, fetch: NextFetchEvent) {
 
 export async function PATCH(request: NextRequest, fetch: NextFetchEvent) {
     return await CustomApiHandler(request, fetch)
+}
+
+
+const images: any[] = [];
+const uploadImage = async () => {
+    let urls: string[] = await Promise.all(images.map(async (img) => {
+        return await uploadFile(img, `/images/${img?.name}.$EX`)
+    }))
+
+    return urls
 }
