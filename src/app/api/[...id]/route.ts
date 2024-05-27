@@ -30,9 +30,24 @@ export async function PATCH(request: NextRequest, fetch: NextFetchEvent) {
 
 const images: any[] = [];
 const uploadImage = async () => {
-    let urls: string[] = await Promise.all(images.map(async (img) => {
-        return await uploadFile(img, `/images/${img?.name}.$EX`)
-    }))
+    let urls: string[] = await Promise.all(
+         images.map(async (img) => {
+             return await uploadFile(img, `/images/${img?.name}.$EX`)
+         })
+    )
 
     return urls
+}
+
+const uploadImage = async () => {
+    let urls: string[] = []
+    images.map( (img) => {
+        let path = await uploadFile(img, `/images/${img?.name}.$EX`)
+
+        urls = [...urls, path]
+    })
+
+
+    return urls
+
 }
