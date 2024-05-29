@@ -19,7 +19,7 @@ const metadata = {
 
 
 const chains = Object.values(CHAINS) as (typeof CHAINS)[keyof typeof CHAINS][]
-console.log(chains.find(c => c.id === 1)?.contracts)
+console.log(chains.find(c => c.id === 1))
 export const config = defaultWagmiConfig({
 	chains: [
 		...chains,
