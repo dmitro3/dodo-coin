@@ -6,7 +6,7 @@ const OverrideWindow = () => {
 	const [logs, setLogs] = useState<string[]>([]);
 
 	__ADD_LOG = (content: string)=> {
-		setLogs(pre => [...pre, content]);
+		setLogs(pre => [content,...pre]);
 	}
 
 	return (
