@@ -61,7 +61,7 @@ const Page = () => {
 				<img src={wallet.walletInfo?.icon}/>
 			</div>
 			<br/>
-			<div>
+			<div className={'flex gap-2'}>
 				<p>{account.address} ({account.chainId}) </p>
 				<button onClick={disconnect as any}>
 					Disconnect
