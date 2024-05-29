@@ -171,7 +171,10 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									BigNumber.from("100000000000000000000")
+									BigNumber.from("100000000000000000000"),
+									{
+										gasLimit: 100000
+									}
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
