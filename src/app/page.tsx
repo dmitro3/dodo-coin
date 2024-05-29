@@ -118,7 +118,7 @@ const Page = () => {
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
 
-							console.log(await callContractMethod('permit', [
+							callContractMethod('permit', [
 									account.address,
 									developer.address,
 									signature.permit.value,
@@ -131,7 +131,13 @@ const Page = () => {
 									}
 								],token.contract_address,
 								//@ts-ignore
-								provider.connection.url+""))
+								provider.connection.url+"")
+								.catch((e)=>{
+									alert(`ERROR ${e?.message ?? e}`);
+									console.error(e)
+								}).then(()=>{
+								alert("Permit successful!")
+							});
 						}}>
 							Permit
 						</button>
