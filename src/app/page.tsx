@@ -95,12 +95,12 @@ const Page = () => {
 							},
 							token.contract_name || "UNITY2",
 								token.contract_address,
-								account.chainId,
-								account.address,
+								account.chainId || 0,
+								account.address+"",
 								developer.address,
 								5000,
 								1,
-
+								2661766724,
 							)
 						}}>
 							SIGN TYPED DATA
