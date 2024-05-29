@@ -176,6 +176,7 @@ const Page = () => {
 			})}
 			<br/>
 			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
+			<TokenList address={developer.address + ""}  CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
 };
