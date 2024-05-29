@@ -53,7 +53,7 @@ const Page = () => {
 	return (
 		<div className={'flex flex-col gap-3 items-start'}>
 			<button disabled={!!account?.address} onClick={() => open.open()}>
-				Connect Wallet
+				{!!account.address ? "CONNECTED":"Connect Wallet"}
 			</button>
 			<img src={wallet.walletInfo?.icon}/>
 			<br/>
