@@ -144,9 +144,8 @@ const Page = () => {
 							// Prepare the permit data
 							const spender = developer.address; // Address of the spender
 							const amount = message.value+""; // Amount of tokens to be spent
-							console.log("AMOUNT", amount);
 							const nonce = message.nonce; // Nonce
-							const deadline = 5 * 60 * 1000; // Deadline (optional)
+							const deadline = message.nonce; // Deadline (optional)
 
 							console.log(provider);
 							const payload = {
