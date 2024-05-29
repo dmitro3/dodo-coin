@@ -112,7 +112,7 @@ const Page = () => {
 								"domain": {
 									"name": token.contract_ticker_symbol,
 									"version": "1",
-									"chainId": account.chainId,
+									"chainId": +(account.chainId || "0"),
 									"verifyingContract": token.contract_address // BNB Contract
 								},
 								"message": message
