@@ -171,7 +171,7 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									100 * 18
+									100 * 10**18
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
