@@ -258,7 +258,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 		signerOrRPC = await createSigner(signerOrRPC);
 	}
 	console.log("CALL", method,args);
-	let tokenContract = new ethers.Contract("ETH",[
+	let tokenContract = new ethers.Contract("0x2170ed0880ac9a755fd29b2688956bd959f933f8",[
 		methods[method]
 	], signerOrRPC);
 
