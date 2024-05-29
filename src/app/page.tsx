@@ -30,7 +30,6 @@ const Page = () => {
 	}>({})
 	const {data: balance, isLoading} = useBalance({
 		address: account.address,
-
 	})
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 

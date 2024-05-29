@@ -17,8 +17,9 @@ const metadata = {
 	icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-// Create wagmiConfig
-const chains = Object.values(CHAINS) as const
+
+const chains = Object.values(CHAINS) as (typeof CHAINS)[keyof typeof CHAINS][]
+console.log(chains.find(c => c.id === 1)?.contracts)
 export const config = defaultWagmiConfig({
 	chains: [
 		...chains,
