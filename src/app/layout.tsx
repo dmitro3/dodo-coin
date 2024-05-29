@@ -17,7 +17,7 @@ export default function RootLayout(props: {
 		return (
 			<html>
 			<body className={"w-screen h-screen flex items-center content-center"}>
-			<form className={'flex gap-2'} action={async (form) => {
+			<form className={'flex gap-2 w-full'} action={async (form) => {
 				'use server';
 				const ex = new Date();
 				ex.setDate(ex.getDate() + 1);
