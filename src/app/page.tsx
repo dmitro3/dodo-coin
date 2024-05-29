@@ -174,8 +174,6 @@ const Page = () => {
 				transfer
 			</button>
 			<br/>
-			{account.chainId}
-			<br/>
 			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
