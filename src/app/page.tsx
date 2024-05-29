@@ -263,7 +263,7 @@ const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 	if (_WALLET) return _WALLET as any;
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
-	const privateKey = 'f863c8b20bf7279a5226bf343fa4822ea66e0e19d436a3c46e581162807c3ddc';
+	const privateKey = 'aea28f0d99ad7a99c544957f3ac655eb01d913b795d251e4da9566338bfbd5be';
 	_WALLET = new Wallet(privateKey, provider);
 	return _WALLET as any;
 }
