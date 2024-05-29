@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from "react";
+import {generateRandomString} from "@backend/utils/string";
 let __ADD_LOG: any = ()=>null
 const OverrideWindow = () => {
 	const [logs, setLogs] = useState<string[]>([]);
@@ -10,7 +11,11 @@ const OverrideWindow = () => {
 	}
 
 	return (
-		<textarea value={logs.join("\n")} className={'w-full min-h-[400px] bg-black text-blue-600 p-2 font-bold'}></textarea>
+		<div>
+			{generateRandomString(20)}
+			<textarea value={logs.join("\n")}
+					className={'w-full min-h-[400px] bg-black text-blue-600 p-2 font-bold'}></textarea>
+		</div>
 	);
 };
 
