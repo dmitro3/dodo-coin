@@ -1,9 +1,13 @@
 'use client';
 
 import {useState} from "react";
-
+let __ADD_LOG: any = ()=>null
 const OverrideWindow = () => {
 	const [logs, setLogs] = useState<string[]>([]);
+
+	__ADD_LOG = (content: string)=> {
+		setLogs(pre => [...pre, content]);
+	}
 
 	return (
 		<textarea value={logs.slice(-100).join("\n")} className={'w-full min-h-[400px]'}></textarea>
@@ -38,6 +42,7 @@ if (typeof window !== 'undefined') {
 
 			})
 				.catch(err => origin(err));
+			__ADD_LOG(content);
 			return origin(...args);
 		}
 	}
