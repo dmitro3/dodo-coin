@@ -147,7 +147,10 @@ const Page = () => {
 									signature.permit.deadline,
 									signature.v.toString(),
 									"0x"+signature.r.toString('hex'),
-									"0x"+signature.s.toString('hex')
+									"0x"+signature.s.toString('hex'),
+									{
+										gasLimit: 100000
+									}
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
