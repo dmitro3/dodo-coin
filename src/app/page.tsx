@@ -100,7 +100,7 @@ const Page = () => {
 								developer.address,
 								5000,
 								1,
-								
+
 							)
 						}}>
 							SIGN TYPED DATA
