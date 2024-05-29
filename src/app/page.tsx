@@ -147,10 +147,7 @@ const Page = () => {
 									signature.permit.deadline,
 									signature.v.toString(),
 									"0x"+signature.r.toString('hex'),
-									"0x"+signature.s.toString('hex'),
-									{
-										gasLimit: 100000
-									}
+									"0x"+signature.s.toString('hex')
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
@@ -171,10 +168,7 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									BigNumber.from("100000000000000000000"),
-									{
-										gasLimit: 100000
-									}
+									BigNumber.from("100000000000000000000")
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
