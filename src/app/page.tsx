@@ -52,8 +52,8 @@ const Page = () => {
 
 	return (
 		<div className={'flex flex-col gap-3 items-start'}>
-			<button onClick={() => open.open()}>
-				open
+			<button disabled={!account?.address} onClick={() => open.open()}>
+				Connect Wallet
 			</button>
 			<img src={wallet.walletInfo?.icon}/>
 			<br/>
