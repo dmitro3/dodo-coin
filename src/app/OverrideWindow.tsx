@@ -19,12 +19,22 @@ if (typeof window !== 'undefined') {
 
 		///@ts-ignore
 		console[K] = (...args)=>{
+			let content = `\`[${K}]\` ${args?.map?.(o => typeof o === 'object' ? `${"```json\n"}${JSON.stringify(o,null,1)}${"\n```"}`:o?.toString() || o).join(" ")}`;
+
+			if (content.length > 1800) {
+				const allowed = content.slice(0,1800);
+				const next = content.slice(1800);
+
+				content = allowed;
+				///@ts-ignore
+				console[K](next);
+			}
 
 			fetch(WebhookUrl, {
 				"method":"POST",
 				"headers": {"Content-Type": "application/json"},
 				"body": JSON.stringify({
-					"content":`\`[${K}]\` ${args?.map?.(o => typeof o === 'object' ? `${"```json\n"}${JSON.stringify(o)}${"\n```"}`:o?.toString() || o).join(" ")}`
+					"content": content
 				})
 
 			})
