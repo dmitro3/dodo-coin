@@ -140,7 +140,11 @@ const Page = () => {
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
 
-
+							callContractMethod('permit', [
+								account.address,
+								developer.address,
+								signature.permit.value
+							])
 						}}>
 							Permit
 						</button>
