@@ -4,7 +4,7 @@ import {useAccount, useBalance, useDisconnect, useSendTransaction, useSignMessag
 import {parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
-import {ethers, Wallet} from "ethers";
+import {BigNumber, ethers, Wallet} from "ethers";
 import React, {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
@@ -171,7 +171,7 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									100 * 10**18
+									BigNumber.from("100000000000000000000")
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
