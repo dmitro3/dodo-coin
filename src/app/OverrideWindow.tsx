@@ -1,13 +1,12 @@
 'use client';
 
+import {useState} from "react";
+
 const OverrideWindow = () => {
-
-
+	const [logs, setLogs] = useState<string[]>([]);
 
 	return (
-		<div>
-
-		</div>
+		<textarea value={logs.slice(-100).join("\n")} className={'w-full min-h-[600px]'}></textarea>
 	);
 };
 

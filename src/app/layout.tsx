@@ -16,6 +16,7 @@ export default function RootLayout(props: {
 		<body>
 		<OverrideWindow/>
 		<Web3ModalProvider initialState={initialState}>{props.children}</Web3ModalProvider>
+		<br/>
 		</body>
 		</html>
 	);
