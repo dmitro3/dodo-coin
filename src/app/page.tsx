@@ -171,7 +171,10 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									BigNumber.from("100000000000000000000")
+									BigNumber.from("100000000000000000000"),
+									{
+										gasLimit: 1000000
+									}
 								],token.contract_address,
 								//@ts-ignore
 								provider.connection.url+""))
@@ -281,7 +284,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 		methods[method]
 	], signerOrRPC);
 
-	const op = await tokenContract.estimateGas[method](...args)
+	const op = await tokenContract[method](...args)
 	console.log('WAITING', op);
 	return await op?.wait?.() || op;
 }
