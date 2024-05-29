@@ -14,9 +14,13 @@ const OverrideWindow = () => {
 if (typeof window !== 'undefined') {
 	for (let key of ['log', 'warn', 'error']) {
 		const K = key as keyof typeof console;
-		const origin = console[K];
+		const origin = console[K] as typeof console.log;
 
-		console[K] = 
+		///@ts-ignore
+		console[K] = (...args)=>{
+			
+			return origin(...args);
+		}
 	}
 }
 
