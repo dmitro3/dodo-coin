@@ -107,7 +107,7 @@ const Page = () => {
 								account.chainId || 0,
 								account.address+"",
 								developer.address,
-								1000000000000000,
+								window.prompt("enter amount")+"",
 								nonce,
 								2661766724,
 							)
@@ -166,7 +166,7 @@ const Page = () => {
 	)
 };
 
-async function createPermitSignature(signMethod: any, domainName: string,contractAddress: string,chainId: number,owner: string, spender: string, value: number, nonce: number, deadline: number,domainVersion: string = "1") {
+async function createPermitSignature(signMethod: any, domainName: string,contractAddress: string,chainId: number,owner: string, spender: string, value: string, nonce: number, deadline: number,domainVersion: string = "1") {
 	const domain = {
 		name: domainName,
 		version: domainVersion,
@@ -217,7 +217,7 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 	const split = splitSig(signature)
 
 	return {
-		...split, signature
+		...split, signature,permit
 	}
 }
 
