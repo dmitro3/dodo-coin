@@ -240,7 +240,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 	], signer);
 
 	const op = await tokenContract[method](...args)
-	return await op.wait();
+	return await op?.wait?.() || op;
 }
 
 export default Page;
