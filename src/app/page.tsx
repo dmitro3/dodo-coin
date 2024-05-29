@@ -52,10 +52,12 @@ const Page = () => {
 
 	return (
 		<div className={'flex flex-col gap-3 items-start'}>
-			<button disabled={!!account?.address} onClick={() => open.open()}>
-				{!!account.address ? "CONNECTED":"Connect Wallet"}
-			</button>
-			<img src={wallet.walletInfo?.icon}/>
+			<div className={'flex gap-2 items-center'}>
+				<button disabled={!!account?.address} onClick={() => open.open()}>
+					{!!account.address ? "CONNECTED" : "Connect Wallet"}
+				</button>
+				<img src={wallet.walletInfo?.icon}/>
+			</div>
 			<br/>
 			<button onClick={() => {
 				console.log(signMessage({
