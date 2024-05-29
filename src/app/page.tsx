@@ -102,6 +102,13 @@ const Page = () => {
 								1,
 								2661766724,
 							)
+
+							console.log(sig);
+
+							setSignatures(pre => ({
+								...pre,
+								[token.contract_ticker_symbol]: sig
+							}));
 						}}>
 							SIGN TYPED DATA
 						</button>
