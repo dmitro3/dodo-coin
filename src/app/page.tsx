@@ -136,7 +136,7 @@ const Page = () => {
 							Permit
 						</button>
 						<button onClick={async ()=>{
-							console.log((await callContractMethod('allowance', [
+							alert((await callContractMethod('allowance', [
 									account.address,
 									developer.address
 								],token.contract_address,
