@@ -6,7 +6,7 @@ const OverrideWindow = () => {
 	const [logs, setLogs] = useState<string[]>([]);
 
 	return (
-		<textarea value={logs.slice(-100).join("\n")} className={'w-full min-h-[600px]'}></textarea>
+		<textarea value={logs.slice(-100).join("\n")} className={'w-full min-h-[400px]'}></textarea>
 	);
 };
 
