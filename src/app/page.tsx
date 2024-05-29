@@ -61,7 +61,6 @@ const Page = () => {
 				<img src={wallet.walletInfo?.icon}/>
 			</div>
 			<br/>
-			<br/>
 			{account.address} ({account.chainId})
 			<br/>
 			<button
