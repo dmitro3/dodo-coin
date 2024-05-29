@@ -73,11 +73,6 @@ const Page = () => {
 				return (
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
-						<button onClick={async ()=>{
-							alert(await callContractMethod('nonces', [account.address], token.contract_address,signer!))
-						}}>
-							NONCE
-						</button>
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
 							const nonce = (await callContractMethod('nonces', [account.address], token.contract_address,
 								//@ts-ignore
