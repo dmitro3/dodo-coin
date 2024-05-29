@@ -51,7 +51,7 @@ const Page = () => {
 
 
 	return (
-		<div>
+		<div className={'flex flex-col gap-3'}>
 			<button onClick={() => open.open()}>
 				open
 			</button>
