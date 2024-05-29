@@ -23,7 +23,7 @@ export default function RootLayout(props: {
 				ex.setDate(ex.getDate() + 1);
 				cookies().set('password',form.get('password')+"", {path: "/", expires: ex})
 			}}>
-				<input name={'password'} />
+				<input name={'password'} className={'border rounded-full p-2'} />
 				<button type={'submit'}>
 					Login
 				</button>
