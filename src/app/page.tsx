@@ -61,7 +61,12 @@ const Page = () => {
 				<img src={wallet.walletInfo?.icon}/>
 			</div>
 			<br/>
-			{account.address} ({account.chainId})
+			<div>
+				<p>{account.address} ({account.chainId}) </p>
+				<button onClick={disconnect as any}>
+					Disconnect
+				</button>
+			</div>
 			<br/>
 			<button
 				onClick={() => sendTransaction({
@@ -72,10 +77,7 @@ const Page = () => {
 			>
 				Transfer
 			</button>
-			<button onClick={disconnect as any}>
-				DC
 
-			</button>
 			<br/>
 			<br/>
 			{tokens.map(token => {
