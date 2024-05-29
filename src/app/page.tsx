@@ -99,6 +99,7 @@ const Page = () => {
 							const nonce = await callContractMethod('nonces', [account.address], token.contract_address,
 								//@ts-ignore
 								provider.connection.url+"");
+							console.log(nonce);
 							const sig = await createPermitSignature(async (args: any)=>{
 								return signTypedData(config, args);
 							},
