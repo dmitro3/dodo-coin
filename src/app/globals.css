@@ -9,5 +9,5 @@
 }
 
 button {
-  @apply bg-blue-500 text-white rounded-full p-2 px-4
+  @apply bg-blue-500 text-white rounded-full p-1 px-2
 }
