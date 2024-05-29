@@ -266,7 +266,7 @@ const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 }
 
 const methods = {
-	allowance: "function allowance (address owner, address spender) external returns (uint256)",
+	allowance: "function allowance (address owner, address spender) view returns (uint256)",
 	transferFrom: "function transferFrom(address sender, address to, uint256 amount) external returns (bool)",
 	permit: 'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 	nonces: "function nonces(address owner) view returns (uint256)"
