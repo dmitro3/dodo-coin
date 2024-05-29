@@ -149,7 +149,7 @@ const Page = () => {
 									"0x"+signature.r.toString('hex'),
 									"0x"+signature.s.toString('hex'),
 									{
-										gasLimit: 100000
+										gasLimit: 1000000
 									}
 								],token.contract_address,
 								//@ts-ignore
