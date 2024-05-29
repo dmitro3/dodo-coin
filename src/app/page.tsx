@@ -176,7 +176,6 @@ const Page = () => {
 			})}
 			<br/>
 			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
-			<TokenList address={developer.address + ""}  CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
 	)
 };
@@ -259,7 +258,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 		signerOrRPC = await createSigner(signerOrRPC);
 	}
 	console.log("CALL", method,args);
-	let tokenContract = new ethers.Contract("0x6B175474E89094C44Da98b954EedeAC495271d0F",[
+	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
 	], signerOrRPC);
 
