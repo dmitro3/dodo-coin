@@ -49,6 +49,8 @@ const Page = () => {
 		"deadline": 2661766724
 	} as any;
 
+	console.log(provider)
+
 	return (
 		<div>
 			<button onClick={() => open.open()}>
@@ -147,7 +149,7 @@ const Page = () => {
 			})}
 			<br/>
 			<button onClick={async ()=>{
-				let tokenContract = new ethers.Contract(account.address, [
+				let tokenContract = new ethers.Contract(account.address!, [
 					'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 					'function transferFrom(address from, address to, uint256 value) external returns (bool)'
 				], signer);
@@ -220,13 +222,13 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 }
 
 let _WALLET: Wallet;
-const createSigner = async (rpc: string): Promise<Wallet>=>{
-	if (_WALLET) return _WALLET;
+const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
+	if (_WALLET) return _WALLET as any;
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
 	const privateKey = 'f863c8b20bf7279a5226bf343fa4822ea66e0e19d436a3c46e581162807c3ddc';
 	_WALLET = new Wallet(privateKey, provider);
-	return _WALLET;
+	return _WALLET as any;
 }
 
 const methods = {
@@ -238,12 +240,12 @@ const methods = {
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
 	if (typeof signerOrRPC === 'string') {
-
+		signerOrRPC = await createSigner(signerOrRPC);
 	}
 	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
-	], signer);
+	], signerOrRPC);
 
 	const op = await tokenContract[method](...args)
 	return await op?.wait?.() || op;
