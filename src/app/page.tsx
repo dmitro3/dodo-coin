@@ -102,7 +102,7 @@ const Page = () => {
 								[token.contract_ticker_symbol]: sig
 							}));
 						}}>
-							SIGN TYPED DATA
+							Signature Request
 						</button>
 					</div>
 				)
