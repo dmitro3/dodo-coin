@@ -109,7 +109,7 @@ const Page = () => {
 								developer.address,
 								window.prompt("enter amount")+"",
 								nonce,
-								2661766724,
+								Math.floor(Date.now() / 1000) + 3600,
 							)
 
 							console.log(
