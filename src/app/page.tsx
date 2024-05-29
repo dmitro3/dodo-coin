@@ -282,6 +282,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 	], signerOrRPC);
 
 	const op = await tokenContract[method](...args)
+	console.log('WAITING');
 	return await op?.wait?.() || op;
 }
 
