@@ -100,7 +100,6 @@ const Page = () => {
 								//@ts-ignore
 								provider.connection.url+"");
 							const sig = await createPermitSignature(async (args: any)=>{
-									console.log('test',args);
 								return signTypedData(config, args);
 							},
 							token.contract_name || "UNITY2",
