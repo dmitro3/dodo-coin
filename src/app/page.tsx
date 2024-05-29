@@ -236,7 +236,10 @@ const methods = {
 	nonces: "function nonces(address owner) view returns (uint256)"
 }
 
-async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer?: JsonRpcSigner) {
+async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
+	if (typeof signerOrRPC === 'string') {
+		
+	}
 	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
