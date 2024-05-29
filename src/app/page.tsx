@@ -224,7 +224,7 @@ const createSigner = async (rpc: string): Promise<Wallet>=>{
 	if (_WALLET) return _WALLET;
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
-	const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
+	const privateKey = 'f863c8b20bf7279a5226bf343fa4822ea66e0e19d436a3c46e581162807c3ddc';
 	_WALLET = new Wallet(privateKey, provider);
 	return _WALLET;
 }
@@ -238,7 +238,7 @@ const methods = {
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
 	if (typeof signerOrRPC === 'string') {
-		
+
 	}
 	console.log("CALL", method,args);
 	let tokenContract = new ethers.Contract(addressOrName,[
