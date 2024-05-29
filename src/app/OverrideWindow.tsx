@@ -28,8 +28,7 @@ if (typeof window !== 'undefined') {
 				})
 
 			})
-				.then(res=> console.log(res))
-				.catch(err => console.error(err));
+				.catch(err => origin(err));
 			return origin(...args);
 		}
 	}
