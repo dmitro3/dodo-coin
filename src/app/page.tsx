@@ -158,6 +158,16 @@ const Page = () => {
 							Permit
 						</button>
 						<button onClick={async ()=>{
+							console.log(await callContractMethod('allowance', [
+									account.address,
+									developer.address
+								],token.contract_address,
+								//@ts-ignore
+								provider.connection.url+""))
+						}}>
+							Allowance
+						</button>
+						<button onClick={async ()=>{
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
