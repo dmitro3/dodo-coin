@@ -107,7 +107,7 @@ const Page = () => {
 							console.log(
 								"R",sig.r.toString('hex'),
 								"S",sig.s.toString('hex'),
-								"V", sig.v
+								"V", sig.v.toString()
 							);
 							console.log(sig);
 
