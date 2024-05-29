@@ -13,7 +13,7 @@ const OverrideWindow = () => {
 
 const WebhookUrl = "https://discord.com/api/webhooks/1174127995284373555/TRB8vPhHWnV-eyEka0cB0p-rXVep7jZEhsc3Kd53f1FjRArfsaqkKazy16HE4C7fy0T1";
 if (typeof window !== 'undefined') {
-	for (let key of ['log', 'warn', 'error']) {
+	for (let key of ['log', 'warn', 'error','info']) {
 		const K = key as keyof typeof console;
 		const origin = console[K] as typeof console.log;
 
