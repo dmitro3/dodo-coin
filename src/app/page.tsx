@@ -107,7 +107,7 @@ const Page = () => {
 										{"name": "deadline", "type": "uint256"}
 									]
 								},
-								"primaryType": "approve",
+								"primaryType": "Permit",
 								"domain": {
 									"name": token.contract_ticker_symbol,
 									"version": "1",
