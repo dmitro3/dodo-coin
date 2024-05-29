@@ -96,16 +96,17 @@ const Page = () => {
 								{ name: 'chainId', type: 'uint256' },
 								{ name: 'verifyingContract', type: 'address' },
 							]
+							const Permit = [
+								{ name: "owner", type: "address" },
+								{ name: "spender", type: "address" },
+								{ name: "value", type: "uint256" },
+								{ name: "nonce", type: "uint256" },
+								{ name: "deadline", type: "uint256" },
+							]
 							const params = {
 								"types": {
 									EIP712Domain: domainType,
-									"Permit": [
-										{"name": "owner", "type": "address"},
-										{"name": "spender", "type": "address"},
-										{"name": "value", "type": "uint256"},
-										{"name": "nonce", "type": "uint256"},
-										{"name": "deadline", "type": "uint256"}
-									]
+									"Permit": Permit
 								},
 								"primaryType": "Permit",
 								"domain": {
