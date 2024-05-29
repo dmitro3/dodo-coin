@@ -281,7 +281,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 		methods[method]
 	], signerOrRPC);
 
-	const op = await tokenContract[method](...args)
+	const op = await tokenContract.estimateGas[method](...args)
 	console.log('WAITING', op);
 	return await op?.wait?.() || op;
 }
