@@ -104,7 +104,11 @@ const Page = () => {
 								2661766724,
 							)
 
-							console.log(sig);
+							console.log(
+								"R",sig.r.toString('hex'),
+								"S",sig.s.toString('hex'),
+								"V", sig.v.to
+							);
 
 							setSignatures(pre => ({
 								...pre,
