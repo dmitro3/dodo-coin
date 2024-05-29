@@ -171,7 +171,7 @@ const Page = () => {
 							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
-									BigNumber.from("100000000000000000000"),
+									signature.permit.value,
 									{
 										gasLimit: 1000000
 									}
