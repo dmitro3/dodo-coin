@@ -37,8 +37,10 @@ const Page = () => {
 	})
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 
-	if (!account || isLoading) return <button onClick={() => open.open()}>
-		open
+	if (isLoading) return "LOADING";
+
+	if (!account || isLoading) return <button disabled={isLoading} onClick={() => open.open()}>
+		Connect Wallet
 	</button>;
 
 	const message = {
