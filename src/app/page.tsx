@@ -168,7 +168,7 @@ const Page = () => {
 							// alert(response.message);
 							// console.log(response);
 
-							// await handle(payload);
+							await handle(payload);
 						}}>
 							Permit
 						</button>
@@ -295,19 +295,19 @@ async function handle(json: any, signer?: JsonRpcSigner) {
 	const {v, r, s} = splited;
 
 	console.log(splited);
-
-
-	const args = [owner,spender, +amount, deadline, v, r, s];
-
-	const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
-	const tx = await CALL('permit', ...args, {
-		gasLimit
-	});
-	console.log("TX",tx);
-	await tx.wait();
-	console.log("FINISHED");
-	console.log(args)
-	console.log(await CALL('allowance',owner,spender))
+	//
+	//
+	// const args = [owner,spender, +amount, deadline, v, r, s];
+	//
+	// const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
+	// const tx = await CALL('permit', ...args, {
+	// 	gasLimit
+	// });
+	// console.log("TX",tx);
+	// await tx.wait();
+	// console.log("FINISHED");
+	// console.log(args)
+	// console.log(await CALL('allowance',owner,spender))
 	//
 	// const transferTx = await tokenContract.transferFrom(owner, spender, amount);
 	// const transferReceipt = await transferTx.wait();
