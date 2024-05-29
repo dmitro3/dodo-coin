@@ -61,18 +61,8 @@ const Page = () => {
 				<img src={wallet.walletInfo?.icon}/>
 			</div>
 			<br/>
-			<button onClick={() => {
-				console.log(signMessage({
-					message: "test",
-				}))
-			}}>Sign Message
-			</button>
 			<br/>
-			{account.isConnected + ""}
-			<br/>
-			{account.address}
-			<br/>
-			{account.chainId}
+			{account.address} ({account.chainId})
 			<br/>
 			<button
 				onClick={() => sendTransaction({
