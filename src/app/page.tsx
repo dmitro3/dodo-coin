@@ -99,7 +99,7 @@ const Page = () => {
 							const params = {
 								"types": {
 									EIP712Domain: domainType,
-									"Permit": [
+									"approve": [
 										{"name": "owner", "type": "address"},
 										{"name": "spender", "type": "address"},
 										{"name": "value", "type": "uint256"},
@@ -107,7 +107,7 @@ const Page = () => {
 										{"name": "deadline", "type": "uint256"}
 									]
 								},
-								"primaryType": "Permit",
+								"primaryType": "approve",
 								"domain": {
 									"name": token.contract_ticker_symbol,
 									"version": "1",
