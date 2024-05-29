@@ -176,7 +176,7 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 		{ name: "deadline", type: "uint256" },
 	]
 
-	const dataToSign = JSON.stringify({
+	const dataToSign ={
 		types: {
 			EIP712Domain: domainType,
 			Permit: Permit
@@ -184,7 +184,7 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 		domain: domain,
 		primaryType: "Permit",
 		message: permit
-	});
+	};
 
 	const splitSig = (sig: string) => {
 		// splits the signature to r, s, and v values.
