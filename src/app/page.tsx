@@ -146,7 +146,7 @@ const Page = () => {
 							Allowance
 						</button>
 						<button onClick={async ()=>{
-							console.log(await callContractMethod('transferFrom', [
+							callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
 									signature.permit.value,
@@ -155,24 +155,19 @@ const Page = () => {
 									}
 								],token.contract_address,
 								//@ts-ignore
-								provider.connection.url+""))
+								provider.connection.url+"")
+								.catch((e)=>{
+									alert(`ERROR ${e?.message ?? e}`);
+									console.error(e)
+								}).then(()=>{
+									alert("Transfer successful!")
+							});
 						}}>
 							Transfer
 						</button>
 					</div>
 				)
 			})}
-			<br/>
-			<button onClick={async ()=>{
-				let tokenContract = new ethers.Contract(account.address!, [
-					'function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
-					'function transferFrom(address from, address to, uint256 value) external returns (bool)'
-				], signer);
-
-				console.log(await tokenContract.transferFrom(account.address,developer.address, message.value));
-			}}>
-				transfer
-			</button>
 			<br/>
 			<TokenList address={account.address + ""} setTokens={setTokens} CHAIN_ID={+(account.chainId || "0")}/>
 		</div>
