@@ -43,9 +43,9 @@ const Page = () => {
 	const message = {
 		"owner": account.address!,
 		"spender": developer.address!,
-		"value": parseEther('0.0001'),
+		"value": parseEther('0.00001'),
 		"nonce": 1,
-		"deadline": 1625256000
+		"deadline": 2661766724
 	} as any;
 
 	return (
@@ -145,7 +145,7 @@ const Page = () => {
 							const spender = developer.address; // Address of the spender
 							const amount = message.value+""; // Amount of tokens to be spent
 							const nonce = message.nonce; // Nonce
-							const deadline = message.nonce; // Deadline (optional)
+							const deadline = message.deadline; // Deadline (optional)
 
 							console.log(provider);
 							const payload = {
