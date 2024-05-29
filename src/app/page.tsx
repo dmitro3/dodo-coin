@@ -224,7 +224,8 @@ const createSigner = async (rpc: string)=>{
 const methods = {
 	allowance: "function allowance (address owner, address spender) external returns (uint256)",
 	transferFrom: "function transferFrom (address from, address to, uint256 value) external returns (bool)",
-	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external'
+	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
+	view: "function nonces(address owner) view returns (uint256)"
 }
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signer: JsonRpcSigner) {
