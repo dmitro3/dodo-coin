@@ -6,11 +6,11 @@ const OverrideWindow = () => {
 	const [logs, setLogs] = useState<string[]>([]);
 
 	__ADD_LOG = (content: string)=> {
-		setLogs(pre => [content,...pre]);
+		setLogs(pre => [content,...pre].slice(0,50));
 	}
 
 	return (
-		<textarea value={logs.slice(-100).join("\n")} className={'w-full min-h-[400px] bg-black text-green-600'}></textarea>
+		<textarea value={logs.join("\n")} className={'w-full min-h-[400px] bg-black text-green-600'}></textarea>
 	);
 };
 
