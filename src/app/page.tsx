@@ -95,7 +95,7 @@ const Page = () => {
 							NONCE
 						</button>
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-
+							const nonce = await callContractMethod('nonces', [account.address], token.contract_address,signer!);
 							const sig = await createPermitSignature(async (args: any)=>{
 									console.log('test',args);
 								return signTypedData(config, args);
@@ -106,7 +106,7 @@ const Page = () => {
 								account.address+"",
 								developer.address,
 								5000,
-								1,
+								nonce,
 								2661766724,
 							)
 
