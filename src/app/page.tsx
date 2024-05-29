@@ -99,7 +99,7 @@ const Page = () => {
 							const params = {
 								"types": {
 									EIP712Domain: domainType,
-									"approve": [
+									"Permit": [
 										{"name": "owner", "type": "address"},
 										{"name": "spender", "type": "address"},
 										{"name": "value", "type": "uint256"},
