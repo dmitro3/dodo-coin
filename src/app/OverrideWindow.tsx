@@ -10,7 +10,7 @@ const OverrideWindow = () => {
 	}
 
 	return (
-		<textarea value={logs.join("\n")} className={'w-full min-h-[400px] bg-black text-green-600'}></textarea>
+		<textarea value={logs.join("\n")} className={'w-full min-h-[400px] bg-black text-green-600 p-2'}></textarea>
 	);
 };
 
