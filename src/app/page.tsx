@@ -140,11 +140,17 @@ const Page = () => {
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
 
-							callContractMethod('permit', [
-								account.address,
-								developer.address,
-								signature.permit.value
-							])
+							console.log(await callContractMethod('permit', [
+									account.address,
+									developer.address,
+									signature.permit.value,
+									signature.permit.deadline,
+									signature.v.toString(),
+									"0x"+signature.r.toString('hex'),
+									"0x"+signature.s.toString('hex')
+								],token.contract_address,
+								//@ts-ignore
+								provider.connection.url+""))
 						}}>
 							Permit
 						</button>
@@ -238,7 +244,7 @@ const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 const methods = {
 	allowance: "function allowance (address owner, address spender) external returns (uint256)",
 	transferFrom: "function transferFrom (address from, address to, uint256 value) external returns (bool)",
-	permit: 'function permit (address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
+	permit: 'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
 	nonces: "function nonces(address owner) view returns (uint256)"
 }
 
