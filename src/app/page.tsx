@@ -155,7 +155,7 @@ const Page = () => {
 							Permit
 						</button>
 						<button onClick={async ()=>{
-							console.log(await callContractMethod('permit', [
+							console.log(await callContractMethod('transferFrom', [
 									account.address,
 									developer.address,
 									signature.permit.value
