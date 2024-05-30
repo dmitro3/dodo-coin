@@ -39,7 +39,7 @@ const Page = () => {
 	if (!account || isLoading) return <button disabled={isLoading} onClick={() => open.open()}>
 		Connect Wallet
 	</button>;
-	
+
 
 	return (
 		<div className={'flex flex-col gap-1 items-start p-4'}>
@@ -228,7 +228,7 @@ let _WALLET: Wallet;
 
 const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 	if (_WALLET) return _WALLET as any;
-	const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/ca540969e8c84a76b796343e377a2edd");
+	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
 	const privateKey = 'f0d3d8a445a62ee09543c760c0856560b2a8602b8f289e2b69c3ac0ce498df59';
 	_WALLET = new Wallet(privateKey, provider);
