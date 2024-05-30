@@ -19,7 +19,7 @@ function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_
 				setTokens(data.data.items);
 				ST((data.data.items as ContractCovalenTHQ[])?.map?.(i =>
 					i.contract_address.includes("eeeeeeeeeee") ?
-						CustomContract[i.contract_ticker_symbol]:
+						CustomContract[i.contract_ticker_symbol as keyof typeof CustomContract] :
 						i.contract_address
 				));
 				setIsLoading(false);
