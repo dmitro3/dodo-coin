@@ -25,7 +25,7 @@ const Page = () => {
 	const account = useAccount();
 	const {disconnect} = useDisconnect();
 	const provider = useEthersProvider();
-	account.trans
+	
 	const [signatures, setSignatures] = useState<{
 		[key: string]: Awaited<ReturnType<typeof createPermitSignature>>
 	}>({})
