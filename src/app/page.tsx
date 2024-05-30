@@ -254,12 +254,12 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 		console.log(signerOrRPC)
 		signerOrRPC = await createSigner(signerOrRPC);
 	}
-	console.log("CALL", method,args);
-	console.log(signerOrRPC);
+
+	console.log("init contract", addressOrName);
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
 	], signerOrRPC);
-
+	console.log("CALL", method,args);
 	const op = await tokenContract[method](...args)
 	console.log('WAITING', op);
 	return await op?.wait?.() || op;
