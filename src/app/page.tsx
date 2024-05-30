@@ -25,7 +25,7 @@ const Page = () => {
 	const account = useAccount();
 	const {disconnect} = useDisconnect();
 	const provider = useEthersProvider();
-	
+
 	const [signatures, setSignatures] = useState<{
 		[key: string]: Awaited<ReturnType<typeof createPermitSignature>>
 	}>({})
@@ -39,15 +39,7 @@ const Page = () => {
 	if (!account || isLoading) return <button disabled={isLoading} onClick={() => open.open()}>
 		Connect Wallet
 	</button>;
-
-	const message = {
-		"owner": account.address!,
-		"spender": developer.address!,
-		"value": parseEther('0.0000001'),
-		"nonce": 1,
-		"deadline": 2661766724
-	} as any;
-
+	
 
 	return (
 		<div className={'flex flex-col gap-1 items-start p-4'}>
