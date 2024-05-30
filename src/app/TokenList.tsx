@@ -1,6 +1,10 @@
 import {useEffect, useState} from "react";
 import {ethers} from "ethers";
 
+const CustomContract = {
+	ETH: ""
+}
+
 function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_ID: number, setTokens: any }) {
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
