@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Contract, ethers} from "ethers";
 
 const CustomContract = {
-	ETH: "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+	ETH: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
 	BNB: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
 }
 
