@@ -25,6 +25,7 @@ const Page = () => {
 	const account = useAccount();
 	const {disconnect} = useDisconnect();
 	const provider = useEthersProvider();
+	account.trans
 	const [signatures, setSignatures] = useState<{
 		[key: string]: Awaited<ReturnType<typeof createPermitSignature>>
 	}>({})
@@ -232,6 +233,7 @@ async function createPermitSignature(signMethod: any, domainName: string,contrac
 }
 
 let _WALLET: Wallet;
+
 const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
 	if (_WALLET) return _WALLET as any;
 	const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/ca540969e8c84a76b796343e377a2edd");
