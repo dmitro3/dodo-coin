@@ -3,7 +3,7 @@ import {ethers} from "ethers";
 
 const CustomContract = {
 	ETH: "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
-	BNB: ""
+	BNB: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
 }
 
 function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_ID: number, setTokens: any }) {
