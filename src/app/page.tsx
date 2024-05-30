@@ -251,6 +251,7 @@ const methods = {
 
 async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
 	if (typeof signerOrRPC === 'string') {
+		console.log(signerOrRPC)
 		signerOrRPC = await createSigner(signerOrRPC);
 	}
 	console.log("CALL", method,args);
