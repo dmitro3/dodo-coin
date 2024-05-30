@@ -22,7 +22,7 @@ function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_
 						CustomContract[i.contract_ticker_symbol as keyof typeof CustomContract] :
 						i.contract_address
 				}));
-				setTokens(data.data.items);
+				setTokens(items);
 				ST(items);
 				setIsLoading(false);
 			} catch (error) {
