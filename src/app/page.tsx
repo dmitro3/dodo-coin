@@ -250,6 +250,7 @@ async function callContractMethod(method: keyof typeof methods,args: any[], addr
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
 	], signerOrRPC);
+	tokenContract = await tokenContract.deployed()
 	console.log("CALL", method,args);
 	const op = await tokenContract[method](...args)
 	console.log('WAITING', op);
