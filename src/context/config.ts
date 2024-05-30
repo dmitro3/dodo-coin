@@ -18,8 +18,8 @@ const metadata = {
 }
 
 
-const chains = Object.values(CHAINS) as (typeof CHAINS)[keyof typeof CHAINS][]
-console.log(chains.find(c => c.id === 1))
+const chains = Object.values(CHAINS) as (typeof CHAINS.base)[]
+
 export const config = defaultWagmiConfig({
 	chains: [
 		...chains,
