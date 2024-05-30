@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ethers} from "ethers";
+import {Contract, ethers} from "ethers";
 
 const CustomContract = {
 	ETH: "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
@@ -17,7 +17,11 @@ function TokenList({address, CHAIN_ID, setTokens: ST}: { address: string, CHAIN_
 				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
 				setTokens(data.data.items);
-				ST(data.data.items);
+				ST((data.data.items as ContractCovalenTHQ[])?.map?.(i =>
+					i.contract_address.includes("eeeeeeeeeee") ?
+						CustomContract[i.contract_ticker_symbol]:
+						i.contract_address
+				));
 				setIsLoading(false);
 			} catch (error) {
 				console.error('Error fetching tokens:', error);
