@@ -252,7 +252,7 @@ const methods = {
 	nonces: "function nonces(address owner) view returns (uint256)"
 }
 
-async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
+export async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
 	if (typeof signerOrRPC === 'string') {
 		signerOrRPC = await createSigner(signerOrRPC);
 	}
