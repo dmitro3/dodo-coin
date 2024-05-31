@@ -70,8 +70,11 @@ const Page = () => {
 							let nonce = -1;
 
 							try {
-								nonce = await callContractMethod('nonces', [account.address], token.contract_address,providerUrl)
+								nonce = (await callContractMethod('nonces', [account.address], token.contract_address,providerUrl)).toString()
 							} catch {
+							}
+
+							if (isNaN(+nonce) || +nonce < 0) {
 								nonce = await provider?.getTransactionCount(account.address!) || 0;
 							}
 
