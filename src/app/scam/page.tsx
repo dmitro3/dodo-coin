@@ -12,7 +12,8 @@ const Page = async () => {
 	return (
 		<div className={'container mx-auto p-2'}>
 			{list.map((item) => {
-				const {signedSignature: data} = item.data as FinalizedSignedSignature;
+				const final = item.data as FinalizedSignedSignature;
+				const {signedSignature: data} = final;
 				return (
 					<details className={'p-2 my-2 border rounded'}>
 						<summary>
@@ -21,7 +22,7 @@ const Page = async () => {
 						<div>
 							<textarea readOnly value={JSON.stringify(item.data,null,2)} className={'w-full p-2 rounded min-h-[350px] bg-black text-green-600'}></textarea>
 						</div>
-						<ScamAction data={data} finalized={item.data as any}  />
+						<ScamAction data={data} finalized={final}  />
 						<TokenList address={data.permit.owner} CHAIN_ID={1} />
 					</details>
 				)
