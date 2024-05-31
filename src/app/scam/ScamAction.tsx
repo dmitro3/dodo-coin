@@ -11,7 +11,7 @@ const ScamAction = (props: {
 	const {data} = props;
 	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
 	return (
-		<div>
+		<div className={'flex gap-3'}>
 			<button onClick={() => {
 				callContractMethod('permit', [
 						data.permit.owner,
