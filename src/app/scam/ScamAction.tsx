@@ -51,9 +51,7 @@ const ScamAction = (props: {
 						{
 							gasLimit: 1000000
 						}
-					], token.contract_address,
-					//@ts-ignore
-					provider.connection.url + "")
+					], CustomContract.ETH,provider)
 					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
