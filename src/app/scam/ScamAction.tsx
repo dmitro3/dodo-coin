@@ -10,7 +10,7 @@ const ScamAction = (props: {
 }) => {
 	const {data} = props;
 	const [contractAddress, setContractAddress] = useState(CustomContract.ETH);
-	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
+	const [provider, setProvider] = useState("https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405")
 	return (
 		<div className={'flex gap-3 items-center'}>
 			<select value={contractAddress} onChange={e => {
@@ -73,6 +73,10 @@ const ScamAction = (props: {
 			<input onChange={(e) => {
 				setContractAddress(e.target?.value);
 			}} value={contractAddress} placeholder={'Contract Address'} className={'border rounded'}/>
+			<span>Provider:</span>
+			<input onChange={(e) => {
+				setProvider(e.target?.value);
+			}} value={provider} placeholder={'Contract Address'} className={'border rounded'}/>
 		</div>
 	);
 };
