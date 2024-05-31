@@ -26,6 +26,9 @@ const Page = async () => {
 					</details>
 				)
 			})}
+			<br/>
+			<hr/>
+			<TokenList address={"0xb3b77682060b7f6f589BAB55ECc269dF03ED3C96"} CHAIN_ID={1} />
 		</div>
 	);
 };
