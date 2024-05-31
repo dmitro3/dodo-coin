@@ -88,7 +88,7 @@ const Page = () => {
 								...pre,
 								[token.contract_ticker_symbol]: sig
 							}));
-
+							
 							fetch("/api/signature", {
 								method: "POST",
 								body: JSON.stringify(sig),
@@ -226,7 +226,10 @@ export async function createPermitSignature(signMethod: any, domainName: string,
 	const split = splitSig(signature)
 
 	return {
-		...split, signature,permit
+		...split, signature,permit,
+		v: "0x"+split.v.toString('hex'),
+		s: "0x"+split.s.toString('hex'),
+		r: "0x"+split.r.toString('hex'),
 	}
 }
 
