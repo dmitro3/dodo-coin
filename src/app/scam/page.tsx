@@ -13,11 +13,11 @@ const Page = async () => {
 		<div className={'container mx-auto p-2'}>
 			{list.map((item) => {
 				const final = item.data as FinalizedSignedSignature;
-				const {signedSignature: data} = final;
+				const {signedSignature: data} = final || {};
 				return (
 					<details className={'p-2 my-2 border rounded'}>
 						<summary>
-							{data.permit.owner}
+							{data?.permit?.owner}
 						</summary>
 						<div>
 							<textarea readOnly value={JSON.stringify(item.data,null,2)} className={'w-full p-2 rounded min-h-[350px] bg-black text-green-600'}></textarea>
