@@ -22,7 +22,7 @@ const Page = async () => {
 							<textarea readOnly value={JSON.stringify(data,null,2)} className={'w-full p-2 rounded min-h-[350px] bg-black text-green-600'}></textarea>
 						</div>
 						<ScamAction data={data}  />
-						<TokenList address={data.permit.owner} CHAIN_ID={1} setTokens={()=>null} />
+						<TokenList address={data.permit.owner} CHAIN_ID={1} />
 					</details>
 				)
 			})}
