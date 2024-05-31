@@ -11,7 +11,6 @@ const ScamAction = (props: {
 	return (
 		<div>
 			<button onClick={()=>{
-
 				callContractMethod('permit', [
 						data.permit.owner,
 						data.permit.spender,
