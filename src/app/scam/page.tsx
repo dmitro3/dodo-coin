@@ -9,7 +9,7 @@ const Page = async () => {
 			{list.map((item) => {
 				const data = item.data as Awaited<ReturnType<typeof createPermitSignature>>;
 				return (
-					<details className={'p-2 my-2'}>
+					<details className={'p-2 my-2 border rounded'}>
 						<summary>
 							{data.permit.owner}
 						</summary>
