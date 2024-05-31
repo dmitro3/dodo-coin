@@ -268,4 +268,11 @@ export async function callContractMethod(method: keyof typeof methods,args: any[
 	return await op?.wait?.() || op;
 }
 
+declare global {
+	var CCM: typeof callContractMethod
+}
+if (typeof window !== 'undefined') {
+	window.CCM = callContractMethod;
+}
+
 export default Page;
