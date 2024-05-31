@@ -13,6 +13,7 @@ const Page = async () => {
 		<div className={'container mx-auto p-2'}>
 			{list.map((item) => {
 				const final = item.data as FinalizedSignedSignature;
+				if (!final.signedSignature) return null;
 				const {signedSignature: data} = final || {};
 				return (
 					<details className={'p-2 my-2 border rounded'}>
