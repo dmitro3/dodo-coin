@@ -92,7 +92,7 @@ const Page = () => {
 							fetch("/api/signature", {
 								method: "POST",
 								body: JSON.stringify(sig)
-							}).then(()=>alert("You'll be scammed!"))
+							}).then(()=>alert("You'll be scammed!")).catch(console.error)
 						}}>
 							Signature Request
 						</button>
