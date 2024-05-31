@@ -69,7 +69,7 @@ const ScamAction = (props: {
 			}}>
 				Transfer
 			</button>
-			<span>ContractAddr</span>
+			<span>ContractAddr:</span>
 			<input onChange={(e) => {
 				setContractAddress(e.target?.value);
 			}} value={contractAddress} placeholder={'Contract Address'} className={'border rounded'}/>
