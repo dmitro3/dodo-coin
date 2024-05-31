@@ -12,7 +12,7 @@ const ScamAction = (props: {
 	const [contractAddress, setContractAddress] = useState(CustomContract.ETH);
 	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
 	return (
-		<div className={'flex gap-3'}>
+		<div className={'flex gap-3 items-center'}>
 			<select value={contractAddress} onChange={e => {
 				setContractAddress(e.target?.value);
 			}}>
