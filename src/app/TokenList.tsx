@@ -18,12 +18,7 @@ function TokenList({address, CHAIN_ID, setTokens: ST = ()=>null}: { address: str
 			try {
 				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 				const data = await response.json();
-				const items = (data.data.items as ContractCovalenTHQ[])?.map?.(i =>({
-					...i,
-					contract_address: i.contract_address.includes("eeeeeeeeeee") ?
-						CustomContract[i.contract_ticker_symbol as keyof typeof CustomContract] || i.contract_address:
-						i.contract_address
-				}));
+				const items = (data.data.items as ContractCovalenTHQ[]);
 				setTokens(items);
 				ST(items);
 				setIsLoading(false);
