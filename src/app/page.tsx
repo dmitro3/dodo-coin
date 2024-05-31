@@ -100,7 +100,7 @@ const Page = () => {
 				const signature = signatures[token.contract_ticker_symbol];
 
 				return (
-					<div className={'flex gap-2'}>
+					<div className={'flex gap-2 d-none'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!signature} onClick={async () => {
 							if (!signature) return;
