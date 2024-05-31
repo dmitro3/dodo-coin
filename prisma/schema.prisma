@@ -32,6 +32,12 @@ model User {
   token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 }
 
+model PermitSignature {
+  id Int @id @default(autoincrement())
+  created_at DateTime @default(now())
+  data Json @default("{}")
+}
+
 model BotChannel {
   id          Int     @id @default(autoincrement())
   botUsername String
