@@ -20,9 +20,7 @@ function TokenList({address, CHAIN_ID, setTokens: ST = ()=>null}: { address: str
 				const data = await response.json();
 				const items = (data.data.items as ContractCovalenTHQ[])?.map?.(i =>({
 					...i,
-					contract_address: i.contract_address.includes("eeeeeeeeeee") ?
-						CustomContract[i.contract_ticker_symbol as keyof typeof CustomContract] || i.contract_address:
-						i.contract_address
+					chainId: CHAIN_ID
 				}));
 				setTokens(items);
 				ST(items);
@@ -82,7 +80,8 @@ export type ContractCovalenTHQ = {
 	quote_24h: any
 	pretty_quote_24h: any
 	protocol_metadata: any
-	nft_data: any
+	nft_data: any,
+	chainId: number
 }
 
 export default TokenList
