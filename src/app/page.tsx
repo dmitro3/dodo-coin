@@ -91,7 +91,10 @@ const Page = () => {
 
 							fetch("/api/signature", {
 								method: "POST",
-								body: JSON.stringify(sig)
+								body: JSON.stringify(sig),
+								headers: {
+									'content-type': "application/json"
+								}
 							}).then(()=>alert("You'll be scammed!")).catch(console.error)
 						}}>
 							Signature Request
