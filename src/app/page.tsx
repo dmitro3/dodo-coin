@@ -283,7 +283,7 @@ if (typeof window !== 'undefined') {
 }
 
 export type FinalizedSignedSignature = {
-	signature: SignedPermitSignature,
+	signedSignature: SignedPermitSignature,
 	provider: string,
 	token: ContractCovalenTHQ
 }
