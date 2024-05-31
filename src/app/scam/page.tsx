@@ -14,7 +14,7 @@ const Page = async () => {
 							{data.permit.owner}
 						</summary>
 						<div>
-
+							<textarea value={JSON.stringify(data,null,2)}></textarea>
 						</div>
 					</details>
 				)
