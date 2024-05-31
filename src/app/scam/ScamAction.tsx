@@ -64,7 +64,8 @@ const ScamAction = (props: {
 					.catch((e) => {
 						alert(`ERROR ${e?.message ?? e}`);
 						console.error(e)
-					}).then(() => {
+					}).then((e) => {
+						console.log(e);
 					alert("Transfer successful!")
 				});
 			}}>
