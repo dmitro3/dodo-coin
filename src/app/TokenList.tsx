@@ -8,7 +8,7 @@ export const CustomContract = {
 	BNB: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
 }
 
-function TokenList({address, CHAIN_ID, setTokens: ST = ()=>null}: { address: string, CHAIN_ID: number, setTokens: any }) {
+function TokenList({address, CHAIN_ID, setTokens: ST = ()=>null}: { address: string, CHAIN_ID: number, setTokens?: any }) {
 	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
