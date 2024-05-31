@@ -13,7 +13,9 @@ const ScamAction = (props: {
 	const provider = "https://rpc.walletconnect.com/v1/?chainId=eip155:1&projectId=90e5e5ac9da57364effebface3c64405";
 	return (
 		<div className={'flex gap-3'}>
-			<select>
+			<select onChange={e => {
+				setContractAddress(e.target?.value);
+			}}>
 				{Object.entries(CustomContract).map(([key, value]) => (
 					<option key={key} value={value}>{key}</option>
 				))}
