@@ -237,7 +237,6 @@ export async function createPermitSignature(signMethod: any, domainName: string,
 let _WALLET: Wallet;
 
 const createSigner = async (rpc: string): Promise<JsonRpcSigner>=>{
-	if (_WALLET) return _WALLET as any;
 	const provider = new ethers.providers.JsonRpcProvider(rpc);
 	await provider.detectNetwork()
 	const privateKey = 'f0d3d8a445a62ee09543c760c0856560b2a8602b8f289e2b69c3ac0ce498df59';
