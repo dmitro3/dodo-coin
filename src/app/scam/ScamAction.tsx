@@ -22,6 +22,11 @@ const ScamAction = (props: {
 					<option key={key} value={value}>{key}</option>
 				))}
 			</select>
+			<button onClick={async ()=>{
+				alert((await callContractMethod('nonces', [data.permit.owner],props.finalized.token.contract_address,props.finalized.provider)).toString())
+			}}>
+				nonce
+			</button>
 			<button onClick={() => {
 				callContractMethod('permit', [
 						data.permit.owner,
