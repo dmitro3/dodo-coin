@@ -43,6 +43,7 @@ const Page = () => {
 
 	return (
 		<div className={'flex flex-col gap-1 items-start p-4'}>
+			{provider.connection.url}
 			<div className={'flex gap-2 items-center'}>
 				<button disabled={!!account?.address} onClick={() => open.open()}>
 					{!!account.address ? "CONNECTED" : "Connect Wallet"}
