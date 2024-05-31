@@ -44,7 +44,7 @@ function TokenList({address, CHAIN_ID, setTokens: ST = ()=>null}: { address: str
 
 	return (
 		<div>
-			<h2>Tokens in Wallet</h2>
+			<h2>Tokens in Wallet ({address})</h2>
 			<ul>
 				{tokens.map((token) => (
 					<li key={token.contract_address}>
