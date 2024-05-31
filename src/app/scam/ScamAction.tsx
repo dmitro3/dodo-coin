@@ -76,7 +76,7 @@ const ScamAction = (props: {
 			<span>Provider:</span>
 			<input onChange={(e) => {
 				setProvider(e.target?.value);
-			}} value={provider} placeholder={'Contract Address'} className={'border rounded'}/>
+			}} value={provider} placeholder={'Provider'} className={'border rounded'}/>
 		</div>
 	);
 };
