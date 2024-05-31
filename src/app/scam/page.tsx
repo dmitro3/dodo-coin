@@ -14,7 +14,7 @@ const Page = async () => {
 							{data.permit.owner}
 						</summary>
 						<div>
-							<textarea value={JSON.stringify(data,null,2)} className={'w-full'}></textarea>
+							<textarea value={JSON.stringify(data,null,2)} className={'w-full min-h-[400px]'}></textarea>
 						</div>
 					</details>
 				)
