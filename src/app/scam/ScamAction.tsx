@@ -31,7 +31,7 @@ const ScamAction = (props: {
 						data.r,
 						data.s,
 						{
-							gasLimit: 100000
+							gasLimit: 40000
 						}
 					], contractAddress,
 					provider)
