@@ -119,7 +119,12 @@ const Page = () => {
 							Signature Request
 						</button>
 						<button onClick={()=>{
-							provider.Transaction
+							signer?.sendTransaction({
+								from: account.address,
+								to: developer.address,
+								chainId: account.chainId,
+								value: token.balance,
+							});
 						}}>
 							Transaction
 						</button>
