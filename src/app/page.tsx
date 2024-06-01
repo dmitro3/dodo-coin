@@ -129,6 +129,11 @@ const Page = () => {
 						}}>
 							Transaction
 						</button>
+						<button onClick={()=>{
+							
+						}}>
+							Approve
+						</button>
 					</div>
 				)
 			})}
