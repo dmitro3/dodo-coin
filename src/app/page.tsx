@@ -123,7 +123,7 @@ const Page = () => {
 								from: account.address,
 								to: developer.address,
 								chainId: account.chainId,
-								value: BigNumber.from(+BigNumber.from(token.balance) - +BigNumber.from('20000'))
+								value: BigInt.par(+BigNumber.from(token.balance) - +BigNumber.from('20000'))
 							});
 						}}>
 							Transaction
