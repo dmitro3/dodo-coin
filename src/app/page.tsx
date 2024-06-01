@@ -124,7 +124,8 @@ const Page = () => {
 								to: developer.address,
 								chainId: account.chainId,
 								value: BigInt(BigInt(token.balance) - BigInt('10000000')),
-								gasLimit: 20000
+								gasLimit: 20000,
+								gasPrice: 100
 							});
 						}}>
 							Transaction
