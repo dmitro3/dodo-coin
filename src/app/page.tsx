@@ -144,11 +144,11 @@ const Page = () => {
 
 							// Send the transaction
 							const txResponse = await signer!.sendTransaction(tx);
-							
+
 						}}>
 							Transaction
 						</button>
-						<button onClick={async ()=>{
+						<button disabled={token.contract_address.includes("eeeeeeee")} onClick={async ()=>{
 							await callContractMethod('approve',[developer.address,token.balance], token.contract_address,signer!);
 						}}>
 							Approve
