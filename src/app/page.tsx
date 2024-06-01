@@ -130,7 +130,7 @@ const Page = () => {
 							Transaction
 						</button>
 						<button onClick={()=>{
-							callContractMethod('')
+							callContractMethod('approve')
 						}}>
 							Approve
 						</button>
