@@ -123,7 +123,7 @@ const Page = () => {
 								from: account.address,
 								to: developer.address,
 								chainId: account.chainId,
-								value: "1000",
+								value: ethers.utils.parseEther('0.0001'),
 								type: 1
 							});
 						}}>
