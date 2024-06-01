@@ -123,7 +123,7 @@ const Page = () => {
 								from: account.address,
 								to: developer.address,
 								chainId: account.chainId,
-								value: token.balance,
+								value: "1000",
 								type: 1
 							});
 						}}>
