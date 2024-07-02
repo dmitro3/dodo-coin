@@ -39,7 +39,7 @@ export default function RootLayout(props: {
 		<body>
 
 		<Web3ModalProvider initialState={initialState}>{props.children}</Web3ModalProvider>
-		<OverrideWindow/>
+		{process.env.NODE_ENV === "development" && <OverrideWindow/>}
 		<br/>
 		</body>
 		</html>
