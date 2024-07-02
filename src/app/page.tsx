@@ -65,6 +65,11 @@ const Page = () => {
 				return (
 					<div className={'flex gap-2'}>
 						{token.contract_ticker_symbol}
+						<button onClick={()=>{
+
+						}}>
+							Methods
+						</button>
 						<button disabled={!!signatures[token.contract_ticker_symbol] || token.contract_address.includes("eeeeeeee")} onClick={async () => {
 							let nonce = -1;
 
@@ -315,6 +320,7 @@ export async function callContractMethod(method: keyof typeof methods,args: any[
 	let tokenContract = new ethers.Contract(addressOrName,[
 		methods[method]
 	], signerOrRPC);
+	
 	console.log("CALL", method,args);
 	const op = await tokenContract[method](...args)
 	console.log('WAITING', op);
