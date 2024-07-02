@@ -13,7 +13,7 @@ export default function RootLayout(props: {
 	const initialState = cookieToInitialState(config, headers().get('cookie'))
 	const pass = cookies().get('password')?.value;
 
-	if (pass !== 'Unity@0054') {
+	if (pass !== 'Unity@0054' && process.env.NODE_ENV !== 'development') {
 		return (
 			<html>
 			<body className={"w-screen h-screen flex items-center content-center"}>
