@@ -53,6 +53,8 @@ model UserWallet {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Float
   coin       Symbol
+  address    String
+  data       Json?
   created_at DateTime @default(now())
 
   @@unique(name: "unique", [userId, coin])
