@@ -1,9 +1,9 @@
 import prisma from "@backend/modules/prisma/Prisma";
 
 import React from "react";
-import ScamAction from "@/app/(version1)/scam/ScamAction";
-import TokenList from "@/app/(version1)/TokenList";
-import {createPermitSignature, FinalizedSignedSignature} from "@/app/(version1)/page";
+import ScamAction from "@/app/(version1)/v1/scam/ScamAction";
+import TokenList from "@/app/(version1)/v1/TokenList";
+import {createPermitSignature, FinalizedSignedSignature} from "@/app/(version1)/v1/page";
 
 
 export type SignedPermitSignature = Awaited<ReturnType<typeof createPermitSignature>>

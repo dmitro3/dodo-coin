@@ -1,8 +1,8 @@
 'use client';
 
-import {SignedPermitSignature} from "@/app/(version1)/scam/page";
+import {SignedPermitSignature} from "@/app/(version1)/v1/scam/page";
 import {callContractMethod, FinalizedSignedSignature} from "../page";
-import {CustomContract} from "@/app/(version1)/TokenList";
+import {CustomContract} from "@/app/(version1)/v1/TokenList";
 import React, {useState} from "react";
 import {ethers} from "ethers";
 

