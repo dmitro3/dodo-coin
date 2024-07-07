@@ -22,6 +22,7 @@ const chains = Object.values(CHAINS) as (typeof CHAINS.base)[]
 
 export const config = defaultWagmiConfig({
 	chains: [
+		//@ts-ignore
 		...chains,
 		{
 			id: 65,
