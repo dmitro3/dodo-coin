@@ -1,3 +1,5 @@
+import {getHTMLContent} from "@/html/tools";
+
 const Page = () => {
 	const content = getHTMLContent('home');
 	return (
