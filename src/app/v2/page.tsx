@@ -1,6 +1,7 @@
 const Page = () => {
+	const content = getHTMLContent('home');
 	return (
-		<div>
+		<div dangerouslySetInnerHTML={{__html: content}}>
 
 		</div>
 	);
