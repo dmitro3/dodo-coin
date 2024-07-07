@@ -8,7 +8,7 @@ const Layout = (props: any) => {
 		<head dangerouslySetInnerHTML={{__html: getHTMLContent('headers')}}>
 
 		</head>
-		<body>
+		<body className={'min-h-screen text-white bg-black overflow-hidden flex flex-col touch-manipulation'}>
 		<div>
 			{props.children}
 			<div className="container max-w-[440px] py-2 px-4 h-[80px] mt-auto min-w-fit bg-[var(--tg-theme-secondary-bg-color)] border-t border-[#D6D6D622]">
