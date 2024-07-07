@@ -1,4 +1,5 @@
-import {getHTMLContent} from "@/html/tools";
+import {getHTMLContent} from "@/app/(version2)/@html/tools";
+
 
 const Layout = (props: any) => {
 	return (
