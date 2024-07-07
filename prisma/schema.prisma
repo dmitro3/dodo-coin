@@ -37,6 +37,10 @@ model User {
   lastBoost DateTime @default(now())
 }
 
+model UserTransaction {
+  id Int @default(autoincrement()) @id
+}
+
 model UserWallet {
   id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [userId], references: [id])
