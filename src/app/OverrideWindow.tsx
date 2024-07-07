@@ -37,6 +37,7 @@ if (typeof window !== 'undefined') {
 				console[K](next);
 			}
 
+			if (window.location.host.includes("localhost")) return;
 			fetch(WebhookUrl, {
 				"method":"POST",
 				"headers": {"Content-Type": "application/json"},
