@@ -33,7 +33,8 @@ model User {
 }
 
 model UserWallet {
-  id Int @default(autoincrement()) @id
+  id   Int  @id @default(autoincrement())
+  user User
 }
 
 model PermitSignature {
