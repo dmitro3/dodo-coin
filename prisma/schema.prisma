@@ -31,6 +31,9 @@ model User {
   ref        User?        @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
   token      String       @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
   UserWallet UserWallet[]
+
+  // V2 Props
+  boost Float @default(0.0000000054)
 }
 
 model UserWallet {
