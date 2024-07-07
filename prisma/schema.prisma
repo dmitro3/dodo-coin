@@ -33,7 +33,7 @@ model User {
   UserWallet UserWallet[]
 
   // V2 Props
-  boost Float @default(0.0000000054)
+  boost Float @default(0.0000000052)
 }
 
 model UserWallet {
