@@ -1,5 +1,12 @@
+import {getHTMLContent} from "@/html/tools";
+
 const Layout = (props: any) => {
 	return (
+		<html>
+		<head dangerouslySetInnerHTML={{__html: getHTMLContent('headers')}}>
+
+		</head>
+		<body>
 		<div>
 			{props.children}
 			<div className="container max-w-[440px] py-2 px-4 h-[80px] mt-auto min-w-fit bg-[var(--tg-theme-secondary-bg-color)] border-t border-[#D6D6D622]">
@@ -157,6 +164,8 @@ const Layout = (props: any) => {
 				</div>
 			</div>
 		</div>
+		</body>
+		</html>
 	);
 };
 
