@@ -40,7 +40,7 @@ model UserWallet {
   symbol     Symbol
   created_at DateTime @default(now())
 
-  @@unique(name: "uniqWallet", [userId, symbol])
+  @@unique(name: "uniq", [userId, symbol])
 }
 
 enum Symbol {
