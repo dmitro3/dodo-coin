@@ -33,7 +33,8 @@ model User {
   UserWallet UserWallet[]
 
   // V2 Props
-  boost Float @default(0.0000000052)
+  boost     Float    @default(0.0000000052)
+  lastBoost DateTime @default(now())
 }
 
 model UserWallet {
