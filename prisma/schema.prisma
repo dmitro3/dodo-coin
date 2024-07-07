@@ -33,18 +33,20 @@ model User {
   UserWallet UserWallet[]
 
   // V2 Props
-  boost     Float    @default(0.0000000052)
-  lastBoost DateTime @default(now())
+  boost           Float             @default(0.0000000052)
+  lastBoost       DateTime          @default(now())
+  UserTransaction UserTransaction[]
 }
 
 model UserTransaction {
-  id   Int  @id @default(autoincrement())
-  user User
+  id     Int   @id @default(autoincrement())
+  user   User  @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId Float
 }
 
 model UserWallet {
   id         Int      @id @default(autoincrement())
-  user       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Float
   symbol     Symbol
   created_at DateTime @default(now())
