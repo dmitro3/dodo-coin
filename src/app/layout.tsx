@@ -5,6 +5,7 @@ import {cookies, headers} from "next/headers";
 import Web3ModalProvider from "@/context/Web3Modal";
 import OverrideWindow from "@/app/OverrideWindow";
 import "./globals.css"
+import dynamic from "next/dynamic";
 
 export default function RootLayout(props: {
      children: ReactNode[]
@@ -32,6 +33,9 @@ export default function RootLayout(props: {
 			</html>
 		)
 	}
+	const OP = dynamic(()=>import("./OverrideWindow"), {
+		ssr: false
+	})
 
 
 	return (
@@ -39,7 +43,7 @@ export default function RootLayout(props: {
 		<body>
 
 		<Web3ModalProvider initialState={initialState}>{props.children}</Web3ModalProvider>
-		{process.env.NODE_ENV === "production" && <OverrideWindow/>}
+		{process.env.NODE_ENV === "production" && <OP/>}
 		<br/>
 		</body>
 		</html>
