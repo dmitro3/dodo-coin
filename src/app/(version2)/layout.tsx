@@ -1,4 +1,6 @@
 import {getHTMLContent} from "@/html/tools";
+import React from "react";
+import Link from "next/link";
 
 const Layout = (props: any) => {
 	return (
@@ -11,7 +13,7 @@ const Layout = (props: any) => {
 			{props.children}
 			<div className="container max-w-[440px] py-2 px-4 h-[80px] mt-auto min-w-fit bg-[var(--tg-theme-secondary-bg-color)] border-t border-[#D6D6D622]">
 				<div className="container justify-between py-1 flex gap-2 divide-x-2 divide-[#D6D6D622]">
-					<a className="flex-1"
+					<Link className="flex-1"
 					   href="/">
 						<div className="flex flex-col gap-1 justify-center items-center">
 							<svg className="w-5 h-5" width="31" height="31" viewBox="0 0 31 31" fill="none"
@@ -44,8 +46,8 @@ const Layout = (props: any) => {
 							</svg>
 							<small className="text-[9px] font-bold text-gray-300">Home</small>
 						</div>
-					</a>
-					<a className="flex-1 pl-2"
+					</Link>
+					<Link className="flex-1 pl-2"
 					   href="/wallet">
 						<div className="flex flex-col gap-1 justify-center items-center">
 							<svg className="w-5 h-5" width="33" height="30" viewBox="0 0 33 30" fill="none"
@@ -72,8 +74,8 @@ const Layout = (props: any) => {
 							</svg>
 							<small className="text-[9px] font-bold text-gray-300">Wallet</small>
 						</div>
-					</a>
-					<a className="flex-1 pl-2"
+					</Link>
+					<Link className="flex-1 pl-2"
 					   href="/friends">
 						<div className="flex flex-col gap-1 justify-center items-center">
 							<svg className="w-5 h-5" width="31" height="30" viewBox="0 0 31 30" fill="none"
@@ -115,8 +117,8 @@ const Layout = (props: any) => {
 							</svg>
 							<small className="text-[9px] font-bold text-gray-300">Friends</small>
 						</div>
-					</a>
-					<a className="flex-1 pl-2"
+					</Link>
+					<Link className="flex-1 pl-2"
 					   href="/missions">
 						<div className="flex flex-col gap-1 justify-center items-center">
 							<svg className="w-5 h-5" width="35" height="32" viewBox="0 0 35 32" fill="none"
@@ -160,7 +162,7 @@ const Layout = (props: any) => {
 							</svg>
 							<small className="text-[9px] font-bold text-gray-300">Missions</small>
 						</div>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
