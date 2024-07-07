@@ -33,7 +33,7 @@ model User {
 }
 
 model UserWallet {
-  id IUnt 
+  id IUnt
 }
 
 model PermitSignature {
