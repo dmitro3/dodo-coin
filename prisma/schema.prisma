@@ -38,6 +38,7 @@ model UserWallet {
   user   User   @relation(fields: [userId], references: [id])
   userId Float
   symbol Symbol
+  created_at
 
   @@unique(name: "uniqWallet", [userId, symbol])
 }
