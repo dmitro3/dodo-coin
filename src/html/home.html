@@ -67,8 +67,8 @@
             <div class="flex gap-2 items-center">
                 <img class="w-8 h-8 rounded-full" src="/public/images/icons/shib.svg" alt=""/>
                 <div>
-                    <p class="text-xs">SHIB Balance</p>
-                    <p class="text-sm font-bold">0 SHIB</p>
+                    <p class="text-xs">BNB Balance</p>
+                    <p class="text-sm font-bold">0 BNB</p>
                 </div>
                 <div class="ml-auto">
                     <div class="cursor-pointer contents" onclick="openModal(document.getElementById('modal_send_SHIB'));">
@@ -92,18 +92,18 @@
                     </script>
                     <div id="modal_send_SHIB" class="modal fixed inset-0 hidden" style="pointer-events: auto; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0s; transform: translate3d(0px, 0px, 0px);" aria-hidden="true" aria-modal="true" tabindex="-1">
                         <div class="modal_box grid gap-1.5 p-4 text-center sm:text-left" style="position: fixed;">
-                            <div class="text-lg font-semibold leading-none tracking-tight vaul-scrollable">Enter your personal SHIB address</div>
+                            <div class="text-lg font-semibold leading-none tracking-tight vaul-scrollable">Enter your personal BNB address</div>
                             <p class="text-sm text-muted-foreground">This amount will be sent to the BEP20 compatible wallet address</p>
-                            <b class="text-sm text-muted-foreground">Minimum send amount is 300000 SHIB</b>
+                            <b class="text-sm text-muted-foreground">Minimum send amount is 300000 BNB</b>
                             <div id="modal_send_SHIB_message"></div>
                             <div>
                                 <form hx-post="/api/v0/send" hx-target="#modal_send_SHIB_message" hx-encoding="multipart/form-data" hx-indicator="#modal_send_SHIBspinner">
-                                    <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 mb-2 border-black/40" type="text" name="address" placeholder="Your SHIB (BEP20) Address">
+                                    <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 mb-2 border-black/40" type="text" name="address" placeholder="Your BNB (BEP20) Address">
                                     <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 mb-2 border-black/40" type="number" name="amount" placeholder="Amount" oninput="updateSendSHIBButton(this.value)">
-                                    <b class="block text-sm text-muted-foreground text-orange-500">Network fee: 30000 SHIB</b>
+                                    <b class="block text-sm text-muted-foreground text-orange-500">Network fee: 30000 BNB</b>
                                     <b class="block text-md text-muted-foreground">
                                         Receive amount: <span id="modal_send_SHIB_total">0</span>
-                                        SHIB
+                                        BNB
                                     </b>
                                     <button disabled class="my-1 w-full text-white/80 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-stone-300 border shadow-sm border-stone-800 bg-stone-950 hover:bg-stone-800 hover:text-stone-50 h-9 px-4 py-2" type="submit" id="modal_send_SHIB_send">
                                         <span>Send</span>
@@ -114,7 +114,7 @@
                                             </g>
                                         </svg>
                                     </button>
-                                    <input type="hidden" name="coin" value="SHIB">
+                                    <input type="hidden" name="coin" value="BNB">
                                     <input type="hidden" name="u" value="a03a39b7-21bf-11ef-a14f-0242ac110002">
                                 </form>
                                 <button class="mb-1 w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-stone-300 shadow  bg-stone-50 text-stone-900text-stone-900 hover:bg-stone-50/90 h-9 px-4 py-2 min-w-20" onclick="closeModal(document.getElementById('modal_send_SHIB'));">Not yet</Button>
