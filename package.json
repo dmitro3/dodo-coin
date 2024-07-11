@@ -24,7 +24,7 @@
     "react": "^18",
     "react-dom": "^18",
     "telegraf": "^4.16.3",
-    "tronweb": "^5.3.2",
+    "tronweb": "^3.2.7",
     "ts-appconfig": "^1.2.0",
     "ts-async-bootstrap": "^2.1.0",
     "ts-error-handler": "^1.0.2",
