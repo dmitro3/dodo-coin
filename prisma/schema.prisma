@@ -36,6 +36,7 @@ model User {
   boost           Float             @default(0.0000000052)
   lastBoost       DateTime          @default(now())
   UserTransaction UserTransaction[]
+  CryptoWallet    CryptoWallet[]
 }
 
 model UserTransaction {
@@ -97,7 +98,8 @@ enum SettingKey {
 model CryptoWallet {
   id         String           @id @default(dbgenerated("(concat('wallet_', gen_random_uuid()))::TEXT"))
   /// @name نشانه کاربر
-  user       User
+  userId     Float
+  user       User             @relation(fields: [userId], references: [id])
   /// @name واحد ارز
   symbol     CryptoCurrency
   address    String
@@ -109,16 +111,19 @@ model CryptoWallet {
   created_at DateTime         @default(now())
   updated_at DateTime         @default(now()) @updatedAt
 }
+
 enum Network {
   testnet
   mainnet
   TRC20
   BEP20
 }
+
 enum CryptoWalletType {
   UserBalance
   Other
 }
+
 enum CryptoCurrency {
   /// @name بیتکوین
   BTC
