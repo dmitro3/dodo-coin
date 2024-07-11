@@ -1,5 +1,5 @@
 import CryptoManager from "@backend/crypto/CryptoManager";
-// <reference types="@types/tronweb" />
+// <reference types="@daochild/tronweb-typescript" />
 import TronWeb from 'tronweb';
 import {CurrencyToUsdtConvertInterface} from "@backend/crypto/currency";
 
