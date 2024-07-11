@@ -12,7 +12,7 @@ describe('Wallet Creation', () => {
 
 
 describe('Wallet Creation', () => {
-	test("Test", ()=>{
-		return true;
+	test("Test", async ()=>{
+		return "HALO";
 	})
 })
