@@ -1,6 +1,5 @@
 import {getHTMLContent} from "@/html/tools";
 import React from "react";
-import Link from "next/link";
 import Navigation from "@/app/(version2)/Navigation";
 
 const Layout = (props: any) => {
