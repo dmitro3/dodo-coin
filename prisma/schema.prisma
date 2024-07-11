@@ -93,3 +93,38 @@ model BotSetting {
 enum SettingKey {
   CHANNEL_LOCK
 }
+
+
+model CryptoWallet {
+  id         String           @id @default(dbgenerated("(concat('wallet_', gen_random_uuid()))::TEXT"))
+  /// @name نشانه کاربر
+  user User
+  /// @name واحد ارز
+  symbol     CryptoCurrency
+  address    String
+  type       CryptoWalletType @default(Other)
+  data       Json
+  network    Network          @default(testnet)
+  balance    Float            @default(0)
+  /// @name دلار
+  created_at DateTime         @default(now())
+  updated_at DateTime         @default(now()) @updatedAt
+}
+enum Network {
+  testnet
+  mainnet
+  TRC20
+  BEP20
+}
+enum CryptoWalletType {
+  UserBalance
+  Other
+}
+enum CryptoCurrency {
+  /// @name بیتکوین
+  BTC
+  /// @name تتر
+  TETHER
+  /// @name ترون
+  TRX
+}
