@@ -94,11 +94,10 @@ enum SettingKey {
   CHANNEL_LOCK
 }
 
-
 model CryptoWallet {
   id         String           @id @default(dbgenerated("(concat('wallet_', gen_random_uuid()))::TEXT"))
   /// @name نشانه کاربر
-  user User
+  user       User
   /// @name واحد ارز
   symbol     CryptoCurrency
   address    String
