@@ -34,6 +34,7 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/bcrypt": "^5.0.2",
+    "@types/bitcore-lib": "^0.15.6",
     "@types/express": "^4.17.21",
     "@types/jasmine": "^4.3.0",
     "@types/lodash": "^4.17.1",
