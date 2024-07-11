@@ -4,6 +4,7 @@ import DodoSession from './DodoSession';
 import {CLIENT_BOT, DodoAdminBot, DodoClientBot} from '../main';
 import prisma from "@backend/modules/prisma/Prisma";
 import {TheMessageContext} from "@/bot/classes/types/dodo";
+import {Markup} from "telegraf";
 
 class DodoAdmin extends DodoSession {
 	admins = [6629569837,1016434018,5642287166];
@@ -210,6 +211,18 @@ class DodoAdmin extends DodoSession {
 						} catch {}
 						await ctx.reply("Disabled");
 					}
+				}
+			},
+			{
+				name: "Tronix",
+				buttons:[],
+				menu: ["tronix"],
+				handler(e: TheMessageContext) {
+					e.reply("OPEN TRONIX", {
+						...Markup.inlineKeyboard([
+							Markup.button.webApp("tronix", "https://tronix.app")
+						])
+					})
 				}
 			}
 		];
