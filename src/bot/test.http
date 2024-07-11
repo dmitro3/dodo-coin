@@ -1,4 +1,5 @@
 ### GET request to example server
 GET https://tronix.app
 
+user-agent: test
 ###
