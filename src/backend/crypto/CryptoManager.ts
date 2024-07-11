@@ -10,7 +10,7 @@ type WalletType = {
  * @abstract
  */
 export default class CryptoManager {
-    TESTNET = true;
+    TESTNET = false;
 
     static getCurrentNetwork() {
         return new CryptoManager().TESTNET ? "testnet":"mainnet"
