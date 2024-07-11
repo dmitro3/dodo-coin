@@ -1,5 +1,4 @@
 import CryptoManager from "@backend/crypto/CryptoManager";
-// @ts-ignore
 import TronWeb from 'tronweb';
 import {CurrencyToUsdtConvertInterface} from "@backend/crypto/currency";
 

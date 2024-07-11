@@ -1,7 +1,5 @@
 import CryptoManager from "@backend/crypto/CryptoManager";
-// @ts-ignore
 import {PrivateKey} from "bitcore-lib";
-// @ts-ignore
 import {mainnet, testnet} from "bitcore-lib/lib/networks";
 
 // @ts-ignore
