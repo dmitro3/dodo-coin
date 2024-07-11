@@ -1,5 +1,3 @@
-import {getCurrencyManager} from "@backend/crypto/Managers";
-
 escribe('testing index file', () => {
 	test('empty string should result in zero', () => {
 		expect(add('')).toBe(0);
