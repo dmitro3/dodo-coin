@@ -22,7 +22,8 @@
       "@backend/*": ["./src/backend/*"],
     },
     "types": [
-      "@daochild/tronweb-typescript"
+      "@daochild/tronweb-typescript",
+      "jest"
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
