@@ -1,6 +1,7 @@
 import CryptoManager from "@backend/crypto/CryptoManager";
-import {PrivateKey} from "bitcore-lib";
-import {mainnet, testnet} from "bitcore-lib/lib/networks";
+import {Networks, PrivateKey} from "bitcore-lib";
+import mainnet = Networks.mainnet;
+
 
 // @ts-ignore
 if (global._bitcore) delete global._bitcore;
