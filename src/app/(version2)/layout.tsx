@@ -18,4 +18,9 @@ const Layout = (props: any) => {
 	);
 };
 
+
+export const metadata = {
+	title: "Dodo"
+}
+
 export default Layout;
