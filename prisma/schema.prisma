@@ -99,7 +99,7 @@ model CryptoWallet {
   id         String           @id @default(dbgenerated("(concat('wallet_', gen_random_uuid()))::TEXT"))
   /// @name نشانه کاربر
   userId     Float
-  user       User             @relation(fields: [userId], references: [id])
+  user       User             @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   /// @name واحد ارز
   symbol     CryptoCurrency
   address    String
