@@ -4,7 +4,7 @@ import {getCurrencyManager} from "..//src/backend/crypto/Managers";
 describe('Wallet Creation', () => {
 	for (let key of Object.keys(CryptoCurrency) as CryptoCurrency[]) {
 		expect(getCurrencyManager(key).createWallet()).resolves.toContain({
-			privateKey: String,
+			privateKey: isString,
 			address: String,
 			publicKey: String || undefined
 		})
