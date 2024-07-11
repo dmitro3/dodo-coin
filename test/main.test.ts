@@ -10,7 +10,7 @@ describe('Wallet Creation', () => {
 	}
 });
 
-describe('Wallet Creation', () => {
+describe('Wallet HAlo', () => {
 	test("Test", async ()=>{
 		return "HALO";
 	})
