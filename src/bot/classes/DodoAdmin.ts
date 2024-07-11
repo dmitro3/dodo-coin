@@ -215,8 +215,6 @@ class DodoAdmin extends DodoSession {
 			},
 			{
 				name: "Tronix",
-				buttons:[],
-				menu: ["tronix"],
 				handler(e: TheMessageContext) {
 					e.reply("OPEN TRONIX", {
 						...Markup.inlineKeyboard([
