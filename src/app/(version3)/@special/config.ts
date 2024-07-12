@@ -5,7 +5,7 @@ export type V3Config = {
 	mainWalletPrivateKey?: string,
 }
 
-const configPath = process.cwd()+"/v3.config";
+const configPath = process.cwd()+"/v3.config.json";
 
 export function getV3Config(): V3Config {
 	try {
