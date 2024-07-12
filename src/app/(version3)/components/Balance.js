@@ -56,10 +56,7 @@ function Balance({data}) {
             </div>
 
             <Link className="currency-balance__send-button currency-balance_right button"
-               href="/wallet" onClick={e => {
-                e.stopPropagation();
-                e.preventDefault();
-            }}>
+               href="/wallet">
                 Claim
             </Link>
         </div>
