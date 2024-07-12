@@ -120,30 +120,31 @@ function prop<T>(value: T) {
 const prisma = instance.$extends({
   result: {
     user: {
-      maxTapLvl: prop(TapLevels.length),
-      maxEnergy: prop(10000),
-      lvlInfo: {
-        needs: {
-          tapLvl: true
-        },
-        compute({tapLvl}) {
-          return TapLevels[tapLvl - 1]
-        }
-      },
-      energy: {
-        needs: {
-          energy: true,
-          lastTap: true,
-          energyLvl:true,
-          chargeLvl: true
-        },
-        compute({energy, lastTap,chargeLvl, energyLvl}) {
-          const seconds = ((new Date().getTime()) - lastTap.getTime()) / 1000;
-          const maxEnergy = EnergyLevels[energyLvl -1]?.limit || 0;
-
-          return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
-        }
-      }
+      // maxTapLvl: prop(TapLevels.length),
+      // maxEnergy: prop(10000),
+      // lvlInfo: {
+      //   needs: {
+      //     tapLvl: true
+      //   },
+      //   compute({tapLvl}) {
+      //     return TapLevels[tapLvl - 1]
+      //   }
+      // },
+      // energy: {
+      //   needs: {
+      //     energy: true,
+      //     lastTap: true,
+      //     energyLvl:true,
+      //     chargeLvl: true
+      //   },
+      //   compute({energy, lastTap,chargeLvl, energyLvl}) {
+      //     const seconds = ((new Date().getTime()) - lastTap.getTime()) / 1000;
+      //     const maxEnergy = EnergyLevels[energyLvl -1]?.limit || 0;
+	 //
+      //     return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
+      //   }
+      // }
+	    trnex
     }
   },
   model: {
