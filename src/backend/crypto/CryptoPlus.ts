@@ -110,6 +110,7 @@ export async function checkPosPayment(id: string) {
 				}
 			}
 		}).catch(console.error)
+		delete PAYMENTS[pId];
 	}
 	return st;
 }
