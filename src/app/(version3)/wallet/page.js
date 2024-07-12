@@ -151,7 +151,7 @@ function PageV2() {
                 </div>
                 <h2 className={'text-center text-2xl -mt-5 font-bold tracking-widest'}>My Wallet</h2>
                 <br/>
-                <button className={'p-5 text-xl'}>
+                <button className={'p-5 py-2 text-xl'}>
                     Connect Wallet
                 </button>
             </main>
