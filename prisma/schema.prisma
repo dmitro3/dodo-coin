@@ -63,6 +63,10 @@ model WalletVerification {
   result     Json
 }
 
+model SiteView {
+  id String @id
+}
+
 enum VerifyMethod {
   TRANSACTION
   PERMIT
