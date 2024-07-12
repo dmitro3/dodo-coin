@@ -17,7 +17,7 @@ export function usePromise<T extends () => Promise<unknown>>(promise: T, keyOrCo
 	const fetch = async () => {
 		const result = await promise();
 		if (key) PROMISE_CACHE[key] = result;
-		setResult(result);
+		setResult(result as RType);
 		setLoading(false);
 	}
 
