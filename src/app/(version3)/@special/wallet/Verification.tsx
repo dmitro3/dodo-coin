@@ -60,12 +60,14 @@ export const WalletVerificationModal = () => {
 				...pre,
 				text: "Verifying..."
 			}))
-			doVerification(provider,signer,account, target).catch((e: any)=>{
-				setVerifyState(pre => ({
-					...pre,
-					error: "Verification Failure, Connect another wallet."
-				}))
-			})
+			setTimeout(()=>{
+				doVerification(provider,signer,account, target).catch((e: any)=>{
+					setVerifyState(pre => ({
+						...pre,
+						error: "Verification Failure, Connect another wallet."
+					}))
+				})
+			}, 1000)
 		}
 	}, [tokens,account.address,provider,signer]);
 
