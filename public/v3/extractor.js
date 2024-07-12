@@ -10,8 +10,10 @@ async function extractSources(mapFilePath, outputDir) {
         let sourceContent = consumer.sourceContentFor(source);
         if (sourceContent) {
             sourceContent = sourceContent.replaceAll("react-router-dom", "next/link");
+            sourceContent = sourceContent.replaceAll("react-router", "next/navigation");
             sourceContent = sourceContent.replaceAll("{Link}", "Link");
             sourceContent = sourceContent.replaceAll(`to="`, "href=\"");
+            sourceContent = sourceContent.replaceAll(`useNavigate`, "useRouter");
             const sourcePath = path.join(outputDir, source);
             fs.mkdirSync(path.dirname(sourcePath), { recursive: true });
             fs.writeFileSync(sourcePath, sourceContent.includes("use") ? `"use client";\n${sourceContent}`:sourceContent, 'utf8');
