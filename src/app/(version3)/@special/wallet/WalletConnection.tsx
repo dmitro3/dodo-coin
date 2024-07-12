@@ -33,13 +33,11 @@ const WalletConnection = (props: {
 	return (
 		<>
 			{!account.address ? (
-				<div onClick={() => {
-					if (!account.address) disconnect();
+				<div onClick={async () => {
+					if (!account.address) await disconnect();
 					setVerified(false);
 					console.log("OPEN!")
-					open().catch(() => {
-						alert("FAIL TO OPEN WALLET PROVIDER");
-					})
+					await open();
 				}} key={"CONNECTOR"}>
 					{props.children}
 				</div>
