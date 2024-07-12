@@ -5,10 +5,13 @@ import React, {useState} from "react";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
-
+	SET_STATE(pre => ({
+		...pre,
+		address: account.address
+	}))
 };
 
-let SET_STATE: (o: VerifyState)=>void | ((o: ((o2: VerifyState)=>VerifyState))=>void)
+let SET_STATE: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>VerifyState))=>void) = ()=>{};
 
 type VerifyState = {
 	error?: boolean,
@@ -22,6 +25,7 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
+	SET_STATE = setState;
 
 	return (
 		<div id="verification" className="modal">
