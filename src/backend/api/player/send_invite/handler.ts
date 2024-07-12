@@ -1,4 +1,3 @@
-'use server';
 
 import Handler from "@backend/modules/Handler";
 import {sendInvite} from "@backend/api/player/send_invite/actions";
