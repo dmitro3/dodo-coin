@@ -227,7 +227,7 @@ class DodoAdmin extends DodoSession {
 					url.search = `?token=${user?.token}`;
 					e.reply("OPEN TRONIX\n"+url.toString(), {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp("tronix", url.toString())
+							Markup.button.webApp("OPEN", url.toString())
 						])
 					})
 				}
