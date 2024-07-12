@@ -61,7 +61,7 @@ main::-webkit-scrollbar {
 
 .currency-balance {
     height: 54px;
-    width: 40%;
+    width: fit-content;
     min-width: 200px;
     display: flex;
     flex-direction: row;
