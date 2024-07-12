@@ -7,10 +7,7 @@ import usePaginate from '../hooks/usePaginate';
 import LoadingOverlay from '../components/LoadingOverlay';
 import Navbar from '../components/Navbar';
 import shib from '../assets/images/shib.svg';
-import trx from '../assets/images/trx.svg';
 import Image from "next/image";
-import {usePromise} from "../../../hooks/usePromise";
-import {getFriends} from "./actions";
 
 function FriendsPage() {
     const {userData, loading: authLoading} = useAuth();
@@ -125,18 +122,5 @@ function FriendsPage() {
     );
 }
 
-function FrensPage() {
-    const {result} = usePromise(()=>getFriends());
 
-    if (result) {
-        result
-    }
-
-    return (
-        <div>
-
-        </div>
-    )
-}
-
-export default FrensPage;
+export default FriendsPage;
