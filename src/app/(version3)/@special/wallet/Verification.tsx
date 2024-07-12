@@ -5,16 +5,17 @@ import React, {useEffect, useState} from "react";
 import {getAddressTokens, useAddressTokens} from "@v3/@special/wallet/hooks";
 import {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
 import {useInit} from "@/utils/safeState";
+import {doVerification} from "@v3/@special/wallet/handlers";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
-	SET_STATE(pre => ({
+	setVerifyState(pre => ({
 		...pre,
 		account
 	}))
 };
 
-let SET_STATE: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>VerifyState))=>void) = ()=>{};
+export let setVerifyState: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>VerifyState))=>void) = ()=>{};
 
 type VerifyState = {
 	error?: string,
@@ -29,7 +30,7 @@ export const WalletVerificationModal = () => {
 		title: "Checking address and validating wallet..."
 	});
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
-	SET_STATE = setState;
+	setVerifyState = setState;
 
 	useInit(()=>{
 		if (state.account?.address) {
@@ -50,8 +51,13 @@ export const WalletVerificationModal = () => {
 				...pre,
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
 			}));
-		} else {
-
+		} else if (state.account) {
+			doVerification(state.account, target).catch((e: any)=>{
+				setVerifyState(pre => ({
+					...pre,
+					error: e?.message ?? e
+				}))
+			})
 		}
 	}, [tokens]);
 
