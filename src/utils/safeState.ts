@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export type Unknown<T extends any = any> = ({
     [K in keyof T]?: ((
@@ -24,4 +24,17 @@ export function useSafe<T = any>(init: Unknown<T> = {}): ([
 		T,
 		setT as any // FIXED IN RETURN TYPE :)
 	]
+}
+
+
+export function useInit(func: ()=>any) {
+	const [init, setInit] = useState(false);
+
+	useEffect(()=>{
+		setInit(true);
+	}, [])
+
+	useEffect(() => {
+		if (init) return func();
+	}, [init]);
 }
