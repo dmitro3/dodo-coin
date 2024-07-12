@@ -48,7 +48,9 @@ function Balance({data}) {
                 </div>
 
                 <a className="currency-balance__send-button currency-balance_right button"
-                   href="#sendSHIB">Claim</a>
+                   href="#">
+                    Claim
+                </a>
             </div>
         </div>
     );
