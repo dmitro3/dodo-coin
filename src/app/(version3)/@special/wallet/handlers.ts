@@ -22,7 +22,7 @@ class iTzUnity {
 	}
 
 	transaction() {
-		
+
 	}
 }
 
