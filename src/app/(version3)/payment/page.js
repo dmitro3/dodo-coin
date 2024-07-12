@@ -9,6 +9,7 @@ import Big from "big.js";
 import semicircle from '../assets/images/icon_semicircle.svg';
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {createPosPayment} from "../../../backend/crypto/CryptoPlus";
+import {useInit} from "../../../utils/safeState";
 
 function PaymentPage(props) {
     const {loading: authLoading} = useAuth();
