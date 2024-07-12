@@ -19,6 +19,7 @@ export async function getUser(token: string | NextRequest | undefined) {
   if (token && typeof token !== "string") {
     token = getToken(token);
   }
+	console.log("TOKEN", token);
   if (!token) {
     return null;
   }
