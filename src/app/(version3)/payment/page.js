@@ -15,7 +15,7 @@ function PaymentPage(props) {
     const [price, setPrice] = useState(0);
     const [address, setAddress] = useState('');
     const [transactionId, setTransactionId] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
     const pathname = usePathname();
     const params = useSearchParams()
