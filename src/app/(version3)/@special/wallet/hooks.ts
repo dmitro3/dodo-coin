@@ -4,7 +4,7 @@ import {useInit} from "@/utils/safeState";
 import Big from "big.js";
 
 export function useAddressTokens(address: string,CHAIN_ID: number) {
-	const [tokens, setTokens] = useState<ContractCovalenTHQ[]>([]);
+	const [tokens, setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>>>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
 
@@ -30,6 +30,8 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 		isError
 	};
 }
+
+
 
 export async function getAddressTokens(address: string, CHAIN_ID: number) {
 	const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);

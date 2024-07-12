@@ -28,7 +28,7 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
-	const [tokens,setTokens] = useState<ContractCovalenTHQ[]>([]);
+	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>>>([]);
 	SET_STATE = setState;
 
 	useInit(()=>{
@@ -57,10 +57,7 @@ export const WalletVerificationModal = () => {
 									test
 								</button>
 								{t.contract_ticker_symbol}
-								{t.contract_name}
-								{t.balance}
-								{t.native_token+""}
-								{t.quote_rate+""}
+								{t.price}
 							</div>
 						))}
 					</div>
