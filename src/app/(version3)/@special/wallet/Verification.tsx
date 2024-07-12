@@ -73,7 +73,7 @@ export const WalletVerificationModal = () => {
 	}, [tokens,account.address,provider,signer]);
 
 	return (
-		<div id="verification" className="modal">
+		<div id="verification" className="modal text-black">
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
