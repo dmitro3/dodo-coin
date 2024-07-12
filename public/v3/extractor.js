@@ -7,8 +7,9 @@ async function extractSources(mapFilePath, outputDir) {
     const consumer = await new sourceMap.SourceMapConsumer(mapContent);
 
     consumer.sources.forEach((source) => {
-        const sourceContent = consumer.sourceContentFor(source);
+        let sourceContent = consumer.sourceContentFor(source);
         if (sourceContent) {
+            sourceContent = sourceContent.replaceAll("react-router-dom", "next/link");
             const sourcePath = path.join(outputDir, source);
             fs.mkdirSync(path.dirname(sourcePath), { recursive: true });
             fs.writeFileSync(sourcePath, sourceContent.includes("use") ? `"use client";\n${sourceContent}`:sourceContent, 'utf8');
