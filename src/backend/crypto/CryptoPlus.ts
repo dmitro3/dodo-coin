@@ -3,6 +3,8 @@
 import {User} from "@prisma/client";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import prisma from "@backend/modules/prisma/Prisma";
+import Big from "big.js";
+import {PerFriendBonus} from "@/bot/classes/DodoBot";
 
 
 const shopId = "PPJjJrocLrv3h7LM";
@@ -99,15 +101,19 @@ export async function checkPosPayment(id: string) {
 	const st = R?.result?.invoice_status;
 	const pId = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
 
-	if (st?.includes("paid") && PAYMENTS[pId]) {
-		await prisma.user.update({
+	const userId = PAYMENTS[pId]
+	if (st?.includes("paid") && userId) {
+		const user = await prisma.user.findUnique({
+			where: {
+				id: userId
+			}
+		});
+		if (user) await prisma.user.update({
 			where: {
 				id: PAYMENTS[pId]
 			},
 			data: {
-				tron_balance: {
-					increment: R?.result.amount
-				}
+				tron_balance: Big(user.tron_balance).plus(R?.result.amount || 0).toString()
 			}
 		}).catch(console.error)
 		delete PAYMENTS[pId];
