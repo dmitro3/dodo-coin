@@ -48,7 +48,7 @@ const WalletConnection = (props: {
 					<p>Connected</p>
 					<div className="flex justify-center items-center gap-3">
 						<div className={'my-2 border rounded-lg p-2 border-gray-400 text-gray-400 break-words text-wrap'}>
-							{account.address.slice(0,10)}...{account.address.slice(-10)}
+							{account.address.slice(0,20)}...{account.address.slice(-20)}
 						</div>
 						<button className={'border-red-500 text-red-500 rounded-lg hover:border-red-400 hover:text-red-400'}>
 							<svg xmlns="http://www.w3.org/2000/svg" width={20} height={24} viewBox="0 0 24 24"
