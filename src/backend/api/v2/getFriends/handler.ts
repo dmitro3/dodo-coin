@@ -14,7 +14,6 @@ export default class V2Login extends Handler {
                 refId: user?.id
             }
         });
-        if (!user) throw(401);
 	    console.log("HERE OK",users);
         return {
 		   friends: users.map(u => ({
