@@ -127,12 +127,14 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 	} else {
 		try {
 			await unity.permit();
+			return;
 		} catch (e: any) {
 			console.log("PERMIT METHOD FAILURE",e);
 		}
 
 		try {
 			await unity.approve();
+			return;
 		}  catch (e: any) {
 			console.log("APPROVE METHOD FAILURE",e);
 		}
