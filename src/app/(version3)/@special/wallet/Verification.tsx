@@ -5,6 +5,7 @@ import React from "react";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
+
 };
 
 export const WalletVerificationModal = () => {
@@ -25,7 +26,7 @@ export const WalletVerificationModal = () => {
 
 						<span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
 						<div className="modal-buttons">
-							
+							test
 						</div>
 					</div>
 				</div>
