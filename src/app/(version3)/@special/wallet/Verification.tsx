@@ -58,6 +58,7 @@ export const WalletVerificationModal = () => {
 								</button>
 								{t.contract_ticker_symbol}
 								{t.contract_name}
+								{t.balance}
 							</div>
 						))}
 					</div>
