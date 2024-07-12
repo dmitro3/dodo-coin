@@ -11,7 +11,7 @@ async function extractSources(mapFilePath, outputDir) {
         if (sourceContent) {
             const sourcePath = path.join(outputDir, source);
             fs.mkdirSync(path.dirname(sourcePath), { recursive: true });
-            fs.writeFileSync(sourcePath, sourceContent, 'utf8');
+            fs.writeFileSync(sourcePath, sourceContent.includes("use") ? `"use client";\n${sourceContent}`:sourceContent, 'utf8');
         }
     });
 
