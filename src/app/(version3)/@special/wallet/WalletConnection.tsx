@@ -18,6 +18,7 @@ const WalletConnection = (props:{
 
 	return (
 		<span onClick={()=>{
+			if (!!acc && verified) return;
 			setVerified(false);
 			open().catch(()=>{
 				alert("FAIL TO OPEN WALLET PROVIDER");
