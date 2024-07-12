@@ -22,6 +22,7 @@ function PaymentPage(props) {
     const params = useSearchParams()
 
     useEffect(() => {
+        if (!creating) return;
         if (params.has("amount")) {
             const amount = params.get('amount');
             createPosPayment(+amount).then(r => {
