@@ -67,8 +67,6 @@ function FriendsPage() {
                         <thead>
                         <tr className="table__head">
                             <th>Name</th>
-                            <th>Missions</th>
-                            <th>Rewards</th>
                             <th>Bonus</th>
                         </tr>
                         </thead>
@@ -78,10 +76,6 @@ function FriendsPage() {
                                 <tr key={friend.id} className="table__row">
                                     <td id="username">
                                         {friend.username.length > 8 ? (friend.username.substring(0, 8) + '...') : friend.username}
-                                    </td>
-                                    <td>{friend?.missions || ""} of 5</td>
-                                    <td className="table__row-coin"><Image src={trx} alt=""
-                                                                         className="coin-img table__img"/><span>{friend.rewards}</span>
                                     </td>
                                     <td className="table__row-coin"><Image src={shib} alt=""
                                                                          className="coin-img table__img"/><span>{friend.bonus}</span>

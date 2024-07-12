@@ -8,6 +8,8 @@ import {ParseMode} from 'telegraf/types';
 import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
+const PerFriendBonus = 0.01;
+
 class DodoBot {
 	bot: CustomTelegraf;
 	sessionType: typeof DodoSession;
@@ -66,7 +68,7 @@ class DodoBot {
 								},
 							}));
 
-							const amount = 10;
+							const amount = PerFriendBonus;
 
 							if (fromUser) {
 								await prisma.user.update({
