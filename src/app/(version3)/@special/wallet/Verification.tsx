@@ -10,10 +10,6 @@ import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
-	setVerifyState(pre => ({
-		...pre,
-		account
-	}))
 };
 
 export let setVerifyState: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>VerifyState))=>void) = ()=>{};
@@ -21,8 +17,7 @@ export let setVerifyState: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>V
 type VerifyState = {
 	error?: string,
 	text?: string,
-	title?: string,
-	account?: ReturnType<typeof useAccount>
+	title?: string
 }
 
 export const WalletVerificationModal = () => {
