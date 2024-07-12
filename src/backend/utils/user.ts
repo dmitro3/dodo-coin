@@ -2,6 +2,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {User} from "@prisma/client";
 import {NextRequest} from "next/server";
 import {ssrOptimize} from "@/utils/other";
+import {headers} from "next/headers";
 
 
 export function getToken(request: NextRequest) {
@@ -34,5 +35,6 @@ export async function getUser(token?: string | NextRequest | undefined) {
 
 
 export function getClientIp() {
-	
+	const header = headers()
+	return (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
 }
