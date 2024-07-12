@@ -108,7 +108,7 @@ function FriendsPage() {
                                 return (
                                     <Link to={`?page=${page.toString()}`}
                                           key={page}
-                                          className={"table-nav__page table-nav__button button" + (page == searchParams.get('page') ? ' active-page' : '')}>{page.toString()}</Link>
+                                          className={"table-nav__page table-nav__button button" + (page == searchParams.get('page') ? ' active-page' : '')}>{page?.toString()}</Link>
                                 );
                             })
                         }
