@@ -52,7 +52,11 @@ function Balance({data}) {
                 </div>
 
                 <a className="currency-balance__send-button currency-balance_right button"
-                   href="#" onClick={open}>
+                   href="#" onClick={e => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    open()
+                }}>
                     Claim
                 </a>
             </div>
