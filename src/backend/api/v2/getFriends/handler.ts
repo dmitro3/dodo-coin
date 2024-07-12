@@ -6,22 +6,20 @@ import prisma, {ChargeLevels, EnergyLevels, Leagues, TapLevels} from "@backend/m
 
 export default class V2Login extends Handler {
     async handler() {
-        const token = this.get('token', "Token Required");
+        const token = this.getUser();
         const user = await prisma.user.findUnique({
             where: {
-                token: token+""
+                refId:
             }
         });
         if (!user) throw(401);
-	   const res = NextResponse.json({
+        return {
 		   tron_balance: user.tron_balance+"",
 		   shib_balance: user.shib_balance+"",
 		   tronex_balance: user.tronex_balance+"",
 		   step: user.step+"",
 		   power: user.power+"",
 		   user
-	   });
-	   res.cookies.set('token', user.token);
-        return res;
+	   };
     }
 }
