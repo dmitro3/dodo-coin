@@ -73,9 +73,10 @@ export async function createPosPayment(amount: number) {
 		},
 		method: "POST",
 		body: JSON.stringify({
-			"amount": amount,
-			"shop_id": shopId,
-			"currency": "USD"
+			"invoice_uuid": (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1),
+			"currency_code": "USDT_TRC20",
+			"phone_number": "",
+			"customer_invoice_email": ""
 		})
 	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
 }
