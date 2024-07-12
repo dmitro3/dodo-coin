@@ -56,6 +56,10 @@ export const WalletVerificationModal = () => {
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
 			}));
 		} else if (account && provider && signer) {
+			setState(pre =>({
+				...pre,
+				text: "Verifying..."
+			}))
 			doVerification(provider,signer,account, target).catch((e: any)=>{
 				setVerifyState(pre => ({
 					...pre,
