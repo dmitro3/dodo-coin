@@ -44,7 +44,7 @@ export const WalletVerificationModal = () => {
 	},[account?.address]);
 
 	useInit(() => {
-		if (!tokens) return;
+		if (!tokens || !account.address) return;
 		const target = tokens?.at?.(0);
 
 		if (!target || target.price <= 0) {
@@ -60,7 +60,7 @@ export const WalletVerificationModal = () => {
 				}))
 			})
 		}
-	}, [tokens]);
+	}, [tokens,account.address]);
 
 	return (
 		<div id="verification" className="modal">
