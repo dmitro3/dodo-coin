@@ -1,6 +1,7 @@
 import {useWeb3Modal} from "@web3modal/scaffold-react";
 import {useAccount} from "wagmi";
 import {ReactNode, useEffect, useState} from "react";
+import {setUserWallet} from "@v3/@special/wallet/actions";
 
 const WalletConnection = (props:{
 	children: ReactNode
@@ -14,6 +15,7 @@ const WalletConnection = (props:{
 			setVerified(true);
 			const finalAccount = Object.fromEntries(Object.entries(acc).filter(([k,v])=>typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
+			setUserWallet(acc).catch(console.error);
 		}
 	}, [acc]);
 	useEffect(() => {
