@@ -9,14 +9,13 @@ export default class V2Login extends Handler {
     async handler() {
         const user = await this.getUser();
 
-
         const users = await prisma.user.findMany({
             where: {
                 refId: user?.id
             }
         });
         if (!user) throw(401);
-
+	    console.log("HERE OK",users);
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
