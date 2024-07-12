@@ -10,8 +10,7 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 	const user = await getUserFromCookies();
 	if (!user) return;
 	const where = {
-		address: acc.address+"",
-		chainId: acc.chainId || -1
+		address: acc.address+""
 	}
 	const data = {
 		...where,
@@ -25,10 +24,7 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 			connectedWallets: {
 				upsert: {
 					where: {
-						unique: {
-							...where,
-							userId: user.id
-						}
+						address: acc.address
 					},
 					create: data,
 					update: data
