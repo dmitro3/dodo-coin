@@ -45,7 +45,7 @@ const WalletConnection = (props: {
 				<div>
 					<p>Connected</p>
 					<div className={'my-2 border rounded-lg'}>
-						{account.address+""}
+						{account.address}
 					</div>
 				</div>
 			)}
