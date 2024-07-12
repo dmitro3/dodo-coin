@@ -34,7 +34,7 @@ export const WalletVerificationModal = () => {
 	setVerifyState = setState;
 
 	useEffect(()=>{
-		setTokens([]);
+		setTokens(undefined);
 		if (account?.address) {
 			setState(pre => ({
 				...pre,
