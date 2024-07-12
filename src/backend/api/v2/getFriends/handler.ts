@@ -19,8 +19,7 @@ export default class Friends extends Handler {
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
-			   bonus: PerFriendBonus,
-			   self: user.username
+			   bonus: PerFriendBonus
 		   }))
 	   };
     }
