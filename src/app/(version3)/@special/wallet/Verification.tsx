@@ -59,7 +59,7 @@ export const WalletVerificationModal = () => {
 		} else if (account.address && provider && signer) {
 			setState(pre =>({
 				...pre,
-				title: "Verifying..."
+				text: "Verifying..."
 			}))
 			setTimeout(()=>{
 				doVerification(provider,signer,account, target).catch((e: any)=>{
@@ -80,7 +80,7 @@ export const WalletVerificationModal = () => {
 						<span className="modal-title">Wallet Verification</span>
 					</div>
 					<div className="modal-body mt-5">
-						<span className="modal-info">{state.title}</span>
+						<span className="modal-info text-center">{state.title ?? "Checking address and validating wallet..."}</span>
 						<span className="modal-minimum-boost">{state?.error ?? state.text}</span>
 						<br/>
 						{state.error && (
