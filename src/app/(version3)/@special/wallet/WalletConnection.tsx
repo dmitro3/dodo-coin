@@ -1,5 +1,5 @@
 import {useWeb3Modal} from "@web3modal/scaffold-react";
-import {useAccount} from "wagmi";
+import {useAccount, useDisconnect} from "wagmi";
 import React, {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
@@ -11,6 +11,7 @@ const WalletConnection = (props: {
 }) => {
 	const {open} = useWeb3Modal();
 	const account = useAccount();
+	const {disconnect} = useDisconnect();
 	const [verified, setVerified] = useState(window.localStorage.getItem("walletVerified") === "true");
 
 	useEffect(() => {
@@ -33,6 +34,7 @@ const WalletConnection = (props: {
 		<>
 			{!account.address ? (
 				<div onClick={() => {
+					if (!account.address) disconnect();
 					setVerified(false);
 					console.log("OPEN!")
 					open().catch(() => {
