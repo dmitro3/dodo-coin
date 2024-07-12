@@ -67,7 +67,7 @@ export const WalletVerificationModal = () => {
 				}))
 			})
 		}
-	}, [tokens,account.address]);
+	}, [tokens,account.address,provider,singer]);
 
 	return (
 		<div id="verification" className="modal">
