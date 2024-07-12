@@ -122,7 +122,7 @@ function PageV2() {
     return (
         <div>
             <main>
-                <div className={'relative text-[#fdc04c]'}>
+                <div className={'relative text-primary'}>
                     <svg width="275" height="275" viewBox="0 0 275 275" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_f_1464_6497)">
                             <circle cx="137.529" cy="137.471" r="72.4143" fill="currentColor"></circle>
@@ -155,7 +155,7 @@ function PageV2() {
                 <br/>
                 <WalletConnection>
                     <button
-                        className={'p-5 py-2 bg-[#fdc04c] text-white border-none hover:text-white font-bold text-xl'}>
+                        className={'p-5 py-2 bg-primary text-white border-none hover:text-white font-bold text-xl'}>
                         Connect Wallet
                     </button>
                 </WalletConnection>
