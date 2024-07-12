@@ -25,7 +25,7 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 			}
 		};
 
-		fetchTokens();
+		fetchTokens().catch(console.error);
 	},[address]);
 
 	return {
