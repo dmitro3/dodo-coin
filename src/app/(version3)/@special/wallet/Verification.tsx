@@ -78,7 +78,7 @@ export const WalletVerificationModal = () => {
 							</div>
 						))}
 						{state.error && (
-							<button className={'button'}>
+							<button className={'button theme--dark'}>
 								test
 							</button>
 						)}
