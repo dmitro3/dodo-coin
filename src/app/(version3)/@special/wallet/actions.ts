@@ -10,8 +10,8 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 	const user = await getUserFromCookies();
 	if (!user) return;
 	const where = {
-		address: acc.address,
-		chainId: acc.chainId
+		address: acc.address+"",
+		chainId: acc.chainId || -1
 	}
 	const data = {
 		...where,
