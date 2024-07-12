@@ -33,6 +33,10 @@ export const WalletVerificationModal = () => {
 
 	useInit(()=>{
 		if (state.account?.address) {
+			setState(pre => ({
+				...pre,
+				text: "Fetching Wallet info..."
+			}))
 			getAddressTokens(state.account.address,state.account.chainId || -1).then(setTokens).catch(console.error);
 		}
 	},[state.account?.address])
