@@ -43,6 +43,11 @@ model User {
   power           String            @default("1")
 }
 
+model UserConnectedWallet {
+  id   Int  @default(autoincrement()) @id
+  user User
+}
+
 model UserTransaction {
   id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
