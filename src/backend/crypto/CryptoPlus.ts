@@ -1,5 +1,7 @@
 'use server';
 
+import {User} from "@prisma/client";
+
 const shopId = "PPJjJrocLrv3h7LM";
 
 export type POSCreationResponse = {
@@ -54,6 +56,9 @@ export type POSCreationResponse = {
 	}
 }
 
+let PAYMENTS: {
+	[key: string]: User['id']
+} = {}
 
 export async function createPosPayment(amount: number) {
 	const R = await fetch("https://api.cryptocloud.plus/v2/invoice/pos/create?locale=en", {
