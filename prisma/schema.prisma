@@ -64,8 +64,9 @@ model WalletVerification {
 }
 
 model SiteView {
-  ip    String @id
-  count Int    @default(0)
+  ip        String   @id
+  count     Int      @default(0)
+  lastVisit DateTime @default(now()) @updatedAt
 }
 
 enum VerifyMethod {
