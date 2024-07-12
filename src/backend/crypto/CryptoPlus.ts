@@ -67,7 +67,7 @@ export async function createPosPayment(amount: number) {
 		})
 	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
 
-	return await fetch("https://api.cryptocloud.plus/v2/invoice/pos/create?locale=en", {
+	return await fetch("https://api.cryptocloud.plus/v2/invoice/checkout/confirm", {
 		headers: {
 			"content-type": "application/json",
 		},
