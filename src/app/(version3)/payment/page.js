@@ -10,6 +10,7 @@ import semicircle from '../assets/images/icon_semicircle.svg';
 import {usePathname, useRouter} from "next/navigation";
 
 function PaymentPage(props) {
+    console.log(props);
     const {loading: authLoading} = useAuth();
     const [price, setPrice] = useState(0);
     const [address, setAddress] = useState('');
