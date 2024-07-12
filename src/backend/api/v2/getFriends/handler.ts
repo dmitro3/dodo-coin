@@ -16,11 +16,17 @@ export default class Friends extends Handler {
                 refId: user.id
             }
         });
+	   const inviter = await prisma.user.findUnique({
+		   where: {
+			   id: user.refId || -1
+		   }
+	   })
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
 			   bonus: PerFriendBonus
-		   }))
+		   })),
+		   inviter: inviter?.username
 	   };
     }
 }
