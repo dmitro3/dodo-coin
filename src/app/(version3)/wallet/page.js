@@ -14,6 +14,7 @@ import shib from '../assets/images/shib.svg';
 import trx from '../assets/images/trx.svg';
 import approve from '../assets/images/icon_approve.js';
 import semicircle from '../assets/images/icon_semicircle.svg';
+import WalletConnection from "../@special/wallet/WalletConnection";
 
 function Page() {
     const {userData, loading, setUserData, loadUserData} = useAuth();
@@ -152,7 +153,9 @@ function PageV2() {
                 <h2 className={'text-center text-2xl -mt-5 font-bold tracking-widest'}>My Wallet</h2>
                 <br/>
                 <button className={'p-5 py-2 bg-[#d1cd47] text-white border-none hover:text-white font-bold text-xl'}>
-                    Connect Wallet
+                    <WalletConnection>
+                        Connect Wallet
+                    </WalletConnection>
                 </button>
             </main>
             <Navbar/>
