@@ -149,7 +149,7 @@ function PageV2() {
                             fill="white"/>
                     </svg>
                 </div>
-                <h2 className={'text-center text-2xl font-bold '}>My Wallet</h2>
+                <h2 className={'text-center text-2xl font-bold tracking-wide'}>My Wallet</h2>
             </main>
             <Navbar/>
         </div>
