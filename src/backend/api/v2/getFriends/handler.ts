@@ -9,7 +9,7 @@ export default class Friends extends Handler {
     async handler() {
         const user = await this.getUser();
 	   if (!user) return {
-		   friends: []
+		   friends: ['!']
 	   };
         const users = await prisma.user.findMany({
             where: {
