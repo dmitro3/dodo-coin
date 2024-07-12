@@ -4,6 +4,7 @@ import Navbar from "@v3/components/Navbar";
 import family from "./img.png";
 import Image from "next/image";
 import React from "react";
+import InviteButton from "@v3/friends/InviteButton";
 const Page = async () => {
 	const friends = await getFriends()
 
