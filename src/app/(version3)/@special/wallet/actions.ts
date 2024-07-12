@@ -9,7 +9,15 @@ import {getUserFromCookies} from "@/utils/serverComponents/user";
 export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'connector'>) {
 	const user = await getUserFromCookies();
 	if (!user) return;
-	acc.userId = user.id
+	const where = {
+		userId: user.id,
+		address: acc.address,
+		chainId: acc.chainId
+	}
+	const data = {
+		...where,
+		data: acc
+	}
 	await prisma.user.update({
 		where: {
 			id: user.id
@@ -18,10 +26,10 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 			connectedWallets: {
 				upsert: {
 					where: {
-						unique: acc
+						unique: where
 					},
-					create: acc,
-					update: acc
+					create: data,
+					update: data
 				}
 			}
 		}
