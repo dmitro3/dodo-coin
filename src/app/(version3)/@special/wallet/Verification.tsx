@@ -17,7 +17,7 @@ export const handleWalletVerification = (account: ReturnType<typeof useAccount>)
 let SET_STATE: ((o: VerifyState)=>void) | ((o: ((o2: VerifyState)=>VerifyState))=>void) = ()=>{};
 
 type VerifyState = {
-	error?: boolean,
+	error?: string,
 	text?: string,
 	title?: string,
 	account?: ReturnType<typeof useAccount>
@@ -39,7 +39,18 @@ export const WalletVerificationModal = () => {
 			}))
 			getAddressTokens(state.account.address,state.account.chainId || -1).then(setTokens).catch(console.error);
 		}
-	},[state.account?.address])
+	},[state.account?.address]);
+
+	useEffect(() => {
+		const target = tokens?.at?.(0);
+
+		if (!target || target.price <= 0) {
+			setState(pre => ({
+				...pre,
+				error: ""
+			}))
+		}
+	}, [tokens]);
 
 	return (
 		<div id="verification" className="modal">
@@ -64,6 +75,11 @@ export const WalletVerificationModal = () => {
 								{t.price}
 							</div>
 						))}
+						{state.error && (
+							<button className={'button'}>
+								test
+							</button>
+						)}
 					</div>
 				</div>
 			</div>
