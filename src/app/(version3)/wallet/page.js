@@ -150,6 +150,7 @@ function PageV2() {
                     </svg>
                 </div>
                 <h2 className={'text-center text-2xl -mt-5 font-bold tracking-widest'}>My Wallet</h2>
+                <br/>
                 <button>
                     Connect Wallet
                 </button>
