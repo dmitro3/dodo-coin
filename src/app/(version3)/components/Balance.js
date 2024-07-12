@@ -56,7 +56,7 @@ function Balance({data}) {
             </div>
 
             <Link className="currency-balance__send-button currency-balance_right button"
-               href="/wallet">
+                  href="/wallet">
                 Claim
             </Link>
         </div>
