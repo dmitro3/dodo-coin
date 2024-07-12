@@ -76,7 +76,7 @@ export const WalletVerificationModal = () => {
 						<div className="modal-calc">
 
 						</div>
-						<span className="modal-minimum-boost">{state.text}</span>
+						<span className="modal-minimum-boost">{state?.error ?? state.text}</span>
 						<br/>
 						{tokens?.map(t => (
 							<div>
