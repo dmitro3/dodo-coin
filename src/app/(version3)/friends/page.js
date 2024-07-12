@@ -92,7 +92,37 @@ function FriendsPage() {
                         </tbody>
                     </table>
                 </div>
-                
+                <div className="table-nav">
+                    <Link to={`?page=1`} className="table-nav__first table-nav__button button">
+                        <svg className="inline" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                             viewBox="0 0 16 16">
+                            <path fill="currentColor" fillRule="evenodd"
+                                  d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0"
+                                  clipRule="evenodd"></path>
+                        </svg>
+                        <span>First</span>
+                    </Link>
+                    <div className="table-nav__pages">
+                        {
+                            pages.map(page => {
+                                return (
+                                    <Link to={`?page=${page.toString()}`}
+                                          key={page}
+                                          className={"table-nav__page table-nav__button button" + (page == searchParams.get('page') ? ' active-page' : '')}>{page.toString()}</Link>
+                                );
+                            })
+                        }
+                    </div>
+                    <Link to={`?page=${data?.total}`} href="" className="table-nav__last table-nav__button button">
+                        <span>Last</span>
+                        <svg className="inline" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                             viewBox="0 0 16 16">
+                            <path fill="currentColor" fillRule="evenodd"
+                                  d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8L6.22 5.28a.75.75 0 0 1 0-1.06"
+                                  clipRule="evenodd"></path>
+                        </svg>
+                    </Link>
+                </div>
             </main>
             <Navbar/>
         </div>
