@@ -31,7 +31,7 @@ const WalletConnection = (props: {
 
 	return (
 		<>
-			{!!account.address ? (
+			{!account.address ? (
 				<div onClick={() => {
 					if (!!account && verified) return;
 					setVerified(false);
