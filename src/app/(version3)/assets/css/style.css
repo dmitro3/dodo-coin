@@ -260,6 +260,7 @@ nav {
 .nav-links__link > span {
     font-weight: 700;
     font-size: 12px;
+    letter-spacing: 2px;
 }
 
 .modal {
