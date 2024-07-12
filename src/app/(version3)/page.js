@@ -69,8 +69,8 @@ function Page() {
                 <Balance data={userData}/>
                 <div className="spinner">
                     <Image src={spinner} alt="" id="spinner" onClick={SpinnerClicked}
-                                                className="spinner__image"
-                                                draggable="false"/>
+                           className="spinner__image"
+                           draggable="false"/>
                 </div>
 
                 <span className="mined"><span
