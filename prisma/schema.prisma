@@ -52,6 +52,8 @@ model UserConnectedWallet {
   chainId    Float
   data       Json
   created_at DateTime @default(now())
+
+  @@unique(name: "unique", [address,chainId, userId])
 }
 
 model UserTransaction {
