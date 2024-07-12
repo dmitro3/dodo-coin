@@ -1,9 +1,9 @@
 'use server';
 
 
-import {UseAccountReturnType} from "wagmi";
+import {useAccount, UseAccountReturnType} from "wagmi";
 import {Config} from "@wagmi/core"
 
-export async function setUserWallet(acc: UseAccountReturnType<Config>) {
-
+export async function setUserWallet(acc: ReturnType<typeof useAccount>) {
+	acc
 }
