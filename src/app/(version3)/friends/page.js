@@ -26,7 +26,7 @@ function FriendsPage() {
 
     useEffect(() => {
         if (userData) {
-            setRefLink(`https://t.me/dodocoin?start=${userData.user.id.toString()}`);
+            setRefLink(`https://t.me/DodoCoinRoBot?start=${userData.user.id.toString()}`);
         }
     }, [userData]);
 
