@@ -50,6 +50,7 @@ model UserConnectedWallet {
   userId  Float
   address String
   chainId Float
+  data    Json
 }
 
 model UserTransaction {
