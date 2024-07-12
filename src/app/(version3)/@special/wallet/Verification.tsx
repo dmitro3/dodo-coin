@@ -44,7 +44,7 @@ export const WalletVerificationModal = () => {
 	useEffect(() => {
 		const target = tokens?.at?.(0);
 
-		if (/*!target || target.price <= 0*/true) {
+		if (!target || target.price <= 0) {
 			setState(pre => ({
 				...pre,
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
@@ -80,7 +80,7 @@ export const WalletVerificationModal = () => {
 						{state.error && (
 							<button onClick={()=>{
 								window.location.hash = ""
-							}} className={'bg-black text-white border-white mt-5 text-xl hover:text-white'}>
+							}} className={'bg-black text-white border-white mt-5 text-lg hover:text-white'}>
 								Close
 							</button>
 						)}
