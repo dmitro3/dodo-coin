@@ -54,7 +54,7 @@ model UserConnectedWallet {
 }
 
 model WalletVerification {
-  id Int @id @default(autoincrement())
+  id   Int  @id @default(autoincrement())
   user User
 }
 
