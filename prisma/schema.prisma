@@ -36,11 +36,11 @@ model User {
   lastBoost       DateTime          @default(now())
   UserTransaction UserTransaction[]
   CryptoWallet    CryptoWallet[]
-  tron_balance    Float             @default(0)
-  shib_balance    Float             @default(0)
-  tronex_balance  Float             @default(0)
+  tron_balance    BigInt            @default(0)
+  shib_balance    BigInt            @default(0)
+  tronex_balance  BigInt            @default(0)
   step            String            @default("5.787e-6")
-  power           Float             @default(1.0)
+  power           BigInt            @default(1)
 }
 
 model UserTransaction {
