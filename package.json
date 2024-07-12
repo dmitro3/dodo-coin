@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "next build && next start",
-    "prebuild": "npx prisma generate",
+    "prebuild": "npx prisma db push",
     "prisma-studi": "npx prisma studio"
   },
   "dependencies": {
