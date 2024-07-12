@@ -50,7 +50,7 @@ main::-webkit-scrollbar {
 
 .currencies {
     display: flex;
-    flex-direction: column;
+    flex-direction: قخص;
     justify-content: space-between;
     width: 100%;
 }
