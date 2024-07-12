@@ -33,7 +33,7 @@ export const WalletVerificationModal = () => {
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
 
-	useInit(()=>{
+	useEffect(()=>{
 		if (account?.address) {
 			setState(pre => ({
 				...pre,
@@ -46,7 +46,7 @@ export const WalletVerificationModal = () => {
 		}
 	},[account?.address]);
 
-	useInit(() => {
+	useEffect(() => {
 		if (!tokens || !account.address) return;
 		const target = tokens?.at?.(0);
 
