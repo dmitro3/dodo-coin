@@ -18,6 +18,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	const initialState = cookieToInitialState(config, headers().get('cookie'))
+	getIp
 	return (
 		<html lang="en">
 		<head>
