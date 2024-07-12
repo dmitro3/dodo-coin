@@ -28,10 +28,8 @@ model User {
   lockReward Boolean  @default(false)
   refs       User[]   @relation("Ref")
   refId      Float?
-
-  power Float  @default(1.0)
-  ref   User?  @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
-  token String @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
+  ref        User?    @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
+  token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 
   // V2 Props
   boost           Float             @default(0.0000000052)
@@ -42,6 +40,7 @@ model User {
   shib_balance    Float             @default(0)
   tronex_balance  Float             @default(0)
   step            String            @default("5.787e-6")
+  power           Float             @default(1.0)
 }
 
 model UserTransaction {
