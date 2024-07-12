@@ -27,4 +27,10 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 
 		fetchTokens();
 	},[address]);
+
+	return {
+		tokens,
+		isLoading,
+		isError
+	};
 }
