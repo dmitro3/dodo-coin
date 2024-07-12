@@ -17,9 +17,7 @@ export const WalletVerificationModal = () => {
 						<span className="modal-title">Verifying Wallet...</span>
 					</div>
 					<div className="modal-body">
-						<span className="modal-info">Here you can rent mining power for 30 days.</span>
-						<span
-							className="modal-info">The investment profitability is 5% per day and 150% for 30 days.</span>
+						<span className="modal-info">Checking address and validating wallet...</span>
 						<div className="modal-calc">
 
 						</div>
