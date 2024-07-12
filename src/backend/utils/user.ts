@@ -7,10 +7,10 @@ import {ssrOptimize} from "@/utils/other";
 export function getToken(request: NextRequest) {
   const headers = Object.fromEntries(request.headers);
   return (
-    headers?.authorization?.split?.(" ")?.pop?.() ??
-    headers?.token ??
-    headers?.login ??
-    request.cookies.get("token")?.value ??
+    headers?.authorization?.split?.(" ")?.pop?.() ||
+    headers?.token ||
+    headers?.login ||
+    request.cookies.get("token")?.value ||
     request.cookies.get("admin_token")?.value
   );
 }
