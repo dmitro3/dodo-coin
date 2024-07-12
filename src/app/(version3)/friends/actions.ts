@@ -6,7 +6,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 export async function getFriends() {
 	const user = await getUserFromCookies();
 
-	return await prisma.user.findMany({
+	return prisma.user.findMany({
 		where: {
 			refId: user?.id
 		},

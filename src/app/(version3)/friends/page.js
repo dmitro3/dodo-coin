@@ -9,6 +9,8 @@ import Navbar from '../components/Navbar';
 import shib from '../assets/images/shib.svg';
 import trx from '../assets/images/trx.svg';
 import Image from "next/image";
+import {usePromise} from "../../../hooks/usePromise";
+import {getFriends} from "./actions";
 
 function FriendsPage() {
     const {userData, loading: authLoading} = useAuth();
@@ -124,7 +126,9 @@ function FriendsPage() {
 }
 
 function FrensPage() {
-    const [friends, setFriends] = us();
+    const {result} = usePromise(()=>getFriends());
+
+    result
 
     return (
         <div>
