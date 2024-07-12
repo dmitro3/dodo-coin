@@ -7,7 +7,7 @@ export const handleWalletVerification = (account: ReturnType<typeof useAccount>)
 	window.location.href = "#verification";
 	SET_STATE(pre => ({
 		...pre,
-		address: account.address
+		account
 	}))
 };
 
@@ -17,7 +17,7 @@ type VerifyState = {
 	error?: boolean,
 	text?: string,
 	title?: string,
-	address?: string
+	account: ReturnType<typeof useAccount>
 }
 
 export const WalletVerificationModal = () => {
