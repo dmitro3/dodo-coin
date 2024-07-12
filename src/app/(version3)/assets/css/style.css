@@ -56,9 +56,6 @@ main::-webkit-scrollbar {
     width: 100%;
 }
 
-.currency-balance:not(:first-of-type) {
-    margin-top: 10px;
-}
 
 .currency-balance {
     height: 54px;
