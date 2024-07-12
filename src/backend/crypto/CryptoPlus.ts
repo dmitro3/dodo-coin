@@ -80,3 +80,7 @@ export async function createPosPayment(amount: number) {
 		})
 	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
 }
+
+export async function checkPosPayment(id: string) {
+	return 
+}
