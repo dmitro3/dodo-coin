@@ -9,6 +9,7 @@ import {doVerification} from "@v3/@special/wallet/handlers";
 import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
+	console.log(account);
 	window.location.href = "#verification";
 };
 
