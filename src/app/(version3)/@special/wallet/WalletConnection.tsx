@@ -34,6 +34,7 @@ const WalletConnection = (props: {
 			{!account.address ? (
 				<div onClick={() => {
 					setVerified(false);
+					console.log("OPEN!")
 					open().catch(() => {
 						alert("FAIL TO OPEN WALLET PROVIDER");
 					});
