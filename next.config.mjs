@@ -21,11 +21,6 @@ const nextConfig = {
     },
     typescript: {
         ignoreBuildErrors: true
-    },
-    compiler: {
-        removeConsole: {
-            exclude: ['warn']
-        }
     }
 };
 
