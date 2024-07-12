@@ -4,7 +4,7 @@ const InviteButton = () => {
 	return (
 		<button
 			onClick={()=>{
-				console.log(window.Telegram.WebApp)
+				console.log(window.Telegram.WebApp.shareLink)
 			}}
 			data-v-8899132f=""
 			data-v-a174c313=""
