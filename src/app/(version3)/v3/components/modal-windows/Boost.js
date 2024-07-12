@@ -1,6 +1,6 @@
 "use client";
 import React, {useState} from 'react';
-import {useNavigate} from "next/link";
+import {useRouter} from "next/link";
 import {useAuth} from '../../hooks/useAuth';
 import {postData} from '../../utils/api';
 import Big from "big.js";
@@ -11,7 +11,7 @@ function Boost() {
     const [text, setText] = useState(100);
     const [disabled, setDisabled] = useState(false);
     const [displayText, setDisplayText] = useState('1.0 GH/s');
-    const navigate = useNavigate();
+    const navigate = useRouter();
     const [sended, setSended] = useState(false);
     const {userData} = useAuth();
 

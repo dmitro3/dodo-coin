@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'next/link';
+import { useRouter } from 'next/link';
 import { useAuth } from '../../hooks/useAuth';
 import { postData } from '../../utils/api';
 import Big from 'big.js';
@@ -18,7 +18,7 @@ function SendCrypto({ currency, minAmount, fee, addressRegex, addressPlaceholder
     const [address, setAddress] = useState('');
     const [response, setResponse] = useState({});
     const [pressed, setPressed] = useState(false);
-    const navigate = useNavigate();
+    const navigate = useRouter();
 
     useEffect(() => {
         if(currency) {

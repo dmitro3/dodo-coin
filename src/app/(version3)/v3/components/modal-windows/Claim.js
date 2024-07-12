@@ -1,6 +1,6 @@
 "use client";
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router';
+import {useRouter} from 'next/navigation';
 import {useAuth} from '../../hooks/useAuth';
 import {postData} from '../../utils/api';
 import semicircle from '../../assets/images/icon_semicircle.svg';
@@ -8,7 +8,7 @@ import semicircle from '../../assets/images/icon_semicircle.svg';
 function Claim() {
     const [claimed, setClaimed] = useState(false);
     const [response, setResponse] = useState({});
-    const navigate = useNavigate();
+    const navigate = useRouter();
     const {userData} = useAuth();
 
     const claim = async () => {
