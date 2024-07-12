@@ -25,9 +25,6 @@ export const WalletVerificationModal = () => {
 						</div>
 
 						<span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
-						<div className="modal-buttons">
-							test
-						</div>
 					</div>
 				</div>
 			</div>
