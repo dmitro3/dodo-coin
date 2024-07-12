@@ -7,8 +7,9 @@ function LoadingOverlay() {
     return (
         <div className="loading-overlay">
             <div className="spinner"><Image width={500} height={500} src={spinner} alt="" id="spinner"
-                                          className="spinner__image"
-                                          draggable="false"/></div>
+                                            className="spinner__image"
+                                            draggable="false"/>
+            </div>
             <span>Please, wait...</span>
         </div>
     );
