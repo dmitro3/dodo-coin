@@ -20,10 +20,10 @@ const WalletConnection = (props: {
 		}
 	}, [acc.address]);
 	useEffect(() => {
-		if (acc && !verified) {
+		if (acc?.address && !verified) {
 			handleWalletVerification(acc);
 		}
-	}, [acc]);
+	}, [acc.address]);
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified + "");
 	}, [verified]);
