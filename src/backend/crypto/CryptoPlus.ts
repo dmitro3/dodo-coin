@@ -100,10 +100,9 @@ export async function checkPosPayment(id: string) {
 	const pId = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
 
 	if (st?.includes("paid")) {
-		const u = await getUserFromCookies();
 		await prisma.user.update({
 			where: {
-				id: u?.id || -1
+				id: PAYMENTS[pId]
 			},
 			data: {
 				tron_balance: {
