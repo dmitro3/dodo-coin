@@ -53,6 +53,10 @@ model UserConnectedWallet {
   created_at DateTime @default(now())
 }
 
+model WalletVerification {
+  id Int @default(autoincrement()) @id
+}
+
 model UserTransaction {
   id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
