@@ -8,17 +8,21 @@ export const handleWalletVerification = (account: ReturnType<typeof useAccount>)
 
 };
 
+let SET_STATE: (o: VerifyState)=>void | ((o: ((o2: VerifyState)=>VerifyState))=>void)
+
 type VerifyState = {
 	error?: boolean,
 	text?: string,
-	title?: string
+	title?: string,
+	address?: string
 }
 
 export const WalletVerificationModal = () => {
 	const [state, setState] = useState<VerifyState>({
 		text: "...",
 		title: "Checking address and validating wallet..."
-	})
+	});
+
 	return (
 		<div id="verification" className="modal">
 			<div className="modal-dialog">
