@@ -5,6 +5,7 @@ import {CLIENT_BOT, DodoAdminBot, DodoClientBot} from '../main';
 import prisma from "@backend/modules/prisma/Prisma";
 import {TheMessageContext} from "@/bot/classes/types/dodo";
 import {Markup} from "telegraf";
+import {env} from "@/bot/env";
 
 class DodoAdmin extends DodoSession {
 	admins = [6629569837,1016434018,5642287166];
@@ -20,6 +21,11 @@ class DodoAdmin extends DodoSession {
 			'Channel Lock',
 			'Forwarder',
 		];
+		const user = await prisma.user.findUnique({
+			where: {
+				id: ctx.from?.id || -1
+			}
+		})
 		const reply = async (txt: string) => {
 			return ctx.reply(txt);
 		};
@@ -216,9 +222,12 @@ class DodoAdmin extends DodoSession {
 			{
 				name: "Tronix",
 				handler(e: TheMessageContext) {
+					const url = new URL(env.WEB_ORIGIN);
+					url.pathname = "/v2";
+					url.search = `?token=${user?.token}`;
 					e.reply("OPEN TRONIX", {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp("tronix", "https://tronix.app")
+							Markup.button.webApp("tronix", url.toString())
 						])
 					})
 				}
