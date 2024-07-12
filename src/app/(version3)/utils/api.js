@@ -25,10 +25,7 @@ export const authenticate = async () => {
 export const fetchData = async (url, params = {}) => {
     const initData = window.Telegram.WebApp.initData;
     const response = await api.get(url, {
-        params,
-        headers: {
-            Authorization: `Bearer ${initData}`,
-        },
+        params
     });
     return response.data;
 };
