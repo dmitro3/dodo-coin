@@ -12,7 +12,8 @@ const WalletConnection = (props:{
 	useEffect(() => {
 		if (acc) {
 			setVerified(true);
-			window.localStorage.setItem("lastAccount", JSON.stringify(Object.fromEntries(Object.entries(acc).filter(([k,v])=>typeof v !== 'object'))));
+			const finalAccount = Object.fromEntries(Object.entries(acc).filter(([k,v])=>typeof v !== 'object'));
+			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
 		}
 	}, [acc]);
 	useEffect(() => {
