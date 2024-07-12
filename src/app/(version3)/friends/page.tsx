@@ -1,5 +1,5 @@
 import {getFriends} from "@v3/friends/actions";
-
+import "./style.css"
 const Page = async () => {
 	const friends = await getFriends()
 
