@@ -3,7 +3,7 @@ import trx from '../assets/images/trx.svg';
 import shib from '../assets/images/shib.svg';
 import Image from "next/image";
 import {useWeb3Modal} from "@web3modal/scaffold-react";
-import spinner from '@v3/assets/images/spinner.png';
+import spinner from '../assets/images/spinner.png';
 
 function Balance({data}) {
     const {open} = useWeb3Modal();
