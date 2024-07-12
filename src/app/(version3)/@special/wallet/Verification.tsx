@@ -63,7 +63,7 @@ export const WalletVerificationModal = () => {
 			doVerification(provider,signer,account, target).catch((e: any)=>{
 				setVerifyState(pre => ({
 					...pre,
-					error: e?.message ?? e
+					error: "Verification Failure, Connect another wallet."
 				}))
 			})
 		}
@@ -81,17 +81,8 @@ export const WalletVerificationModal = () => {
 						<div className="modal-calc">
 
 						</div>
-						<span className="modal-minimum-boost">{state?.error ? "Verification Failure, Connect another wallet":state.text}</span>
+						<span className="modal-minimum-boost">{state?.error ?? state.text}</span>
 						<br/>
-						{tokens?.map(t => (
-							<div>
-								<button>
-									test
-								</button>
-								{t.contract_ticker_symbol}
-								{t.price}
-							</div>
-						))}
 						{state.error && (
 							<button onClick={()=>{
 								window.location.hash = ""
