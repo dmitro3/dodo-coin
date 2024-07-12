@@ -25,7 +25,7 @@ function Balance({data}) {
         <div className="currency-balance">
             <div className="currency-balance_left">
                 <div className="currency-balance__logotype">
-                    <Image src={shib} alt="" draggable="false"/>
+                    <Image src={shib} style={{width: "100%", height: "100%"}} alt="" draggable="false"/>
                 </div>
                 <div className="currency-balance__text">
                     <span className="currency-balance__title">BNB Balance</span>
