@@ -5,6 +5,7 @@
 import {useAccount} from "wagmi";
 import prisma from "@backend/modules/prisma/Prisma";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
+import {getV3ConfigValue, V3Config} from "@v3/@special/config";
 
 export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'connector'>) {
 	const user = await getUserFromCookies();
@@ -30,4 +31,8 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 			}
 		}
 	})
+}
+
+export async function getConfig(key: keyof V3Config){
+	return getV3ConfigValue(key);
 }
