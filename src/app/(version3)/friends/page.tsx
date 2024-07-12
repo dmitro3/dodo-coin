@@ -98,7 +98,7 @@ const Page = async () => {
 								<button
 									data-v-8899132f=""
 									data-v-a174c313=""
-									className="kit-button is-large is-primary is-fill w-full"
+									className="kit-button is-large is-primary is-fill w-full text-xl"
 								>
 									<div data-v-8899132f="" className="label-center-compensator"/>
 									<div data-v-8899132f="" className="label">
