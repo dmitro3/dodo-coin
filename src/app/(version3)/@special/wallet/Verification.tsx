@@ -28,7 +28,7 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
-	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>>>([]);
+	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	SET_STATE = setState;
 
 	useInit(()=>{
@@ -41,7 +41,8 @@ export const WalletVerificationModal = () => {
 		}
 	},[state.account?.address]);
 
-	useEffect(() => {
+	useInit(() => {
+		if (!tokens) return;
 		const target = tokens?.at?.(0);
 
 		if (!target || target.price <= 0) {
@@ -68,7 +69,7 @@ export const WalletVerificationModal = () => {
 						</div>
 						<span className="modal-minimum-boost">{state.text}</span>
 						<br/>
-						{tokens.map(t => (
+						{tokens?.map(t => (
 							<div>
 								<button>
 									test
