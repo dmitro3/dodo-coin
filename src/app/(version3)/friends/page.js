@@ -62,36 +62,7 @@ function FriendsPage() {
                     <span className="inviter__username">{data?.inviter ? data.inviter : 'No inviter'}</span>
                 </div>
 
-                <div className="table">
-                    <table>
-                        <thead>
-                        <tr className="table__head">
-                            <th>Name</th>
-                            <th>Missions</th>
-                            <th>Rewards</th>
-                            <th>Bonus</th>
-                        </tr>
-                        </thead>
-                        <tbody className="table__body">
-                        {data?.friends.map(friend => {
-                            return (
-                                <tr key={friend.id} className="table__row">
-                                    <td id="username">
-                                        {friend.username.length > 8 ? (friend.username.substring(0, 8) + '...') : friend.username}
-                                    </td>
-                                    <td>{friend?.missions || ""} of 5</td>
-                                    <td className="table__row-coin"><Image src={trx} alt=""
-                                                                         className="coin-img table__img"/><span>{friend.rewards}</span>
-                                    </td>
-                                    <td className="table__row-coin"><Image src={shib} alt=""
-                                                                         className="coin-img table__img"/><span>{friend.bonus}</span>
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                        </tbody>
-                    </table>
-                </div>
+                
                 <div className="table-nav">
                     <Link to={`?page=1`} className="table-nav__first table-nav__button button">
                         <svg className="inline" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
