@@ -16,9 +16,11 @@ export default class V2Login extends Handler {
             }
         });
         if (!user) throw(401);
-        return users.map(u => ({
-		   username: u.username,
-		   bonus: PerFriendBonus
-	   }));
+        return {
+		   friends: users.map(u => ({
+			   username: u.username,
+			   bonus: PerFriendBonus
+		   }))
+	   };
     }
 }
