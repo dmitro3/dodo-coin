@@ -31,3 +31,8 @@ export async function getUser(token?: string | NextRequest | undefined) {
     password: "****"
   }) as unknown as Awaited<ReturnType<typeof prisma.user.findFirst>>;
 }
+
+
+export function getClientIp() {
+	
+}
