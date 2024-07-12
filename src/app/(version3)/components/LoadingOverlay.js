@@ -6,7 +6,8 @@ import Image from "next/image";
 function LoadingOverlay() {
     return (
         <div className="loading-overlay">
-            <div className="spinner"><Image width={500} height={500} src={spinner} alt="" id="spinner"
+            <div className="spinner">
+                <Image width={500} height={500} src={spinner} alt="" id="spinner"
                                             className="spinner__image"
                                             draggable="false"/>
             </div>
