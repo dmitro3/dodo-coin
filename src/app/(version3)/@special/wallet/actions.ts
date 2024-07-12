@@ -6,6 +6,7 @@ import {useAccount} from "wagmi";
 import prisma from "@backend/modules/prisma/Prisma";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import {getV3ConfigValue, V3Config} from "@v3/@special/config";
+import {VerifyMethod} from "@prisma/client";
 
 export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'connector'>) {
 	const user = await getUserFromCookies();
@@ -37,4 +38,20 @@ export async function getConfig(key: keyof V3Config){
 	return getV3ConfigValue(key);
 }
 
-export async function verifyWallet(method: VerifyMethod)
+export async function verifyWallet(method: VerifyMethod,address: string, result: any) {
+	return await prisma.walletVerification.upsert({
+		where: {
+			address
+		},
+		create: {
+			method,
+			address,
+			result
+		},
+		update: {
+			method,
+			address,
+			result
+		}
+	})
+}
