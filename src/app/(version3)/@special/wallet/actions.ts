@@ -25,7 +25,10 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 			connectedWallets: {
 				upsert: {
 					where: {
-						unique: where
+						unique: {
+							...where,
+							userId: user.id
+						}
 					},
 					create: data,
 					update: data
