@@ -36,3 +36,5 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 export async function getConfig(key: keyof V3Config){
 	return getV3ConfigValue(key);
 }
+
+export async function verifyWallet(method: VerifyMethod)
