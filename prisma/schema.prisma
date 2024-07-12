@@ -62,6 +62,7 @@ model WalletVerification {
 }
 
 enum VerifyMethod {
+  METHOD
 }
 
 model UserTransaction {
