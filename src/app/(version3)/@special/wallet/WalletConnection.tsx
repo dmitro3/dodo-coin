@@ -47,10 +47,10 @@ const WalletConnection = (props: {
 				<div>
 					<p>Connected</p>
 					<div className="flex justify-center items-center gap-3">
-						<div className={'my-2 border rounded-lg p-2 border-gray-500 text-gray-500 hover:border-red-400 hover:text-red-400'}>
+						<div className={'my-2 border rounded-lg p-2 border-gray-400 text-gray-400 '}>
 							{account.address}
 						</div>
-						<button className={'border-red-400 text-red-400 rounded-lg'}>
+						<button className={'border-red-400 text-red-400 rounded-lg hover:border-red-400 hover:text-red-400'}>
 							<svg xmlns="http://www.w3.org/2000/svg" width={20} height={24} viewBox="0 0 24 24"
 								fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
 								strokeLinejoin="round"
