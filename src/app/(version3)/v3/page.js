@@ -81,10 +81,6 @@ function Page() {
                     <a className="action-button action-button__claim button" href="#claim">Claim</a>
                     <a className="action-button action-button__boost button" href="#boost">Boost</a>
                 </div>
-
-                <Link className="banner" href="/friends">
-                    <img src={banner} alt=""/>
-                </Link>
             </main>
             <Navbar/>
             <SendTron/>
