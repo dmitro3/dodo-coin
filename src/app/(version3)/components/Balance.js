@@ -3,7 +3,7 @@ import trx from '../assets/images/trx.svg';
 import shib from '../assets/images/shib.svg';
 import Image from "next/image";
 import {useWeb3Modal} from "@web3modal/scaffold-react";
-
+import spinner from './assets/images/spinner.png';
 function Balance({data}) {
     const {open} = useWeb3Modal();
     return (<div className="currencies">
@@ -39,7 +39,7 @@ function Balance({data}) {
         <div className="currency-balance">
             <div className="currency-balance_left">
                 <div className="currency-balance__logotype">
-                    <Image src={shib} alt="" draggable="false"/>
+                    <Image src={spinner} alt="" draggable="false"/>
                 </div>
                 <div className="currency-balance__text">
                     <span className="currency-balance__title">DODO Airdrop</span>
