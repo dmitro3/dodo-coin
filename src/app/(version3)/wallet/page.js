@@ -141,7 +141,8 @@ function PageV2() {
                             </filter>
                         </defs>
                     </svg>
-                    <svg width="150" height="150" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className={'absolute left-0 top-0 right-0 bottom-0 m-auto'}>
+                    <svg width="150" height="150" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         className={'absolute left-0 top-0 right-0 bottom-0 m-auto'}>
                         <path
                             d="M28 56C43.464 56 56 43.464 56 28C56 12.536 43.464 0 28 0C12.536 0 0 12.536 0 28C0 43.464 12.536 56 28 56Z"
                             fill="currentColor"/>
@@ -152,11 +153,12 @@ function PageV2() {
                 </div>
                 <h2 className={'text-center text-2xl -mt-5 font-bold tracking-widest'}>My Wallet</h2>
                 <br/>
-                <button className={'p-5 py-2 bg-[#d1cd47] text-white border-none hover:text-white font-bold text-xl'}>
-                    <WalletConnection>
+                <WalletConnection>
+                    <button
+                        className={'p-5 py-2 bg-[#d1cd47] text-white border-none hover:text-white font-bold text-xl'}>
                         Connect Wallet
-                    </WalletConnection>
-                </button>
+                    </button>
+                </WalletConnection>
             </main>
             <Navbar/>
         </div>
