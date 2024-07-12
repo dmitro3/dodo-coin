@@ -4,7 +4,7 @@ import prisma, {ChargeLevels, EnergyLevels, Leagues, TapLevels} from "@backend/m
 
 
 
-export default class LoginHandler extends Handler {
+export default class V2Login extends Handler {
     async handler() {
         const token = this.get('token', "Token Required");
         const user = await prisma.user.findUnique({
