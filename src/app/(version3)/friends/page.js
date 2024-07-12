@@ -100,7 +100,7 @@ function FriendsPage() {
                         {
                             pages.map(page => {
                                 return (
-                                    <Link to={`?page=${page.toString()}`}
+                                    <Link href={`?page=${page.toString()}`}
                                           key={page}
                                           className={"table-nav__page table-nav__button button" + (page == searchParams.get('page') ? ' active-page' : '')}>{page?.toString()}</Link>
                                 );
