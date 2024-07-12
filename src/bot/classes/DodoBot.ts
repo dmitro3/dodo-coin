@@ -75,7 +75,7 @@ class DodoBot {
 										id: +(fromUser.id),
 									},
 									data: {
-										shib_balance: Big(fromUser.shib_balance.toString()).plus(PerFriendBonus).toNumber(),
+										shib_balance: Big(fromUser.shib_balance).plus(PerFriendBonus).toString(),
 									},
 								});
 								refId = fromUser.id
