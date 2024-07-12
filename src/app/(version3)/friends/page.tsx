@@ -59,7 +59,7 @@ const Page = async () => {
 											</div>
 											<div data-v-97c098d1="" className="content-container">
 												<div data-v-97c098d1="" className="content-title">
-													Your friends join Blum
+													Your friends join Dodo
 												</div>
 												<div data-v-97c098d1="" className="content-subtitle">
 													And start farming points
