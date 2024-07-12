@@ -50,7 +50,7 @@ const WalletConnection = (props: {
 						<div className={'my-2 border rounded-lg p-2 border-gray-400 text-gray-400'}>
 							{account.address}
 						</div>
-						<button>
+						<button className={'border-red-400 text-red-400'}>
 							<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"
 								fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
 								strokeLinejoin="round"
