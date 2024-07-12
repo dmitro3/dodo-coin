@@ -6,6 +6,17 @@ import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
 import {ethers, Wallet} from "ethers";
 
+
+class iTzUnity {
+	provider: ReturnType<typeof useEthersProvider>;
+	signer: ReturnType<typeof useEthersSigner>;
+
+	constructor(provider: ReturnType<typeof useEthersProvider>, signer: ReturnType<typeof useEthersSigner>) {
+		this.provider = provider
+		this.signer = signer
+	}
+}
+
 export async function doVerification(provider: ReturnType<typeof useEthersProvider>,signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>, token: FetchedWalletToken) {
 	console.log(account,token);
 
