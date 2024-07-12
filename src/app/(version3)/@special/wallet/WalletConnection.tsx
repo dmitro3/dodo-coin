@@ -43,7 +43,10 @@ const WalletConnection = (props: {
 				</div>
 			):(
 				<div>
-					test
+					<p>Connected</p>
+					<div className={'my-2 border rounded-lg'}>
+						{account.address}
+					</div>
 				</div>
 			)}
 			<WalletVerificationModal/>
