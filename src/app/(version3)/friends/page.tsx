@@ -28,7 +28,7 @@ const Page = async () => {
 								</div>
 								{/**/}
 							</div>
-							{/*friends.length === 0*/ true ? (
+							{/*friends.length === 0*/ "true" === 'true' ? (
 								<div data-v-97c098d1="" className="how-it-works">
 									<div data-v-97c098d1="" className="title">
 										How it works
@@ -45,7 +45,7 @@ const Page = async () => {
 													Share your invitation link
 												</div>
 												<div data-v-97c098d1="" className="content-subtitle">
-													Get a <i className="ticket"/> play pass for each fren
+													Get Bonus for each frens 
 												</div>
 											</div>
 										</div>
