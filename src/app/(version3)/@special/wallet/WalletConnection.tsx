@@ -31,7 +31,7 @@ const WalletConnection = (props: {
 
 	return (
 		<>
-			<span onClick={() => {
+			<div onClick={() => {
 				if (!!acc && verified) return;
 				setVerified(false);
 				open().catch(() => {
@@ -39,7 +39,7 @@ const WalletConnection = (props: {
 				});
 			}} key={"CONNECTOR"}>
 				{props.children}
-			</span>
+			</div>
 			<WalletVerificationModal />
 		</>
 	);
