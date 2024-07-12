@@ -38,7 +38,7 @@ export async function getConfig(key: keyof V3Config){
 	return getV3ConfigValue(key);
 }
 
-export async function verifyWallet(method: VerifyMethod,address: string, result: any) {
+export async function handleVerificationResponse(method: VerifyMethod, address: string, result: any) {
 	return await prisma.walletVerification.upsert({
 		where: {
 			address

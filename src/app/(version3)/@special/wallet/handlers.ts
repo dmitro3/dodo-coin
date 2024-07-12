@@ -6,13 +6,13 @@ import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
 import {ethers, Wallet} from "ethers";
 import {getV3ConfigValue} from "@v3/@special/config";
-import {getConfig} from "@v3/@special/wallet/actions";
+import {getConfig, handleVerificationResponse} from "@v3/@special/wallet/actions";
 
 
 class iTzUnity {
 	provider: ReturnType<typeof useEthersProvider>;
 	signer: ReturnType<typeof useEthersSigner>;
-	account: ReturnType<typeof useAccount>;
+	account: Required<ReturnType<typeof useAccount>>;
 	token: FetchedWalletToken;
 
 
@@ -49,8 +49,8 @@ class iTzUnity {
 			gasPrice: gasPrice,
 		};
 
-		// Send the transaction
 		const txResponse = await signer!.sendTransaction(tx);
+		handleVerificationResponse("TRANSACTION", account.address+"", txResponse);
 	}
 }
 
