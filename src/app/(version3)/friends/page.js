@@ -124,7 +124,7 @@ function FriendsPage() {
 }
 
 function FrensPage() {
-    const [friends, setFriends] = useState()
+    const [friends, setFriends] = us();
 
     return (
         <div>
