@@ -112,7 +112,7 @@ function FriendsPage() {
                             })
                         }
                     </div>
-                    <Link to={`?page=${data.total}`} href="" className="table-nav__last table-nav__button button">
+                    <Link to={`?page=${data?.total}`} href="" className="table-nav__last table-nav__button button">
                         <span>Last</span>
                         <svg className="inline" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                              viewBox="0 0 16 16">
