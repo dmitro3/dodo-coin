@@ -34,7 +34,7 @@ const WalletConnection = (props: {
 		<>
 			{!account.address ? (
 				<div onClick={async () => {
-					if (!account.address) await disconnect();
+					if (!account.address) disconnect();
 					setVerified(false);
 					console.log("OPEN!")
 					await open();
