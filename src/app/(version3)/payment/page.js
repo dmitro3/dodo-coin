@@ -16,7 +16,7 @@ function PaymentPage() {
     const [transactionId, setTransactionId] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useRouter();
-    const location = use();
+    const location = useP();
 
     useEffect(() => {
         if (location.state) {
