@@ -13,7 +13,7 @@
 }
 
 button {
-  @apply border-blue-500 border-2 text-blue-500 rounded-full p-1 px-2 hover:border-black hover:text-black
+  @apply rounded-full bg-primary text-white border-none hover:text-white
 }
 button[disabled] {
   @apply opacity-50
