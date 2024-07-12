@@ -53,7 +53,7 @@ function Boost() {
     };
 
     return (
-        <div id="boost" className="modal">
+        <div id="boost" className="modal" style={{opacity: 1}}>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
