@@ -15,10 +15,8 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 		},
 		data: {
 			connectedWallets: {
-				connectOrCreate: {
-					where: {
-						un
-					}
+				connect: {
+					
 				}
 			}
 		}
