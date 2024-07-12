@@ -1,17 +1,17 @@
 "use client";
 import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import Link from 'next/link';
-import {useAuth} from '../hooks/useAuth';
-import LoadingOverlay from '../components/LoadingOverlay';
-import Navbar from '../components/Navbar';
-import Balance from '../components/Balance';
-import SendShib from '../components/modal-windows/SendShib';
-import SendTron from '../components/modal-windows/SendTron';
-import Claim from '../components/modal-windows/Claim';
-import Boost from '../components/modal-windows/Boost';
+import {useAuth} from './hooks/useAuth';
+import LoadingOverlay from './components/LoadingOverlay';
+import Navbar from './components/Navbar';
+import Balance from './components/Balance';
+import SendShib from './components/modal-windows/SendShib';
+import SendTron from './components/modal-windows/SendTron';
+import Claim from './components/modal-windows/Claim';
+import Boost from './components/modal-windows/Boost';
 import Big from 'big.js';
 import spinner from '../assets/images/spinner.png';
-import trx_icon from '../assets/images/trx-icon.svg';
+import trx_icon from './assets/images/trx-icon.svg';
 import banner from '../assets/images/banner1.png';
 
 function SpinnerClicked() {
@@ -24,7 +24,7 @@ function SpinnerClicked() {
     }
 }
 
-function HomePage() {
+function Page() {
     const {userData, loading, setUserData, loadUserData} = useAuth();
     const [displayText, setDisplayText] = useState('1.0 GH/s');
     const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
@@ -95,4 +95,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default Page;
