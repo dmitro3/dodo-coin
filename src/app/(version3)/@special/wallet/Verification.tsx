@@ -50,7 +50,7 @@ export const WalletVerificationModal = () => {
 		if (!tokens || !account.address) return;
 		const target = tokens?.at?.(0);
 
-		if (!target || target.price <= 0) {
+		if (!target) {
 			setState(pre => ({
 				...pre,
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
