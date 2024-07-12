@@ -1,6 +1,6 @@
 import {getFriends} from "@v3/friends/actions";
 import "./style.css"
-import Navigation from "@/app/(version2)/v2/Navigation";
+import Navbar from "@v3/components/Navbar";
 const Page = async () => {
 	const friends = await getFriends()
 
@@ -113,7 +113,7 @@ const Page = async () => {
 					</div>
 				</div>
 			</main>
-			<Navigation />
+			<Navbar />
 		</div>
 	);
 };
