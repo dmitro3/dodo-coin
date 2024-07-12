@@ -30,7 +30,6 @@ export const WalletVerificationModal = () => {
 	const signer = useEthersSigner()
 	const {disconnect} = useDisconnect();
 	const account = useAccount();
-	const h = use
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
 
