@@ -14,26 +14,28 @@ datasource db {
 }
 
 model User {
-  id           Float    @id
-  joined_at    DateTime @default(now())
-  blocked      Boolean  @default(false)
-  wallet       Float    @default(0)
-  username     String?
-  chatId       Float    @unique
-  tapLvl       Int      @default(1)
-  energy       Int      @default(250)
-  energyLvl    Int      @default(1)
-  chargeLvl    Int      @default(1)
-  lastTap      DateTime @default(now())
-  lockReward   Boolean  @default(false)
-  refs         User[]   @relation("Ref")
-  refId        Float?
-  tron_balance Float    @default(0)
-  shib_balance Float    @default(0)
-  step         String   @default("5.787e-6")
-  power        String   @default("1.0")
-  ref          User?    @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
-  token        String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
+  id             Float    @id
+  joined_at      DateTime @default(now())
+  blocked        Boolean  @default(false)
+  wallet         Float    @default(0)
+  username       String?
+  chatId         Float    @unique
+  tapLvl         Int      @default(1)
+  energy         Int      @default(250)
+  energyLvl      Int      @default(1)
+  chargeLvl      Int      @default(1)
+  lastTap        DateTime @default(now())
+  lockReward     Boolean  @default(false)
+  refs           User[]   @relation("Ref")
+  refId          Float?
+  tron_balance   Float    @default(0)
+  shib_balance   Float    @default(0)
+  tronex_balance Float    @default(0)
+  step           String   @default("5.787e-6")
+
+  power String @default("1.0")
+  ref   User?  @relation(fields: [refId], references: [id], onDelete: Cascade, onUpdate: Cascade, "Ref")
+  token String @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 
   // V2 Props
   boost           Float             @default(0.0000000052)
