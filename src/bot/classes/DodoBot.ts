@@ -68,15 +68,13 @@ class DodoBot {
 								},
 							}));
 
-							const amount = PerFriendBonus;
-
 							if (fromUser) {
 								await prisma.user.update({
 									where: {
 										id: +(fromUser.id),
 									},
 									data: {
-										wallet: fromUser.shib_balance + amount,
+										wallet: fromUser.shib_balance + PerFriendBonus,
 									},
 								});
 								refId = fromUser.id
