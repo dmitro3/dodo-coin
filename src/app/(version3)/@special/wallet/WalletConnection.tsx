@@ -12,13 +12,13 @@ const WalletConnection = (props:{
 	const [verified, setVerified] = useState(window.localStorage.getItem("walletVerified") === "true");
 
 	useEffect(() => {
-		if (acc && !window.localStorage.getItem("lastAccount")?.includes(acc.address)) {
+		if (acc && !window.localStorage.getItem("lastAccount")?.includes(acc.address+"") && !verified) {
 			setVerified(true);
 			const finalAccount: Omit<typeof acc, 'connector'> = fromEntries(entries(acc).filter(([k,v])=>typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
 			setUserWallet(finalAccount).catch(console.error);
 		}
-	}, [acc]);
+	}, [acc,verified]);
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified+"");
 	}, [verified]);
