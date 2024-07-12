@@ -3,8 +3,9 @@ import {useAccount} from "wagmi";
 import {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
+import handleWalletVerification from "@v3/@special/wallet/Verification";
 
-const WalletConnection = (props:{
+const WalletConnection = (props: {
 	children: ReactNode
 }) => {
 	const {open} = useWeb3Modal();
@@ -13,25 +14,32 @@ const WalletConnection = (props:{
 
 	useEffect(() => {
 		if (acc) {
-			const finalAccount: Omit<typeof acc, 'connector'> = fromEntries(entries(acc).filter(([k,v])=>typeof v !== 'object'));
+			const finalAccount: Omit<typeof acc, 'connector'> = fromEntries(entries(acc).filter(([k, v]) => typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
 			setUserWallet(finalAccount).catch(console.error);
 		}
-	}, [acc.address,verified]);
+	}, [acc.address]);
 	useEffect(() => {
-		window.localStorage.setItem("walletVerified", verified+"");
+		if (acc && !verified) {
+			handleWalletVerification(acc);
+		}
+	}, [acc]);
+	useEffect(() => {
+		window.localStorage.setItem("walletVerified", verified + "");
 	}, [verified]);
 
 	return (
-		<span onClick={()=>{
-			if (!!acc && verified) return;
-			setVerified(false);
-			open().catch(()=>{
-				alert("FAIL TO OPEN WALLET PROVIDER");
-			});
-		}} key={"CONNECTOR"}>
-			{props.children}
-		</span>
+		<>
+			<span onClick={() => {
+				if (!!acc && verified) return;
+				setVerified(false);
+				open().catch(() => {
+					alert("FAIL TO OPEN WALLET PROVIDER");
+				});
+			}} key={"CONNECTOR"}>
+				{props.children}
+			</span>
+		</>
 	);
 };
 
