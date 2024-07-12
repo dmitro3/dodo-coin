@@ -20,6 +20,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@backend/*": ["./src/backend/*"],
+      "@v3/*": ["./src/app/(version3)"],
     },
     "types": [
       "@daochild/tronweb-typescript",
