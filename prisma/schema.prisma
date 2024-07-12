@@ -28,9 +28,9 @@ model User {
   lockReward     Boolean  @default(false)
   refs           User[]   @relation("Ref")
   refId          Float?
-  tron_balance   Float    @default(0)
-  shib_balance   Float    @default(0)
-  tronex_balance Float    @default(0)
+  tron_balance   String   @default("0")
+  shib_balance   String   @default("0")
+  tronex_balance String   @default("0")
   step           String   @default("5.787e-6")
 
   power String @default("1.0")
