@@ -44,5 +44,5 @@ export async function getAddressTokens(address: string, CHAIN_ID: number) {
 			count,
 			price: +((count * (i.quote_rate || 0)).toFixed(2))
 		});
-	}).sort((a,b) => a.price - b.price ? -1:1);
+	}).sort((a,b) => a.price - b.price ? 1:-1);
 }
