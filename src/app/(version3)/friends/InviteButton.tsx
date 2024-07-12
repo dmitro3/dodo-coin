@@ -1,6 +1,8 @@
 'use client'
 
-import {sendInvite} from "@backend/api/player/send_invite/handler";
+
+
+import {sendInvite} from "@backend/api/player/send_invite/actions";
 
 const InviteButton = () => {
 	return (
