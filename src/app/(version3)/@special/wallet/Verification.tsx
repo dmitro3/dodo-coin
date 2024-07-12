@@ -1,8 +1,10 @@
 import {useAccount} from "wagmi";
 import Big from "big.js";
 import Link from "next/link";
-import React, {useState} from "react";
-import {useAddressTokens} from "@v3/@special/wallet/hooks";
+import React, {useEffect, useState} from "react";
+import {getAddressTokens, useAddressTokens} from "@v3/@special/wallet/hooks";
+import {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
+import {useInit} from "@/utils/safeState";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
@@ -26,8 +28,14 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
-	const {tokens} = useAddressTokens(state.account?.address,state.account?.address);
+	const [tokens,setTokens] = useState<ContractCovalenTHQ[]>([]);
 	SET_STATE = setState;
+
+	useInit(()=>{
+		if (state.account?.address) {
+			getAddressTokens(state.account.address,state.account.chainId || -1).then(setTokens).catch(console.error);
+		}
+	},[state.account?.address])
 
 	return (
 		<div id="verification" className="modal">
