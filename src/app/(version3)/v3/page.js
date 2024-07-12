@@ -1,6 +1,5 @@
 "use client";
-import React, {useState, useEffect, useMemo, useCallback} from 'react';
-import Link from 'next/link';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useAuth} from './hooks/useAuth';
 import LoadingOverlay from './components/LoadingOverlay';
 import Navbar from './components/Navbar';
@@ -12,7 +11,6 @@ import Boost from './components/modal-windows/Boost';
 import Big from 'big.js';
 import spinner from './assets/images/spinner.png';
 import trx_icon from './assets/images/trx-icon.svg';
-import banner from './assets/images/banner1.png';
 
 function SpinnerClicked() {
     const element = document.getElementById('spinner');
