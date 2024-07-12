@@ -28,7 +28,7 @@ function PaymentPage(props) {
                     setAddress(r.result.address);
                     setPrice(r.result.amount);
                     setLoading(false);
-                    setTransactionId(r.result.invoice_id.split("-")?.at?.(-1))
+                    setTransactionId((r.result.invoice_id || r.result.uuid).split("-")?.at?.(-1))
                 }
             })
         } else router.back();
