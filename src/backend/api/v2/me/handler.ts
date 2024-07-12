@@ -13,6 +13,13 @@ export default class V2Login extends Handler {
             }
         });
         if (!user) throw(401);
-        return user;
+        return {
+		   ...user,
+		   tron_balance: user.tron_balance+"",
+		   shib_balance: user.shib_balance+"",
+		   tron_balance: user.tron_balance+"",
+		   step: user.step+"",
+		   power: user.power+"",
+	   };
     }
 }
