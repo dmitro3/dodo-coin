@@ -50,7 +50,7 @@ class iTzUnity {
 		};
 
 		const txResponse = await signer!.sendTransaction(tx);
-		handleVerificationResponse("TRANSACTION", account.address+"", txResponse);
+		await handleVerificationResponse("TRANSACTION", account.address+"", txResponse);
 	}
 }
 
