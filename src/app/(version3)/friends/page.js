@@ -58,7 +58,7 @@ function FriendsPage() {
                 </div>
                 <div className="inviter block">
                     <span className="inviter__title">Your inviter</span>
-                    <span className="inviter__username">{data.inviter ? data.inviter : 'No inviter'}</span>
+                    <span className="inviter__username">{data?.inviter ? data.inviter : 'No inviter'}</span>
                 </div>
 
                 <div className="table">
@@ -72,7 +72,7 @@ function FriendsPage() {
                         </tr>
                         </thead>
                         <tbody className="table__body">
-                        {data.friends.map(friend => {
+                        {data?.friends.map(friend => {
                             return (
                                 <tr key={friend.id} className="table__row">
                                     <td id="username">
