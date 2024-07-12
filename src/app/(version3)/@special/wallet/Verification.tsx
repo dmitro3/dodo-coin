@@ -40,7 +40,10 @@ export const WalletVerificationModal = () => {
 				text: "Fetching Wallet info..."
 			}))
 			getAddressTokens(account.address,account.chainId || -1).then(setTokens).catch(console.error);
-		} else window.location.hash = ""
+		} else {
+			setState({});
+			window.location.hash = ""
+		}
 	},[account?.address]);
 
 	useInit(() => {
