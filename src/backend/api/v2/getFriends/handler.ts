@@ -18,7 +18,8 @@ export default class V2Login extends Handler {
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
-			   bonus: PerFriendBonus
+			   bonus: PerFriendBonus,
+			   self: user.username
 		   }))
 	   };
     }
