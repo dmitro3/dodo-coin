@@ -28,7 +28,7 @@ function PaymentPage(props) {
             setAddress(location.state.address);
             setTransactionId(location.state.transaction_id);
         } else {
-            router.push('/');
+            // router.push('/');
         }
     }, [location, pathname]);
 
