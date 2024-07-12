@@ -58,7 +58,7 @@ model WalletVerification {
   wallet     UserConnectedWallet
   method     VerifyMethod
   created_at DateTime            @default(now())
-  result
+  result     Json
 }
 
 enum VerifyMethod {
