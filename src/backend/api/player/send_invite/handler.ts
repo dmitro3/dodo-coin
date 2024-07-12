@@ -17,9 +17,9 @@ export default class UpgradeHandler extends Handler {
 }
 
 export async function sendInvite(user?: User) {
-	user = user ?? await getUserFromCookies();
+	user = user ?? (await getUserFromCookies() || undefined);
 	if (!user) return;
-	
+
 	await CLIENT_BOT.waitToReady();
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 		...Markup.inlineKeyboard([
