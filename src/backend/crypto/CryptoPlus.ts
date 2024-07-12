@@ -1,6 +1,8 @@
 'use server';
 
 import {User} from "@prisma/client";
+import {getUserFromCookies} from "@/utils/serverComponents/user";
+
 
 const shopId = "PPJjJrocLrv3h7LM";
 
@@ -73,13 +75,17 @@ export async function createPosPayment(amount: number) {
 		})
 	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
 
+	const id = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
+
+	PAYMENTS[id] = (await getUserFromCookies())?.id || -1;
+
 	return await fetch("https://api.cryptocloud.plus/v2/invoice/checkout/confirm", {
 		headers: {
 			"content-type": "application/json",
 		},
 		method: "POST",
 		body: JSON.stringify({
-			"invoice_uuid": (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1),
+			"invoice_uuid": id,
 			"currency_code": "USDT_TRC20",
 			"phone_number": "",
 			"customer_invoice_email": ""
