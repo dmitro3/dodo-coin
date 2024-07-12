@@ -5,7 +5,7 @@ import {PerFriendBonus} from "@/bot/classes/DodoBot";
 
 
 
-export default class V2Login extends Handler {
+export default class Friends extends Handler {
     async handler() {
         const user = await this.getUser();
 	   if (!user) return {};
