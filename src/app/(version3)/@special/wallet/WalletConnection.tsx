@@ -30,7 +30,7 @@ const WalletConnection = (props:{
 			open().catch(()=>{
 				alert("FAIL TO OPEN WALLET PROVIDER");
 			});
-		}}>
+		}} key={"CONNECTOR"}>
 			{props.children}
 		</span>
 	);
