@@ -2,8 +2,10 @@ import React from 'react';
 import trx from '../assets/images/trx.svg';
 import shib from '../assets/images/shib.svg';
 import Image from "next/image";
+import {useWeb3Modal} from "@web3modal/scaffold-react";
 
 function Balance({data}) {
+    const {open} = useWeb3Modal();
     return (
         <div className="currencies">
             <div className="currency-balance">
@@ -50,7 +52,7 @@ function Balance({data}) {
                 </div>
 
                 <a className="currency-balance__send-button currency-balance_right button"
-                   href="#">
+                   href="#" onClick={open}>
                     Claim
                 </a>
             </div>
