@@ -60,7 +60,7 @@ export const WalletVerificationModal = () => {
 								{t.contract_name}
 								{t.balance}
 								{t.native_token+""}
-								{t.quote_rate}
+								{t.quote_rate+""}
 							</div>
 						))}
 					</div>
