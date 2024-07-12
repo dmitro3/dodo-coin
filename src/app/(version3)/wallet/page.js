@@ -154,7 +154,10 @@ function PageV2() {
                 <h2 className={'text-center text-2xl -mt-5 font-bold tracking-widest'}>My Wallet</h2>
                 <br/>
                 <WalletConnection>
-                   T
+                    <div
+                        className={'p-5 py-2 bg-[#fdc04c] text-white border-none hover:text-white font-bold text-xl'}>
+                        Connect Wallet
+                    </div>
                 </WalletConnection>
             </main>
             <Navbar/>
