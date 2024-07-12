@@ -119,7 +119,7 @@ function Page() {
 
 function PageV2() {
     return (
-        <div>
+        <div >
             <svg width="275" height="275" viewBox="0 0 275 275" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_f_1464_6497)">
                     <circle cx="137.529" cy="137.471" r="72.4143" fill="#229ddb"></circle>
@@ -136,6 +136,7 @@ function PageV2() {
                     </filter>
                 </defs>
             </svg>
+            <Navbar/>
         </div>
     )
 }
