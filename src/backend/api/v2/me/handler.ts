@@ -19,7 +19,9 @@ export default class V2Login extends Handler {
 		   tronex_balance: user.tronex_balance+"",
 		   step: user.step+"",
 		   power: user.power+"",
-		   user
+		   user: {
+			   id: user.id
+		   }
 	   });
 	   res.cookies.set('token', user.token, {
 		   path: "/",
