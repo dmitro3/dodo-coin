@@ -124,7 +124,7 @@ function PageV2() {
                 <div className={'relative'}>
                     <svg width="275" height="275" viewBox="0 0 275 275" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_f_1464_6497)">
-                            <circle cx="137.529" cy="137.471" r="72.4143" fill="#f5ee00"></circle>
+                            <circle cx="137.529" cy="137.471" r="72.4143" fill="#d6cf00"></circle>
                         </g>
                         <circle cx="137" cy="138" r="63.4286" fill="white" fill-opacity="0.05"></circle>
                         <circle cx="137" cy="138" r="74" fill="white" fill-opacity="0.05"></circle>
