@@ -68,7 +68,9 @@ function PaymentPage(props) {
                 <div className="order-details block">
                     <div className="order-details__header">
                         <span className="order-details__title">Order Details</span>
-                        <Link to={-1} className="order-details__button button">Cancel</Link>
+                        <Link href={'#'} onClick={()=>{
+                            router.back();
+                        }} className="order-details__button button">Cancel</Link>
                     </div>
                     <div className="order-details__row">
                         <span className="order-details__name">Mining Power</span>
