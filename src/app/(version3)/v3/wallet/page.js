@@ -14,7 +14,7 @@ import trx from '../assets/images/trx.svg';
 import approve from '../assets/images/icon_approve.svg';
 import semicircle from '../assets/images/icon_semicircle.svg';
 
-function WalletPage() {
+function Page() {
     const {userData, loading, setUserData, loadUserData} = useAuth();
     const [searchParams] = useSearchParams();
     const {data, loading: dataLoading} = usePaginate("/getTransactions", searchParams);
@@ -116,4 +116,4 @@ function WalletPage() {
     );
 }
 
-export default WalletPage;
+export default Page;
