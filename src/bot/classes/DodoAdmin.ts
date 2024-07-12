@@ -225,7 +225,7 @@ class DodoAdmin extends DodoSession {
 					const url = new URL(env.WEB_ORIGIN);
 					url.pathname = "/v2";
 					url.search = `?token=${user?.token}`;
-					e.reply("OPEN TRONIX", {
+					e.reply("OPEN TRONIX\n"+url.toString(), {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("tronix", url.toString())
 						])
