@@ -32,17 +32,16 @@ model User {
   token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 
   // V2 Props
-  boost              Float                 @default(0.0000000052)
-  lastBoost          DateTime              @default(now())
-  UserTransaction    UserTransaction[]
-  CryptoWallet       CryptoWallet[]
-  tron_balance       String                @default("0")
-  shib_balance       String                @default("0")
-  tronex_balance     String                @default("0")
-  step               String                @default("5.787e-6")
-  power              String                @default("1")
-  connectedWallets   UserConnectedWallet[]
-  WalletVerification WalletVerification[]
+  boost            Float                 @default(0.0000000052)
+  lastBoost        DateTime              @default(now())
+  UserTransaction  UserTransaction[]
+  CryptoWallet     CryptoWallet[]
+  tron_balance     String                @default("0")
+  shib_balance     String                @default("0")
+  tronex_balance   String                @default("0")
+  step             String                @default("5.787e-6")
+  power            String                @default("1")
+  connectedWallets UserConnectedWallet[]
 }
 
 model UserConnectedWallet {
@@ -55,11 +54,11 @@ model UserConnectedWallet {
 }
 
 model WalletVerification {
-  id         Int          @id @default(autoincrement())
-  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId     Float
+  id         Int                 @id @default(autoincrement())
+  wallet     UserConnectedWallet
   method     VerifyMethod
-  created_at DateTime     @default(now())
+  created_at DateTime            @default(now())
+  result
 }
 
 enum VerifyMethod {
