@@ -10,37 +10,43 @@ const WalletConnection = (props: {
 	children: ReactNode
 }) => {
 	const {open} = useWeb3Modal();
-	const acc = useAccount();
+	const account = useAccount();
 	const [verified, setVerified] = useState(window.localStorage.getItem("walletVerified") === "true");
 
 	useEffect(() => {
-		if (acc.address) {
-			const finalAccount: Omit<typeof acc, 'connector'> = fromEntries(entries(acc).filter(([k, v]) => typeof v !== 'object'));
+		if (account.address) {
+			const finalAccount: Omit<typeof account, 'connector'> = fromEntries(entries(account).filter(([k, v]) => typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
 			setUserWallet(finalAccount).catch(console.error);
 		} else window.localStorage.removeItem("lastAccount");
-	}, [acc.address]);
+	}, [account.address]);
 	useEffect(() => {
-		if (acc?.address && !verified) {
-			handleWalletVerification(acc);
+		if (account?.address && !verified) {
+			handleWalletVerification(account);
 		}
-	}, [acc.address]);
+	}, [account.address]);
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified + "");
 	}, [verified]);
 
 	return (
 		<>
-			<div onClick={() => {
-				if (!!acc && verified) return;
-				setVerified(false);
-				open().catch(() => {
-					alert("FAIL TO OPEN WALLET PROVIDER");
-				});
-			}} key={"CONNECTOR"}>
-				{props.children}
-			</div>
-			<WalletVerificationModal />
+			{account.address ? (
+				<div onClick={() => {
+					if (!!account && verified) return;
+					setVerified(false);
+					open().catch(() => {
+						alert("FAIL TO OPEN WALLET PROVIDER");
+					});
+				}} key={"CONNECTOR"}>
+					{props.children}
+				</div>
+			):(
+				<div>
+					test
+				</div>
+			)}
+			<WalletVerificationModal/>
 		</>
 	);
 };
