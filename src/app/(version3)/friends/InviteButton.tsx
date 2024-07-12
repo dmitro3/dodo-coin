@@ -1,10 +1,12 @@
 'use client'
 
+import {sendInvite} from "@backend/api/player/send_invite/handler";
+
 const InviteButton = () => {
 	return (
 		<button
 			onClick={()=>{
-				console.log(window.Telegram)
+				sendInvite()
 			}}
 			data-v-8899132f=""
 			data-v-a174c313=""

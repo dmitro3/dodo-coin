@@ -1,8 +1,11 @@
+'use server';
+
 import Handler from "@backend/modules/Handler";
 import {CLIENT_BOT} from "@/bot/main";
 import {Markup} from "telegraf";
 import {User} from "@prisma/client";
 import {communityButton, getWebAppUrl} from "@/bot/classes/DodoClient";
+import {getUserFromCookies} from "@/utils/serverComponents/user";
 
 export default class UpgradeHandler extends Handler {
 	async handler() {
@@ -13,7 +16,10 @@ export default class UpgradeHandler extends Handler {
 	}
 }
 
-export async function sendInvite(user: User) {
+export async function sendInvite(user?: User) {
+	user = user ?? await getUserFromCookies();
+	if (!user) return;
+	
 	await CLIENT_BOT.waitToReady();
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
 		...Markup.inlineKeyboard([
