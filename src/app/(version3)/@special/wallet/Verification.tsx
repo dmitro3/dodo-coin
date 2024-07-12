@@ -49,8 +49,13 @@ export const WalletVerificationModal = () => {
 						<div className="modal-calc">
 
 						</div>
-
 						<span className="modal-minimum-boost">{state.text}</span>
+						<br/>
+						{tokens.map(t => (
+							<div>
+								{t.contract_ticker_symbol}
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
