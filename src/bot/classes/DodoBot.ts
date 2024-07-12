@@ -8,7 +8,7 @@ import {ParseMode} from 'telegraf/types';
 import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 
-const PerFriendBonus = 0.01;
+export const PerFriendBonus = 0.01;
 
 class DodoBot {
 	bot: CustomTelegraf;
