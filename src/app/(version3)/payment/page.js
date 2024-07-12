@@ -42,6 +42,7 @@ function PaymentPage(props) {
                 setLoading(true);
                 try {
                     const response = await checkPosPayment(transactionId);
+                    console.log(response);
                     if (response.includes("cancel") || response.includes("paid")) {
                         router.push("/");
                     }
