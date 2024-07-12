@@ -39,7 +39,7 @@ function MissionsPage() {
         <div>
             <main>
                 <span className="mission-title">5 missions available</span>
-                <span className="mission-description">Complete the missions to get the SHIB</span>
+                <span className="mission-description">Complete the missions to get the BNB</span>
                 {missions.map(mission => (
                     <div key={mission.id}
                          className={`mission block${mission.completed && mission.claimed ? ' completed' : ''}`}>
@@ -51,7 +51,7 @@ function MissionsPage() {
                                 <span className="mission-info__title">{mission.name}</span>
                                 <div className="mission-info__reward">
                                     <img src={shib} alt="" className="coin-img"/>
-                                    <span>{mission.reward.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SHIB</span>
+                                    <span>{mission.reward.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} BNB</span>
                                 </div>
                             </div>
                         </div>

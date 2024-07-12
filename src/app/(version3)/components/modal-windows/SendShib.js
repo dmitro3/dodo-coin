@@ -8,7 +8,7 @@ function SendShib() {
             minAmount={300000}
             fee={30000}
             addressRegex={/^0x[a-zA-Z0-9]{40}$/}
-            addressPlaceholder="Your SHIB (BEP20) Address"
+            addressPlaceholder="Your BNB (BEP20) Address"
             network="BEP20"
         />
     );

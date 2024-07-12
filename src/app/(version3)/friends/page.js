@@ -38,7 +38,7 @@ function FriendsPage() {
         <div>
             <main>
                 <div className="ref-info block">
-                    Invite friends and receive 500 SHIB for every friend registration. You can also receive bonuses for
+                    Invite friends and receive 500 BNB for every friend registration. You can also receive bonuses for
                     completed missions by your friends.
                 </div>
                 <div className="invite-link block">

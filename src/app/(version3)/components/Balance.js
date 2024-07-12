@@ -26,9 +26,9 @@ function Balance({data}) {
                         <Image src={shib} alt="" draggable="false"/>
                     </div>
                     <div className="currency-balance__text">
-                        <span className="currency-balance__title">SHIB Balance</span>
+                        <span className="currency-balance__title">BNB Balance</span>
                         <span
-                            className="currency-balance__value">{data.shib_balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SHIB</span>
+                            className="currency-balance__value">{data.shib_balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} BNB</span>
                     </div>
                 </div>
 
