@@ -252,9 +252,6 @@ nav {
     padding-bottom: 8px;
 }
 
-.nav-links__link:not(:first-of-type) {
-    border-left: 1px solid #808080;
-}
 
 .nav-links__link > img {
     width: 25px;
