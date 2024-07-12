@@ -3,6 +3,7 @@ import "./style.css"
 import Navbar from "@v3/components/Navbar";
 import family from "./img.png";
 import Image from "next/image";
+import React from "react";
 const Page = async () => {
 	const friends = await getFriends()
 
