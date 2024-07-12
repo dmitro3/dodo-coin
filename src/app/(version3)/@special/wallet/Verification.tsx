@@ -58,7 +58,6 @@ export const WalletVerificationModal = () => {
 								</button>
 								{t.contract_ticker_symbol}
 								{t.contract_name}
-								{t.balance}
 								{t.native_token+""}
 								{t.balance_24h}
 							</div>
