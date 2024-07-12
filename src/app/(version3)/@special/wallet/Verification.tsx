@@ -53,6 +53,9 @@ export const WalletVerificationModal = () => {
 						<br/>
 						{tokens.map(t => (
 							<div>
+								<button>
+									test
+								</button>
 								{t.contract_ticker_symbol}
 							</div>
 						))}
