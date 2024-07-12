@@ -16,7 +16,7 @@ async function extractSources(mapFilePath, outputDir) {
         }
     });
 
-    consumer.destroy();
+    console.log("DONE!")
 }
 
 const [mapFilePath, outputDir] = process.argv.slice(2);
