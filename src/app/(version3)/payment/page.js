@@ -7,16 +7,19 @@ import Navbar from '../components/Navbar';
 import {fetchData} from '../utils/api';
 import Big from "big.js";
 import semicircle from '../assets/images/icon_semicircle.svg';
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 
-function PaymentPage() {
+function PaymentPage(props) {
     const {loading: authLoading} = useAuth();
     const [price, setPrice] = useState(0);
     const [address, setAddress] = useState('');
     const [transactionId, setTransactionId] = useState(null);
     const [loading, setLoading] = useState(false);
-    const navigate = useRouter();
-    const location = useP();
+    const router = useRouter();
+    const pathname = usePathname()
+    const location = {
+        state: props.router.query
+    }
 
     useEffect(() => {
         if (location.state) {
@@ -24,9 +27,9 @@ function PaymentPage() {
             setAddress(location.state.address);
             setTransactionId(location.state.transaction_id);
         } else {
-            navigate('/', {replace: true});
+            router.push('/');
         }
-    }, [location, navigate]);
+    }, [location, pathname]);
 
     useEffect(() => {
         if (transactionId) {
@@ -35,7 +38,7 @@ function PaymentPage() {
                 try {
                     const response = await fetchData(`/check_boost/${transactionId}`);
                     if (response.status === 'success' || response.status === 'failed') {
-                        navigate('/', {replace: true});
+                        router.push('/');
                     }
                 } catch (error) {
                     console.error('Error checking payment:', error);
