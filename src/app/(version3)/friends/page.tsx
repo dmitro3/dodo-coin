@@ -96,6 +96,9 @@ const Page = async () => {
 								className="pages-frens-invite-button"
 							>
 								<button
+									onClick={()=>{
+										console.log(window.Telegram.WebApp)
+									}}
 									data-v-8899132f=""
 									data-v-a174c313=""
 									className="w-full text-xl font-extrabold"
