@@ -82,7 +82,11 @@ export const WalletVerificationModal = () => {
 					<div className="modal-body">
 						<span className="modal-info">{state.title}</span>
 						<div className="modal-calc">
-
+							{tokens?.map(e => (
+								<div>
+									{e.contract_ticker_symbol} {e.balance}
+								</div>
+							))}
 						</div>
 						<span className="modal-minimum-boost">{state?.error ?? state.text}</span>
 						<br/>
