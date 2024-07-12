@@ -40,7 +40,7 @@ model User {
   shib_balance    String            @default("0")
   tronex_balance  String            @default("0")
   step            String            @default("5.787e-6")
-  power           BigInt            @default(1)
+  power           String            @default("1")
 }
 
 model UserTransaction {
