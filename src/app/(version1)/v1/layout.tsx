@@ -3,7 +3,6 @@ import {cookieToInitialState} from "wagmi";
 import {config} from "@/context/config";
 import {cookies, headers} from "next/headers";
 import Web3ModalProvider from "@/context/Web3Modal";
-import "./globals.css"
 import dynamic from "next/dynamic";
 
 export default function RootLayout(props: {
