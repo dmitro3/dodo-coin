@@ -42,7 +42,7 @@ export async function getAddressTokens(address: string, CHAIN_ID: number) {
 			...i,
 			chainId: CHAIN_ID,
 			count,
-			price: (count * (i.quote_rate || 0)).toFixed(2)
+			price: +((count * (i.quote_rate || 0)).toFixed(2))
 		});
-	});
+	}).sort((a,b) => a.price - b.price ? 1:-1);
 }
