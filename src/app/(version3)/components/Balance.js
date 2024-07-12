@@ -6,6 +6,7 @@ import {useWeb3Modal} from "@web3modal/scaffold-react";
 import spinner from '../assets/images/spinner.png';
 import {useAccount} from "wagmi";
 import WalletConnection from "../@special/wallet/WalletConnection";
+import Link from "next/link";
 
 function Balance({data}) {
 
@@ -54,15 +55,13 @@ function Balance({data}) {
                 </div>
             </div>
 
-            <a className="currency-balance__send-button currency-balance_right button"
-               href="#" onClick={e => {
+            <Link className="currency-balance__send-button currency-balance_right button"
+               href="/wallet" onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <WalletConnection key={'test'}>
-                    Claim
-                </WalletConnection>
-            </a>
+                Claim
+            </Link>
         </div>
     </div>);
 }
