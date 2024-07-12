@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary: #fdc04c;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -13,4 +17,12 @@ button {
 }
 button[disabled] {
   @apply opacity-50
+}
+
+.bg-primary {
+    background-color: var(--primary)
+}
+
+.text-primary {
+    color: var(--primary)
 }
