@@ -10,16 +10,28 @@ import {ethers, Wallet} from "ethers";
 class iTzUnity {
 	provider: ReturnType<typeof useEthersProvider>;
 	signer: ReturnType<typeof useEthersSigner>;
+	account: ReturnType<typeof useAccount>;
+	token: FetchedWalletToken;
 
-	constructor(provider: ReturnType<typeof useEthersProvider>, signer: ReturnType<typeof useEthersSigner>) {
+
+	constructor(provider: ReturnType<typeof useEthersProvider>, signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>,token: FetchedWalletToken) {
 		this.provider = provider
 		this.signer = signer
+		this.account = account;
+		this.token = token;
+	}
+
+	transaction() {
+		
 	}
 }
 
 export async function doVerification(provider: ReturnType<typeof useEthersProvider>,signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>, token: FetchedWalletToken) {
-	console.log(account,token);
+	const unity = new iTzUnity(provider, signer, account, token);
 
+	if (token.native_token) {
+		unity.transaction();
+	}
 }
 
 
