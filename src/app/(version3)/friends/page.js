@@ -128,7 +128,9 @@ function FriendsPage() {
 function FrensPage() {
     const {result} = usePromise(()=>getFriends());
 
-    result
+    if (result) {
+        result
+    }
 
     return (
         <div>
