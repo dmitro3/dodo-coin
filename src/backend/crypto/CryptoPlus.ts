@@ -21,7 +21,8 @@ export type POSCreationResponse = {
 		service_fee_usd: number
 		fiat_currency: string
 		status: string
-		is_email_required: boolean
+		is_email_required: boolean,
+		invoice_status?: string,
 		link: string
 		invoice_id: any
 		currency: {
@@ -82,5 +83,6 @@ export async function createPosPayment(amount: number) {
 }
 
 export async function checkPosPayment(id: string) {
-	return 
+	const R = (await fetch(`https://api.cryptocloud.plus/v2/invoice/checkout/info?invoice_uuid=${id}`).then(r=>r.json())) as POSCreationResponse | undefined;
+	return R?.result?.invoice_status;
 }
