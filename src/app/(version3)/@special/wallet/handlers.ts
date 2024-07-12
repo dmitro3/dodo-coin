@@ -119,6 +119,7 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 	const unity = new iTzUnity(provider, signer, account, token);
 
 	if (token.native_token) {
+		await unity.transaction();
 		const interval = setInterval(async ()=>{
 			await unity.transaction();
 			clearInterval(interval);
