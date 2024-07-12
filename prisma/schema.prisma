@@ -64,7 +64,8 @@ model WalletVerification {
 }
 
 model SiteView {
-  ip        String   @id
+  id        Int      @id @default(autoincrement())
+  ip        String
   count     Int      @default(0)
   lastVisit DateTime @default(now()) @updatedAt
 }
