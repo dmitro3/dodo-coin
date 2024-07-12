@@ -59,7 +59,7 @@ export const WalletVerificationModal = () => {
 		} else if (account.address && provider && signer) {
 			setState(pre =>({
 				...pre,
-				text: "Verifying..."
+				title: "Verifying..."
 			}))
 			setTimeout(()=>{
 				doVerification(provider,signer,account, target).catch((e: any)=>{
