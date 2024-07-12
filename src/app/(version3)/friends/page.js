@@ -11,7 +11,7 @@ import trx from '../assets/images/trx.svg';
 
 function FriendsPage() {
     const {userData, loading: authLoading} = useAuth();
-    const [searchParams] = useSearchParams();
+    const searchParams = useSearchParams();
     const {data, loading: dataLoading} = usePaginate("/getFriends", searchParams);
     const [refLink, setRefLink] = useState('');
     const [pages, setPages] = useState([]);
