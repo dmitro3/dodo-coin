@@ -45,7 +45,7 @@ const Page = async () => {
 													Share your invitation link
 												</div>
 												<div data-v-97c098d1="" className="content-subtitle">
-													Get Bonus for each frens 
+													Get Bonus for each frens
 												</div>
 											</div>
 										</div>
