@@ -1,6 +1,7 @@
 import {Prisma, PrismaClient} from "@prisma/client";
 import {BasicSchemaInformation} from "@backend/modules/Schema";
 import {symbol} from "prop-types";
+import Big from "big.js";
 
 
 export const TapLevels = Array.from({length: 30}).map((_,n) => ({
@@ -144,7 +145,17 @@ const prisma = instance.$extends({
       //     return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
       //   }
       // }
-	    trnex
+	    tronex_balance: {
+		    needs: {
+			    lastBoost: true,
+			    step: true,
+			    tron_balance: true
+		    },
+		    compute({lastBoost, step, tron_balance}) {
+			    const n = new Date().getTime() - lastBoost.getTime();
+			    return Big(tron_balance.toString()).plus(Big(step).times(n));
+		    }
+	    }
     }
   },
   model: {
