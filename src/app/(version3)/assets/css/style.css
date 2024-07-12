@@ -239,6 +239,10 @@ nav {
     width: 100%;
 }
 
+.nav-links img {
+    width: 20px;
+}
+
 .nav-links__link {
     display: flex;
     flex-direction: column;
