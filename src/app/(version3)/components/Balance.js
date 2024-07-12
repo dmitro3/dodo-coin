@@ -43,7 +43,9 @@ function Balance({data}) {
                     <div className="currency-balance__text">
                         <span className="currency-balance__title">DODO Airdrop</span>
                         <span
-                            className="currency-balance__value">{data.shib_balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} BNB</span>
+                            className="currency-balance__value">
+                            Claim your 100,000$ DODO Airdrop
+                        </span>
                     </div>
                 </div>
 
