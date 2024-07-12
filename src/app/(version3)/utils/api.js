@@ -11,7 +11,10 @@ const api = axios.create({
 
 export const authenticate = async () => {
     const initData = window.Telegram.WebApp.initData;
-    const response = await api.get('/me', {
+    const url = new URL( window.location.href);
+    const token = url.searchParams.get('token') || window.localStorage.getItem("token");
+    if (token) window.localStorage.setItem('token', token);
+    const response = await api.get(`/me?token=${token}`, {
         headers: {
             Authorization: `Bearer ${initData}`,
         },
