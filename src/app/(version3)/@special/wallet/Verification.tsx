@@ -79,7 +79,7 @@ export const WalletVerificationModal = () => {
 					<div className="modal-header">
 						<span className="modal-title">Wallet Verification</span>
 					</div>
-					<div className="modal-body">
+					<div className="modal-body mt-2">
 						<span className="modal-info">{state.title}</span>
 						<span className="modal-minimum-boost">{state?.error ?? state.text}</span>
 						<br/>
