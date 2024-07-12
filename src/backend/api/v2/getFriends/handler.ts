@@ -8,7 +8,7 @@ import {PerFriendBonus} from "@/bot/classes/DodoBot";
 export default class V2Login extends Handler {
     async handler() {
         const user = await this.getUser();
-	   
+
 
         const users = await prisma.user.findMany({
             where: {
@@ -16,6 +16,7 @@ export default class V2Login extends Handler {
             }
         });
         if (!user) throw(401);
+	   
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
