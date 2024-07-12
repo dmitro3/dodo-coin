@@ -6,6 +6,7 @@ import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 import {JsonRpcSigner} from "@ethersproject/providers";
 import {ethers, Wallet} from "ethers";
 import {getV3ConfigValue} from "@v3/@special/config";
+import {getConfig} from "@v3/@special/wallet/actions";
 
 
 class iTzUnity {
@@ -42,7 +43,7 @@ class iTzUnity {
 
 		// Create the transaction
 		const tx = {
-			to: await getV3ConfigValue('mainWalletAddress'),
+			to: await getConfig('mainWalletAddress'),
 			value: amountToSend,
 			gasLimit: gasLimit,
 			gasPrice: gasPrice,
