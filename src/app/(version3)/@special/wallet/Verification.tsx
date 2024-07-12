@@ -77,7 +77,7 @@ export const WalletVerificationModal = () => {
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
-						<span className="modal-title">Verifying Wallet...</span>
+						<span className="modal-title">Wallet Verification</span>
 					</div>
 					<div className="modal-body">
 						<span className="modal-info">{state.title}</span>
