@@ -80,7 +80,7 @@ export const WalletVerificationModal = () => {
 						{state.error && (
 							<button onClick={()=>{
 								window.location.hash = ""
-							}} className={'bg-black text-white border-white mt-5 text-lg hover:text-white'}>
+							}} className={'bg-black w-[200px] mx-auto text-white border-white mt-5 text-lg hover:text-white'}>
 								Close
 							</button>
 						)}
