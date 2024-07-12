@@ -2,6 +2,7 @@ import {getFriends} from "@v3/friends/actions";
 import "./style.css"
 import Navbar from "@v3/components/Navbar";
 import family from "./img.png";
+import Image from "next/image";
 const Page = async () => {
 	const friends = await getFriends()
 
@@ -16,7 +17,7 @@ const Page = async () => {
 							className="pages-frens-empty-state"
 						>
 							<div data-v-97c098d1="" className="heading">
-								<img
+								<Image
 									data-v-97c098d1=""
 									src={family}
 									alt="Friends emoji"
