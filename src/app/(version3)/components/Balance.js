@@ -59,7 +59,7 @@ function Balance({data}) {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <WalletConnection>
+                <WalletConnection key={'test'}>
                     Claim
                 </WalletConnection>
             </a>
