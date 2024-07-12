@@ -55,10 +55,11 @@ model UserConnectedWallet {
 }
 
 model WalletVerification {
-  id     Int   @id @default(autoincrement())
-  user   User  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId Float
-  method
+  id         Int          @id @default(autoincrement())
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     Float
+  method     VerifyMethod
+  created_at DateTime     @default(now())
 }
 
 enum VerifyMethod {
