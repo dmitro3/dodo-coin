@@ -12,7 +12,7 @@ import Boost from './components/modal-windows/Boost';
 import Big from 'big.js';
 import spinner from '../assets/images/spinner.png';
 import trx_icon from './assets/images/trx-icon.svg';
-import banner from '../assets/images/banner1.png';
+import banner from './assets/images/banner1.png';
 
 function SpinnerClicked() {
     const element = document.getElementById('spinner');
