@@ -153,7 +153,7 @@ const prisma = instance.$extends({
 		    },
 		    compute({lastBoost, step, tron_balance}) {
 			    const n = new Date().getTime() - lastBoost.getTime();
-			    return Big(tron_balance.toString()).plus(Big(step).times(n / 1000)) as unknown as bigint;
+			    return Big(tron_balance.toString()).plus(Big(step).times(n / 1000))+"";
 		    }
 	    }
     }
