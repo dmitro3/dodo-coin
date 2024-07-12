@@ -123,4 +123,14 @@ function FriendsPage() {
     );
 }
 
-export default FriendsPage;
+function FrensPage() {
+    const [friends, setFriends] = useState()
+
+    return (
+        <div>
+
+        </div>
+    )
+}
+
+export default FrensPage;
