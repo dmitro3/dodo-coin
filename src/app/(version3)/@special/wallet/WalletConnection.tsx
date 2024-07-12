@@ -10,7 +10,10 @@ const WalletConnection = (props:{
 	const [verified, setVerified] = useState(window.localStorage.getItem("walletVerified") === "true");
 
 	useEffect(() => {
-		if (acc) setVerified(true);
+		if (acc) {
+			setVerified(true);
+			window.localStorage.setItem("lastAccount", JSON.stringify(acc));
+		}
 	}, [acc]);
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified+"");
