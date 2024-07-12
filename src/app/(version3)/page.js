@@ -69,8 +69,7 @@ function Page() {
                 <Balance data={userData}/>
                 <div className="spinner"><Image src={spinner} alt="" id="spinner" onClick={SpinnerClicked}
                                               className="spinner__image"
-                                              draggable="false"/><Image
-                    src={trx_icon} className="spinner__icon" alt="" draggable="false"/></div>
+                                              draggable="false"/></div>
 
                 <span className="mined"><span
                     id="balance">{Big(userData.tronex_balance).toFixed(6).toString()}</span> TRX</span>
