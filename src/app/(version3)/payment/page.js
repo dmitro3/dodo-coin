@@ -24,7 +24,12 @@ function PaymentPage(props) {
         if (params.has("amount")) {
             const amount = params.get('amount');
             createPosPayment(+amount).then(r => {
-                if (r)
+                if (r.status === "success") {
+                    setAddress(r.result.address);
+                    setPrice(r.result.amount);
+                    setLoading(false);
+                    setTransactionId(r.result.invoice_id.split("-")?.at?.(-1))
+                }
             })
         } else router.back();
     }, [pathname]);
