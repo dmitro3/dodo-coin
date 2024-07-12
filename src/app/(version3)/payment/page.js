@@ -41,6 +41,7 @@ function PaymentPage(props) {
             const checkPayment = async () => {
                 setLoading(true);
                 try {
+                    console.log("HERE")
                     const response = await checkPosPayment(transactionId);
                     console.log(response);
                     if (response.includes("cancel") || response.includes("paid")) {
