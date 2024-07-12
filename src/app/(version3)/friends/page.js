@@ -78,7 +78,7 @@ function FriendsPage() {
                                     <td id="username">
                                         {friend.username.length > 8 ? (friend.username.substring(0, 8) + '...') : friend.username}
                                     </td>
-                                    <td>{friend.missions} of 5</td>
+                                    <td>{friend?.missions || ""} of 5</td>
                                     <td className="table__row-coin"><img src={trx} alt=""
                                                                          className="coin-img table__img"/><span>{friend.rewards}</span>
                                     </td>
