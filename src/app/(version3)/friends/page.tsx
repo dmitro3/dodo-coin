@@ -95,22 +95,7 @@ const Page = async () => {
 								data-v-55492676=""
 								className="pages-frens-invite-button"
 							>
-								<button
-									onClick={()=>{
-										console.log(window.Telegram.WebApp)
-									}}
-									data-v-8899132f=""
-									data-v-a174c313=""
-									className="w-full text-xl font-extrabold"
-								>
-									<div data-v-8899132f="" className="label-center-compensator"/>
-									<div data-v-8899132f="" className="label font-bold ">
-										Invite a fren (10 left)
-									</div>
-									<div data-v-8899132f="" className="right-slot">
-										{/**/}
-									</div>
-								</button>
+								<InviteButton/>
 							</div>
 						</div>
 						{/**/}
