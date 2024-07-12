@@ -1,4 +1,4 @@
-import {useAccount} from "wagmi";
+import {useAccount, useDisconnect} from "wagmi";
 import Big from "big.js";
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
@@ -32,6 +32,7 @@ export const WalletVerificationModal = () => {
 	});
 	const provider = useEthersProvider();
 	const signer = useEthersSigner()
+	const {disconnect} = useDisconnect();
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
 
@@ -89,6 +90,7 @@ export const WalletVerificationModal = () => {
 						))}
 						{state.error && (
 							<button onClick={()=>{
+								disconnect();
 								window.location.hash = ""
 							}} className={'bg-black w-[200px] mx-auto text-white border-white mt-5 text-lg hover:text-white'}>
 								Close
