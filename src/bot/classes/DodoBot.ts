@@ -7,6 +7,7 @@ import DodoSession from './DodoSession';
 import {ParseMode} from 'telegraf/types';
 import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
+import Big from "big.js";
 
 export const PerFriendBonus = 0.01;
 
@@ -74,7 +75,7 @@ class DodoBot {
 										id: +(fromUser.id),
 									},
 									data: {
-										wallet: fromUser.shib_balance + PerFriendBonus,
+										wallet: Big(fromUser.shib_balance),
 									},
 								});
 								refId = fromUser.id
