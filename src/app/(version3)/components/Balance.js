@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import trx from '../assets/images/trx.svg';
 import shib from '../assets/images/shib.svg';
 import Image from "next/image";
 import {useWeb3Modal} from "@web3modal/scaffold-react";
 import spinner from '../assets/images/spinner.png';
+import {useAccount} from "wagmi";
+import WalletConnection from "../@special/wallet/WalletConnection";
 
 function Balance({data}) {
-    const {open} = useWeb3Modal();
+
+
     return (<div className="currencies">
         <div className="currency-balance">
             <div className="currency-balance_left">
@@ -55,9 +58,10 @@ function Balance({data}) {
                href="#" onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
-                open()
             }}>
-                Claim
+                <WalletConnection>
+                    Claim
+                </WalletConnection>
             </a>
         </div>
     </div>);
