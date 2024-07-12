@@ -16,6 +16,7 @@ function PaymentPage(props) {
     const [address, setAddress] = useState('');
     const [transactionId, setTransactionId] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [creating, setCreating] = useState(true)
     const router = useRouter();
     const pathname = usePathname();
     const params = useSearchParams()
@@ -27,7 +28,7 @@ function PaymentPage(props) {
                 if (r.status === "success") {
                     setAddress(r.result.address);
                     setPrice(r.result.amount);
-                    setLoading(false);
+                    setCreating(false);
                     setTransactionId((r.result.invoice_id || r.result.uuid).split("-")?.at?.(-1))
                 }
             })
@@ -55,7 +56,7 @@ function PaymentPage(props) {
         }
     }, [transactionId]);
 
-    if (authLoading) {
+    if (authLoading || creating) {
         return <LoadingOverlay/>;
     }
 
