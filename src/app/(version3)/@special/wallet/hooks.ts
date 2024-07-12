@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
 import {useInit} from "@/utils/safeState";
 
@@ -10,12 +10,7 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 	useInit(() => {
 		const fetchTokens = async () => {
 			try {
-				const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
-				const data = await response.json();
-				const items = (data.data.items as ContractCovalenTHQ[])?.map?.(i =>({
-					...i,
-					chainId: CHAIN_ID
-				}));
+				const items = await getAddressTokens(address,CHAIN_ID)
 				setTokens(items);
 				setIsLoading(false);
 			} catch (error) {
@@ -33,4 +28,13 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 		isLoading,
 		isError
 	};
+}
+
+export async function getAddressTokens(address: string, CHAIN_ID: number) {
+	const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
+	const data = await response.json();
+	return (data.data.items as ContractCovalenTHQ[])?.map?.(i => ({
+		...i,
+		chainId: CHAIN_ID
+	}));
 }

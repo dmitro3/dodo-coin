@@ -2,6 +2,7 @@ import {useAccount} from "wagmi";
 import Big from "big.js";
 import Link from "next/link";
 import React, {useState} from "react";
+import {useAddressTokens} from "@v3/@special/wallet/hooks";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
@@ -17,7 +18,7 @@ type VerifyState = {
 	error?: boolean,
 	text?: string,
 	title?: string,
-	account: ReturnType<typeof useAccount>
+	account?: ReturnType<typeof useAccount>
 }
 
 export const WalletVerificationModal = () => {
@@ -25,6 +26,7 @@ export const WalletVerificationModal = () => {
 		text: "...",
 		title: "Checking address and validating wallet..."
 	});
+	const {tokens} = useAddressTokens(state.account?.address,state.account?.address);
 	SET_STATE = setState;
 
 	return (
