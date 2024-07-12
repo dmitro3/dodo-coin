@@ -1,0 +1,31 @@
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgIconSemicircle(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    baseProfile: "tiny",
+    id: "Layer_3",
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    x: "0px",
+    y: "0px",
+    viewBox: "0 0 200 200",
+    overflow: "visible",
+    xmlSpace: "preserve",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    fill: "#FFFFFF",
+    d: "M100,200C44.9,200,0,155.1,0,100S44.9,0,100,0c36.5,0,70,19.9,87.7,51.8c2.2,4,0.7,9-3.3,11.2 c-4,2.2-9,0.7-11.2-3.3c-14.7-26.7-42.7-43.3-73.2-43.3C54,16.5,16.5,54,16.5,100S54,183.5,100,183.5c30.4,0,58.5-16.6,73.2-43.3 c2.2-4,7.2-5.5,11.2-3.3c4,2.2,5.5,7.2,3.3,11.2C170,180.1,136.5,200,100,200z"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgIconSemicircle);
+export default __webpack_public_path__ + "static/media/icon_semicircle.50288885d9011acfa0a15ed9ce0fb9ed.svg";
+export { ForwardRef as ReactComponent };

@@ -1,0 +1,32 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgSubscribe(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 34,
+    viewBox: "0 0 20 20",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    fill: "white",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M6.4 4.882v4.436l7.6 2.073V2.809L6.4 4.882Zm-1 4.436a1 1 0 0 0 .737.965l7.6 2.072A1 1 0 0 0 15 11.391V2.809a1 1 0 0 0-1.263-.965l-7.6 2.073a1 1 0 0 0-.737.965v4.436Z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M3.456 9.3H5.5V4.9H3.453a3.422 3.422 0 0 0 .003 4.4Zm2.044 1a1 1 0 0 0 1-1V4.9a1 1 0 0 0-1-1H3.253a.55.55 0 0 0-.4.172c-1.602 1.691-1.595 4.353-.002 6.052a.555.555 0 0 0 .405.176H5.5Z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "m7.269 10.87l-2.51-.28l-.978 3.91h2.636l.852-3.63Zm-2.4-1.273a1 1 0 0 0-1.081.75l-.977 3.91a1 1 0 0 0 .97 1.243h2.636a1 1 0 0 0 .974-.772l.852-3.63a1 1 0 0 0-.864-1.223l-2.51-.278Zm13.747-6.374a.5.5 0 0 1-.139.693l-1.5 1a.5.5 0 1 1-.554-.832l1.5-1a.5.5 0 0 1 .693.139ZM16.2 7.1a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1h-1.5a.5.5 0 0 1-.5-.5Zm.117 2.23a.5.5 0 0 1 .705-.06l1.38 1.159a.5.5 0 0 1-.643.765l-1.38-1.16a.5.5 0 0 1-.062-.704Z"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgSubscribe);
+export default __webpack_public_path__ + "static/media/subscribe.ef5fcf687ce09aae3f8c7b93ce449c74.svg";
+export { ForwardRef as ReactComponent };
