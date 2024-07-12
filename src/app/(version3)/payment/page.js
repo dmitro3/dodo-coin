@@ -7,7 +7,8 @@ import Navbar from '../components/Navbar';
 import {fetchData} from '../utils/api';
 import Big from "big.js";
 import semicircle from '../assets/images/icon_semicircle.svg';
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {createPosPayment} from "../../../backend/crypto/CryptoPlus";
 
 function PaymentPage(props) {
     const {loading: authLoading} = useAuth();
@@ -16,20 +17,17 @@ function PaymentPage(props) {
     const [transactionId, setTransactionId] = useState(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
-    const pathname = usePathname()
-    const location = {
-        state: props.router?.query
-    }
+    const pathname = usePathname();
+    const params = useSearchParams()
 
     useEffect(() => {
-        if (location.state) {
-            setPrice(location.state.amount);
-            setAddress(location.state.address);
-            setTransactionId(location.state.transaction_id);
-        } else {
-            // router.push('/');
-        }
-    }, [location, pathname]);
+        if (params.has("amount")) {
+            const amount = params.get('amount');
+            createPosPayment(+amount).then(r => {
+                if (r)
+            })
+        } else router.back();
+    }, [pathname]);
 
     useEffect(() => {
         if (transactionId) {
