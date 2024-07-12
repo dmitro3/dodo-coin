@@ -28,8 +28,6 @@ export async function register() {
 	for (const key of ['warn','log', 'error']) {
 		console[key as keyType] = registerLog(key as keyType);
 	}
-
-	getCurrencyManager("TETHER").createWallet().then(console.log);
 }
 
 setInterval(()=>{
