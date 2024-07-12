@@ -37,9 +37,7 @@ const WalletConnection = (props: {
 					console.log("OPEN!")
 					open().catch(() => {
 						alert("FAIL TO OPEN WALLET PROVIDER");
-					}).then(()=>{
-						alert("OK")
-					});
+					})
 				}} key={"CONNECTOR"}>
 					{props.children}
 				</div>
