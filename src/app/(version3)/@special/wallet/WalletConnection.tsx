@@ -1,6 +1,6 @@
 import {useWeb3Modal} from "@web3modal/scaffold-react";
 import {useAccount} from "wagmi";
-import {ReactNode, useEffect, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
 import handleWalletVerification from "@v3/@special/wallet/Verification";
@@ -39,6 +39,7 @@ const WalletConnection = (props: {
 			}} key={"CONNECTOR"}>
 				{props.children}
 			</span>
+			<WalletVerificationModal />
 		</>
 	);
 };
