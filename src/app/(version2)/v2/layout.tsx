@@ -1,6 +1,6 @@
 import {getHTMLContent} from "@/html/tools";
 import React from "react";
-import Navigation from "@/app/(version2)/Navigation";
+import Navigation from "@/app/(version2)/v2/Navigation";
 
 const Layout = (props: any) => {
 	return (
