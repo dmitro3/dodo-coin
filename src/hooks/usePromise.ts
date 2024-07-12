@@ -7,7 +7,7 @@ let PROMISE_CACHE: {
 	[key: string]: any
 } = {}
 
-export function usePromise<T extends (...args: any[]) => Promise<unknown>>(promise: T, keyOrCondition?: any) {
+export function usePromise<T extends (...args: any[]) => Promise<never>>(promise: T, keyOrCondition?: any) {
 	const key = useMemo(() => typeof keyOrCondition === 'string' ? keyOrCondition : undefined, [keyOrCondition]);
 	const cache = useMemo(() => key ? PROMISE_CACHE[key] : undefined, [key]);
 	type RType = Awaited<ReturnType<T>>;
@@ -15,8 +15,7 @@ export function usePromise<T extends (...args: any[]) => Promise<unknown>>(promi
 	const [loading, setLoading] = useState(!cache && keyOrCondition !== false);
 
 	const fetch = async () => {
-		const R = await promise();
-		const result: typeof R = R;
+		const result = await promise();
 		if (key) PROMISE_CACHE[key] = result;
 		setResult(result);
 		setLoading(false);
