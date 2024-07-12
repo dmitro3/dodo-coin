@@ -15,7 +15,7 @@ export function getToken(request: NextRequest) {
   );
 }
 
-export async function getUser(token: string | NextRequest) {
+export async function getUser(token: string | NextRequest | undefined) {
   if (token && typeof token !== "string") {
     token = getToken(token);
   }
