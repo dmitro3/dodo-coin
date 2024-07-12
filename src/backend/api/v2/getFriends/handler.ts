@@ -16,7 +16,6 @@ export default class Friends extends Handler {
                 refId: user.id
             }
         });
-	    console.log("HERE OK",users);
         return {
 		   friends: users.map(u => ({
 			   username: u.username,
