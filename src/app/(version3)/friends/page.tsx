@@ -28,7 +28,7 @@ const Page = async () => {
 								</div>
 								{/**/}
 							</div>
-							{friends.length === 0 ? (
+							{/*friends.length === 0*/ true ? (
 								<div data-v-97c098d1="" className="how-it-works">
 									<div data-v-97c098d1="" className="title">
 										How it works
