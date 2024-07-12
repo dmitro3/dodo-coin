@@ -1,14 +1,24 @@
 import {useAccount} from "wagmi";
 import Big from "big.js";
 import Link from "next/link";
-import React from "react";
+import React, {useState} from "react";
 
 export const handleWalletVerification = (account: ReturnType<typeof useAccount>) => {
 	window.location.href = "#verification";
 
 };
 
+type VerifyState = {
+	error?: boolean,
+	text?: string,
+	title?: string
+}
+
 export const WalletVerificationModal = () => {
+	const [state, setState] = useState<VerifyState>({
+		text: "...",
+		title: "Checking address and validating wallet..."
+	})
 	return (
 		<div id="verification" className="modal">
 			<div className="modal-dialog">
@@ -17,12 +27,12 @@ export const WalletVerificationModal = () => {
 						<span className="modal-title">Verifying Wallet...</span>
 					</div>
 					<div className="modal-body">
-						<span className="modal-info">Checking address and validating wallet...</span>
+						<span className="modal-info">{state.title}</span>
 						<div className="modal-calc">
 
 						</div>
 
-						<span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
+						<span className="modal-minimum-boost">{state.text}</span>
 					</div>
 				</div>
 			</div>
