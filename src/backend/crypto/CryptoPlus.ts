@@ -55,6 +55,18 @@ export type POSCreationResponse = {
 
 
 export async function createPosPayment(amount: number) {
+	const R = await fetch("https://api.cryptocloud.plus/v2/invoice/pos/create?locale=en", {
+		headers: {
+			"content-type": "application/json",
+		},
+		method: "POST",
+		body: JSON.stringify({
+			"amount": amount,
+			"shop_id": shopId,
+			"currency": "USD"
+		})
+	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
+
 	return await fetch("https://api.cryptocloud.plus/v2/invoice/pos/create?locale=en", {
 		headers: {
 			"content-type": "application/json",
