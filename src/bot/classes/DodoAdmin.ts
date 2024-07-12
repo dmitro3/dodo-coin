@@ -220,7 +220,7 @@ class DodoAdmin extends DodoSession {
 				}
 			},
 			{
-				name: "Tronix",
+				name: "Test",
 				handler(e: TheMessageContext) {
 					const url = new URL(env.WEB_ORIGIN);
 					url.pathname = "/v2";
