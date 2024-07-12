@@ -27,7 +27,7 @@ export function useSafe<T = any>(init: Unknown<T> = {}): ([
 }
 
 
-export function useInit(func: ()=>any | void) {
+export function useInit(func: ()=>(()=>void) | void) {
 	const [init, setInit] = useState(false);
 
 	useEffect(()=>{
