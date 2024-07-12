@@ -140,7 +140,7 @@ function PageV2() {
                             </filter>
                         </defs>
                     </svg>
-                    <svg width="150" height="150" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="150" height="150" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className={'absolute left-0 top-0 right-0 bottom-0 m-auto'}>
                         <path
                             d="M28 56C43.464 56 56 43.464 56 28C56 12.536 43.464 0 28 0C12.536 0 0 12.536 0 28C0 43.464 12.536 56 28 56Z"
                             fill="#0098EA"/>
