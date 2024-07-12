@@ -76,7 +76,7 @@ class DodoBot {
 										id: +(fromUser.id),
 									},
 									data: {
-										wallet: fromUser.wallet + amount,
+										wallet: fromUser.shib_balance + amount,
 									},
 								});
 								refId = fromUser.id
