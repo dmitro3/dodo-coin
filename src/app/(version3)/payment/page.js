@@ -19,7 +19,7 @@ function PaymentPage(props) {
     const router = useRouter();
     const pathname = usePathname()
     const location = {
-        state: props.router.query
+        state: props.router?.query
     }
 
     useEffect(() => {
