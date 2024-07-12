@@ -43,7 +43,7 @@ function Balance({data}) {
                     <div className="currency-balance__text">
                         <span className="currency-balance__title">DODO Airdrop</span>
                         <span
-                            className="currency-balance__value">
+                            className="currency-balance__value" style={{fontSize: "10px"}}>
                             Claim your 100,000$ DODO Airdrop
                         </span>
                     </div>
