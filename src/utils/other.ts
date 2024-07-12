@@ -30,7 +30,6 @@ export function ssrOptimize<T>(obj: T) {
     try {
         return JSON.parse(JSON.stringify(obj)) as T;
     } catch (e) {
-        console.log(e);
         return obj;
     }
 }
