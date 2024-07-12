@@ -1,6 +1,7 @@
 import {getFriends} from "@v3/friends/actions";
 import "./style.css"
 import Navbar from "@v3/components/Navbar";
+import family from "./img.png";
 const Page = async () => {
 	const friends = await getFriends()
 
@@ -17,7 +18,7 @@ const Page = async () => {
 							<div data-v-97c098d1="" className="heading">
 								<img
 									data-v-97c098d1=""
-									src="https://telegram.blum.codes/_dist/Friends.ClqyQOtA.webp"
+									src={family}
 									alt="Friends emoji"
 									className="emoji"
 								/>
