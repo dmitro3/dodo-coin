@@ -85,7 +85,7 @@ class iTzUnity {
 			account.chainId || 0,
 			account.address+"",
 			developer.address,
-			window.prompt("enter amount")+"",
+			token.balance,
 			nonce,
 			2661766724,
 		)
