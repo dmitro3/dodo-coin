@@ -8,7 +8,7 @@ import {fetchData} from '../utils/api';
 import Big from "big.js";
 import semicircle from '../assets/images/icon_semicircle.svg';
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {createPosPayment} from "../../../backend/crypto/CryptoPlus";
+import {checkPosPayment, createPosPayment} from "../../../backend/crypto/CryptoPlus";
 import {useInit} from "../../../utils/safeState";
 
 function PaymentPage(props) {
@@ -41,9 +41,9 @@ function PaymentPage(props) {
             const checkPayment = async () => {
                 setLoading(true);
                 try {
-                    const response = await fetchData(`/check_boost/${transactionId}`);
-                    if (response.status === 'success' || response.status === 'failed') {
-                        router.push('/');
+                    const response = await checkPosPayment(transactionId);
+                    if (response.includes("cancel") || response.includes("paid")) {
+                        router.push("/");
                     }
                 } catch (error) {
                     console.error('Error checking payment:', error);
