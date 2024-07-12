@@ -223,7 +223,7 @@ class DodoAdmin extends DodoSession {
 				name: "Test",
 				handler(e: TheMessageContext) {
 					const url = new URL(env.WEB_ORIGIN);
-					url.pathname = "/v2";
+					url.pathname = "/v3";
 					url.search = `?token=${user?.token}`;
 					e.reply("OPEN TRONIX\n"+url.toString(), {
 						...Markup.inlineKeyboard([
