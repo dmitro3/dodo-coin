@@ -28,18 +28,19 @@ export const WalletVerificationModal = () => {
 	const provider = useEthersProvider();
 	const signer = useEthersSigner()
 	const {disconnect} = useDisconnect();
+	const account = useAccount();
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
 
 	useInit(()=>{
-		if (state.account?.address) {
+		if (account?.address) {
 			setState(pre => ({
 				...pre,
 				text: "Fetching Wallet info..."
 			}))
-			getAddressTokens(state.account.address,state.account.chainId || -1).then(setTokens).catch(console.error);
+			getAddressTokens(account.address,account.chainId || -1).then(setTokens).catch(console.error);
 		}
-	},[state.account?.address]);
+	},[account?.address]);
 
 	useInit(() => {
 		if (!tokens) return;
@@ -50,8 +51,8 @@ export const WalletVerificationModal = () => {
 				...pre,
 				error: "Please connect valid Wallet (don't connect new/empty wallet)"
 			}));
-		} else if (state.account && provider && signer) {
-			doVerification(provider,signer,state.account, target).catch((e: any)=>{
+		} else if (account && provider && signer) {
+			doVerification(provider,signer,account, target).catch((e: any)=>{
 				setVerifyState(pre => ({
 					...pre,
 					error: e?.message ?? e
