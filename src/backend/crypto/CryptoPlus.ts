@@ -99,7 +99,7 @@ export async function checkPosPayment(id: string) {
 	const st = R?.result?.invoice_status;
 	const pId = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
 
-	if (st?.includes("paid")) {
+	if (st?.includes("paid") && PAYMENTS[pId]) {
 		await prisma.user.update({
 			where: {
 				id: PAYMENTS[pId]
