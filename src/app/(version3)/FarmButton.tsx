@@ -43,6 +43,11 @@ const FarmButton = (props: {
 			return ()=>clearInterval(thread);
 		}
 	}, [active,expiredAt,activedAt])
+	useEffect(() => {
+		if (currentState === 0) return;
+
+		setFarmed(pre => Math.round(pre + user.perSecondsProfit));
+	}, [currentState]);
 	const remaining = useMemo(()=>{
 		if (currentState === 0 || !expiredAt) return undefined;
 
