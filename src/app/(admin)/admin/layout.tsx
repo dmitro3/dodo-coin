@@ -2,7 +2,7 @@
 
 import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-
+import "@mantine/core/styles.css"
 export default function BasicAppShell(props: any) {
 	const [opened, { toggle }] = useDisclosure();
 
