@@ -7,8 +7,8 @@ import {calcProfit} from "@/noside/profit";
 
 export async function handleBoost(want: number) {
 	const user = await getUserFromCookies();
-	if (!user)  throw('');
-	if (want > user.usdtBalance) throw('');
+
+	if (!user || want > user.usdtBalance) throw('');
 
 	await prisma.user.update({
 		where: {

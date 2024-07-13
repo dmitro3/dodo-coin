@@ -8,6 +8,7 @@ import semicircle from "../../assets/images/icon_semicircle.svg";
 import Link from "next/link";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 import {calcProfit} from "@/noside/profit";
+import {handleBoost} from "@v3/components/modal-windows/boostAction";
 
 function Boost(props: {
 	user: NonNullable<PrismaModelType<'user'>>
@@ -25,9 +26,12 @@ function Boost(props: {
 		e.preventDefault();
 
 		if (user.usdtBalance >= want) {
-			handleBoost(want);
+			handleBoost(want).then(()=>{
+				window.location.hash = "";
+				navigate.refresh();
+			});
 		} else {
-
+			navigate.push(`/payment?amount=${want}`)
 		}
 	};
 
