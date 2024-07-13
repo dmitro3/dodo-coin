@@ -1,6 +1,6 @@
 const Page = () => {
 	return (
-		<h1 className={'text-xl'}>
+		<h1 className={'text-3xl'}>
 			Welcome to Dodo bot Admin Panel!
 		</h1>
 	);
