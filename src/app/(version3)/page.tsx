@@ -10,6 +10,9 @@ const Page = () => {
 			<main className={'holder'}>
 				<div className="container" id="container" style={{position: "absolute"}}>
 					<div className="profileData" style={{}}>
+						<div className="profileData-pic-null">
+							
+						</div>
 						<div className="profileData-name">
 							<div className="profileData-name-nick">itz_parsaw</div>
 							<div className="profileData-name-tag">@itz_parsaw</div>
