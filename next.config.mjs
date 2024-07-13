@@ -19,7 +19,7 @@ const nextConfig = {
         if (options.dev) {
             if (options.dev && !options.isServer) {
                 const cssRule = config.module.rules.find(
-                    (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test('.css'))
+                    (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test?.('.css'))
                 );
 
                 if (cssRule) {
