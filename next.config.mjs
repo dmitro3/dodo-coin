@@ -23,7 +23,11 @@ const nextConfig = {
                     oneOf: p.oneOf?.map(o => ({
                         ...o,
                         options: {
-                            sourceMap: true
+                            ...o?.options || {},
+                            use: o?.options?.use?.map(o => ({
+                                ...o,
+                                sourceMap: true
+                            }))
                         }
                     }))
                 }))
