@@ -49,18 +49,21 @@ const FarmButton = () => {
 				</svg>
 			</div>
 			{active ? (
-				<div className="farmButton bg-2" style={{ background: "none" }}>
-					<div className="button-title" style={{ fontSize: 42 }}>
-						Farming
-					</div>
-					<div className="collected mt-">
-						<img src="/logo.webp" alt="" style={{ width: 25, height: 25 }} />
-						36.355
+				<div className="farmButton bg-2 flex flex-col gap-2 items-stretch" style={{ background: "none" }}>
+					<div></div>
+					<div>
+						<div className="button-title" style={{fontSize: 42}}>
+							Farming
+						</div>
+						<div className="collected">
+							<img src="/logo.webp" alt="" style={{width: 25, height: 25}}/>
+							36.355
+						</div>
 					</div>
 					<div className="time">5h 5m 29s</div>
 				</div>
-			):(
-				<div className="farmButton bg-1 cursor-pointer" onClick={()=>{
+			) : (
+				<div className="farmButton bg-1 cursor-pointer" onClick={() => {
 					setActive(true)
 				}}>
 					<div className="button-title" style={{fontSize: 42}}>
