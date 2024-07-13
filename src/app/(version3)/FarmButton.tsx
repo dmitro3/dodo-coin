@@ -45,6 +45,10 @@ const FarmButton = () => {
 		const minutes = seconds / 60;
 		const hours = minutes / 60;
 
+		const fakeDate = new Date();
+		fakeDate.setUTCMilliseconds(allDiff);
+		console.log(fakeDate.toLocaleTimeString())
+
 		return {
 			seconds: Math.round(seconds),
 			minutes: Math.round(minutes),
