@@ -26,9 +26,17 @@ const Page = async () => {
 									className="emoji"
 								/>
 								<div data-v-97c098d1="" className="title">
-									{" "}
-									Invite frens. Earn
-									<br data-v-97c098d1=""/> points{" "}
+									{empty ? (
+										<>
+											{" "}
+											Invite frens. Earn
+											<br data-v-97c098d1=""/> points{" "}
+										</>
+									): (
+										<>
+										I
+										</>
+									)}
 								</div>
 								{/**/}
 							</div>
