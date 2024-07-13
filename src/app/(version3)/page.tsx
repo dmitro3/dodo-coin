@@ -24,7 +24,7 @@ const Page = async () => {
 						</div>
 						{!!user ? (
 							<>
-								<div>
+								<div className={'flex flex-col justify-center'}>
 									<div className="points" style={{}}>
 										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 										{user.wallet.toLocaleString()}
