@@ -9,7 +9,6 @@ const InviteButton = (props: {
 }) => {
 	return (
 		<button
-			disabled={!props.left}
 			onClick={async ()=>{
 				await sendInvite();
 				window.Telegram.WebApp.close();
@@ -20,7 +19,7 @@ const InviteButton = (props: {
 		>
 			<div data-v-8899132f="" className="label-center-compensator"/>
 			<div data-v-8899132f="" className="label font-bold ">
-				Invite a fren ({props.left} left)
+				Invite a fren
 			</div>
 			<div data-v-8899132f="" className="right-slot">
 				{/**/}
