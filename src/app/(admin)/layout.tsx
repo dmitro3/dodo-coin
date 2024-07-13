@@ -5,7 +5,11 @@ import {redirect} from "next/navigation";
 const Layout = async (props: any) => {
 	const user = await getUserFromCookies();
 	if (!user || !DodoAdmins.includes(user.id)) redirect("/#deny")
-	return props.children;
+	return (
+		<html>
+		{props.children}
+		</html>
+	);
 };
 
 export default Layout;
