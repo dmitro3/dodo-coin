@@ -1,3 +1,4 @@
+import SuperJSON from "superjson";
 
 
 export function getRandomNumber(min: number, max: number) {
@@ -28,7 +29,7 @@ export function arabicToEnglishNumber(arabicString: any) {
 
 export function ssrOptimize<T>(obj: T) {
     try {
-        return JSON.parse(JSON.stringify(obj)) as T;
+        return SuperJSON.parse(SuperJSON.stringify(obj)) as T;
     } catch (e) {
         return obj;
     }
