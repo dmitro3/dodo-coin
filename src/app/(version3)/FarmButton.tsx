@@ -1,4 +1,9 @@
+'use client'
+
+import {useState} from "react";
+
 const FarmButton = () => {
+	const [active, setActive] = useState(false)
 	return (
 		<div className="ebat">
 			<div id="cont" data-pct={100}>
