@@ -16,7 +16,7 @@ function Boost(props: {
 	const [disabled, setDisabled] = useState(false);
 	const [displayText, setDisplayText] = useState('1.0 GH/s');
 	const navigate = useRouter();
-	const [sended, setSended] = useState(false);
+	const [sent, setSent] = useState(false);
 	const {userData} = useAuth();
 
 	const handleInputChange = (event: any) => {
@@ -44,12 +44,12 @@ function Boost(props: {
 		e.preventDefault();
 		let response;
 		try {
-			setSended(true);
+			setSent(true);
 			response = await postData('/create_boost', {amount: price.toString()});
 		} catch (error) {
 			console.error('Error creating boost:', error);
 		} finally {
-			setSended(false);
+			setSent(false);
 
 			navigate.push(`/payment?amount=${price}`);
 
@@ -85,7 +85,7 @@ function Boost(props: {
 							>
 								<span>Add</span>
 								<img
-									src={semicircle} className={"send__icon spin" + (sended ? '' : ' hidden')}
+									src={semicircle} className={"send__icon spin" + (sent ? '' : ' hidden')}
 									alt=""/>
 							</Link>
 							<a className="modal-button modal-button__cancel " href="#close">Back</a>
