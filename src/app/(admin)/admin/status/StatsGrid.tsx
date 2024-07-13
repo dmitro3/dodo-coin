@@ -9,8 +9,11 @@ const ExampleData = [
 	{ title: 'New customers',  value: '188', diff: -30 },
 ];
 
+type ItemType = (typeof ExampleData)[number] & {
+	description?: string
+}
 export default function StatsGrid(props: {
-	stats: typeof ExampleData
+	stats: ItemType[]
 }) {
 	const data = props.stats
 	const stats = data.map(stat => (<StatItem data={stat} />));
@@ -22,9 +25,7 @@ export default function StatsGrid(props: {
 }
 
 export function StatItem(props: {
-	data: (typeof ExampleData)[number] & {
-		description?: string
-	}
+	data: ItemType
 }) {
 	let {data} = props;
 	return (
