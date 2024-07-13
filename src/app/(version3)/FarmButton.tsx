@@ -166,7 +166,7 @@ const FarmButton = (props: {
 						</div>
 					</div>
 					{remaining && (
-						<div className="time">
+						<div className="time font-extrabold">
 							{!!remaining.hours && `${remaining.hours}h `}
 							{!!remaining.minutes && `${remaining.minutes}m `}
 							{!!remaining.seconds && `${remaining.seconds}s`}
