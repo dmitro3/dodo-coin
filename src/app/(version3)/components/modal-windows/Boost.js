@@ -73,7 +73,7 @@ function Boost() {
                         <input type="number" value={text} className="modal-input__amount modal-input"
                                placeholder="Amount" onChange={handleInputChange}/>
                         <span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
-                        <div>
+                        <div className={'flex gap-2 items-center'}>
                             <Link href="/payment"
                                     className={"modal-button modal-button__send " + (disabled ? ' disabled' : '')}
                                     disabled={disabled} onClick={handleAdd}><span>Add</span> <img
