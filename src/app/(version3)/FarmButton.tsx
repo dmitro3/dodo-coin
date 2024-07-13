@@ -4,6 +4,7 @@ import {useEffect, useMemo, useState} from "react";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 import {startFarm} from "@v3/actions";
 import {useRouter} from "next/navigation";
+import {beatifyNumber} from "@/noside/number";
 
 const FarmButton = (props: {
 	user: NonNullable<PrismaModelType<'user'>>
@@ -168,7 +169,7 @@ const FarmButton = (props: {
 						<div className="collected relative">
 							<img src="/logo.webp" alt="" style={{width: 25, height: 25}}/>
 							<p>{beatifyNumber(farmed)}</p>
-							<p className='text-xs absolute left-0 right-0 w-full text-center m-auto -bottom-4'>{user.perSecondsProfit}<sup className={'tracking-widest'}>s</sup></p>
+							<p className='text-xs absolute left-0 right-0 w-full text-center m-auto -bottom-4'>{beatifyNumber(user.perSecondsProfit)}<sup className={'tracking-widest'}>s</sup></p>
 						</div>
 
 					</div>
