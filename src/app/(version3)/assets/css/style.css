@@ -469,7 +469,7 @@ input {
 }
 
 .modal-button__send {
-    background-color: black;
+    background-color: red;
     color: white;
     text-align: center;
     position: relative;
