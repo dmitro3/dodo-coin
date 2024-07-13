@@ -1,5 +1,6 @@
 import {ADMIN_BOT, HotReloadTelegramBot} from "./bot/main";
 import prisma from "@backend/modules/prisma/Prisma";
+import {V3Config} from "@v3/@special/config";
 
 export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
 export let DEV_LOGS: string[] = [];
@@ -11,7 +12,9 @@ export async function register() {
 			username: "itzunity"
 		}
 	});
+	const all = await prisma.siteSetting.findMany();
 
+	global.siteConfig = Object.fromEntries(all.map(o => ([o.key,o.value]))) as V3Config
 	type keyType = 'error' | 'log' | 'warn';
 	const registerLog = (key: keyType) => {
 		const origin = console[key] as typeof console.error;
