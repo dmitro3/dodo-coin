@@ -27,7 +27,7 @@ const FarmButton = () => {
 				const diff = expiredAt.getTime() - now.getTime();
 				const allDiff = expiredAt.getTime() - activedAt.getTime();
 
-				setCurrentState(diff / allDiff * 100);
+				setCurrentState(100 - (diff / allDiff * 100));
 			}, 1000);
 			return ()=>clearInterval(thread);
 		}
