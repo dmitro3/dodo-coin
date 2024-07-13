@@ -58,7 +58,7 @@ const Page = async () => {
 										Claim
 									</button>
 									<button>
-										Claim
+										Boost
 									</button>
 								</div>
 								<br/>
