@@ -1,11 +1,10 @@
 import Navbar from "@v3/components/Navbar";
 import "./style.css"
 import React from "react";
-import SetUser from "@v3/SetUser";
-import {getUser} from "@backend/utils/user";
+import {getUserFromCookies} from "@/utils/serverComponents/user";
 
 const Page = async () => {
-	const user = await getUser();
+	const user = await getUserFromCookies();
 
 	return (
 		<div className={'relative'}>
