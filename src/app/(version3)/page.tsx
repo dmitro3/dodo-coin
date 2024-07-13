@@ -28,7 +28,7 @@ const Page = async () => {
 									<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 									50
 								</div>
-								<FarmButton/>
+								<FarmButton user={user} />
 							</>
 						) : (
 							<div className={'min-h-[300px] flex justify-center items-center'}>

@@ -157,6 +157,8 @@ const prisma = instance.$extends({
 	},
 });
 
+//@ts-ignore
+export type PrismaModelType<T extends keyof typeof prisma> = Awaited<ReturnType<(typeof prisma[T])['findFirst']>>
 
 export function PrismaDefinitions() {
 	return BasicSchemaInformation;
