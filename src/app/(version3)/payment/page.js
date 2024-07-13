@@ -88,22 +88,22 @@ function PaymentPage(props) {
                     </div>
                     <div className="order-details__row">
                         <span className="order-details__name">Total Profit</span>
-                        <span className="order-details__value">~{Big(price).times(1.5).toFixed(2)} TRX</span>
+                        <span className="order-details__value">~{Big(price).times(1.5).toFixed(2)} USDT</span>
                     </div>
                     <div className="order-details__row">
                         <span className="order-details__name">Daily Profit</span>
-                        <span className="order-details__value">~{Big(price).times(0.05).toFixed(2)} TRX</span>
+                        <span className="order-details__value">~{Big(price).times(0.05).toFixed(2)} USDT</span>
                     </div>
                     <div className="order-details__row">
                         <span className="order-details__name">Price</span>
-                        <span className="order-details__value">{Big(price).toFixed(2)} TRX</span>
+                        <span className="order-details__value">{Big(price).toFixed(2)} USDT</span>
                     </div>
                 </div>
                 <div className="payment block">
                     <span className="payment__title">Payment</span>
                     <div className="payment-body">
                 <span className="payment__description">
-                    Please ensure that you are sending only TRON (TRX) to the provided deposit address. Sending any other type of cryptocurrency or asset to this address will result in a loss of those funds, as they cannot be recovered.
+                    Please ensure that you are sending only TRON (USDT) to the provided deposit address. Sending any other type of cryptocurrency or asset to this address will result in a loss of those funds, as they cannot be recovered.
                 </span>
                         <div className="qr">
                             <img
@@ -114,9 +114,9 @@ function PaymentPage(props) {
                                 <img src={semicircle} className={`show__icon spin${loading ? '' : ' hidden'}`} alt=""/>
                             </button>
                         </div>
-                        <div className="payment__sum"><span className="payment__value">{price.toString()}</span> TRX
+                        <div className="payment__sum"><span className="payment__value">{price.toString()}</span> USDT
                         </div>
-                        <span className="payment__tip">Send {price.toString()} TRX to this address:</span>
+                        <span className="payment__tip">Send {price.toString()} USDT to this address:</span>
                         <a className="invite-link__copy blur"
                            onClick={() => {
                                navigator.clipboard.writeText(address)
