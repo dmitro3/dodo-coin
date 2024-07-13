@@ -9,6 +9,14 @@ const ViewStatus = async () => {
 	d.setDate(d.getDate() - 1);
 	const yesterday = await viewOfDate(d);
 
+	const _d1 = new Date();
+	_d1.setDate(_d1.getDate() - _d1.getDay());
+	const thisWeek = await viewOfDate(_d1,7);
+
+	const _d2 = new Date(_d1);
+	_d2.setDate(_d2.getDate() - 7);
+	const prevWeek = await viewOfDate(_d2,7);
+
 	const d1 = new Date();
 	d1.setDate(0);
 	const thisMonth = await viewOfDate(d1, 30);
@@ -26,6 +34,12 @@ const ViewStatus = async () => {
 					diff: today.length - yesterday.length,
 					title: "Today",
 					description: "Compared with yesterday views"
+				},
+				{
+					value: thisWeek.length+"",
+					diff: thisWeek.length - prevWeek.length,
+					title: "This Week",
+					description: "Compared with previous week views"
 				},
 				{
 					value: thisMonth.length+"",
