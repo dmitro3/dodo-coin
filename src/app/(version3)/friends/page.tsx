@@ -161,9 +161,9 @@ const Page = async () => {
 																rand === 0 ? "bg-red-400":
 																rand === 1 ? "bg-green-400":
 																rand === 2 ? "bg-blue-400": 
+																rand === 3 ? "bg-emerald-400": 
 																"bg-primary"
 															}`}>
-																{rand}
 																{f.username?.slice(0, 1).toUpperCase()}
 															</div>
 														</div>
