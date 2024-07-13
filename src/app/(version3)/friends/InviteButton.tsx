@@ -4,9 +4,7 @@
 
 import {sendInvite} from "@backend/api/player/send_invite/actions";
 
-const InviteButton = (props: {
-	left: number
-}) => {
+const InviteButton = () => {
 	return (
 		<button
 			onClick={async ()=>{
