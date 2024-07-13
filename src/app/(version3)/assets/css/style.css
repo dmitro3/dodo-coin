@@ -220,6 +220,7 @@ main::-webkit-scrollbar {
 
 nav {
     height: auto;
+    position: sticky;
     width: 100%;
     border-color: #808080;
     border-width: 0;
