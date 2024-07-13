@@ -58,12 +58,12 @@ const Page = async () => {
 									<button className={'flex-grow'} disabled={!user.isExpired}>
 										Claim
 									</button>
-									<a href={'#boost'}>
-										<button className={'flex-grow'}>
+									<a href={'#boost'} className={'flex-grow'}>
+										<button >
 											Boost
 										</button>
 									</a>
-									<Boost />
+									className={'flex-grow'}
 								</div>
 								<br/>
 								<br/>
