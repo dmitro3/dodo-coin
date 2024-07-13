@@ -169,7 +169,7 @@ const Page = async () => {
 															</div>
 														</div>
 														<div data-v-97259735="" className="balance flex gap-1 items-center">
-															{Big(f.wallet).toFixed(2)}
+															{f.wallet.toFixed(2)}
 															<img
 																src={'/logo.webp'} style={{
 																width: "20px",
