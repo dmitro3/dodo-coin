@@ -16,6 +16,7 @@ export const metadata = {
 
 export default async function RootLayout(props: any) {
 	console.log(props);
+	getSearch
 	const initialState = cookieToInitialState(config, headers().get('cookie'))
 	await prisma.siteView.create({
 		data: {
