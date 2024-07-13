@@ -34,3 +34,20 @@ export async function startFarm() {
 		})
 	}
 }
+
+export async function claimFarm() {
+	const user = await getUserFromCookies();
+	if (!user || !user.isExpired) return;
+
+	await prisma.user.update({
+		where: {
+			id: user.id
+		},
+		data: {
+			farmStartAt: null,
+			wallet: {
+				increment: user.farmed
+			}
+		}
+	})
+}
