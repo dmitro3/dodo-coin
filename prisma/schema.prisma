@@ -132,6 +132,10 @@ model CryptoWallet {
   updated_at DateTime         @default(now()) @updatedAt
 }
 
+model SiteSetting {
+  key String @id
+}
+
 enum Network {
   testnet
   mainnet
