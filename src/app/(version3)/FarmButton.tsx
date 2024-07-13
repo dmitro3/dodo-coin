@@ -180,7 +180,7 @@ const FarmButton = (props: {
 			) : (
 				<>
 					{user.farmed ? (
-						<div className={'farmButton'}>
+						<div className={'farmButton flex flex-col gap-3'}>
 							<p>Claim</p>
 							<p>{user.farmed.toLocaleString()}</p>
 						</div>
