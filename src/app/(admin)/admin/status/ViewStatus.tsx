@@ -22,7 +22,7 @@ const ViewStatus = async () => {
 					value: today.length+"",
 					diff: today.length - yesterday.length,
 					title: "Today",
-					description: ""
+					description: "Compared with yesterday view"
 				}
 			]} />
 		</div>
