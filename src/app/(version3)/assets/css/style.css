@@ -226,6 +226,7 @@ nav {
     border-width: 0;
     border-style: solid;
     bottom: 0;
+    backdrop-filter: blur(20px);
 }
 
 .nav-links {
