@@ -311,7 +311,8 @@ nav {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    background-color: #fff;
+    backdrop-filter: blur(25px);
+    background-color: transparent;
     color: black;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
