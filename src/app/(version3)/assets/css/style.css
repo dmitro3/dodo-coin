@@ -43,9 +43,6 @@ main {
     flex: 1;
 }
 
-main::-webkit-scrollbar {
-    display: none;
-}
 
 .currencies {
     display: flex;
