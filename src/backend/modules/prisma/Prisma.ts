@@ -185,7 +185,7 @@ const prisma = instance.$extends({
 					const diff = now - props.farmStartAt.getTime();
 					const seconds = diff / 1000;
 
-					return Math.round(seconds * props.perSecondsProfit);
+					return +((seconds * props.perSecondsProfit).toFixed(3));
 				}
 			}
 		}

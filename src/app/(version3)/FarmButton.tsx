@@ -46,7 +46,7 @@ const FarmButton = (props: {
 	useEffect(() => {
 		if (currentState === 0) return;
 
-		setFarmed(pre => Math.round(pre + user.perSecondsProfit));
+		setFarmed(pre => +((pre + user.perSecondsProfit).toFixed(3)));
 	}, [currentState]);
 	const remaining = useMemo(()=>{
 		if (currentState === 0 || !expiredAt) return undefined;
@@ -159,7 +159,7 @@ const FarmButton = (props: {
 						</div>
 						<div className="collected">
 							<img src="/logo.webp" alt="" style={{width: 25, height: 25}}/>
-							36.355
+							{farmed}
 						</div>
 					</div>
 					{remaining && (
