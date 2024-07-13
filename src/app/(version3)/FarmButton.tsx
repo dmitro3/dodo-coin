@@ -147,7 +147,7 @@ const FarmButton = () => {
 				<div className="farmButton bg-2 flex flex-col gap-2 items-stretch" style={{background: "none"}}>
 					<div></div>
 					<div className={'flex flex-col justify-center items-center gap-5'}>
-						<div className="button-title" style={{fontSize: 42}}>
+						<div className="button-title tracking-widest" style={{fontSize: 42}}>
 							Farming
 						</div>
 						<div className="collected">
