@@ -8,6 +8,8 @@ const FarmButton = () => {
 	const [expiredAt, setExpiredAt] = useState<Date>();
 	const [currentState, setCurrentState] = useState(0)
 	const maxHour = 8;
+	//@ts-ignore
+	window.setEx = setExpiredAt;
 
 	useEffect(() => {
 		if (activedAt) {
