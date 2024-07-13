@@ -4,6 +4,7 @@ import React from "react";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import FarmButton from "@v3/FarmButton";
 import Boost from "@v3/components/modal-windows/Boost";
+import ClaimButton from "@v3/ClaimButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();

@@ -3,6 +3,7 @@
 import {useEffect, useMemo, useState} from "react";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 import {startFarm} from "@v3/actions";
+import {useRouter} from "next/navigation";
 
 const FarmButton = (props: {
 	user: NonNullable<PrismaModelType<'user'>>
@@ -13,6 +14,7 @@ const FarmButton = (props: {
 	const [activedAt, setActivedAt] = useState(user.isExpired ? undefined:user.farmStartAt || undefined);
 	const [currentState, setCurrentState] = useState(0)
 	const [farmed, setFarmed] = useState(user.farmed)
+	const router = useRouter();
 
 	useEffect(() => {
 		if (activedAt) {
@@ -42,6 +44,7 @@ const FarmButton = (props: {
 					setExpiredAt(undefined);
 					setActivedAt(undefined);
 					setCurrentState(0);
+					router.refresh();
 				}
 			}, 1000);
 			return ()=>clearInterval(thread);
