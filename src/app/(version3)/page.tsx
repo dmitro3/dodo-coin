@@ -12,7 +12,7 @@ const Page = async () => {
 
 			<div className={'relative z-20'}>
 				<main className={'holder relative'}>
-					<div className="bg relative z-10">
+					<div className="bg relative z-0">
 						<div className="slider-thumb"/>
 					</div>
 					<div className="container flex flex-col gap-2 items-center relative z-20" id="container">
