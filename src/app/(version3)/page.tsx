@@ -33,7 +33,7 @@ const Page = async () => {
 										<svg
 											id="Layer_1"
 											style={{
-												width: "20px",
+												width: "30px",
 											}}
 											data-name="Layer 1"
 											xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const Page = async () => {
 												style={{fill: "#fff", fillRule: "evenodd"}}
 											/>
 										</svg>
-										{user.usdtBalance.toLocaleString()}
+										<p className={'text-md'}>{user.usdtBalance.toLocaleString()}</p>
 									</div>
 								</div>
 								<FarmButton user={user}/>
