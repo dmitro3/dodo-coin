@@ -43,7 +43,7 @@ const FarmButton = () => {
 					/>
 				</svg>
 			</div>
-			<div className="farmButton bg-1">
+			<div className="farmButton bg-1 cursor-pointer">
 				<div className="button-title" style={{fontSize: 42}}>
 					Farm
 				</div>
