@@ -469,10 +469,11 @@ input {
 }
 
 .modal-button__send {
-    background-color: red;
+    background-color: var(--primary);
     color: white;
     text-align: center;
     position: relative;
+    border: none;
 }
 
 .modal-button__send > span {
