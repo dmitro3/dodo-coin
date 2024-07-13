@@ -18,7 +18,6 @@ const nextConfig = {
         };
         if (options.dev) {
             if (options.dev && !options.isServer) {
-                console.log(config.module.rules.map(o => o.oneOf))
                 config.module.rules = config.module.rules.map(p => ({
                     ...p,
                     oneOf: p.oneOf.map(o => ({
