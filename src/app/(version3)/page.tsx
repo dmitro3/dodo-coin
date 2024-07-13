@@ -17,7 +17,7 @@ const Page = async () => {
 					<div className="profileData " style={{}}>
 
 						<div className="profileData-name p-2">
-							<div className="profileData-name-nick">@{user?.username || "Loading"}</div>
+							<div className="profileData-name-nick">{user?.username || "Loading"}</div>
 						</div>
 					</div>
 					{!!user ? (
