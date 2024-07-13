@@ -14,7 +14,7 @@ const FarmButton = () => {
 	useEffect(() => {
 		if (activedAt) {
 			const c = new Date(activedAt);
-			c.setMinutes(c.getMinutes() + maxHour);
+			c.setHours(c.getHours() + maxHour);
 			setExpiredAt(c);
 		}
 	}, [activedAt]);
