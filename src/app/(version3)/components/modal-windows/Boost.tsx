@@ -30,7 +30,7 @@ function Boost(props: {
 				navigate.refresh();
 			});
 		} else {
-			navigate.push(`/payment?amount=${want}`)
+			navigate.push(`/payment?amount=${want - user.usdtBalance}`)
 		}
 	};
 
