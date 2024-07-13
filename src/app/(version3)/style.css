@@ -71,48 +71,6 @@
     z-index: 105
 }
 
-body {
-    background: #000!important;
-    overflow-y: hidden;
-    margin: unset
-}
-
-* {
-    -webkit-user-select: none;
-    user-select: none;
-    --webkit-tap-highligh-color: none;
-    touch-action: none;
-    box-shadow: none
-}
-
-*:focus {
-    outline: none;
-    box-shadow: none;
-    --webkit-tap-highligh-color: none
-}
-
-*:active {
-    outline: none;
-    box-shadow: none;
-    --webkit-tap-highligh-color: none
-}
-
-*:target {
-    outline: none;
-    box-shadow: none;
-    --webkit-tap-highligh-color: none
-}
-
-*:focus-within {
-    outline: none;
-    box-shadow: none;
-    --webkit-tap-highligh-color: none
-}
-
-*:focus:not(:focus-visible) {
-    outline: 0;
-    box-shadow: none
-}
 
 .title {
     font-weight: 700;
@@ -1822,4 +1780,14 @@ body {
     height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit
+}
+
+a:hover {
+    color: #535bf2
 }
