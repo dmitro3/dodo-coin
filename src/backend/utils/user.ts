@@ -1,4 +1,4 @@
-import prisma from "@backend/modules/prisma/Prisma";
+import prisma, {PrismaModelType} from "@backend/modules/prisma/Prisma";
 import {User} from "@prisma/client";
 import {NextRequest} from "next/server";
 import {ssrOptimize} from "@/utils/other";
@@ -30,7 +30,7 @@ export async function getUser(token?: string | NextRequest | undefined) {
     ...user,
     token: "****",
     password: "****"
-  }) as unknown as Awaited<ReturnType<typeof prisma.user.findFirst>>;
+  }) as unknown as PrismaModelType<'user'>;
 }
 
 
