@@ -30,20 +30,20 @@ const ViewStatus = async () => {
 			<h2 className={'text-bold text-2xl'}>Site View</h2>
 			<StatsGrid stats={[
 				{
-					value: today.length+"",
-					diff: today.length - yesterday.length,
+					value: today+"",
+					diff: today - yesterday,
 					title: "Today",
 					description: "Compared with yesterday views"
 				},
 				{
-					value: thisWeek.length+"",
-					diff: thisWeek.length - prevWeek.length,
+					value: thisWeek+"",
+					diff: thisWeek - prevWeek,
 					title: "This Week",
 					description: "Compared with previous week views"
 				},
 				{
-					value: thisMonth.length+"",
-					diff: thisMonth.length - prevMonth.length,
+					value: thisMonth+"",
+					diff: thisMonth - prevMonth,
 					title: "This Month",
 					description: "Compared with previous month views"
 				}
@@ -61,7 +61,7 @@ async function viewOfDate(from: Date, toAfterDays = 1) {
 	const to = new Date(from);
 	to.setDate(to.getDate() + toAfterDays);
 
-	return await prisma.siteView.findMany({
+	return await prisma.siteView.count({
 		where: {
 			created_at: {
 				gte: from,
