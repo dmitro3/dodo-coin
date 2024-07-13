@@ -369,8 +369,8 @@
     margin-top: 60px;
     position: relative;
     margin-bottom: 100px;
-    width: 217px;
-    height: 217px;
+    width: 100%;
+    height: 100%;
 }
 
 .claimable-points-button {
