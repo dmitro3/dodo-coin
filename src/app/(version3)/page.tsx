@@ -12,31 +12,33 @@ const Page = async () => {
 			<div className="bg">
 				<div className="slider-thumb"/>
 			</div>
-			<main className={'holder'}>
-				<div className="container flex flex-col gap-2 items-center" id="container" >
-					<div className="profileData " style={{}}>
+			<div className={'relative z-10'}>
+				<main className={'holder'}>
+					<div className="container flex flex-col gap-2 items-center" id="container">
+						<div className="profileData " style={{}}>
 
-						<div className="profileData-name p-2 px-4">
-							<div className="profileData-name-nick font-bold tracking-widest text-lg">{user?.username || "Loading"}</div>
-						</div>
-					</div>
-					{!!user ? (
-						<>
-							<div className="points" style={{}}>
-								<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
-								50
+							<div className="profileData-name p-2 px-4">
+								<div className="profileData-name-nick font-bold tracking-widest text-lg">{user?.username || "Loading"}</div>
 							</div>
-							<FarmButton />
-						</>
-					):(
-						<div className={'min-h-[300px] flex justify-center items-center'}>
-							<h2 className={'text-4xl tracking-widest'}>Loading...</h2>
 						</div>
-					)}
-				</div>
+						{!!user ? (
+							<>
+								<div className="points" style={{}}>
+									<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
+									50
+								</div>
+								<FarmButton/>
+							</>
+						) : (
+							<div className={'min-h-[300px] flex justify-center items-center'}>
+								<h2 className={'text-4xl tracking-widest'}>Loading...</h2>
+							</div>
+						)}
+					</div>
 
-			</main>
-			<Navbar/>
+				</main>
+				<Navbar/>
+			</div>
 		</div>
 	);
 };
