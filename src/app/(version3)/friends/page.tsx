@@ -169,7 +169,11 @@ const Page = async () => {
 													</div>
 												</div>
 												<div data-v-97259735="" className="balance">
-													56 BP
+													{f.tronex_balance} <img src={'/logo.webp'} style={{
+														width: "20px",
+													height: "20px",
+													objectFit: "cover"
+												}} />
 												</div>
 											</div>
 										))}
