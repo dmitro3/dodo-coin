@@ -5,6 +5,7 @@ import family from "./img.png";
 import Image from "next/image";
 import React from "react";
 import InviteButton from "@v3/friends/InviteButton";
+import Big from "big.js";
 
 const Page = async () => {
 	const friends = await getFriends();
@@ -169,7 +170,7 @@ const Page = async () => {
 													</div>
 												</div>
 												<div data-v-97259735="" className="balance">
-													{f.tronex_balance} <img src={'/logo.webp'} style={{
+													{Big(f.tronex_balance).toFixed(2)} <img src={'/logo.webp'} style={{
 														width: "20px",
 													height: "20px",
 													objectFit: "cover"
