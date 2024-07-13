@@ -40,7 +40,7 @@ setInterval(()=>{
 	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId,DEV_LOGS.join("\n\n")).then(()=>{
 		DEV_LOGS = [];
 	}).catch(()=>null)
-}, 2000);
+}, 5000);
 
 export function adminLog(msg: string) {
 	DEV_LOGS.push(msg);
