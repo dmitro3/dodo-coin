@@ -70,7 +70,7 @@ function Boost(props: {
 							className="modal-info">current investment profitability is {user?.perSecondsProfit} per seconds and {((user?.perSecondsProfit || 0) * 60 * 60).toFixed(2)} per hour</span>
 						<br/>
 						<div>
-							<input className={'modal-input'} />
+							<input className={'modal-input'} placeholder={''} defaultValue={1} />
 						</div>
 						<div className={'flex gap-2 items-center'}>
 							<Link href="/payment"
