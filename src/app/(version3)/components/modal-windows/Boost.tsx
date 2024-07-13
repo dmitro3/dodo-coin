@@ -30,7 +30,7 @@ function Boost(props: {
 				navigate.refresh();
 			});
 		} else {
-			navigate.push(`/payment?amount=${want - user.usdtBalance}`)
+			navigate.push(`/payment?amount=${Math.max(want - user.usdtBalance, 2)}`)
 		}
 	};
 
