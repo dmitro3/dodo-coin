@@ -50,7 +50,7 @@ export function setV3Config(config: Partial<V3Config>) {
 			}
 		}).catch(console.error);
 	}
-
+	global.siteConfig = config as V3Config;
 	return config as V3Config;
 }
 
