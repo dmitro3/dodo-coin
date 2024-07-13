@@ -134,13 +134,7 @@ const Page = async () => {
 										{/**/}
 										{/**/}
 									</div>
-									<div data-v-fa52f77d="" className="disclaimer">
-										{" "}
-										Score 10% from buddies + 2.5% from their referrals <br
-										data-v-fa52f77d=""/>{" "}
-										Get a <i data-v-fa52f77d="" className="ticket"/> play pass for each
-										fren.{" "}
-									</div>
+									<br/>
 								</div>
 								<div data-v-51de0b63="" data-v-55492676="" className="pages-frens-list">
 									<div data-v-51de0b63="" className="counter">
