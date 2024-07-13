@@ -22,7 +22,7 @@ const Page = async () => {
 							<div className="profileData-name-tag">@{user?.username ?? "loading"}</div>
 						</div>
 					</div>
-					{!user ? (
+					{!!user ? (
 						<>
 							<div className="points" style={{}}>
 								<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
