@@ -9,7 +9,7 @@ const ExampleData = [
 	{ title: 'New customers', icon: 'user', value: '188', diff: -30 },
 ] as const;
 
-export function StatsGrid(props: {
+export default function StatsGrid(props: {
 	stats: typeof ExampleData
 }) {
 	const data = props.stats
