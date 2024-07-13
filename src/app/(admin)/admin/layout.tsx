@@ -5,6 +5,7 @@ import { useDisclosure } from '@mantine/hooks';
 import "@mantine/core/styles.css"
 import {usePathname} from "next/navigation";
 import {ComponentProps} from "react";
+import Link from "next/link";
 
 
 const links = [
@@ -53,6 +54,7 @@ export default function BasicAppShell(props: any) {
 						<NavLink
 							active={href === path}
 							href={href}
+							component={Link}
 							label={link.label}
 						/>
 					)
