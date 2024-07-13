@@ -2,6 +2,7 @@ import {Prisma, PrismaClient} from "@prisma/client";
 import {BasicSchemaInformation} from "@backend/modules/Schema";
 import {symbol} from "prop-types";
 import Big from "big.js";
+import {getV3ConfigValue} from "@v3/@special/config";
 
 
 export const TapLevels = Array.from({length: 30}).map((_, n) => ({
@@ -146,7 +147,18 @@ const prisma = instance.$extends({
 				}
 			},
 			farmMaxHours: {
-				compute: ()=>8
+				compute: ()=>getV3ConfigValue('farmMaxHours')
+			},
+			farmExpiredAt: {
+				needs: {
+					farmStartAt: true
+				},
+				compute({farmStartAt}) {
+					if (!farmStartAt) return undefined;
+					const c = new Date(farmStartAt);
+					c.setHours(c.getHours() + getV3ConfigValue('farmMaxHours'));
+					return c;
+				}
 			}
 		}
 	},
