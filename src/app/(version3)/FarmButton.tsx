@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 const FarmButton = () => {
 	const [active, setActive] = useState(false);
@@ -36,6 +36,21 @@ const FarmButton = () => {
 			return ()=>clearInterval(thread);
 		}
 	}, [active,expiredAt,activedAt])
+	const remaining = useMemo(()=>{
+		if (currentState === 0 || !expiredAt) return undefined;
+
+		const allDiff = expiredAt?.getTime() - new Date().getTime();
+
+		const seconds = allDiff / 1000;
+		const minutes = seconds / 60;
+		const hours = minutes / 60;
+
+		return {
+			seconds: Math.round(seconds),
+			minutes: Math.round(minutes),
+			hours: Math.round(hours),
+		}
+	},[currentState]);
 
 	return (
 		<div className="ebat">
