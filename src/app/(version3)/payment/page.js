@@ -70,7 +70,7 @@ function PaymentPage(props) {
     return (
         <div>
             <main>
-                <div className="payment block">
+                <div className="payment">
                     <span className="payment__title">Payment</span>
                     <div className="payment-body">
                 <span className="payment__description">
@@ -105,7 +105,7 @@ function PaymentPage(props) {
                     </div>
                 </div>
 
-                <div className="awaiting block">
+                <div className="awaiting">
                     <div className="awaiting__header">
                         <span className="awaiting__title">Awaiting Payment</span>
                         <img src={semicircle} alt="" className="awaiting__icon spin"/>
