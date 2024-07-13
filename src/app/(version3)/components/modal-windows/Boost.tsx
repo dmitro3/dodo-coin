@@ -67,7 +67,7 @@ function Boost(props: {
 					<div className="modal-body">
 						<span className="modal-info">Here you can boost your per second profit</span>
 						<span
-							className="modal-info">current investment profitability is {user?.perSecondsProfit}$ per seconds and {((user?.perSecondsProfit || 0) * 60 * 60).toFixed(2)} per hour</span>
+							className="modal-info">current investment profitability is {user?.perSecondsProfit} per seconds and {((user?.perSecondsProfit || 0) * 60 * 60).toFixed(2)} per hour</span>
 
 						<br/>
 						<div className={'flex gap-2 items-center'}>
