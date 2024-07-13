@@ -89,7 +89,7 @@ export async function createPosPayment(amount: number) {
 		method: "POST",
 		body: JSON.stringify({
 			"invoice_uuid": id,
-			"currency_code": "USDT_TRC20",
+			"currency_code": "USDT_ERC20",
 			"phone_number": "",
 			"customer_invoice_email": ""
 		})
