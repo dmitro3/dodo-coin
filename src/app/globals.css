@@ -31,3 +31,7 @@ button[disabled] {
 .text-primary {
     color: var(--primary)
 }
+
+body {
+    background: black
+}
