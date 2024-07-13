@@ -19,7 +19,7 @@ const links = [
 	},
 	{
 		label: "Config",
-	},
+	}
 ]
 
 export default function BasicAppShell(props: any) {
@@ -47,7 +47,11 @@ export default function BasicAppShell(props: any) {
 				Navbar
 				<br/>
 				<br/>
-
+				{links.map(link => (
+					<NavLink href={`/admin/${link?.label.toLowerCase()}`}
+						    label={link.label}
+					/>
+				))}
 			</AppShell.Navbar>
 			<AppShell.Main>
 				{props.children}
