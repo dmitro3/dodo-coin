@@ -14,7 +14,6 @@ function Boost(props: {
 	user: NonNullable<PrismaModelType<'user'>>
 }) {
 	let {user} = props;
-	const [price, setPrice] = useState(100);
 	const [want, setWant] = useState(10);
 	const [disabled, setDisabled] = useState(false);
 	const navigate = useRouter();
