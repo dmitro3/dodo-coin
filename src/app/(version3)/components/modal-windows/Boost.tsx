@@ -72,6 +72,7 @@ function Boost(props: {
 						<div>
 							<input className={'modal-input'} placeholder={''} value={want} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
+						<br/>
 						<div className={'flex gap-2 items-center'}>
 							<Link href="/payment"
 								 className={"modal-button modal-button__send " + (disabled ? ' disabled' : '')}
