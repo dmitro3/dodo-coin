@@ -24,11 +24,17 @@ const Page = async () => {
 						</div>
 						{!!user ? (
 							<>
-								<div className="points" style={{}}>
-									<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
-									{user.wallet.toLocaleString()}
+								<div>
+									<div className="points" style={{}}>
+										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
+										{user.wallet.toLocaleString()}
+									</div>
+									<div className="points" style={{}}>
+										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
+										{user.wallet.toLocaleString()}
+									</div>
 								</div>
-								<FarmButton user={user} />
+								<FarmButton user={user}/>
 							</>
 						) : (
 							<div className={'min-h-[300px] flex justify-center items-center'}>
