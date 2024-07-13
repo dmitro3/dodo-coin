@@ -1,11 +1,15 @@
 import Navbar from "@v3/components/Navbar";
 import "./style.css"
-import {getUserFromCookies} from "@/utils/serverComponents/user";
+import React from "react";
+import SetUser from "@v3/SetUser";
+import {getUser} from "@backend/utils/user";
+
 const Page = async () => {
-	const user = await getUserFromCookies();
+	const user = await getUser();
 
 	return (
 		<div className={'relative'}>
+			<SetUser />
 			<div className="bg">
 				<div className="slider-thumb"/>
 			</div>
@@ -14,8 +18,8 @@ const Page = async () => {
 					<div className="profileData " style={{}}>
 
 						<div className="profileData-name p-2">
-							<div className="profileData-name-nick">itz_parsaw</div>
-							<div className="profileData-name-tag">@itz_parsaw</div>
+							<div className="profileData-name-nick">{user?.username || "Loading"}</div>
+							<div className="profileData-name-tag">@{user?.username ?? "loading"}</div>
 						</div>
 					</div>
 					<div className="points" style={{}}>
