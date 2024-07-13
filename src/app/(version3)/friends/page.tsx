@@ -89,7 +89,7 @@ const Page = async () => {
 									</div>
 								</div>
 							</div>
-						): (
+						) : (
 							<>
 								<div
 									data-v-fa52f77d=""
@@ -155,7 +155,7 @@ const Page = async () => {
 											>
 												<div data-v-97259735="" className="avatar">
 													<div data-v-97259735="" className="letter">
-														{f.username?.slice(0,1).toUpperCase()}
+														{f.username?.slice(0, 1).toUpperCase()}
 													</div>
 												</div>
 												<div data-v-97259735="" className="details">
@@ -169,12 +169,14 @@ const Page = async () => {
 														</div>
 													</div>
 												</div>
-												<div data-v-97259735="" className="balance">
-													{Big(f.tronex_balance).toFixed(2)} <img src={'/logo.webp'} style={{
+												<div data-v-97259735="" className="balance flex gap-2 items-center">
+													{Big(f.tronex_balance).toFixed(2)}
+													<img
+														src={'/logo.webp'} style={{
 														width: "20px",
-													height: "20px",
-													objectFit: "cover"
-												}} />
+														height: "20px",
+														objectFit: "cover"
+													}}/>
 												</div>
 											</div>
 										))}
