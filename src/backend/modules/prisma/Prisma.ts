@@ -144,6 +144,9 @@ const prisma = instance.$extends({
 
 					return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
 				}
+			},
+			farmMaxHours: {
+				compute: ()=>8
 			}
 		}
 	},

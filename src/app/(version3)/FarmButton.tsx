@@ -7,11 +7,16 @@ const FarmButton = (props: {
 	user: PrismaModelType<'user'>
 }) => {
 	let {user} = props;
-	const [active, setActive] = useState(user?.farmStartAt);
-	const [activedAt, setActivedAt] = useState<Date>();
+	const defaultExpiredAt = useMemo(() => {
+		const c = new Date(user.farmStartAt);
+		c.setHours(c.getHours() + )
+	}, [user?.farmStartAt]);
 	const [expiredAt, setExpiredAt] = useState<Date>();
+	const [active, setActive] = useState(user?.farmStartAt.getTime() >);
+	const [activedAt, setActivedAt] = useState<Date>();
+
 	const [currentState, setCurrentState] = useState(0)
-	const maxHour = 8;
+
 
 	useEffect(() => {
 		if (activedAt) {
