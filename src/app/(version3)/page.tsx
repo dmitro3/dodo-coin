@@ -63,7 +63,7 @@ const Page = async () => {
 											Boost
 										</button>
 									</a>
-									className={'flex-grow'}
+									<Boost />
 								</div>
 								<br/>
 								<br/>
