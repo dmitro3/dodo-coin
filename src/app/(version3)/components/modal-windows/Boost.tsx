@@ -70,6 +70,9 @@ function Boost(props: {
 							className="modal-info">current investment profitability is {user?.perSecondsProfit} per seconds and {((user?.perSecondsProfit || 0) * 60 * 60).toFixed(2)} per hour</span>
 						<br/>
 						<div>
+							<div >
+								<p>Per Second: ${0.002 * want + user?.perSecondsProfit}</p>
+							</div>
 							<input className={'modal-input'} placeholder={''} value={want} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
 						<br/>
