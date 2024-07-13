@@ -1,11 +1,8 @@
 "use client";
 import React, {useEffect, useState} from 'react';
-import Link from "next/link";
 import {useAuth} from '../hooks/useAuth';
 import LoadingOverlay from '../components/LoadingOverlay';
 import Navbar from '../components/Navbar';
-import {fetchData} from '../utils/api';
-import Big from "big.js";
 import semicircle from '../assets/images/icon_semicircle.svg';
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {checkPosPayment, createPosPayment} from "../../../backend/crypto/CryptoPlus";
