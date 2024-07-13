@@ -3,7 +3,6 @@ const nextConfig = {
     experimental: {
         instrumentationHook: true
     },
-    /** @type {import('next/dist/compiled/webpack/webpack').Config} */
     webpack: (config, options) => {
         config.resolve.fallback = {
             net: false,
