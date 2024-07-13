@@ -17,12 +17,7 @@ const nextConfig = {
             console: false,
         };
         if (options.dev) {
-            Object.defineProperty(config, "devtool", {
-                get() {
-                    return "eval-source-map";
-                },
-                set() {},
-            });
+            config.devtools = "source-map";
         }
         return config;
     },
