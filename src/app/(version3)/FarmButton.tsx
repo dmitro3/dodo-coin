@@ -40,7 +40,7 @@ const FarmButton = () => {
 							cx={100}
 							cy={100}
 							fill="transparent"
-							strokeDasharray="565.48"
+							strokeDasharray="360"
 							strokeDashoffset={0}
 							style={{strokeWidth: "1.05em", strokeDashoffset: "565"}}
 						/>
