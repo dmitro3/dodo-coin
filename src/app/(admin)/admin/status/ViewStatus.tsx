@@ -1,7 +1,8 @@
-const ViewStatus = () => {
+const ViewStatus = async () => {
+	
 	return (
 		<div>
-			
+
 		</div>
 	);
 };
