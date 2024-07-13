@@ -243,6 +243,7 @@
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 144px;
     margin-top: 16px;
     padding: 26px 0;
