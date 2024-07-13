@@ -12,7 +12,7 @@ const ClaimButton = (props: {
 
 	return (
 		<button className={'flex-grow'} disabled={!user?.isExpired || !user.farmed} onClick={()=>{
-			claimFarm().then(router.refresh)
+			claimFarm().finally(router.refresh)
 		}}>
 			Claim
 		</button>
