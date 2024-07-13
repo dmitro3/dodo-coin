@@ -70,35 +70,6 @@ function PaymentPage(props) {
     return (
         <div>
             <main>
-                <div className="order-details block">
-                    <div className="order-details__header">
-                        <span className="order-details__title">Order Details</span>
-                        <Link href={'#'} onClick={()=>{
-                            router.back();
-                        }} className="order-details__button button">Cancel</Link>
-                    </div>
-                    <div className="order-details__row">
-                        <span className="order-details__name">Mining Power</span>
-                        <span
-                            className="order-details__value">{price >= 10000 ? `${Big(price).div(10000).toFixed(1)} TH/s` : `${Big(price).div(10).toFixed(1)} GH/s`}</span>
-                    </div>
-                    <div className="order-details__row">
-                        <span className="order-details__name">RentPeriod</span>
-                        <span className="order-details__value">30 days</span>
-                    </div>
-                    <div className="order-details__row">
-                        <span className="order-details__name">Total Profit</span>
-                        <span className="order-details__value">~{Big(price).times(1.5).toFixed(2)} USDT</span>
-                    </div>
-                    <div className="order-details__row">
-                        <span className="order-details__name">Daily Profit</span>
-                        <span className="order-details__value">~{Big(price).times(0.05).toFixed(2)} USDT</span>
-                    </div>
-                    <div className="order-details__row">
-                        <span className="order-details__name">Price</span>
-                        <span className="order-details__value">{Big(price).toFixed(2)} USDT</span>
-                    </div>
-                </div>
                 <div className="payment block">
                     <span className="payment__title">Payment</span>
                     <div className="payment-body">
