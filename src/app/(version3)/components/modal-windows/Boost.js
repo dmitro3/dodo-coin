@@ -81,7 +81,7 @@ function Boost() {
                                 src={semicircle} className={"send__icon spin" + (sended ? '' : ' hidden')} alt=""/>
                             </Link>
                             <a className="modal-button modal-button__cancel " href="#close">
-                                <button className={'modal-button modal-button__cancel '}>
+                                <button className={'modal-button '}>
                                     Back
                                 </button>
                             </a>
