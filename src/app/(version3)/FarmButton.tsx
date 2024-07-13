@@ -48,11 +48,25 @@ const FarmButton = () => {
 					/>
 				</svg>
 			</div>
-			<div className="farmButton bg-1 cursor-pointer">
-				<div className="button-title" style={{fontSize: 42}}>
-					Farm
+			{active ? (
+				<div className="farmButton bg-2" style={{ background: "none" }}>
+					<div className="button-title" style={{ fontSize: 42 }}>
+						Farming
+					</div>
+					<div className="collected">
+						<img src="/Icon.png" alt="" style={{ width: 25, height: 25 }} />
+						36.355
+					</div>
+					<div className="time">5h 5m 29s</div>
 				</div>
-			</div>
+			):(
+				<div className="farmButton bg-1 cursor-pointer">
+					<div className="button-title" style={{fontSize: 42}}>
+						Farm
+					</div>
+				</div>
+			)}
+
 		</div>
 	);
 };
