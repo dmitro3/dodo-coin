@@ -23,6 +23,12 @@ const ViewStatus = async () => {
 					diff: today.length - yesterday.length,
 					title: "Today",
 					description: "Compared with yesterday views"
+				},
+				{
+					value: thisMonth.length+"",
+					diff: thisMonth.length - prevMonth.length,
+					title: "This Month",
+					description: "Compared with previous month views"
 				}
 			]} />
 		</div>
