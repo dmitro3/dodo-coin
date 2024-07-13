@@ -15,7 +15,7 @@ const Page = async () => {
 				<div className="slider-thumb"/>
 			</div>
 			<main className={'holder'}>
-				<div className="container" id="container" style={{position: "absolute"}}>
+				<div className="container" id="container" >
 					<div className="profileData " style={{}}>
 
 						<div className="profileData-name p-2">
