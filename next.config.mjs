@@ -19,6 +19,16 @@ const nextConfig = {
         if (options.dev) {
             if (options.dev && !options.isServer) {
                 console.log(config.module.rules.map(o => o.oneOf))
+                config.module.rules = config.module.rules.map(p => ({
+                    ...p,
+                    oneOf: p.oneOf.map(o => ({
+                        ...o,
+                        options: {
+                            ...o.options || {},
+                            sourceMap: true
+                        }
+                    }))
+                }))
                 const cssRule = config.module.rules.find(
                     (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test?.('.css'))
                 );
