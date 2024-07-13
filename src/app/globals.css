@@ -4,7 +4,8 @@
 
 :root {
     --primary: #d69915;
-    --secondary: #fd814c
+    --secondary: #fd814c;
+    --gradient:  linear-gradient(90deg, var(--primary) 0%, var(--secondary)  47%);
 }
 
 @layer utilities {
