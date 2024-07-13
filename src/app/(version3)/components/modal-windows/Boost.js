@@ -75,7 +75,7 @@ function Boost() {
                         <br/>
                         <br/>
                         <span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
-                        <div className="modal-buttons">
+                        <div>
                             <Link href="/payment"
                                     className={"modal-button modal-button__send button" + (disabled ? ' disabled' : '')}
                                     disabled={disabled} onClick={handleAdd}><span>Add</span> <img
