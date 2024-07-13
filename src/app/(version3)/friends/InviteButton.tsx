@@ -4,9 +4,12 @@
 
 import {sendInvite} from "@backend/api/player/send_invite/actions";
 
-const InviteButton = () => {
+const InviteButton = (props: {
+	left: number
+}) => {
 	return (
 		<button
+			disabled={!props.left}
 			onClick={async ()=>{
 				await sendInvite();
 				window.Telegram.WebApp.close();
@@ -17,7 +20,7 @@ const InviteButton = () => {
 		>
 			<div data-v-8899132f="" className="label-center-compensator"/>
 			<div data-v-8899132f="" className="label font-bold ">
-				Invite a fren (10 left)
+				Invite a fren ({props.left} left)
 			</div>
 			<div data-v-8899132f="" className="right-slot">
 				{/**/}
