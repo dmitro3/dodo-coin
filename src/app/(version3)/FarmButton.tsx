@@ -13,7 +13,6 @@ const FarmButton = (props: {
 	const [active, setActive] = useState(!user.isExpired);
 	const [activedAt, setActivedAt] = useState(user.isExpired ? undefined:user.farmStartAt || undefined);
 	const [currentState, setCurrentState] = useState(0)
-	const [farmed, setFarmed] = useState(user.farmed)
 	const router = useRouter();
 
 	useEffect(() => {
@@ -50,13 +49,13 @@ const FarmButton = (props: {
 			return ()=>clearInterval(thread);
 		}
 	}, [active,expiredAt,activedAt])
-	useEffect(() => {
-		if (currentState === 0 || !activedAt) return;
+	const farmed = useMemo(()=>{
+		if (currentState === 0 || !activedAt) return user.farmed;
 		const now = new Date().getTime();
 		const diff = now - activedAt.getTime();
 		const seconds = diff / 1000;
-		setFarmed(pre => +((seconds * user.perSecondsProfit).toFixed(3)));
-	}, [currentState]);
+		return  +((seconds * user.perSecondsProfit).toFixed(3));
+	}, [currentState])
 	const remaining = useMemo(()=>{
 		if (currentState === 0 || !expiredAt) return undefined;
 
