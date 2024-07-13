@@ -76,7 +76,7 @@ const FarmButton = () => {
 							fill="transparent"
 							strokeDasharray="565.48"
 							strokeDashoffset={0}
-							style={{strokeWidth: "1.05em", strokeDashoffset: "565.48"}}
+							style={{strokeWidth: "1.05em", strokeDashoffset: 565.48 - (565.48 / 100 * currentState)}}
 						/>
 					</svg>
 				): (
