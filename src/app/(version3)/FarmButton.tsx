@@ -42,8 +42,8 @@ const FarmButton = () => {
 		const allDiff = expiredAt?.getTime() - new Date().getTime();
 
 
-		const hours = (allDiff / 1000 / 60) / 60;
-		const minutes = ((allDiff / 1000) / 60) - (hours * 60);
+		const hours = Math.floor((allDiff / 1000 / 60) / 60);
+		const minutes = (allDiff / 1000 / 60) - (hours * 60);
 		const seconds = (allDiff / 1000) - ((minutes * 60) * 60);
 
 		const R = {
