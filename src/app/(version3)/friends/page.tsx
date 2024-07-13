@@ -167,7 +167,7 @@ const Page = async () => {
 															{f.joined_at.toLocaleDateString()}
 														</div>
 														<div data-v-97259735="" className="counter">
-															2
+															0
 														</div>
 													</div>
 												</div>
