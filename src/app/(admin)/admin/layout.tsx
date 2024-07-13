@@ -30,6 +30,14 @@ export default function BasicAppShell(props: any) {
 					label={'Dodo Status'}
 					href={'/admin/stats'}
 				/>
+				<NavLink
+					label={'Dodo Status'}
+					href={'/admin/stats'}
+				/>
+				<NavLink
+					label={'Dodo Status'}
+					href={'/admin/stats'}
+				/>
 			</AppShell.Navbar>
 			<AppShell.Main>
 				{props.children}
