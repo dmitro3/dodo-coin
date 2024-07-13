@@ -9,10 +9,12 @@ const ViewStatus = async () => {
 	d.setDate(d.getDate() - 1);
 	const yesterday = await viewOfDate(d);
 
-	const thisMonth = await viewOfDate(new Date(), 30);
+	const d1 = new Date();
+	d1.setDate(0);
+	const thisMonth = await viewOfDate(s1, 30);
 
-	const d2 = new Date();
-	d2.setMonth(d2.getMonth() - 1);
+	const d2 = new Date(d1);
+	d2.setMonth(d2.getMonth() - 2);
 	const prevMonth = await viewOfDate(d2, 30);
 
 	return (
