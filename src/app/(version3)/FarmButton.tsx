@@ -18,6 +18,7 @@ const FarmButton = (props: {
 			const c = new Date(activedAt);
 			c.setHours(c.getHours() + user.farmMaxHours);
 			setExpiredAt(c);
+			console.log(c);
 		}
 	}, [activedAt]);
 	useEffect(() => {
