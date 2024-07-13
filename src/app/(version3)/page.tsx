@@ -54,17 +54,11 @@ const Page = async () => {
 								</div>
 								<FarmButton user={user}/>
 								<div>
-									testHASEFSDFSDF
+									<button>
+										test
+									</button>
 								</div>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
-								<br/>
+
 							</>
 						) : (
 							<div className={'min-h-[300px] flex justify-center items-center'}>
