@@ -67,7 +67,6 @@
     touch-action: auto;
     -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
-    z-index: 105
 }
 
 
