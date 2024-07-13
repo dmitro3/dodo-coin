@@ -21,7 +21,7 @@ const ViewStatus = async () => {
 				{
 					value: today.length+"",
 					diff: today.length - yesterday.length,
-					icon:
+					title: "Today"
 				}
 			]} />
 		</div>
