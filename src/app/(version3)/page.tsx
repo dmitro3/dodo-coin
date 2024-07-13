@@ -29,7 +29,7 @@ const Page = async () => {
 										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 										{user.wallet.toLocaleString()}
 									</div>
-									<div className="points" style={{}}>
+									<div className="flex gap-1 items-center" style={{}}>
 										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 										{user.wallet.toLocaleString()}
 									</div>
