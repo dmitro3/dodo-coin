@@ -80,7 +80,7 @@ const Page = async () => {
 						</>
 					):(
 						<div className={'min-h-[300px] flex justify-center items-center'}>
-							<h2 className={'text-4xl'}>Loading...</h2>
+							<h2 className={'text-4xl tracking-widest'}>Loading...</h2>
 						</div>
 					)}
 				</div>
