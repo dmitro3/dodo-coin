@@ -55,19 +55,6 @@
     position: relative
 }
 
-.container {
-    width: 100%;
-    background: #0000;
-    display: flex;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    align-items: center;
-    flex-direction: column;
-    color: #fff;
-    touch-action: auto;
-    -webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(30px);
-}
 
 
 .title {
