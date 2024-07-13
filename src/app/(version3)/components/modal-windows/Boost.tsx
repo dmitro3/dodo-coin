@@ -82,7 +82,7 @@ function Boost(props: {
 								 className={"modal-button modal-button__send " + (disabled ? ' disabled' : '')}
 								 onClick={handleAdd}
 							>
-								<span>Add</span>
+								<span>Boost</span>
 								<img
 									src={semicircle} className={"send__icon spin" + (sent ? '' : ' hidden')}
 									alt=""/>
