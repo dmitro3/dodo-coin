@@ -72,8 +72,6 @@ function Boost() {
                         </div>
                         <input type="number" value={text} className="modal-input__amount modal-input"
                                placeholder="Amount" onChange={handleInputChange}/>
-                        <br/>
-                        <br/>
                         <span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
                         <div>
                             <Link href="/payment"
