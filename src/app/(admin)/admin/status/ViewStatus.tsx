@@ -48,7 +48,7 @@ const ViewStatus = async () => {
 					description: "Compared with previous month views"
 				}
 			]}/>
-			<br/>
+
 			<h2 className={'text-bold text-2xl'}>Site View</h2>
 		</div>
 	);
