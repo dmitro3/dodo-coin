@@ -6,8 +6,11 @@ import {postData} from '../../utils/api';
 import Big from "big.js";
 import semicircle from "../../assets/images/icon_semicircle.svg";
 import Link from "next/link";
+import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
-function Boost() {
+function Boost(props: {
+    user: PrismaModelType<'user'>
+}) {
     const [price, setPrice] = useState(100);
     const [text, setText] = useState(100);
     const [disabled, setDisabled] = useState(false);
@@ -16,7 +19,7 @@ function Boost() {
     const [sended, setSended] = useState(false);
     const {userData} = useAuth();
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: any) => {
         const value = event.target.value.trim();
 
         if (value === '') {
@@ -30,7 +33,7 @@ function Boost() {
             setPrice(absValue);
             setDisabled(absValue < 100);
 
-            const power = Big(absValue).div(10);
+            const power = Big(absValue).div(10) as any as number;
             setDisplayText(power >= 1000 ? `${power.div(1000).toFixed(1)} TH/s` : `${power.toFixed(1)} GH/s`);
         }
     }
