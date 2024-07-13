@@ -320,6 +320,11 @@ nav {
     padding: 18px 20px;
 }
 
+input {
+    background: #eee;
+    color: black;
+}
+
 @media (min-width: 768px) {
     .modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
