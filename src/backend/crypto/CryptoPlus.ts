@@ -103,17 +103,14 @@ export async function checkPosPayment(id: string) {
 
 	const userId = PAYMENTS[pId]
 	if (st?.includes("paid") && userId) {
-		const user = await prisma.user.findUnique({
-			where: {
-				id: userId
-			}
-		});
-		if (user) await prisma.user.update({
+		await prisma.user.update({
 			where: {
 				id: PAYMENTS[pId]
 			},
 			data: {
-				tron_balance: Big(user.tron_balance).plus(R?.result.amount || 0).toString()
+				usdtBalance: {
+					increment: R?.result.amount || 0
+				}
 			}
 		}).catch(console.error)
 		delete PAYMENTS[pId];
