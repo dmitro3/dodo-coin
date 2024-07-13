@@ -32,6 +32,10 @@ const Page = async () => {
 									<div className="flex gap-1 items-center" style={{}}>
 										<svg
 											id="Layer_1"
+											style={{
+												width: "10px",
+												height: "10px",
+											}}
 											data-name="Layer 1"
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 339.43 295.27"
@@ -46,7 +50,6 @@ const Page = async () => {
 												style={{fill: "#fff", fillRule: "evenodd"}}
 											/>
 										</svg>
-
 										{user.wallet.toLocaleString()}
 									</div>
 								</div>
