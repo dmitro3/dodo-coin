@@ -178,13 +178,20 @@ const FarmButton = (props: {
 
 				</div>
 			) : (
-				<div className="farmButton bg-1 cursor-pointer" onClick={() => {
-					setActive(true)
-				}}>
-					<p className="button-title tracking-widest font-extrabold" style={{fontSize: 50}}>
-						Farm
-					</p>
-				</div>
+				<>
+					{user.farmed ? (
+						<div>
+						</div>
+					):(
+						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
+							setActive(true)
+						}}>
+							<p className="button-title tracking-widest font-extrabold" style={{fontSize: 50}}>
+								Farm
+							</p>
+						</div>
+					)}
+				</>
 			)}
 
 		</div>
