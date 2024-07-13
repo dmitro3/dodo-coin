@@ -10,6 +10,7 @@ const InviteButton = () => {
 		<button
 			onClick={async ()=>{
 				await sendInvite().catch(console.error);
+				///@ts-ignore
 				window.Telegram.WebApp.close();
 			}}
 			data-v-8899132f=""
