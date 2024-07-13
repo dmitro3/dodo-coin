@@ -55,7 +55,7 @@ const FarmButton = () => {
 					</div>
 					<div className="collected mt-">
 						<img src="/logo.webp" alt="" style={{ width: 25, height: 25 }} />
-						36.3552
+						36.355
 					</div>
 					<div className="time">5h 5m 29s</div>
 				</div>
