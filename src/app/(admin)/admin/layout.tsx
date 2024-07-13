@@ -47,12 +47,16 @@ export default function BasicAppShell(props: any) {
 				Navbar
 				<br/>
 				<br/>
-				{links.map(link => (
-					<NavLink
-						href={`/admin/${link?.label.toLowerCase()}`}
-						    label={link.label}
-					/>
-				))}
+				{links.map(link => {
+					const href = `/admin/${link?.label.toLowerCase()}`;
+					return (
+						<NavLink
+							variant={path === href ? "filled":"subtle"}
+							href={href}
+							label={link.label}
+						/>
+					)
+				})}
 			</AppShell.Navbar>
 			<AppShell.Main>
 				{props.children}
