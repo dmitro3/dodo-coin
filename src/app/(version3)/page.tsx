@@ -9,10 +9,10 @@ const Page = async () => {
 
 	return (
 		<div className={'relative'}>
-			<div className="bg">
+			<div className="bg relative z-10">
 				<div className="slider-thumb"/>
 			</div>
-			<div className={'relative z-10'}>
+			<div className={'relative z-20'}>
 				<main className={'holder'}>
 					<div className="container flex flex-col gap-2 items-center" id="container">
 						<div className="profileData " style={{}}>
