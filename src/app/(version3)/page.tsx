@@ -49,7 +49,7 @@ const Page = async () => {
 												style={{fill: "#fff", fillRule: "evenodd"}}
 											/>
 										</svg>
-										{user.wallet.toLocaleString()}
+										{user.usdtBalance.toLocaleString()}
 									</div>
 								</div>
 								<FarmButton user={user}/>
