@@ -99,7 +99,7 @@ const Page = async () => {
 										data-v-97c098d1=""
 										src={family}
 										alt="Friends emoji"
-										className="emoji"
+										className="emoji w-[50px]"
 									/>
 									<div data-v-fa52f77d="" className="title">
 										Invite Frens
