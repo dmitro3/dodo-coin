@@ -147,7 +147,7 @@ const Page = async () => {
 									</div>
 									<div data-v-51de0b63="" className="list">
 										{friends.map(f => {
-											const rand = f.joined_at.getTime() % 4 === 0;
+											const rand = f.joined_at.getTime() % 4;
 											return (
 												(
 													<div
@@ -156,8 +156,13 @@ const Page = async () => {
 														className="pages-frens-list-item"
 														key={f.id}
 													>
-														<div data-v-97259735="" className="avatar bg-red-400">
-															<div data-v-97259735="" className="letter bg-red-400">
+														<div data-v-97259735="" className="avatar">
+															<div data-v-97259735="" className={`letter ${
+																rand === 0 ? "bg-red-400":
+																rand === 1 ? "bg-green-400":
+																rand === 2 ? "bg-blue-400": 
+																"bg-primary"
+															}`}>
 																{f.username?.slice(0, 1).toUpperCase()}
 															</div>
 														</div>
