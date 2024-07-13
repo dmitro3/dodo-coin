@@ -22,7 +22,7 @@ const Page = async () => {
 							<div className="profileData-name-tag">@{user?.username ?? "loading"}</div>
 						</div>
 					</div>
-					{!!user ? (
+					{!user ? (
 						<>
 							<div className="points" style={{}}>
 								<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
@@ -79,7 +79,9 @@ const Page = async () => {
 							</div>
 						</>
 					):(
-						<h1>LOADING</h1>
+						<div className={'min-h-[300px] flex justify-center items-center'}>
+							<h2 className={'text-xl'}>Loading...</h2>
+						</div>
 					)}
 				</div>
 
