@@ -48,7 +48,8 @@ export default function BasicAppShell(props: any) {
 				<br/>
 				<br/>
 				{links.map(link => (
-					<NavLink href={`/admin/${link?.label.toLowerCase()}`}
+					<NavLink
+						href={`/admin/${link?.label.toLowerCase()}`}
 						    label={link.label}
 					/>
 				))}
