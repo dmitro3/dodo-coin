@@ -11,7 +11,7 @@ const ClaimButton = (props: {
 	const router = useRouter();
 
 	return (
-		<button className={'flex-grow'} disabled={!user?.isExpired} onClick={()=>{
+		<button className={'flex-grow'} disabled={!user?.isExpired || !user.farmed} onClick={()=>{
 			claimFarm().then(router.refresh)
 		}}>
 			Claim
