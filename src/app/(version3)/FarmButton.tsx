@@ -180,7 +180,7 @@ const FarmButton = (props: {
 			) : (
 				<>
 					{user.farmed ? (
-						<div>
+						<div className={'flex items-center justify-center'}>
 							HALO
 						</div>
 					):(
