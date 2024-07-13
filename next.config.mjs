@@ -19,7 +19,7 @@ const nextConfig = {
         if (options.dev) {
             Object.defineProperty(config, "devtool", {
                 get() {
-                    return "source-map";
+                    return "eval-source-map";
                 },
                 set() {},
             });
