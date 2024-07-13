@@ -48,8 +48,27 @@ const ViewStatus = async () => {
 					description: "Compared with previous month views"
 				}
 			]}/>
-
-			<h2 className={'text-bold text-2xl'}>Site View</h2>
+			<h2 className={'text-bold text-2xl'}>Users</h2>
+			<StatsGrid stats={[
+				{
+					value: today + "",
+					diff: today - yesterday,
+					title: "Today",
+					description: "Compared with yesterday views"
+				},
+				{
+					value: thisWeek + "",
+					diff: thisWeek - prevWeek,
+					title: "This Week",
+					description: "Compared with previous week views"
+				},
+				{
+					value: thisMonth + "",
+					diff: 0,
+					title: "This Month",
+					description: "Compared with previous month views"
+				}
+			]}/>
 		</div>
 	);
 };
