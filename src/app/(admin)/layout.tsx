@@ -10,9 +10,7 @@ const Layout = async (props: any) => {
 	return (
 		<html>
 		<body>
-		<MantineProvider theme={{
-			colorScheme: "dark"
-		}}>
+		<MantineProvider theme={{ colorScheme: 'dark' }}>
 		{props.children}
 		</MantineProvider>
 		</body>
