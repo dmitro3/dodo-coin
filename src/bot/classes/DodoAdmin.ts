@@ -7,8 +7,10 @@ import {TheMessageContext} from "@/bot/classes/types/dodo";
 import {Markup} from "telegraf";
 import {env} from "@/bot/env";
 
+export const DodoAdmins =  [6629569837,1016434018,5642287166];
+
 class DodoAdmin extends DodoSession {
-	admins = [6629569837,1016434018,5642287166];
+	admins = DodoAdmins;
 	async commands() {
 		const ctx = this.ctx;
 		const startButtons = [

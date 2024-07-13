@@ -1,10 +1,9 @@
-const Layout = (props: any) => {
+import {getUserFromCookies} from "@/utils/serverComponents/user";
 
-	return (
-		<div>
-			{props.children}
-		</div>
-	);
+const Layout = async (props: any) => {
+	const user = await getUserFromCookies();
+	if (user)
+	return props.children;
 };
 
 export default Layout;
