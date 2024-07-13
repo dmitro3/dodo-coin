@@ -16,7 +16,7 @@ export function getToken(request: NextRequest) {
   );
 }
 
-export async function getUser(token?: string | NextRequest | undefined): Promise<Awaited<ReturnType<typeof prisma.user.findFirst>>> {
+export async function getUser(token?: string | NextRequest | undefined) {
   if (token && typeof token !== "string") {
     token = getToken(token);
   }
