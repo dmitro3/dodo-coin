@@ -11,6 +11,7 @@ import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 function Boost(props: {
 	user: PrismaModelType<'user'>
 }) {
+	let {user} = props;
 	const [price, setPrice] = useState(100);
 	const [text, setText] = useState(100);
 	const [disabled, setDisabled] = useState(false);
@@ -66,17 +67,8 @@ function Boost(props: {
 					<div className="modal-body">
 						<span className="modal-info">Here you can boost your per second profit</span>
 						<span
-							className="modal-info">The investment profitability is 5% per day and 150% for 30 days.</span>
-						<div className="modal-calc">
-							<span className="modal-calc__power">⚡ {displayText}</span>
-							<span
-								className="modal-calc__total">Total Profit: ~{Big(price).times(1.5).toFixed(2)} TRX</span>
-							<span
-								className="modal-calc__total">Daily Profit: ~{Big(price).times(0.05).toFixed(2)} TRX</span>
-						</div>
-						<input type="number" value={text} className="modal-input__amount modal-input"
-							  placeholder="Amount" onChange={handleInputChange}/>
-						<span className="modal-minimum-boost">Minimum amount: 100 TRX</span>
+							className="modal-info">current investment profitability is {user?.perSecondsProfit}$ per day and 150% for 30 days.</span>
+
 						<br/>
 						<div className={'flex gap-2 items-center'}>
 							<Link href="/payment"
