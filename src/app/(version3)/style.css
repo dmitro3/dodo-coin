@@ -344,7 +344,7 @@
 }
 
 .bg-1 {
-    background: linear-gradient(218.2deg,#f87a2e 16.38%,#f60251 83.61%);
+    background: linear-gradient(218.2deg,var(--primary) 16.38%,#f60251 83.61%);
 }
 
 .bg-2 {
