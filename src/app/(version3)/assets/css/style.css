@@ -1,3 +1,10 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/(version3)/index.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/(version3)/assets/css/style.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
 * {
     font-weight: 400;
     box-sizing: border-box;
@@ -10,7 +17,7 @@
 
 @font-face {
     font-family: 'Inter Tight';
-    src: url('../fonts/InterTight-VariableFont_wght.ttf'), url('../fonts/InterTight-Italic-VariableFont_wght.ttf');
+    src: url(/_next/static/media/InterTight-VariableFont_wght.c664edfd.ttf), url(/_next/static/media/InterTight-Italic-VariableFont_wght.b4cf2a5a.ttf);
     font-weight: normal;
     font-style: normal;
 }
@@ -289,9 +296,12 @@ nav {
 .modal-dialog {
     position: relative;
     margin: 0 auto;
-    top: 25%;
+    top: 0;
     width: 100%;
     max-width: 440px;
+    padding: 20px;
+    margin: auto;
+    bottom: 0;
 }
 
 @media (min-width: 376px) {
@@ -311,8 +321,8 @@ nav {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    backdrop-filter: blur(25px);
     background-color: transparent;
+    backdrop-filter: blur(20px);
     color: white;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
@@ -330,9 +340,9 @@ nav {
     top:0;
     z-index: -6;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary)  47%);
     opacity: 0.2;
+    height: 100%;
+    background: var(--gradient);
 }
 
 input {
@@ -471,8 +481,8 @@ input {
     background-color: var(--primary);
     color: white;
     text-align: center;
-    position: relative;
     border: none;
+    position: relative;
 }
 
 .modal-button__send > span {
@@ -987,3 +997,6 @@ td {
     font-size: 1.75rem;
     margin-top: 16px;
 }
+
+
+/*# sourceMappingURL=layout.css.map*/
