@@ -180,7 +180,12 @@ const prisma = instance.$extends({
 					if (!props.farmStartAt) return 0;
 					const expiredAt = new Date(props.farmStartAt);
 					expiredAt.setHours(expiredAt.getHours() + getV3ConfigValue('farmMaxHours'));
-					
+
+					const now = Math.min(expiredAt.getTime(), new Date().getTime());
+					const diff = now - props.farmStartAt.getTime();
+					const seconds = diff / 1000;
+
+					return Math.round(seconds * props.perSecondsProfit);
 				}
 			}
 		}
