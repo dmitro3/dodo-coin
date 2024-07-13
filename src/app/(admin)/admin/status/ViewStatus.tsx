@@ -2,7 +2,7 @@ const ViewStatus = async () => {
 
 	return (
 		<div>
-			
+
 		</div>
 	);
 };

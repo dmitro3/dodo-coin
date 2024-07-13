@@ -1,8 +1,8 @@
 const Page = () => {
 	return (
-		<div>
-			halo
-		</div>
+		<h1 className={'text-xl'}>
+			Welcome to Dodo bot Admin Panel!
+		</h1>
 	);
 };
 
