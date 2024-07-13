@@ -1,10 +1,10 @@
 'use client'
 
 import {useEffect, useMemo, useState} from "react";
-import {User} from "@prisma/client";
+import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
 const FarmButton = (props: {
-	user: User
+	user: PrismaModelType<'user'>
 }) => {
 	const [active, setActive] = useState(false);
 	const [activedAt, setActivedAt] = useState<Date>();
