@@ -17,38 +17,13 @@ const nextConfig = {
             console: false,
         };
         if (options.dev) {
-            if (options.dev && !options.isServer) {
-                config.module.rules = config.module.rules.map(p => ({
-                    ...p,
-                    oneOf: p.oneOf?.map(o => ({
-                        ...o,
-                        options: {
-                            ...o?.options || {},
-                            use: o?.options?.use?.map(o => ({
-                                ...o,
-                                sourceMap: true
-                            }))
-                        }
-                    }))
-                }))
-                const cssRule = config.module.rules.find(
-                    (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test?.('.css'))
-                );
-
-                if (cssRule) {
-                    cssRule.oneOf.forEach((rule) => {
-                        if (Array.isArray(rule.use)) {
-                            rule.use.forEach((use) => {
-                                if (use.loader && use.loader.includes('css-loader')) {
-                                    use.options = {
-                                        ...use.options,
-                                        sourceMap: true,
-                                    };
-                                }
-                            });
-                        }
-                    });
-                }
+            if (options.dev) {
+                Object.defineProperty(config, "devtool", {
+                    get() {
+                        return "source-map";
+                    },
+                    set() {},
+                });
             }
         }
         return config;
