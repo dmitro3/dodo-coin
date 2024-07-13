@@ -136,7 +136,7 @@ const Page = async () => {
 									</div>
 									<br/>
 								</div>
-								<div data-v-51de0b63="" data-v-55492676="" className="pages-frens-list">
+								<div data-v-51de0b63="" data-v-55492676="" className="pages-frens-list min-w-[300px]">
 									<div data-v-51de0b63="" className="counter">
 										{friends.length} fren
 									</div>
