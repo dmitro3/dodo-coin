@@ -1,32 +1,13 @@
 import prisma from "@backend/modules/prisma/Prisma";
 import StatsGrid from "@/app/(admin)/admin/status/StatsGrid";
 import React from "react";
+import SiteStat from "@/app/(admin)/admin/status/SiteStat";
 
 const ViewStatus = async () => {
 	return (
 		<div>
-			<SiteView />
-			<h2 className={'text-bold text-2xl'}>Users</h2>
-			<StatsGrid stats={[
-				{
-					value: today + "",
-					diff: today - yesterday,
-					title: "Today",
-					description: "Compared with yesterday views"
-				},
-				{
-					value: thisWeek + "",
-					diff: thisWeek - prevWeek,
-					title: "This Week",
-					description: "Compared with previous week views"
-				},
-				{
-					value: thisMonth + "",
-					diff: 0,
-					title: "This Month",
-					description: "Compared with previous month views"
-				}
-			]}/>
+			<SiteStat />
+			<SiteUser/>
 		</div>
 	);
 };
