@@ -24,8 +24,7 @@ function PaymentPage(props) {
             const amount = params.get('amount');
             createPosPayment(+amount).then(r => {
                 if (r.status === "success") {
-                    console.log(r.result);
-                    setAddress(r.result.address);
+                    setAddress(r.result.amount_to_pay);
                     setPrice(r.result.amount);
                     setCreating(false);
                     setTransactionId((r.result.invoice_id || r.result.uuid).split("-")?.at?.(-1))
