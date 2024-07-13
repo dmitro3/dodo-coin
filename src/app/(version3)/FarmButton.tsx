@@ -6,7 +6,8 @@ import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 const FarmButton = (props: {
 	user: PrismaModelType<'user'>
 }) => {
-	const [active, setActive] = useState(false);
+	let {user} = props;
+	const [active, setActive] = useState(user?.farmStartAt);
 	const [activedAt, setActivedAt] = useState<Date>();
 	const [expiredAt, setExpiredAt] = useState<Date>();
 	const [currentState, setCurrentState] = useState(0)
