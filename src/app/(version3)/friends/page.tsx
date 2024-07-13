@@ -89,56 +89,59 @@ const Page = async () => {
 								</div>
 							</div>
 						): (
-							<div
-								data-v-fa52f77d=""
-								data-v-55492676=""
-								className="pages-frens-list-heading list-heading"
-							>
-								<div data-v-fa52f77d="" className="heading">
-									<Image
-										data-v-97c098d1=""
-										src={family}
-										alt="Friends emoji"
-										className="emoji w-[50px]"
-									/>
-									<div data-v-fa52f77d="" className="title">
-										Invite Frens
-									</div>
-								</div>
-								<div data-v-fa52f77d="" className="claim-zone">
-									<div data-v-fa52f77d="" className="claim-balance">
-										<img
-											data-v-fa52f77d=""
-											src="/logo.webp"
-											alt="Blum logo"
+							<>
+								<div
+									data-v-fa52f77d=""
+									data-v-55492676=""
+									className="pages-frens-list-heading list-heading"
+								>
+									<div data-v-fa52f77d="" className="heading">
+										<Image
+											data-v-97c098d1=""
+											src={family}
+											alt="Friends emoji"
+											className="emoji w-[50px]"
 										/>
-										<div
-											data-v-191230a7=""
-											data-v-c2615662=""
-											data-v-fa52f77d=""
-											className="kit-counter-animation"
-										>
-											<div data-v-191230a7="" className="el-char-wrapper">
-												<div data-v-191230a7="" className="el-char">
-													5
+										<div data-v-fa52f77d="" className="title">
+											Invite Frens
+										</div>
+									</div>
+									<div data-v-fa52f77d="" className="claim-zone">
+										<div data-v-fa52f77d="" className="claim-balance">
+											<img
+												data-v-fa52f77d=""
+												src="/logo.webp"
+												alt="Blum logo"
+											/>
+											<div
+												data-v-191230a7=""
+												data-v-c2615662=""
+												data-v-fa52f77d=""
+												className="kit-counter-animation"
+											>
+												<div data-v-191230a7="" className="el-char-wrapper">
+													<div data-v-191230a7="" className="el-char">
+														5
+													</div>
 												</div>
 											</div>
 										</div>
+										<button data-v-fa52f77d="" className="claim-button is-active">
+											Claim
+										</button>
+										{/**/}
+										{/**/}
 									</div>
-									<button data-v-fa52f77d="" className="claim-button is-active">
-										Claim
-									</button>
-									{/**/}
-									{/**/}
+									<div data-v-fa52f77d="" className="disclaimer">
+										{" "}
+										Score 10% from buddies + 2.5% from their referrals <br
+										data-v-fa52f77d=""/>{" "}
+										Get a <i data-v-fa52f77d="" className="ticket"/> play pass for each
+										fren.{" "}
+									</div>
 								</div>
-								<div data-v-fa52f77d="" className="disclaimer">
-									{" "}
-									Score 10% from buddies + 2.5% from their referrals <br
-									data-v-fa52f77d=""/>{" "}
-									Get a <i data-v-fa52f77d="" className="ticket"/> play pass for each
-									fren.{" "}
-								</div>
-							</div>
+								
+							</>
 						)}
 						<div data-v-55492676="" className="invite-button-wrapper">
 							<div
