@@ -24,21 +24,6 @@ const nextConfig = {
                 set() {},
             });
         }
-        config.module= {
-            ...config.module,
-            rules: [
-                ...config.module.rules,
-                {
-                    test: /\.css$/,
-                    use: [
-                        { loader: 'style-loader' },
-                        {
-                            loader: 'css-loader',
-                        }
-                    ]
-                }
-            ]
-        }
         return config;
     },
     typescript: {
