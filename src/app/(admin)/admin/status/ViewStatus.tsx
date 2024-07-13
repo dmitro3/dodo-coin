@@ -19,6 +19,7 @@ const ViewStatus = async () => {
 
 	return (
 		<div>
+			<h2 className={'text-bold text-4xl'}>Site View</h2>
 			<StatsGrid stats={[
 				{
 					value: today.length+"",
