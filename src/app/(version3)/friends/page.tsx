@@ -150,6 +150,7 @@ const Page = async () => {
 												data-v-97259735=""
 												data-v-51de0b63=""
 												className="pages-frens-list-item"
+												key={f.id}
 											>
 												<div data-v-97259735="" className="avatar">
 													<div data-v-97259735="" className="letter">
@@ -158,7 +159,7 @@ const Page = async () => {
 												</div>
 												<div data-v-97259735="" className="details">
 													<div data-v-97259735="" className="username">
-														itz_parsaw
+														{f.username}
 													</div>
 													<div data-v-97259735=""
 														className="frens-count-compose">
