@@ -152,8 +152,8 @@ const FarmButton = () => {
 					</div>
 					{remaining && (
 						<div className="time">
-							{!!remaining.hours && `${remaining.hours}h`}
-							{!!remaining.minutes && `${remaining.minutes}m`}
+							{!!remaining.hours && `${remaining.hours}h `}
+							{!!remaining.minutes && `${remaining.minutes}m `}
 							{!!remaining.seconds && `${remaining.seconds}s`}
 						</div>
 					)}
