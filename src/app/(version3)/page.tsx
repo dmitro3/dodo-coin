@@ -4,7 +4,7 @@ const Page = () => {
 
 	return (
 		<div>
-			<main>
+			<main className={'holder'}>
 				<div className="container" id="container" style={{position: "absolute"}}>
 					<div className="profileData" style={{}}>
 						<div className="profileData-pic-null">
