@@ -17,7 +17,7 @@ const Page = () => {
 						</div>
 					</div>
 					<div className="points" style={{}}>
-						<img src="/Icon.png" alt="" style={{width: 50, height: 50}}/>
+						<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 						50
 					</div>
 					<div className="ebat">
