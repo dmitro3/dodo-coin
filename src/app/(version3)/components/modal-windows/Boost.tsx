@@ -33,7 +33,7 @@ function Boost(props: {
 			setPrice(absValue);
 			setDisabled(absValue < 100);
 
-			const power = Big(absValue).div(10) as any as Big;
+			const power = Big(absValue).div(10);
 			// @ts-ignore
 			setDisplayText(power >= 1000 ? `${power.div(1000).toFixed(1)} TH/s` : `${power.toFixed(1)} GH/s`);
 		}
