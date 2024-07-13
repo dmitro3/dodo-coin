@@ -56,7 +56,7 @@ const FarmButton = () => {
 			minutes: Math.round(minutes),
 			hours: Math.round(hours),
 		};
-		console.log(R);
+		
 		return R;
 	},[currentState]);
 
