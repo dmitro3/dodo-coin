@@ -1,5 +1,5 @@
 import Navbar from "@v3/components/Navbar";
-
+import "./style.css"
 const Page = () => {
 
 	return (
