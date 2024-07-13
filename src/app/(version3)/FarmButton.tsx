@@ -60,7 +60,9 @@ const FarmButton = () => {
 					<div className="time">5h 5m 29s</div>
 				</div>
 			):(
-				<div className="farmButton bg-1 cursor-pointer">
+				<div className="farmButton bg-1 cursor-pointer" onClick={()=>{
+					setActive(true)
+				}}>
 					<div className="button-title" style={{fontSize: 42}}>
 						Farm
 					</div>
