@@ -15,7 +15,7 @@ const Page = async () => {
 				<div className="slider-thumb"/>
 			</div>
 			<main className={'holder'}>
-				<div className="container" id="container" >
+				<div className="container flex flex-col gap-2 items-center" id="container" >
 					<div className="profileData " style={{}}>
 
 						<div className="profileData-name p-2">
