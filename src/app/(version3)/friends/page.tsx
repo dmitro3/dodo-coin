@@ -163,6 +163,7 @@ const Page = async () => {
 																rand === 2 ? "bg-blue-400": 
 																"bg-primary"
 															}`}>
+																{rand}
 																{f.username?.slice(0, 1).toUpperCase()}
 															</div>
 														</div>
