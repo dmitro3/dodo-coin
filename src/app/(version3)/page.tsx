@@ -9,7 +9,6 @@ const Page = async () => {
 
 	return (
 		<div className={'relative'}>
-			<SetUser />
 			<div className="bg">
 				<div className="slider-thumb"/>
 			</div>

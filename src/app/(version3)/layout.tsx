@@ -8,6 +8,7 @@ import React from "react";
 import Web3ModalProvider from "@/context/Web3Modal";
 import prisma from "@backend/modules/prisma/Prisma";
 import {getClientIp} from "@backend/utils/user";
+import SetUser from "@v3/SetUser";
 
 export const metadata = {
 	title: 'Next.js',
@@ -28,6 +29,7 @@ export default async function RootLayout(props: any) {
 			<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		</head>
 		<body>
+		<SetUser />
 		<Web3ModalProvider initialState={initialState}>
 			<AuthProvider>
 				{props.children}
