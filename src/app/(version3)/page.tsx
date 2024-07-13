@@ -7,7 +7,6 @@ const Page = () => {
 			<div className="bg">
 				<div className="slider-thumb"/>
 			</div>
-
 			<main className={'holder'}>
 				<div className="container" id="container" style={{position: "absolute"}}>
 					<div className="profileData" style={{}}>
