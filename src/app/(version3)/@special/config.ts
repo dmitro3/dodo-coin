@@ -1,3 +1,5 @@
+import 'server-only';
+
 import * as fs from "node:fs";
 
 export type V3Config = {
