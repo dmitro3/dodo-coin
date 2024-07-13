@@ -202,7 +202,7 @@ const Page = async () => {
 								data-v-55492676=""
 								className="pages-frens-invite-button"
 							>
-								<InviteButton left={10 - friends.length} />
+								<InviteButton />
 							</div>
 						</div>
 						{/**/}
