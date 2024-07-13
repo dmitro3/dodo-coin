@@ -13,7 +13,7 @@ function Boost(props: {
 }) {
 	let {user} = props;
 	const [price, setPrice] = useState(100);
-	const [text, setText] = useState(100);
+	const [want, setWant] = useState(10);
 	const [disabled, setDisabled] = useState(false);
 	const [displayText, setDisplayText] = useState('1.0 GH/s');
 	const navigate = useRouter();
@@ -24,13 +24,13 @@ function Boost(props: {
 		const value = event.target.value.trim();
 
 		if (value === '') {
-			setText(value);
+			setWant(value);
 			setPrice(0);
 			setDisabled(true);
 			setDisplayText('1.0 GH/s');
 		} else {
 			const absValue = Math.abs(value);
-			setText(absValue);
+			setWant(absValue);
 			setPrice(absValue);
 			setDisabled(absValue < 100);
 
@@ -70,7 +70,7 @@ function Boost(props: {
 							className="modal-info">current investment profitability is {user?.perSecondsProfit} per seconds and {((user?.perSecondsProfit || 0) * 60 * 60).toFixed(2)} per hour</span>
 						<br/>
 						<div>
-							<input className={'modal-input'} placeholder={''} defaultValue={1} type={'number'} />
+							<input className={'modal-input'} placeholder={''} value={want} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
 						<div className={'flex gap-2 items-center'}>
 							<Link href="/payment"
