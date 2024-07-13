@@ -21,7 +21,7 @@ const FarmButton = (props: {
 		}
 	}, [activedAt]);
 	useEffect(() => {
-		if (active) setActivedAt(new Date())
+		if (active && !activedAt) setActivedAt(new Date())
 	}, [active]);
 	useEffect(()=>{
 		if (activedAt && expiredAt && active) {
