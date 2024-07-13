@@ -59,7 +59,7 @@ const Page = async () => {
 										Claim
 									</button>
 									<a href={'#boost'} className={'flex-grow'}>
-										<button >
+										<button className={'w-full'}>
 											Boost
 										</button>
 									</a>
