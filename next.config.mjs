@@ -17,12 +17,26 @@ const nextConfig = {
             console: false,
         };
         if (options.dev) {
-            Object.defineProperty(config, "devtool", {
-                get() {
-                    return "source-map";
-                },
-                set() {},
-            });
+            if (options.dev && !options.isServer) {
+                const cssRule = config.module.rules.find(
+                    (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test('.css'))
+                );
+
+                if (cssRule) {
+                    cssRule.oneOf.forEach((rule) => {
+                        if (Array.isArray(rule.use)) {
+                            rule.use.forEach((use) => {
+                                if (use.loader && use.loader.includes('css-loader')) {
+                                    use.options = {
+                                        ...use.options,
+                                        sourceMap: true,
+                                    };
+                                }
+                            });
+                        }
+                    });
+                }
+            }
         }
         return config;
     },
