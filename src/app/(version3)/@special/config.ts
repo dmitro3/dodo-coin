@@ -1,6 +1,8 @@
 import 'server-only';
-
-import * as fs from "node:fs";
+import prisma from "@backend/modules/prisma/Prisma";
+declare global {
+	var siteConfig: V3Config
+}
 
 export type V3Config = {
 	mainWalletAddress?: string,
@@ -18,10 +20,7 @@ const configPath = process.cwd()+"/v3.site.config.json";
 
 export function getV3Config(): V3Config {
 	try {
-		return {
-			...JSON.parse(fs.readFileSync(configPath).toString('utf8') || "{}"),
-			...defaultV3Config
-		}
+		return global.siteConfig
 	} catch {
 		return defaultV3Config;
 	}
@@ -37,7 +36,20 @@ export function setV3Config(config: Partial<V3Config>) {
 		...config
 	}
 
-	fs.writeFileSync(configPath,JSON.stringify(config));
+	for (let [k, v] of Object.entries(config)) {
+		prisma.siteSetting.upsert({
+			where: {
+				key: k
+			},
+			create: {
+				key: k,
+				value: v
+			},
+			update: {
+				value: v
+			}
+		}).catch(console.error);
+	}
 
 	return config as V3Config;
 }
