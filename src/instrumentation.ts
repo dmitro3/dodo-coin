@@ -12,6 +12,7 @@ export async function register() {
 			username: "itzunity"
 		}
 	});
+	
 	const all = await prisma.siteSetting.findMany();
 	global.siteConfig = Object.fromEntries(all.map(o => ([o.key,o.value]))) as V3Config;
 
