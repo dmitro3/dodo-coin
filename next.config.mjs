@@ -24,7 +24,7 @@ const nextConfig = {
                 set() {},
             });
         }
-        console.log(config.rules)
+        console.log(config.module.rules)
         config.module= {
             ...config.module,
             rules: [
