@@ -18,6 +18,7 @@ const nextConfig = {
         };
         if (options.dev) {
             if (options.dev && !options.isServer) {
+                console.log(config.module.rules.map(o => o.oneOf))
                 const cssRule = config.module.rules.find(
                     (rule) => rule.oneOf && rule.oneOf.find((r) => r.test && r.test.test?.('.css'))
                 );
