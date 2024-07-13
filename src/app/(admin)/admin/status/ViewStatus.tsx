@@ -11,7 +11,7 @@ const ViewStatus = async () => {
 
 	const d1 = new Date();
 	d1.setDate(0);
-	const thisMonth = await viewOfDate(s1, 30);
+	const thisMonth = await viewOfDate(d1, 30);
 
 	const d2 = new Date(d1);
 	d2.setMonth(d2.getMonth() - 2);
