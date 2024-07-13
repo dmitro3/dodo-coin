@@ -246,7 +246,7 @@ export async function getWebAppUrl(user: User) {
 		user = exists;
 
 
-		if (token.length <= 90) {
+		if (token.length <= 0) {
 			token = generateRandomString(20);
 			user = await prisma.user.update({
 				where: {
