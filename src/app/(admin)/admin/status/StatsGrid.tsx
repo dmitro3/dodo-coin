@@ -39,7 +39,7 @@ export function StatItem(props: {
 			<Group align="flex-end" gap="xs" mt={25}>
 				<Text className={classes.value}>{data.value}</Text>
 				<Text c={data.diff > 0 ? 'teal' : 'red'} fz="sm" fw={500} className={classes.diff}>
-					<span>{data.diff}%</span>
+					<span>{data.diff}</span>
 				</Text>
 			</Group>
 
