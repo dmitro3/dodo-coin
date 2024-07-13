@@ -6,8 +6,18 @@ import SiteStat from "@/app/(admin)/admin/status/SiteStat";
 const ViewStatus = async () => {
 	return (
 		<div>
-			<SiteStat />
-			<SiteUser/>
+			<SiteStat
+				targetKey={'created_at'}
+				model={'siteView'}
+				title={'Site View'}
+				unit={'views'}
+			/>
+			<SiteStat
+				targetKey={'joined_at'}
+				model={'user'}
+				title={'Site User'}
+				unit={'users'}
+			/>
 		</div>
 	);
 };

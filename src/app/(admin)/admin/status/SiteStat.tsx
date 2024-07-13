@@ -5,31 +5,31 @@ import {recordOfDate} from "@/app/(admin)/admin/status/ViewStatus";
 
 const SiteStat = async (props: {
 	model: keyof typeof prisma,
-	key: string,
+	targetKey: string,
 	unit: string,
 	title: string
 }) => {
-	const today = await recordOfDate(props.model,props.key,new Date());
+	const today = await recordOfDate(props.model,props.targetKey,new Date());
 
 	const d = new Date();
 	d.setDate(d.getDate() - 1);
-	const yesterday = await recordOfDate(props.model,props.key,d);
+	const yesterday = await recordOfDate(props.model,props.targetKey,d);
 
 	const _d1 = new Date();
 	_d1.setDate(_d1.getDate() - _d1.getDay());
-	const thisWeek = await recordOfDate(props.model,props.key,_d1,7);
+	const thisWeek = await recordOfDate(props.model,props.targetKey,_d1,7);
 
 	const _d2 = new Date(_d1);
 	_d2.setDate(_d2.getDate() - 7);
-	const prevWeek = await recordOfDate(props.model,props.key,_d2,7);
+	const prevWeek = await recordOfDate(props.model,props.targetKey,_d2,7);
 
 	const d1 = new Date();
 	d1.setDate(0);
-	const thisMonth = await recordOfDate(props.model,props.key,d1, 30);
+	const thisMonth = await recordOfDate(props.model,props.targetKey,d1, 30);
 
 	const d2 = new Date(d1);
 	d2.setMonth(d2.getMonth() - 2);
-	const prevMonth = await recordOfDate(props.model,props.key,d2, 30);
+	const prevMonth = await recordOfDate(props.model,props.targetKey,d2, 30);
 
 	return (
 		<>
