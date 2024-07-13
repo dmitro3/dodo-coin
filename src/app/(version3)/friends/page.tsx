@@ -146,40 +146,45 @@ const Page = async () => {
 										{friends.length} fren
 									</div>
 									<div data-v-51de0b63="" className="list">
-										{friends.map(f => (
-											<div
-												data-v-97259735=""
-												data-v-51de0b63=""
-												className="pages-frens-list-item"
-												key={f.id}
-											>
-												<div data-v-97259735="" className="avatar">
-													<div data-v-97259735="" className="letter">
-														{f.username?.slice(0, 1).toUpperCase()}
-													</div>
-												</div>
-												<div data-v-97259735="" className="details">
-													<div data-v-97259735="" className="username">
-														{f.username}
-													</div>
-													<div data-v-97259735=""
-														className="frens-count-compose">
-														<div data-v-97259735="" className="kit-icon icon">
-															{f.joined_at.toLocaleDateString()}
+										{friends.map(f => {
+											const rand = f.joined_at.getTime() % 4 === 0;
+											return (
+												(
+													<div
+														data-v-97259735=""
+														data-v-51de0b63=""
+														className="pages-frens-list-item"
+														key={f.id}
+													>
+														<div data-v-97259735="" className="avatar bg-red-400">
+															<div data-v-97259735="" className="letter">
+																{f.username?.slice(0, 1).toUpperCase()}
+															</div>
+														</div>
+														<div data-v-97259735="" className="details">
+															<div data-v-97259735="" className="username">
+																{f.username}
+															</div>
+															<div data-v-97259735=""
+																className="frens-count-compose">
+																<div data-v-97259735="" className="kit-icon icon">
+																	{f.joined_at.toLocaleDateString()}
+																</div>
+															</div>
+														</div>
+														<div data-v-97259735="" className="balance flex gap-1 items-center">
+															{Big(f.tronex_balance).toFixed(2)}
+															<img
+																src={'/logo.webp'} style={{
+																width: "20px",
+																height: "20px",
+																objectFit: "cover"
+															}}/>
 														</div>
 													</div>
-												</div>
-												<div data-v-97259735="" className="balance flex gap-1 items-center">
-													{Big(f.tronex_balance).toFixed(2)}
-													<img
-														src={'/logo.webp'} style={{
-														width: "20px",
-														height: "20px",
-														objectFit: "cover"
-													}}/>
-												</div>
-											</div>
-										))}
+												)
+											)
+										})}
 									</div>
 								</div>
 
