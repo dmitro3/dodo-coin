@@ -14,11 +14,11 @@ export default class V2Login extends Handler {
         });
         if (!user) throw(401);
 	   const res = NextResponse.json({
-		   tron_balance: user.tron_balance+"",
-		   shib_balance: user.shib_balance+"",
-		   tronex_balance: user.tronex_balance+"",
-		   step: user.step+"",
-		   power: user.power+"",
+		   tron_balance: user.wallet,
+		   shib_balance: user.wallet,
+		   tronex_balance: user.wallet,
+		   step: user.wallet,
+		   power: user.wallet,
 		   user: {
 			   id: user.id
 		   }
