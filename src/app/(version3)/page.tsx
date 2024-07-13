@@ -11,7 +11,7 @@ const Page = () => {
 				<div className="container" id="container" style={{position: "absolute"}}>
 					<div className="profileData " style={{}}>
 
-						<div className="profileData-name p-4">
+						<div className="profileData-name p-2">
 							<div className="profileData-name-nick">itz_parsaw</div>
 							<div className="profileData-name-tag">@itz_parsaw</div>
 						</div>
