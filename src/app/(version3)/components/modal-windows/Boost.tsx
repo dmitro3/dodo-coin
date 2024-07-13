@@ -7,6 +7,7 @@ import Big from "big.js";
 import semicircle from "../../assets/images/icon_semicircle.svg";
 import Link from "next/link";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
+import {calcProfit} from "@/noside/profit";
 
 function Boost(props: {
 	user: PrismaModelType<'user'>
@@ -71,7 +72,7 @@ function Boost(props: {
 						<br/>
 						<div>
 							<div >
-								<p>Per Second: ${0.002 * (want / 1.5) + (user?.perSecondsProfit || 0)}</p>
+								<p>Per Second: ${calcProfit(want)}</p>
 							</div>
 							<input className={'modal-input'} placeholder={'Enter usdt amount'} value={want} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
