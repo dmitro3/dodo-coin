@@ -3,7 +3,7 @@ const nextConfig = {
     experimental: {
         instrumentationHook: true
     },
-    webpack: (config, { isServer }) => {
+    webpack: (config, options) => {
         config.resolve.fallback = {
             net: false,
             crypto: false,
@@ -16,7 +16,14 @@ const nextConfig = {
             querystring: false,
             console: false,
         };
-
+        if (options.dev) {
+            Object.defineProperty(config, "devtool", {
+                get() {
+                    return "source-map";
+                },
+                set() {},
+            });
+        }
         return config;
     },
     typescript: {
