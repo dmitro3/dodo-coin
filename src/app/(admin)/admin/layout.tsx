@@ -1,6 +1,6 @@
 'use client';
 
-import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
+import {AppShell, Burger, Group, NavLink, Skeleton} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import "@mantine/core/styles.css"
 export default function BasicAppShell(props: any) {
@@ -24,11 +24,10 @@ export default function BasicAppShell(props: any) {
 			</AppShell.Header>
 			<AppShell.Navbar p="md">
 				Navbar
-				{Array(15)
-					.fill(0)
-					.map((_, index) => (
-						<Skeleton key={index} h={28} mt="sm" animate={false} />
-					))}
+				<br/>
+				<NavLink
+					label={'test'}
+				/>
 			</AppShell.Navbar>
 			<AppShell.Main>
 				{props.children}
