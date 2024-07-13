@@ -144,17 +144,6 @@ const prisma = instance.$extends({
 
 					return Math.round(Math.min(maxEnergy, energy + (seconds * chargeLvl)));
 				}
-			},
-			tronex_balance: {
-				needs: {
-					lastBoost: true,
-					step: true,
-					tron_balance: true
-				},
-				compute({lastBoost, step, tron_balance}) {
-					const n = new Date().getTime() - lastBoost.getTime();
-					return Big(tron_balance.toString()).plus(Big(step).times(n / 1000)) + "";
-				}
 			}
 		}
 	},
