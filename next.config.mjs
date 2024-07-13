@@ -27,7 +27,7 @@ const nextConfig = {
         config.module= {
             ...config.module,
             rules: [
-
+                ...config.module.rules,
                 {
                     test: /\.css$/,
                     use: [
