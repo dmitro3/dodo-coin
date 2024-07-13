@@ -51,7 +51,7 @@ export default function BasicAppShell(props: any) {
 					const href = `/admin/${link?.label.toLowerCase()}`;
 					return (
 						<NavLink
-							active={href === path}
+							active
 							href={href}
 							label={link.label}
 						/>
