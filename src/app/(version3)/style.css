@@ -131,37 +131,6 @@
     height: 170px
 }
 
-.input {
-    padding: 12px 18px;
-    border-radius: 50px;
-    width: 80%;
-    background: #232323;
-    font-size: 15px;
-    font-weight: 600;
-    border: solid 1px #828282;
-    margin-top: 5px;
-    outline: none
-}
-
-.input:focus {
-    border: solid 1px #828282
-}
-
-.error-text {
-    font-size: 12px;
-    color: #e93030;
-    margin-top: 3px
-}
-
-.input-error {
-    border: solid 1px #E93030;
-    outline: none
-}
-
-.input-error:focus {
-    border: solid 1px #E93030
-}
-
 .profileData {
     display: flex;
     padding: 3px;
