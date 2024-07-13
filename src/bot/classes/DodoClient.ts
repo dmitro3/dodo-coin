@@ -9,11 +9,11 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {User} from "@prisma/client";
 
 import {CLIENT_BOT} from "@/bot/main";
-import {getInviteText, sendInvite} from "@backend/api/player/send_invite/handler";
 import {Message, Update} from "telegraf/types";
 import {CallbackQuery} from "@telegraf/types";
 import dodoBot from "./DodoBot";
 import {generateRandomString} from "@backend/utils/string";
+import {getInviteText, sendInvite} from "@backend/api/player/send_invite/actions";
 
 
 export async function communityButton(final = false) {
