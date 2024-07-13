@@ -4,21 +4,13 @@ import {useEffect, useMemo, useState} from "react";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
 const FarmButton = (props: {
-	user: NonNullable<Required<PrismaModelType<'user'>>>
+	user: NonNullable<PrismaModelType<'user'>>
 }) => {
 	let {user} = props;
-	const defaultExpiredAt = useMemo(() => {
-		if (!user.farmStartAt) return undefined;
-		const c = new Date(user.farmStartAt);
-		c.setHours(c.getHours() + user.farmMaxHours);
-		return c;
-	}, [user?.farmStartAt]);
-	const [expiredAt, setExpiredAt] = useState<Date>(defaultExpiredAt);
-	const [active, setActive] = useState(user?.farmStartAt.getTime() >);
-	const [activedAt, setActivedAt] = useState<Date>();
-
+	const [expiredAt, setExpiredAt] = useState(user.farmExpiredAt);
+	const [active, setActive] = useState(!user.isExpired);
+	const [activedAt, setActivedAt] = useState(user.farmStartAt || undefined);
 	const [currentState, setCurrentState] = useState(0)
-
 
 	useEffect(() => {
 		if (activedAt) {
