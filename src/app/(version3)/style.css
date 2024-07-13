@@ -84,21 +84,6 @@
     font-size: 16px
 }
 
-.button {
-    width: 90%;
-    min-height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    border-radius: 50px;
-    position: absolute;
-    bottom: 20px;
-    font-weight: 600;
-    transition: .3s;
-    color: #000;
-    text-align: center
-}
 
 @media screen and (max-height: 600px) {
     .button {
