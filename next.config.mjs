@@ -17,16 +17,14 @@ const nextConfig = {
             console: false,
         };
         if (options.dev) {
-            if (dev) {
-                // This will run only in development mode
-                config.module.rules.push({
-                    test: /\.css$/,
-                    use: [
-                        'style-loader',
-                        'css-loader',
-                    ],
-                });
-            }
+            // This will run only in development mode
+            config.module.rules.push({
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+            });
         }
         return config;
     },
