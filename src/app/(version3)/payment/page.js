@@ -69,7 +69,7 @@ function PaymentPage(props) {
 
     return (
         <div>
-            <main>
+            <main className={'flex flex-col gap-2'}>
                 <div className="payment">
                     <span className="payment__title">Payment</span>
                     <div className="payment-body">
