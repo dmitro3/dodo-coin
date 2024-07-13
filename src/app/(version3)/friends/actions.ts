@@ -8,7 +8,7 @@ export async function getFriends() {
 
 	return prisma.user.findMany({
 		where: {
-			refId: user?.id
+			refId: user.id
 		},
 		include: {
 			_count: {
