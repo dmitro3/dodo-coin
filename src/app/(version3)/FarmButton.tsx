@@ -1,9 +1,38 @@
 'use client'
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const FarmButton = () => {
-	const [active, setActive] = useState(false)
+	const [active, setActive] = useState(false);
+	const [activedAt, setActivedAt] = useState<Date>();
+	const [expiredAt, setExpiredAt] = useState<Date>();
+	const [currentState, setCurrentState] = useState(0)
+	const maxHour = 8;
+
+	useEffect(() => {
+		if (activedAt) {
+			const c = new Date(activedAt);
+			c.setHours(c.getHours() + maxHour);
+			setExpiredAt(c);
+		}
+	}, [activedAt]);
+	useEffect(() => {
+		setActivedAt(new Date())
+	}, [active]);
+	useEffect(()=>{
+		if (activedAt && expiredAt && active) {
+			const thread = setInterval(()=>{
+				const now = new Date();
+
+				const diff = expiredAt.getTime() - now.getTime();
+				const allDiff = activedAt.getTime() - expiredAt.getTime();
+
+				setCurrentState(diff / allDiff * 100);
+			}, 1000);
+			return ()=>clearInterval(thread);
+		}
+	}, [active,expiredAt,activedAt])
+
 	return (
 		<div className="ebat">
 			<div id="cont" data-pct={100}>
