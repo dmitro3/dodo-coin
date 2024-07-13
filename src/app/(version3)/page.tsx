@@ -16,7 +16,7 @@ const Page = async () => {
 				<div className="container flex flex-col gap-2 items-center" id="container" >
 					<div className="profileData " style={{}}>
 
-						<div className="profileData-name p-2">
+						<div className="profileData-name p-2 px-4">
 							<div className="profileData-name-nick font-bold tracking-widest text-lg">{user?.username || "Loading"}</div>
 						</div>
 					</div>
