@@ -8,7 +8,10 @@ import {communityButton, getWebAppUrl} from "@/bot/classes/DodoClient";
 
 export async function sendInvite(user?: User) {
 	user = user ?? (await getUserFromCookies() || undefined);
-	if (!user) return;
+	if (!user) {
+		console.log("USER NOT FOUND")
+		return;
+	}
 
 	await CLIENT_BOT.waitToReady();
 	await CLIENT_BOT.telegram.sendMessage(user.chatId,"Invite your friends and get bonuses for each invited friend!", {
