@@ -25,6 +25,7 @@ const nextConfig = {
             });
         }
         config.module= {
+            ...config.module,
             rules: [
 
                 {
