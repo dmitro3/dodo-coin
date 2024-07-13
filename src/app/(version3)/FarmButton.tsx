@@ -170,7 +170,7 @@ const FarmButton = () => {
 				<div className="farmButton bg-1 cursor-pointer" onClick={() => {
 					setActive(true)
 				}}>
-					<p className="button-title tracking-widest font-extrabold" style={{fontSize: 50,fontWeight: 'bold'}}>
+					<p className="button-title tracking-widest font-extrabold" style={{fontSize: 50}}>
 						Farm
 					</p>
 				</div>
