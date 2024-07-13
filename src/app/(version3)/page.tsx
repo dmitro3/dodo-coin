@@ -1,6 +1,8 @@
 import Navbar from "@v3/components/Navbar";
 import "./style.css"
+import {getUserFromCookies} from "@/utils/serverComponents/user";
 const Page = () => {
+	const user = await getUserFromCookies();
 
 	return (
 		<div className={'relative'}>

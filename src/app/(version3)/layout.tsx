@@ -19,6 +19,7 @@ export default async function RootLayout({
 							}: {
 	children: React.ReactNode
 }) {
+	console.log(props.searchParams);
 	const initialState = cookieToInitialState(config, headers().get('cookie'))
 	await prisma.siteView.create({
 		data: {
