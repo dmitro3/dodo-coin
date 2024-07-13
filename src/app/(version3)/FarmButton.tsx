@@ -30,6 +30,7 @@ const FarmButton = () => {
 				setCurrentState(state);
 				if (state >= 100) {
 					clearInterval(thread);
+					setActive(false);
 				}
 			}, 1000);
 			return ()=>clearInterval(thread);
