@@ -140,7 +140,67 @@ const Page = async () => {
 										fren.{" "}
 									</div>
 								</div>
-								
+								<div data-v-51de0b63="" data-v-55492676="" className="pages-frens-list">
+									<div data-v-51de0b63="" className="counter">
+										1 fren
+									</div>
+									<div data-v-51de0b63="" className="list">
+										<div
+											data-v-97259735=""
+											data-v-51de0b63=""
+											className="pages-frens-list-item"
+										>
+											<div data-v-97259735="" className="avatar">
+												<div data-v-97259735="" className="letter">
+													I
+												</div>
+												<img
+													data-v-97259735=""
+													src="https://s3.blum.codes/2238d8a4-a442-46e8-bc3d-1afad31e346d/51fb9077-46ac-4da3-9a34-046468c0886d"
+													alt="Avatar"
+													style={{
+														opacity: 1,
+														transition: "opacity 0.2s ease 0s"
+													}}
+												/>
+											</div>
+											<div data-v-97259735="" className="details">
+												<div data-v-97259735="" className="username">
+													itz_parsaw
+												</div>
+												<div data-v-97259735="" className="frens-count-compose">
+													<div data-v-97259735="" className="kit-icon icon">
+														<svg
+															width={24}
+															height={24}
+															viewBox="0 0 24 24"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<g id="Style=Line">
+																<path
+																	id="Vector"
+																	d="M21 19.9999C21 18.2583 19.3304 16.7767 17 16.2275M15 20C15 17.7909 12.3137 16 9 16C5.68629 16 3 17.7909 3 20M15 13C17.2091 13 19 11.2091 19 9C19 6.79086 17.2091 5 15 5M9 13C6.79086 13 5 11.2091 5 9C5 6.79086 6.79086 5 9 5C11.2091 5 13 6.79086 13 9C13 11.2091 11.2091 13 9 13Z"
+																	stroke="white"
+																	strokeWidth={2}
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
+																/>
+															</g>
+														</svg>
+													</div>
+													<div data-v-97259735="" className="counter">
+														0
+													</div>
+												</div>
+											</div>
+											<div data-v-97259735="" className="balance">
+												56 BP
+											</div>
+										</div>
+									</div>
+								</div>
+
 							</>
 						)}
 						<div data-v-55492676="" className="invite-button-wrapper">
