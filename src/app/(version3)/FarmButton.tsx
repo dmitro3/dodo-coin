@@ -51,13 +51,11 @@ const FarmButton = () => {
 		const minutes = Math.floor((allDiff / 1000 / 60) - (hours * 60));
 		const seconds = ((allDiff / 1000) - (minutes * 60)) % 60;
 
-		const R = {
+		return {
 			seconds: Math.round(seconds),
 			minutes: Math.round(minutes),
 			hours: Math.round(hours),
 		};
-		
-		return R;
 	},[currentState]);
 
 	return (
