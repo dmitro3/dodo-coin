@@ -6,7 +6,9 @@ import Image from "next/image";
 import React from "react";
 import InviteButton from "@v3/friends/InviteButton";
 const Page = async () => {
-	const friends = await getFriends()
+	const friends = await getFriends();
+
+	const empty = friends.length === 0;
 
 	return (
 		<div>
@@ -34,7 +36,7 @@ const Page = async () => {
 										</>
 									): (
 										<>
-										I
+
 										</>
 									)}
 								</div>
