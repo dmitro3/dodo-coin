@@ -172,9 +172,7 @@ const FarmButton = (props: {
 					</div>
 					{remaining && (
 						<div className="time font-extrabold">
-							{!!remaining.hours && `${remaining.hours}h `}
-							{!!remaining.minutes && `${remaining.minutes}m `}
-							{!!remaining.seconds && `${remaining.seconds}s`}
+							{Object.entries(remaining).filter(o => !!o[1]).map(([key, value]) => `${value}${key.slice(0,1).toLowerCase()}`)}
 						</div>
 					)}
 
