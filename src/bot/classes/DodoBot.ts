@@ -9,7 +9,7 @@ import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 import Big from "big.js";
 
-export const PerFriendBonus = 0.01;
+export const PerFriendBonus = 1000;
 
 class DodoBot {
 	bot: CustomTelegraf;
@@ -75,7 +75,7 @@ class DodoBot {
 										id: +(fromUser.id),
 									},
 									data: {
-										shib_balance: Big(fromUser.shib_balance).plus(PerFriendBonus).toString(),
+										wallet: fromUser.wallet + PerFriendBonus,
 									},
 								});
 								refId = fromUser.id
