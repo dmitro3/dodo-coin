@@ -20,7 +20,7 @@ const nextConfig = {
             if (options.dev && !options.isServer) {
                 config.module.rules = config.module.rules.map(p => ({
                     ...p,
-                    oneOf: p.oneOf.map(o => ({
+                    oneOf: p.oneOf?.map(o => ({
                         ...o,
                         options: {
                             ...o.options || {},
