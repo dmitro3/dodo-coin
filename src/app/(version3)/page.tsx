@@ -6,7 +6,7 @@ import FarmButton from "@v3/FarmButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
-	
+
 	return (
 		<div className={'relative'}>
 			<div className="bg">
@@ -17,8 +17,7 @@ const Page = async () => {
 					<div className="profileData " style={{}}>
 
 						<div className="profileData-name p-2">
-							<div className="profileData-name-nick">{user?.username || "Loading"}</div>
-							<div className="profileData-name-tag">@{user?.username ?? "loading"}</div>
+							<div className="profileData-name-nick">@{user?.username || "Loading"}</div>
 						</div>
 					</div>
 					{!!user ? (
