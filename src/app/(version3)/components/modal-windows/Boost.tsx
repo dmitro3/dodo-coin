@@ -48,7 +48,8 @@ function Boost(props: {
 						<br/>
 						<div>
 							<div >
-								<p>Per Second: ${calcProfit(want) + (user?.perSecondsProfit || 0)}</p>
+								<p>Per Second: ${(calcProfit(want) + (user?.perSecondsProfit || 0)).toFixed(3)}</p>
+								<p>Per Hour: ${((calcProfit(want) + (user?.perSecondsProfit || 0)) * 60 * 60).toFixed(3)}</p>
 							</div>
 							<input className={'modal-input'} placeholder={'Enter usdt amount'} value={want || ""} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
