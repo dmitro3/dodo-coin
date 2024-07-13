@@ -7,8 +7,9 @@ import {sendInvite} from "@backend/api/player/send_invite/actions";
 const InviteButton = () => {
 	return (
 		<button
-			onClick={()=>{
-				sendInvite()
+			onClick={async ()=>{
+				await sendInvite();
+				window.Telegram.WebApp.close();
 			}}
 			data-v-8899132f=""
 			data-v-a174c313=""
