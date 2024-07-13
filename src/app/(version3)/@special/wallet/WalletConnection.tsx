@@ -5,6 +5,7 @@ import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
 import {handleWalletVerification, WalletVerificationModal} from "@v3/@special/wallet/Verification";
 import {setState} from "jest-circus";
+import {useInit} from "@/utils/safeState";
 
 const WalletConnection = (props: {
 	children: ReactNode
@@ -12,7 +13,11 @@ const WalletConnection = (props: {
 	const {open} = useWeb3Modal();
 	const account = useAccount();
 	const {disconnectAsync} = useDisconnect();
-	const [verified, setVerified] = useState(window.localStorage.getItem("walletVerified") === "true");
+	const [verified, setVerified] = useState(false);
+
+	useInit(()=>{
+		setVerified(window.localStorage.getItem("walletVerified") === "true")
+	})
 
 	useEffect(() => {
 		if (account.address) {
