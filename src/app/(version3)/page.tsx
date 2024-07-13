@@ -6,9 +6,7 @@ import FarmButton from "@v3/FarmButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
-
-
-
+	
 	return (
 		<div className={'relative'}>
 			<div className="bg">
