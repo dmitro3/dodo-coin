@@ -53,7 +53,7 @@ function PaymentPage(props) {
                 }
             };
 
-            const interval = setInterval(checkPayment, 1000);
+            const interval = setInterval(checkPayment, 15000);
             return () => clearInterval(interval);
         }
     }, [transactionId]);
