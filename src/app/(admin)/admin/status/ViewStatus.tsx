@@ -1,5 +1,6 @@
 import prisma from "@backend/modules/prisma/Prisma";
 import StatsGrid from "@/app/(admin)/admin/status/StatsGrid";
+import React from "react";
 
 const ViewStatus = async () => {
 	return (
