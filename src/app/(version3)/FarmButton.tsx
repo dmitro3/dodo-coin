@@ -181,7 +181,7 @@ const FarmButton = (props: {
 				<>
 					{user.farmed ? (
 						<div className={'farmButton'}>
-							HALO
+							{user.farmed.toLocaleString()}
 						</div>
 					):(
 						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
