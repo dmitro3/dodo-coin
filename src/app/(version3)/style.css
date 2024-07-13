@@ -236,7 +236,7 @@
     width: 260px;
     height: 260px;
     background: var(--primary);
-    opacity: 0.2;
+    opacity: 0.6;
     border-radius: 62% 47% 82% 35%/45% 45% 80% 66%;
     will-change: border-radius,transform,opacity;
     animation: sliderShape 16s linear infinite;
