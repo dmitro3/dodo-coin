@@ -11,7 +11,7 @@ const Page = async () => {
 		<div className={'relative'}>
 
 			<div className={'relative z-20'}>
-				<main className={'holder'}>
+				<main className={'holder relative'}>
 					<div className="bg relative z-10">
 						<div className="slider-thumb"/>
 					</div>
