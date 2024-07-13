@@ -4,6 +4,7 @@
 
 :root {
     --primary: #fdc04c;
+    --secondary: #fd814c
 }
 
 @layer utilities {
