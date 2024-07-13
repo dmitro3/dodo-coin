@@ -9,7 +9,7 @@ const Page = () => {
 			</div>
 			<main className={'holder'}>
 				<div className="container" id="container" style={{position: "absolute"}}>
-					<div className="profileData p-2" style={{}}>
+					<div className="profileData p-4" style={{}}>
 
 						<div className="profileData-name">
 							<div className="profileData-name-nick">itz_parsaw</div>
