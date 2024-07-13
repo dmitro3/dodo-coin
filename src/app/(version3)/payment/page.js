@@ -29,7 +29,7 @@ function PaymentPage(props) {
                     setCreating(false);
                     setTransactionId((r.result.invoice_id || r.result.uuid).split("-")?.at?.(-1))
                 }
-            })
+            }).catch(console.error);
         } else router.back();
     }, [pathname]);
 
