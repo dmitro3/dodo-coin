@@ -63,7 +63,7 @@ const Page = async () => {
 											Boost
 										</button>
 									</a>
-									<Boost />
+									<Boost user={user} />
 								</div>
 								<br/>
 								<br/>
