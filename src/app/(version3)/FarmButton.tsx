@@ -41,9 +41,10 @@ const FarmButton = () => {
 
 		const allDiff = expiredAt?.getTime() - new Date().getTime();
 
-		const seconds = allDiff / 1000;
-		const minutes = seconds / 60;
-		const hours = minutes / 60;
+
+		const hours = (allDiff / 1000 / 60) / 60;
+		const minutes = ((allDiff / 1000) / 60) - (hours * 60);
+		const seconds = (allDiff / 1000) - (minutes * 60);
 
 		const fakeDate = new Date();
 		fakeDate.setUTCMilliseconds(allDiff);
