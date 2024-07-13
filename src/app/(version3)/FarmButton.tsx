@@ -11,6 +11,7 @@ const FarmButton = (props: {
 	const [active, setActive] = useState(!user.isExpired);
 	const [activedAt, setActivedAt] = useState(user.farmStartAt || undefined);
 	const [currentState, setCurrentState] = useState(0)
+	const [farmed, setFarmed] = useState(user.farmed)
 
 	useEffect(() => {
 		if (activedAt) {
