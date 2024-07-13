@@ -26,7 +26,7 @@ const Page = async () => {
 							<>
 								<div className="points" style={{}}>
 									<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
-									50
+									{user.wallet.toLocaleString()}
 								</div>
 								<FarmButton user={user} />
 							</>
