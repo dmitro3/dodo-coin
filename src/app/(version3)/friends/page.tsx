@@ -6,6 +6,7 @@ import Image from "next/image";
 import React from "react";
 import InviteButton from "@v3/friends/InviteButton";
 import Big from "big.js";
+import {PerFriendBonus} from "@/bot/classes/DodoBot";
 
 const Page = async () => {
 	const friends = await getFriends();
@@ -122,7 +123,7 @@ const Page = async () => {
 											>
 												<div data-v-191230a7="" className="el-char-wrapper">
 													<div data-v-191230a7="" className="el-char">
-														5
+														{friends.length * PerFriendBonus}
 													</div>
 												</div>
 											</div>
