@@ -108,7 +108,7 @@ const Page = async () => {
 											Invite Frens
 										</div>
 									</div>
-									<div data-v-fa52f77d="" className="claim-zone">
+									<div data-v-fa52f77d="" className="claim-zone py-2">
 										<div data-v-fa52f77d="" className="claim-balance">
 											<img
 												data-v-fa52f77d=""
