@@ -2,6 +2,7 @@ import Navbar from "@v3/components/Navbar";
 import "./style.css"
 import React from "react";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
+import FarmButton from "@v3/FarmButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
