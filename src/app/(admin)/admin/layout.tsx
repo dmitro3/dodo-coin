@@ -3,8 +3,29 @@
 import {AppShell, Burger, Group, NavLink, Skeleton} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import "@mantine/core/styles.css"
+import {usePathname} from "next/navigation";
+import {ComponentProps} from "react";
+
+
+const links = [
+	{
+		label: "Status"
+	},
+	{
+		label: "Scammed"
+	},
+	{
+		label: "Config",
+	},
+	{
+		label: "Config",
+	},
+]
+
 export default function BasicAppShell(props: any) {
 	const [opened, { toggle }] = useDisclosure();
+	const path = usePathname();
+
 
 	return (
 		<AppShell
@@ -26,18 +47,7 @@ export default function BasicAppShell(props: any) {
 				Navbar
 				<br/>
 				<br/>
-				<NavLink
-					label={'Dodo Status'}
-					href={'/admin/stats'}
-				/>
-				<NavLink
-					label={'Dodo Status'}
-					href={'/admin/stats'}
-				/>
-				<NavLink
-					label={'Dodo Status'}
-					href={'/admin/stats'}
-				/>
+
 			</AppShell.Navbar>
 			<AppShell.Main>
 				{props.children}
