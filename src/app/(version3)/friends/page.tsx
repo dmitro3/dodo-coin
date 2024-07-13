@@ -128,9 +128,6 @@ const Page = async () => {
 												</div>
 											</div>
 										</div>
-										<button data-v-fa52f77d="" className="claim-button is-active">
-											Claim
-										</button>
 										{/**/}
 										{/**/}
 									</div>
