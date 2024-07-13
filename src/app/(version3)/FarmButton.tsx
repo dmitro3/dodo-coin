@@ -67,9 +67,9 @@ const FarmButton = (props: {
 		const seconds = ((allDiff / 1000) - (minutes * 60)) % 60;
 
 		return {
-			seconds: Math.round(seconds),
-			minutes: Math.round(minutes),
 			hours: Math.round(hours),
+			minutes: Math.round(minutes),
+			seconds: Math.round(seconds),
 		};
 	},[currentState]);
 
