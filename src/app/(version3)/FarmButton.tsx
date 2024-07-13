@@ -2,6 +2,7 @@
 
 import {useEffect, useMemo, useState} from "react";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
+import {startFarm} from "@v3/actions";
 
 const FarmButton = (props: {
 	user: NonNullable<PrismaModelType<'user'>>
@@ -23,7 +24,7 @@ const FarmButton = (props: {
 	useEffect(() => {
 		if (active && !activedAt) {
 			setActivedAt(new Date());
-
+			startFarm().catch(console.error)
 		}
 	}, [active]);
 	useEffect(()=>{
