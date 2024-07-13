@@ -71,7 +71,7 @@ function Boost(props: {
 						<br/>
 						<div>
 							<div >
-								<p>Per Second: {Big(1.002).pow(want).minus(1).toFixed(3)}$</p>
+								<p>Per Second: {0.002 * Math.pow(10, want) + (user?.perSecondsProfit || 0)}$</p>
 							</div>
 							<input className={'modal-input'} placeholder={'Enter usdt amount'} value={want} onChange={(e)=>setWant(+e.target.value)} type={'number'} />
 						</div>
