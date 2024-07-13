@@ -34,7 +34,7 @@ model User {
   // V2 Props
   perSecondsProfit Float                 @default(0.002)
   usdtBalance      Float                 @default(0)
-  farmActivedAt    DateTime?
+  farmStartAt      DateTime?
   UserTransaction  UserTransaction[]
   CryptoWallet     CryptoWallet[]
   connectedWallets UserConnectedWallet[]
