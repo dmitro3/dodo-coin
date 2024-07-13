@@ -53,9 +53,9 @@ const FarmButton = () => {
 					<div className="button-title" style={{ fontSize: 42 }}>
 						Farming
 					</div>
-					<div className="collected mt-5">
+					<div className="collected mt-">
 						<img src="/logo.webp" alt="" style={{ width: 25, height: 25 }} />
-						36.355
+						36.3552
 					</div>
 					<div className="time">5h 5m 29s</div>
 				</div>
