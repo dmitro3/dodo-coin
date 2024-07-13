@@ -9,7 +9,7 @@ import {error} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 import Big from "big.js";
 
-export const PerFriendBonus = 1000;
+export const PerFriendBonus = 50;
 
 class DodoBot {
 	bot: CustomTelegraf;
