@@ -45,7 +45,7 @@ const FarmButton = (props: {
 	}, [active,expiredAt,activedAt])
 	useEffect(() => {
 		if (currentState === 0) return;
-
+		console.log(active,activedAt, expiredAt,currentState);
 		setFarmed(pre => +((pre + user.perSecondsProfit).toFixed(3)));
 	}, [currentState]);
 	const remaining = useMemo(()=>{
