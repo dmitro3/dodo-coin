@@ -46,15 +46,13 @@ const FarmButton = () => {
 		const minutes = ((allDiff / 1000) / 60) - (hours * 60);
 		const seconds = (allDiff / 1000) - ((minutes * 60) * 60);
 
-		const fakeDate = new Date();
-		fakeDate.setUTCMilliseconds(allDiff);
-		console.log(fakeDate.toLocaleTimeString())
-
-		return {
+		const R = {
 			seconds: Math.round(seconds),
 			minutes: Math.round(minutes),
 			hours: Math.round(hours),
-		}
+		};
+		console.log(R);
+		return R;
 	},[currentState]);
 
 	return (
