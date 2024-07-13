@@ -8,7 +8,9 @@ const Layout = async (props: any) => {
 	return (
 		<html>
 		<body>
+		<MantineProvider>
 		{props.children}
+		</MantineProvider>
 		</body>
 		</html>
 	);
