@@ -3,6 +3,7 @@ const nextConfig = {
     experimental: {
         instrumentationHook: true
     },
+    /** @type {import('next/dist/compiled/webpack/webpack').Config} */
     webpack: (config, options) => {
         config.resolve.fallback = {
             net: false,
@@ -23,6 +24,24 @@ const nextConfig = {
                 },
                 set() {},
             });
+        }
+        config.module= {
+            rules: [
+
+                {
+                    test: /\.css$/,
+                    use: [
+                        { loader: 'style-loader' },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                localIdentName:'[local]'
+                            }
+                        }
+                    ]
+                }
+            ]
         }
         return config;
     },
