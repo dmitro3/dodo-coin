@@ -7,7 +7,9 @@ const Layout = async (props: any) => {
 	if (!user || !DodoAdmins.includes(user.id)) redirect("/#deny")
 	return (
 		<html>
+		<body>
 		{props.children}
+		</body>
 		</html>
 	);
 };
