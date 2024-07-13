@@ -182,7 +182,7 @@ const FarmButton = (props: {
 					{user.farmed ? (
 						<div className={'farmButton flex flex-col gap-3 items-center'}>
 							<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
-							<p className={'button-title tracking-widest font-extrabold'}>{user.farmed.toLocaleString()}</p>
+							<p className={'button-title font-extrabold'}>{user.farmed.toLocaleString()}</p>
 						</div>
 					) : (
 						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
