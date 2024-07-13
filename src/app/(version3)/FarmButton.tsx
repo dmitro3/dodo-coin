@@ -9,7 +9,7 @@ const FarmButton = (props: {
 	let {user} = props;
 	const [expiredAt, setExpiredAt] = useState(user.farmExpiredAt);
 	const [active, setActive] = useState(!user.isExpired);
-	const [activedAt, setActivedAt] = useState(user.farmStartAt || undefined);
+	const [activedAt, setActivedAt] = useState(user.isExpired ? undefined:user.farmStartAt || undefined);
 	const [currentState, setCurrentState] = useState(0)
 	const [farmed, setFarmed] = useState(user.farmed)
 
@@ -21,7 +21,10 @@ const FarmButton = (props: {
 		}
 	}, [activedAt]);
 	useEffect(() => {
-		if (active && !activedAt) setActivedAt(new Date())
+		if (active && !activedAt) {
+			setActivedAt(new Date());
+
+		}
 	}, [active]);
 	useEffect(()=>{
 		if (activedAt && expiredAt && active) {
