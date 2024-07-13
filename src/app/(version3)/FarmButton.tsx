@@ -181,6 +181,7 @@ const FarmButton = (props: {
 				<>
 					{user.farmed ? (
 						<div>
+							HALO
 						</div>
 					):(
 						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
