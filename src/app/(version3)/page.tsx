@@ -11,7 +11,7 @@ const Page = () => {
 				<div className="container" id="container" style={{position: "absolute"}}>
 					<div className="profileData" style={{}}>
 						<div className="profileData-pic-null">
-							<img src="/pfp.jpg" alt=""/>
+							<img src="/logo.webp" alt=""/>
 						</div>
 						<div className="profileData-name">
 							<div className="profileData-name-nick">itz_parsaw</div>
