@@ -150,7 +150,14 @@ const FarmButton = () => {
 							36.355
 						</div>
 					</div>
-					<div className="time">5h 5m 29s</div>
+					{remaining && (
+						<div className="time">
+							{remaining.hours && `${remaining.hours}h`}
+							{remaining.minutes && `${remaining.minutes}m`}
+							{remaining.seconds && `${remaining.seconds}s`}
+						</div>
+					)}
+
 				</div>
 			) : (
 				<div className="farmButton bg-1 cursor-pointer" onClick={() => {
