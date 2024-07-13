@@ -80,8 +80,8 @@ function Boost() {
                                     disabled={disabled} onClick={handleAdd}><span>Add</span> <img
                                 src={semicircle} className={"send__icon spin" + (sended ? '' : ' hidden')} alt=""/>
                             </Link>
-                            <a className="modal-button modal-button__cancel " href="#close">
-                                <button>
+                            <a className="" href="#close">
+                                <button className={'modal-button modal-button__cancel '}>
                                     Back
                                 </button>
                             </a>
