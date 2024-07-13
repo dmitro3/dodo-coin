@@ -1,8 +1,8 @@
 "use client";
 import React, {useState} from 'react';
 import {useRouter} from "next/navigation";
-import {useAuth} from '../../hooks/useAuth';
-import {postData} from '../../utils/api';
+import {useAuth} from '@v3/hooks/useAuth';
+import {postData} from '@v3/utils/api';
 import Big from "big.js";
 import semicircle from "../../assets/images/icon_semicircle.svg";
 import Link from "next/link";
@@ -39,7 +39,7 @@ function Boost(props: {
 		}
 	}
 
-	const handleAdd = async (e) => {
+	const handleAdd = async (e: any) => {
 		e.stopPropagation();
 		e.preventDefault();
 		let response;
