@@ -465,7 +465,7 @@ input {
 }
 
 .modal-button__cancel {
-    background-color: rgb(250 250 249 / 0.9);
+    background-color: transparent;
 }
 
 .modal-button__send {
