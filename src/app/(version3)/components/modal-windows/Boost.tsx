@@ -25,7 +25,9 @@ function Boost(props: {
 		e.preventDefault();
 
 		if (user.usdtBalance >= want) {
-			
+			handleBoost(want);
+		} else {
+
 		}
 	};
 
