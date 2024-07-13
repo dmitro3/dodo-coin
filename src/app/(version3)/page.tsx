@@ -33,7 +33,7 @@ const Page = async () => {
 										<svg
 											id="Layer_1"
 											style={{
-												width: "40px",
+												width: "20px",
 											}}
 											data-name="Layer 1"
 											xmlns="http://www.w3.org/2000/svg"
