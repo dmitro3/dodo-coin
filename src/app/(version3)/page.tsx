@@ -24,12 +24,12 @@ const Page = async () => {
 						</div>
 						{!!user ? (
 							<>
-								<div className={'flex flex-col justify-center'}>
+								<div className={'flex flex-col justify-center items-center'}>
 									<div className="points" style={{}}>
 										<img src="/logo.webp" alt="" style={{width: 50, height: 50}}/>
 										{user.wallet.toLocaleString()}
 									</div>
-									<div className="flex gap-1 items-center" style={{}}>
+									<div className="flex gap-1 items-center " style={{}}>
 										<svg
 											id="Layer_1"
 											style={{
