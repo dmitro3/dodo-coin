@@ -40,6 +40,35 @@ const Page = async () => {
 										</>
 									)}
 								</div>
+								{!empty && (
+									<div data-v-fa52f77d="" className="claim-zone">
+										<div data-v-fa52f77d="" className="claim-balance">
+											<img
+												data-v-fa52f77d=""
+												src="data:image/svg+xml,%3csvg%20width='38'%20height='38'%20viewBox='0%200%2038%2038'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M19.284%201.63281H15.4729V5.50868H7.00391V32.6398H15.4729V36.5156H19.284V32.6398H27.3296V28.7639H31.1406V21.0122H27.3296V17.1363H31.1406V9.38455H27.3296V5.50868H19.284V1.63281ZM15.4729%209.38455H21.1895V17.1363H15.4729V9.38455ZM15.4729%2028.7639V21.0122H23.0951V24.888H19.284V28.7639H15.4729Z'%20fill='white'/%3e%3c/svg%3e"
+												alt="Blum logo"
+											/>
+											<div
+												data-v-191230a7=""
+												data-v-c2615662=""
+												data-v-fa52f77d=""
+												className="kit-counter-animation"
+											>
+												<div data-v-191230a7="" className="el-char-wrapper">
+													<div data-v-191230a7="" className="el-char">
+														5
+													</div>
+												</div>
+											</div>
+										</div>
+										<button data-v-fa52f77d="" className="claim-button is-active">
+											Claim
+										</button>
+										{/**/}
+										{/**/}
+									</div>
+
+								)}
 								{/**/}
 							</div>
 							{empty ? (
