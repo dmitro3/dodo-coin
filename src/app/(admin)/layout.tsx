@@ -10,7 +10,7 @@ const Layout = async (props: any) => {
 	return (
 		<html>
 		<body>
-		<MantineProvider>
+		<MantineProvider theme={mantineTheme}>
 		{props.children}
 		</MantineProvider>
 		</body>
