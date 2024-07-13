@@ -23,7 +23,7 @@ function SpinnerClicked() {
     }
 }
 
-function Page() {
+function PageOld() {
     const {userData, loading, setUserData, loadUserData} = useAuth();
     const [displayText, setDisplayText] = useState('1.0 GH/s');
     const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
@@ -91,4 +91,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default PageOld;
