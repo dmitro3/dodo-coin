@@ -60,7 +60,7 @@ function Boost() {
                         <span className="modal-title">Boost Mining Power</span>
                     </div>
                     <div className="modal-body">
-                        <span className="modal-info">Here you can rent mining power for 30 days.</span>
+                        <span className="modal-info">Here you can boost your per second profit</span>
                         <span
                             className="modal-info">The investment profitability is 5% per day and 150% for 30 days.</span>
                         <div className="modal-calc">
