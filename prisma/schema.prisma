@@ -133,7 +133,8 @@ model CryptoWallet {
 }
 
 model SiteSetting {
-  key String @id
+  key   String @id
+  value Json
 }
 
 enum Network {
