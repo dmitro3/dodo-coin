@@ -139,7 +139,6 @@ const Page = async () => {
 									fren.{" "}
 								</div>
 							</div>
-
 						)}
 						<div data-v-55492676="" className="invite-button-wrapper">
 							<div
