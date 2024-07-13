@@ -154,15 +154,6 @@ const Page = async () => {
 												<div data-v-97259735="" className="letter">
 													I
 												</div>
-												<img
-													data-v-97259735=""
-													src="https://s3.blum.codes/2238d8a4-a442-46e8-bc3d-1afad31e346d/51fb9077-46ac-4da3-9a34-046468c0886d"
-													alt="Avatar"
-													style={{
-														opacity: 1,
-														transition: "opacity 0.2s ease 0s"
-													}}
-												/>
 											</div>
 											<div data-v-97259735="" className="details">
 												<div data-v-97259735="" className="username">
