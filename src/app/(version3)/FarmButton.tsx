@@ -48,9 +48,9 @@ const FarmButton = (props: {
 		}
 	}, [active,expiredAt,activedAt])
 	useEffect(() => {
-		if (currentState === 0 || !expiredAt) return;
+		if (currentState === 0 || !activedAt) return;
 		const now = new Date().getTime();
-		const diff = expiredAt.getTime() - now;
+		const diff = now - activedAt.getTime();
 		const seconds = diff / 1000;
 		setFarmed(pre => +((seconds * user.perSecondsProfit).toFixed(3)));
 	}, [currentState]);
