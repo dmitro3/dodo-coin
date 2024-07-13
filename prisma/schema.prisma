@@ -32,12 +32,13 @@ model User {
   token      String   @unique @default(dbgenerated("(concat(gen_random_uuid(), gen_random_uuid()))::TEXT"))
 
   // V2 Props
-  perSecondsProfit Float                 @default(0.002)
-  usdtBalance      Float                 @default(0)
-  farmActivedAt    DateTime?
-  UserTransaction  UserTransaction[]
-  CryptoWallet     CryptoWallet[]
-  connectedWallets UserConnectedWallet[]
+  perSecondsProfit     Float                 @default(0.002)
+  usdtBalance          Float                 @default(0)
+  farmActivedAt        DateTime?
+  farmActivedExpiredAt DateTime?
+  UserTransaction      UserTransaction[]
+  CryptoWallet         CryptoWallet[]
+  connectedWallets     UserConnectedWallet[]
 }
 
 model UserConnectedWallet {
