@@ -157,7 +157,7 @@ const Page = async () => {
 														key={f.id}
 													>
 														<div data-v-97259735="" className="avatar bg-red-400">
-															<div data-v-97259735="" className="letter">
+															<div data-v-97259735="" className="letter bg-red-400">
 																{f.username?.slice(0, 1).toUpperCase()}
 															</div>
 														</div>
