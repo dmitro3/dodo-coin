@@ -10,7 +10,6 @@ export async function setCurrentUser(token: string) {
 		}
 	});
 	if (!user) return false;
-	console.log(user);
 	cookies().set("token", token, {
 		path: "/",
 		expires: new Date().getTime() + 3600 * 60 * 60 * 1000
