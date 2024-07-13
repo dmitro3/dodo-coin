@@ -25,6 +25,7 @@ export default function BasicAppShell(props: any) {
 			<AppShell.Navbar p="md">
 				Navbar
 				<br/>
+				<br/>
 				<NavLink
 					label={'Dodo Status'}
 					href={'/admin/stats'}
