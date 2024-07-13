@@ -34,10 +34,6 @@ const nextConfig = {
                         { loader: 'style-loader' },
                         {
                             loader: 'css-loader',
-                            options: {
-                                modules: true,
-                                localIdentName:'[local]'
-                            }
                         }
                     ]
                 }
