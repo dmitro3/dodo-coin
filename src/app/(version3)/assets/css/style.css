@@ -335,8 +335,10 @@ nav {
 }
 
 input {
-    background: #eee;
-    color: black;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    outline: none !important;;
 }
 
 @media (min-width: 768px) {
