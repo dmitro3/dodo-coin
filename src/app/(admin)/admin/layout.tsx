@@ -15,7 +15,7 @@ const links = [
 		label: "Scammed"
 	},
 	{
-		label: "User",
+		label: "Users",
 	},
 	{
 		label: "Config",
