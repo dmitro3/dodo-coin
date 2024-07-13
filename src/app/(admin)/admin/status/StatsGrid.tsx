@@ -3,11 +3,11 @@ import { Group, Paper, SimpleGrid, Text } from '@mantine/core';
 import classes from './StatsGrid.module.css';
 
 const ExampleData = [
-	{ title: 'Revenue', icon: 'receipt', value: '13,456', diff: 34 },
-	{ title: 'Profit', icon: 'coin', value: '4,145', diff: -13 },
-	{ title: 'Coupons usage', icon: 'discount', value: '745', diff: 18 },
-	{ title: 'New customers', icon: 'user', value: '188', diff: -30 },
-] as const;
+	{ title: 'Revenue', value: '13,456', diff: 34 },
+	{ title: 'Profit', value: '4,145', diff: -13 },
+	{ title: 'Coupons usage',  value: '745', diff: 18 },
+	{ title: 'New customers',  value: '188', diff: -30 },
+];
 
 export default function StatsGrid(props: {
 	stats: typeof ExampleData

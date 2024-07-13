@@ -1,4 +1,5 @@
 import prisma from "@backend/modules/prisma/Prisma";
+import StatsGrid from "@/app/(admin)/admin/status/StatsGrid";
 
 const ViewStatus = async () => {
 
@@ -16,7 +17,13 @@ const ViewStatus = async () => {
 
 	return (
 		<div>
-
+			<StatsGrid stats={[
+				{
+					value: today.length+"",
+					diff: today.length - yesterday.length,
+					icon:
+				}
+			]} />
 		</div>
 	);
 };
