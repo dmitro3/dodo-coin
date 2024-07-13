@@ -53,7 +53,7 @@ const FarmButton = () => {
 					<div className="button-title" style={{ fontSize: 42 }}>
 						Farming
 					</div>
-					<div className="collected">
+					<div className="collected mt-2">
 						<img src="/logo.webp" alt="" style={{ width: 25, height: 25 }} />
 						36.355
 					</div>
