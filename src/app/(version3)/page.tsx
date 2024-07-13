@@ -3,6 +3,7 @@ import "./style.css"
 import React from "react";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import FarmButton from "@v3/FarmButton";
+import Boost from "@v3/components/modal-windows/Boost";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
@@ -62,6 +63,7 @@ const Page = async () => {
 											Boost
 										</button>
 									</a>
+									<Boost />
 								</div>
 								<br/>
 								<br/>
