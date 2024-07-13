@@ -313,7 +313,7 @@ nav {
     flex-direction: column;
     backdrop-filter: blur(25px);
     background-color: transparent;
-    color: black;
+    color: white;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border-radius: 8px;
