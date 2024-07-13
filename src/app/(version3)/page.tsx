@@ -55,7 +55,7 @@ const Page = async () => {
 								<FarmButton user={user}/>
 								<div>
 									<button>
-										test
+										Claim
 									</button>
 								</div>
 								<br/>
