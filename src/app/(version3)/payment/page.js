@@ -114,7 +114,7 @@ function PaymentPage(props) {
                                 <img src={semicircle} className={`show__icon spin${loading ? '' : ' hidden'}`} alt=""/>
                             </button>
                         </div>
-                        <div className="payment__sum"><span className="payment__value">{price.toString()}</span> USDT <span className={'text-xs'}>(ERC20)</span>
+                        <div className="payment__sum"><span className="payment__value">{price.toString()}</span> USDT <sub className={'text-xs'}>(ERC20)</sub>
                         </div>
                         <span className="payment__tip">Send {price.toString()} USDT to this address:</span>
                         <a className="invite-link__copy blur"
