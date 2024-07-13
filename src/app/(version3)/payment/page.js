@@ -103,7 +103,7 @@ function PaymentPage(props) {
                     <span className="payment__title">Payment</span>
                     <div className="payment-body">
                 <span className="payment__description">
-                    Please ensure that you are sending only TETHER (USDT) to the provided deposit address. Sending any other type of cryptocurrency or asset to this address will result in a loss of those funds, as they cannot be recovered.
+                    Please ensure that you are sending only TETHER (ERC20) to the provided deposit address. Sending any other type of cryptocurrency or asset to this address will result in a loss of those funds, as they cannot be recovered.
                 </span>
                         <div className="qr">
                             <img
