@@ -60,7 +60,6 @@ const FarmButton = () => {
 	return (
 		<div className="ebat">
 			<div id="cont" data-pct={100}>
-				{currentState+""}
 				{active ? (
 					<svg
 						id="svg"
