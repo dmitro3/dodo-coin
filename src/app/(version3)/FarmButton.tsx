@@ -19,7 +19,7 @@ const FarmButton = () => {
 						<defs>
 							<linearGradient id="paint0_linear_4_261" gradientUnits="userSpaceOnUse">
 								<stop stopColor="var(--primary)"/>
-								<stop offset={1} stopColor="var(--secondary)"/>
+								<stop offset={1} stopColor="var(--primary)"/>
 							</linearGradient>
 						</defs>
 						<circle
