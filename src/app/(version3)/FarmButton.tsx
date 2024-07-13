@@ -181,7 +181,7 @@ const FarmButton = (props: {
 				<>
 					{user.farmed ? (
 						<div className={'farmButton flex flex-col gap-3 items-center'}>
-							<h2 className={'text-4xl tracking-wider'}>Claim</h2>
+							<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
 							<p>{user.farmed.toLocaleString()}</p>
 						</div>
 					) : (
