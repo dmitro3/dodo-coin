@@ -167,7 +167,7 @@ const FarmButton = (props: {
 						</div>
 						<div className="collected">
 							<img src="/logo.webp" alt="" style={{width: 25, height: 25}}/>
-							{farmed}<sub>{user.perSecondsProfit}</sub>
+							{farmed}<sub className='text-xs'>{user.perSecondsProfit}</sub>
 						</div>
 
 					</div>
