@@ -232,7 +232,7 @@ class DodoAdmin extends DodoSession {
 					url2.pathname="/adminPanel";
 
 					e.reply("Dodo V2", {
-						...Markup.keyboard([
+						...Markup.inlineKeyboard([
 							[
 								Markup.button.webApp("Open Dodo[v2]", url.toString()),
 								Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString())
