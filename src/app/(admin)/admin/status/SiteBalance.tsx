@@ -33,7 +33,7 @@ const SiteBalance = async () => {
 					diff: 0
 				},
 				{
-					value: (wallets.toLocaleString())+" D",
+					value: (wallets.toLocaleString()),
 					title: "Total Wallets",
 					description: "Total Connected Wallet of users",
 					diff: 0
