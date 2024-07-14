@@ -35,7 +35,7 @@ export function getV3ConfigValue<T extends keyof V3Config>(key: T, defaultValue?
 	return getV3Config()[key] || defaultValue as V3Config[T];
 }
 
-export function setV3Config(config: Partial<V3Config>) {
+export async function setV3Config(config: Partial<V3Config>) {
 	config = {
 		...getV3Config(),
 		...config
