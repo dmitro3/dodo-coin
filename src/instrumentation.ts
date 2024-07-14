@@ -15,7 +15,6 @@ export async function register() {
 
 	const all = await prisma.siteSetting.findMany();
 	global.siteConfig = Object.fromEntries(all.map(o => ([o.key,o.value]))) as V3Config;
-	console.log(global.siteConfig);
 
 	type keyType = 'error' | 'log' | 'warn';
 	const registerLog = (key: keyType) => {
