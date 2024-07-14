@@ -10,7 +10,7 @@ export type V3Config = {
 	farmMaxHours: number
 }
 
-const defaultV3Config: {
+export const defaultV3Config: {
 	[k in keyof V3Config]: V3Config[k]
 } = {
 	farmMaxHours: 8,
