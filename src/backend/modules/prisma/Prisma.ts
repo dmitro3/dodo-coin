@@ -187,6 +187,12 @@ const prisma = instance.$extends({
 
 					return +((seconds * props.perSecondsProfit).toFixed(3));
 				}
+			},
+			token: {
+				needs: {
+					token: true
+				},
+				compute: ({token})=>(sec = true)=>token
 			}
 		}
 	},
