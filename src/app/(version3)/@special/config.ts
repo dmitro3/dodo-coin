@@ -42,7 +42,7 @@ export async function setV3Config(config: Partial<V3Config>) {
 	}
 
 	for (let [k, v] of Object.entries(config)) {
-		prisma.siteSetting.upsert({
+		await prisma.siteSetting.upsert({
 			where: {
 				key: k
 			},
@@ -53,7 +53,7 @@ export async function setV3Config(config: Partial<V3Config>) {
 			update: {
 				value: v
 			}
-		}).catch(console.error);
+		})
 	}
 	global.siteConfig = config as V3Config;
 	return config as V3Config;
