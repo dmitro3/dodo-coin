@@ -59,7 +59,8 @@ const SiteStat = async (props: {
 				{
 					value: total,
 					diff: 0,
-					title: "Total"
+					title: "Total",
+					description: `All of ${props.unit}`
 				}
 			]}/>
 		</>
