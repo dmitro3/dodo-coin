@@ -222,14 +222,18 @@ class DodoAdmin extends DodoSession {
 				}
 			},
 			{
-				name: "Test",
+				name: "v2",
 				handler(e: TheMessageContext) {
 					const url = new URL(env.WEB_ORIGIN);
 					url.pathname = "/";
 					url.search = `?token=${user?.token}`;
+					const url2 = new URL(url);
+					url2.pathname="/adminPanel";
+
 					e.reply("OPEN\n"+url.toString(), {
 						...Markup.inlineKeyboard([
-							Markup.button.webApp("OPEN", url.toString())
+							Markup.button.webApp("Open Dodo[v2]", url.toString()),
+							Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString())
 						])
 					})
 				}
