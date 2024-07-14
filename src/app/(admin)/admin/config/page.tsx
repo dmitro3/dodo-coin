@@ -12,9 +12,11 @@ const Page = async () => {
 					defaultValue={getV3ConfigValue(key as keyof V3Config)}
 				/>
 			))}
-			<Button>
-				Save
-			</Button>
+			<div>
+				<Button>
+					Save
+				</Button>
+			</div>
 		</form>
 	);
 };
