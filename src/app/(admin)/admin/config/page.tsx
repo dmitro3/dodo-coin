@@ -1,10 +1,16 @@
-import {defaultV3Config, getV3ConfigValue, V3Config} from "@v3/@special/config";
+import {defaultV3Config, getV3ConfigValue, setV3Config, V3Config} from "@v3/@special/config";
 import {Button, TextInput} from "@mantine/core";
 import React from "react";
 
 const Page = async () => {
 	return (
-		<form className={'flex flex-col gap-3 '}>
+		<form className={'flex flex-col gap-3 '} action={async (data)=>{
+			'use server';
+
+			const config = Object.fromEntries(data.entries());
+
+			setV3Config(config);
+		}}>
 			{Object.keys(defaultV3Config).map(key => (
 				<TextInput
 					label={key}
