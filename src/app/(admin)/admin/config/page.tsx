@@ -10,7 +10,7 @@ const Page = async () => {
 
 			const config = Object.fromEntries(data.entries());
 
-			setV3Config(config);
+			await setV3Config(config);
 			console.log(config);
 			redirect("?saved")
 		}}>
