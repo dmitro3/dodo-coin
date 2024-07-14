@@ -7,6 +7,7 @@ const Page = async () => {
 			{Object.keys(defaultV3Config).map(key => (
 				<TextInput
 					label={key}
+					name={key}
 					defaultValue={getV3ConfigValue(key as keyof V3Config)}
 				/>
 			))}
