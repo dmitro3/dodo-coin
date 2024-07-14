@@ -4,7 +4,7 @@ import {AppShell, Burger, Group, NavLink, Skeleton} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import "@mantine/core/styles.css"
 import {usePathname} from "next/navigation";
-import {ComponentProps} from "react";
+import {ComponentProps, useEffect} from "react";
 import Link from "next/link";
 
 
@@ -21,9 +21,10 @@ const links = [
 ]
 
 export default function BasicAppShell(props: any) {
-	const [opened, { toggle }] = useDisclosure();
+	const [opened, { toggle ,close}] = useDisclosure();
 	const path = usePathname();
 
+	useEffect(close,[path])
 
 	return (
 		<AppShell
