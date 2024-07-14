@@ -20,13 +20,13 @@ const SiteBalance = async () => {
 			<h2 className={'text-bold text-2xl'}>Site Balance</h2>
 			<StatsGrid stats={[
 				{
-					value: (totalUsdt.toLocaleString())+"$",
+					value: (totalUsdt.toLocaleString())+" $",
 					title: "Total Usdt",
 					description: "Total Tether balance of users",
 					diff: 0
 				},
 				{
-					value: (totalDodo.toLocaleString())+"D",
+					value: (totalDodo.toLocaleString())+" D",
 					title: "Total Dodo",
 					description: "Total Dodo balance of users",
 					diff: 0
