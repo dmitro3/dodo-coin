@@ -16,7 +16,7 @@ const ViewStatus = async () => {
 				targetKey={'joined_at'}
 				model={'user'}
 				title={'Site User'}
-				unit={'users'}
+				unit={'joined users'}
 			/>
 		</div>
 	);
