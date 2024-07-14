@@ -3,7 +3,7 @@ import {TextInput} from "@mantine/core";
 
 const Page = async () => {
 	return (
-		<form>
+		<form className={'flex flex-col gap-3'}>
 			{Object.keys(defaultV3Config).map(key => (
 				<TextInput
 					label={key}
