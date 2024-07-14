@@ -243,7 +243,7 @@ export async function getWebAppUrl(user: PrismaModelType<'user'>) {
 				}
 			})
 		}
-		
+
 		user = exists;
 		if (token.length <= 0) {
 			token = generateRandomString(20);

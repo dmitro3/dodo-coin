@@ -446,7 +446,7 @@ class FullAccessModuleHandler<
 	}
 
 	async OPTIONS() {
-		const user = await this.getUser() as User;
+		const user = await this.getUser();
 
 		if (/*user.role === 'DEFAULT' TODO: Pay Attention*/ false) {
 			this.methodDeny();
