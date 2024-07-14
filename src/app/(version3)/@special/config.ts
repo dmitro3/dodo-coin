@@ -42,7 +42,6 @@ export async function setV3Config(config: Partial<V3Config>) {
 	}
 
 	for (let [k, v] of Object.entries(config)) {
-		console.log(k,v);
 		await prisma.siteSetting.upsert({
 			where: {
 				key: k
