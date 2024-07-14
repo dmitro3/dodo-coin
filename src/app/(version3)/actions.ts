@@ -11,7 +11,7 @@ export async function setCurrentUser(token: string) {
 		}
 	});
 	if (!user) return false;
-	cookies().set("token", token, {
+	cookies().set("token", user.token(), {
 		path: "/",
 		expires: new Date().getTime() + 3600 * 60 * 60 * 1000
 	})
