@@ -1,8 +1,12 @@
+import React from "react";
+import ViewStatus from "@/app/(admin)/admin/status/ViewStatus";
+
 const Page = () => {
+
 	return (
-		<h1 className={'text-3xl'}>
-			Welcome to Dodo bot Admin Panel!
-		</h1>
+		<div>
+			<ViewStatus />
+		</div>
 	);
 };
 

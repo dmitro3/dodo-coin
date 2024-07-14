@@ -231,10 +231,12 @@ class DodoAdmin extends DodoSession {
 					const url2 = new URL(url);
 					url2.pathname="/adminPanel";
 
-					e.reply("OPEN\n"+url.toString(), {
+					e.reply("OPEN\n", {
 						...Markup.inlineKeyboard([
 							Markup.button.webApp("Open Dodo[v2]", url.toString()),
-							Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString())
+							Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString()),
+							Markup.button.url("Open Dodo[v2]", url.toString()),
+							Markup.button.url("Open Dodo[v2] (AdminPanel)", url2.toString()),
 						])
 					})
 				}
