@@ -14,7 +14,8 @@ const metadata = {
 	name: 'dodo-coin',
 	description: 'Web3Modal Example',
 	url: 'https://web3modal.com', // origin must match your domain & subdomain
-	icons: ['https://avatars.githubusercontent.com/u/37784886']
+	icons: ['https://avatars.githubusercontent.com/u/37784886'],
+
 }
 
 
@@ -35,7 +36,10 @@ export const config = defaultWagmiConfig({
 	projectId,
 	metadata,
 	ssr: true,
+	enableInjected: true,
+	enableWalletConnect: true,
 	storage: createStorage({
 		storage: cookieStorage
 	}),
+
 })

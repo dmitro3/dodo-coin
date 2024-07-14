@@ -10,13 +10,13 @@ export async function setCurrentUser(token: string) {
 			token
 		}
 	});
-	if (!user) return false;
+	if (!user) return undefined;
 	cookies().set("token", user.token(), {
 		path: "/",
 		expires: new Date().getTime() + 3600 * 60 * 60 * 1000
 	})
 
-	return true
+	return user;
 }
 
 
