@@ -5,8 +5,9 @@ import {getUserFromCookies} from "@/utils/serverComponents/user";
 import {CLIENT_BOT} from "@/bot/main";
 import {Markup} from "telegraf";
 import {communityButton, getWebAppUrl} from "@/bot/classes/DodoClient";
+import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
-export async function sendInvite(user?: User) {
+export async function sendInvite(user?: PrismaModelType<'user'>) {
 	user = user ?? (await getUserFromCookies() || undefined);
 	if (!user) {
 		console.log("USER NOT FOUND")
@@ -23,7 +24,7 @@ export async function sendInvite(user?: User) {
 	})
 }
 
-export async function getInviteText(user: User) {
-	const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user.id}`
+export async function getInviteText(user: PrismaModelType<'user'>) {
+	const link = `https://t.me/${CLIENT_BOT.me?.username}?start=${user?.id}`
 	return `${link}\n🎁 +2.5k Shares as a first-time gift`;
 }

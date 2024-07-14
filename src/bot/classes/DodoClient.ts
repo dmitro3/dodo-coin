@@ -4,7 +4,7 @@ import {Context, Markup, NarrowedContext} from 'telegraf';
 import DodoSession from './DodoSession';
 import {env} from '../env';
 import {log} from 'console';
-import prisma from "@backend/modules/prisma/Prisma";
+import prisma, {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
 import {User} from "@prisma/client";
 
@@ -223,7 +223,7 @@ Type /help to access this guide.
 
 }
 
-export async function getWebAppUrl(user: User) {
+export async function getWebAppUrl(user: PrismaModelType<'user'>) {
 	if (!user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
 	let token = user?.token || "";
 	try {
