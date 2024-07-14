@@ -31,6 +31,9 @@ const SiteStat = async (props: {
 	d2.setMonth(d2.getMonth() - 2);
 	const prevMonth = await recordOfDate(props.model,props.targetKey,d2, 30);
 
+	//@ts-ignore
+	const total = await prisma[props.model].count();
+
 	return (
 		<>
 			<h2 className={'text-bold text-2xl'}>{props.title}</h2>
@@ -52,6 +55,11 @@ const SiteStat = async (props: {
 					diff: thisMonth - prevMonth,
 					title: "This Month",
 					description: `Compared with previous month ${props.unit}`
+				},
+				{
+					value: total,
+					diff: 0,
+					title: "Total"
 				}
 			]}/>
 		</>
