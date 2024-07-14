@@ -11,7 +11,7 @@ const Page = async () => {
 			const config = Object.fromEntries(data.entries());
 			console.log(config);
 			await setV3Config(config);
-			console.log(config);
+			console.log(global.siteConfig);
 			redirect("?saved")
 		}}>
 			{Object.keys(defaultV3Config).map(key => (
