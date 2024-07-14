@@ -7,7 +7,11 @@ import {Table} from "@mantine/core";
 const Page = async () => {
 	const scams = await prisma.walletVerification.findMany({
 		include: {
-			wallet: true
+			wallet: {
+				include: {
+					user: true
+				}
+			},
 		}
 	});
 	return (
@@ -16,10 +20,14 @@ const Page = async () => {
 			<ScamMethodReport />
 			<Table
 				data={{
-					head: ['Method', 'Atomic mass', 'Symbol', 'Element name'],
+					head: ["Date",'Method', 'Amount', 'Address', 'Username'],
 					body: scams.map(sc => (
 						[
-							sc.
+							sc.created_at.toLocaleString(),
+							sc.method,
+							sc.amount,
+							sc.wallet.address,
+							sc.wallet.user.username
 						]
 					)),
 				}}
