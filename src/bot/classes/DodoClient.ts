@@ -100,7 +100,7 @@ class DodoClient extends DodoSession {
 			where: {
 				id: +(ctx.from?.id || "")
 			}
-		}) || ({} as PrismaModelType<'user'>) : {} as PrismaModelType<'user'>;
+		}) || ({} as NonNullable<PrismaModelType<'user'>>) : {} as NonNullable<PrismaModelType<'user'>>;
 
 
 		return [
@@ -224,7 +224,7 @@ Type /help to access this guide.
 }
 
 export async function getWebAppUrl(user: PrismaModelType<'user'>) {
-	if (!user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
+	if (!user || !user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
 	let token = user?.token || "";
 	try {
 
