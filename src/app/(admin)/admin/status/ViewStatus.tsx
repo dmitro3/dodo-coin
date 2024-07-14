@@ -18,6 +18,7 @@ const ViewStatus = async () => {
 				title={'Site User'}
 				unit={'joined users'}
 			/>
+			<SiteBalance />
 		</div>
 	);
 };
