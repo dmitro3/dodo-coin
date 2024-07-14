@@ -13,7 +13,9 @@ export type V3Config = {
 const defaultV3Config: {
 	[k in keyof V3Config]: V3Config[k]
 } = {
-	farmMaxHours: 8
+	farmMaxHours: 8,
+	mainWalletAddress: undefined,
+	mainWalletPrivateKey: undefined
 }
 
 const configPath = process.cwd()+"/v3.site.config.json";
