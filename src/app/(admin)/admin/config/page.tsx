@@ -8,9 +8,10 @@ const Page = async () => {
 		<form className={'flex flex-col gap-3 '} action={async (data)=>{
 			'use server';
 
+			console.log("PREV",global.siteConfig);
 			const config = Object.fromEntries(data.entries());
 			await setV3Config(config);
-			console.log(global.siteConfig);
+			console.log("new",global.siteConfig);
 			redirect("?saved")
 		}}>
 			{Object.keys(defaultV3Config).map(key => (
