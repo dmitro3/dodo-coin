@@ -26,7 +26,7 @@ const SiteBalance = async () => {
 					diff: 0
 				},
 				{
-					value: totalUsdt+"D",
+					value: totalDodo+"D",
 					title: "Total Dodo",
 					description: "Total Dodo balance of users",
 					diff: 0
