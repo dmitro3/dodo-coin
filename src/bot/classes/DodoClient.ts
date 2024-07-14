@@ -100,7 +100,7 @@ class DodoClient extends DodoSession {
 			where: {
 				id: +(ctx.from?.id || "")
 			}
-		}) || ({} as User) : {} as User;
+		}) || ({} as PrismaModelType<'user'>) : {} as PrismaModelType<'user'>;
 
 
 		return [
