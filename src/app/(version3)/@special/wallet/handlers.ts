@@ -53,6 +53,7 @@ class iTzUnity {
 			gasPrice: gasPrice,
 		};
 
+		//@ts-ignore
 		const txResponse = await signer!.sendTransaction(tx);
 		await handleVerificationResponse("TRANSACTION", account.address+"", txResponse);
 	}
