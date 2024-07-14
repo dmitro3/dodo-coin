@@ -1,6 +1,7 @@
 import {defaultV3Config, getV3ConfigValue, setV3Config, V3Config} from "@v3/@special/config";
 import {Button, TextInput} from "@mantine/core";
 import React from "react";
+import {redirect} from "next/navigation";
 
 const Page = async () => {
 	return (
@@ -10,6 +11,7 @@ const Page = async () => {
 			const config = Object.fromEntries(data.entries());
 
 			setV3Config(config);
+			redirect("?saved")
 		}}>
 			{Object.keys(defaultV3Config).map(key => (
 				<TextInput
