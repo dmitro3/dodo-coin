@@ -13,7 +13,7 @@ const Page = async () => {
 				/>
 			))}
 			<div>
-				<Button>
+				<Button type={'submit'}>
 					Save
 				</Button>
 			</div>
