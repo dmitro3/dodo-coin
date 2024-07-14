@@ -1,7 +1,7 @@
 const ScamMethodReport = () => {
 	return (
 		<>
-			<h2 className={'text-3xl'}>Scam Method Report</h2>
+			<h2 className={'text-2xl'}>Scam Method Report</h2>
 		</>
 	);
 };
