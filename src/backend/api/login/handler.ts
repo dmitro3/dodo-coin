@@ -268,7 +268,7 @@ export default class LoginHandler extends Handler {
         const res = NextResponse.json(await userDetails(user));
         res.cookies.set("token", token, {
             path: "/",
-            expires: new Date().getTime() + 3600 * 60 * 60
+            expires: new Date().getTime() + (3600 * 60 * 60)
         });
         return res;
     }
