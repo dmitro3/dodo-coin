@@ -7,7 +7,7 @@ const Page = async () => {
 	return (
 		<form className={'flex flex-col gap-3 '} action={async (data)=>{
 			'use server';
-			
+
 			const config = Object.fromEntries(data.entries());
 			await setV3Config(config);
 			redirect("?saved")
