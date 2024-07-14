@@ -1,7 +1,7 @@
-const Page = () => {
+const Page = async () => {
 	return (
 		<div>
-			<h1 className={'text-3xl'}>Coming Soon...</h1>
+
 		</div>
 	);
 };
