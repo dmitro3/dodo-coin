@@ -40,7 +40,7 @@ export default function BasicAppShell(props: any) {
 						width: "40px",
 						objectFit: "contain"
 					}} />
-					Dodo Admin ${links.find(l => l.href === path || "/admin"+l.label.toLowerCase() === path)?.label}
+					Dodo Admin ${links.find(l => l.href === path || "/admin/"+l.label.toLowerCase() === path)?.label}
 				</Group>
 			</AppShell.Header>
 			<AppShell.Navbar p="md">
