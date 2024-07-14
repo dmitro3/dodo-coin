@@ -1,5 +1,6 @@
 import {defaultV3Config, getV3ConfigValue, V3Config} from "@v3/@special/config";
-import {TextInput} from "@mantine/core";
+import {Button, TextInput} from "@mantine/core";
+import React from "react";
 
 const Page = async () => {
 	return (
@@ -11,6 +12,9 @@ const Page = async () => {
 					defaultValue={getV3ConfigValue(key as keyof V3Config)}
 				/>
 			))}
+			<Button>
+				Save
+			</Button>
 		</form>
 	);
 };
