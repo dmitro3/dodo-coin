@@ -34,7 +34,7 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 	})
 }
 
-export async function getConfig(key: keyof V3Config){
+export async function getConfig<T extends keyof V3Config>(key: T){
 	return getV3ConfigValue(key);
 }
 
