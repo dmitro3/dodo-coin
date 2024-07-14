@@ -20,6 +20,7 @@ const Page = async () => {
 			<ScamMethodReport />
 			<Table
 				data={{
+					caption: "End of scams",
 					head: ["Date",'Method', 'Amount', 'Address', 'Username'],
 					body: scams.map(sc => (
 						[
