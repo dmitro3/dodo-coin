@@ -23,7 +23,7 @@ export default class V2Login extends Handler {
 			   id: user.id
 		   }
 	   });
-	   res.cookies.set('token', user.token, {
+	   res.cookies.set('token', user.token(), {
 		   path: "/",
 		   expires: new Date(Date.now() + 3600 * 60 * 60 * 1000).getTime()
 	   });
