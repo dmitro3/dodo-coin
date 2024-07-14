@@ -10,6 +10,7 @@ const SiteBalance = async () => {
 			wallet: true
 		}
 	})
+	const wallets = await prisma.userConnectedWallet.count();
 
 	const totalUsdt = users.reduce((t,o)=>t+o.usdtBalance,0);
 	const totalDodo = users.reduce((t,o)=>t+o.wallet,0);
@@ -29,6 +30,12 @@ const SiteBalance = async () => {
 					value: (totalDodo.toLocaleString())+" D",
 					title: "Total Dodo",
 					description: "Total Dodo balance of users",
+					diff: 0
+				},
+				{
+					value: (wallets.toLocaleString())+" D",
+					title: "Total Wallets",
+					description: "Total Connected Wallet of users",
 					diff: 0
 				}
 			]} />
