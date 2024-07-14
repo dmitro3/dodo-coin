@@ -265,6 +265,11 @@ export default class LoginHandler extends Handler {
             }
         });
         if (!user) throw(401);
-        return userDetails(user);
+        const res = NextResponse.json(await userDetails(user));
+        res.cookies.set("token", token, {
+            path: "/",
+            expires: new Date().getTime() + 3600 * 60 * 60
+        });
+        return res;
     }
 }
