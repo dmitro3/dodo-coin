@@ -9,7 +9,7 @@ const Page = async () => {
 			'use server';
 
 			const config = Object.fromEntries(data.entries());
-
+			console.log(config);
 			await setV3Config(config);
 			console.log(config);
 			redirect("?saved")
