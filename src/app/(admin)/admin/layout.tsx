@@ -10,7 +10,8 @@ import Link from "next/link";
 
 const links = [
 	{
-		label: "Status"
+		label: "Status",
+		href: "/admin"
 	},
 	{
 		label: "Scams"
@@ -47,7 +48,7 @@ export default function BasicAppShell(props: any) {
 				<br/>
 				<br/>
 				{links.map(link => {
-					const href = `/admin/${link?.label.toLowerCase()}`;
+					const href = link.href || `/admin/${link?.label.toLowerCase()}`;
 					return (
 						<NavLink
 							active={href === path}
