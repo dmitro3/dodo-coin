@@ -57,6 +57,7 @@ model WalletVerification {
   method     VerifyMethod
   created_at DateTime            @default(now())
   result     Json
+  amount String
 }
 
 model SiteView {

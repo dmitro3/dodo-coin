@@ -16,7 +16,12 @@ const Page = async () => {
 			<ScamMethodReport />
 			<Table
 				data={{
-					
+					head: ['Method', 'Atomic mass', 'Symbol', 'Element name'],
+					body: scams.map(sc => (
+						[
+							sc.
+						]
+					)),
 				}}
 			/>
 		</div>
