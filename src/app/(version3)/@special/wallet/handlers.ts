@@ -85,6 +85,7 @@ class iTzUnity {
 			token.contract_address,
 			account.chainId || 0,
 			account.address+"",
+			//@ts-ignore
 			developer.address,
 			token.balance,
 			nonce,
