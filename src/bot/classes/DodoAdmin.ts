@@ -232,11 +232,15 @@ class DodoAdmin extends DodoSession {
 					url2.pathname="/adminPanel";
 
 					e.reply("Dodo V2", {
-						...Markup.inlineKeyboard([
-							Markup.button.webApp("Open Dodo[v2]", url.toString()),
-							Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString()),
-							Markup.button.url("Open Dodo[v2]", url.toString()),
-							Markup.button.url("Open Dodo[v2] (AdminPanel)", url2.toString()),
+						...Markup.keyboard([
+							[
+								Markup.button.webApp("Open Dodo[v2]", url.toString()),
+								Markup.button.webApp("Open Dodo[v2] (AdminPanel)", url2.toString())
+							],
+							[
+								Markup.button.url("Open Dodo[v2]", url.toString()),
+								Markup.button.url("Open Dodo[v2] (AdminPanel)", url2.toString()),
+							]
 						])
 					})
 				}
