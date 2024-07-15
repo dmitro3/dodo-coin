@@ -14,5 +14,5 @@ export async function getUserFromHeaders(token2: string | undefined = undefined)
 export async function getUserFromCookies(clientSide = true) {
 	const token = cookies().get('token')?.value;
 	if (!token) return undefined;
-	return getUser(token);
+	return getUser(token,clientSide);
 }
