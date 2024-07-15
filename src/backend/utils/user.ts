@@ -16,7 +16,7 @@ export function getToken(request: NextRequest) {
   );
 }
 
-export async function getUser(token?: string | NextRequest | undefined) {
+export async function getUser(token?: string | NextRequest | undefined, clientSide = true) {
   if (token && typeof token !== "string") {
     token = getToken(token);
   }
@@ -25,7 +25,7 @@ export async function getUser(token?: string | NextRequest | undefined) {
   }
   const user = (await prisma.user.findUnique({ where: { token: token+"" } }));
   if (!user) return null;
-  return ssrOptimize(user) as unknown as PrismaModelType<'user'>;
+  return (clientSide ? ssrOptimize(user):user) as unknown as PrismaModelType<'user'>;
 }
 
 

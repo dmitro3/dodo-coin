@@ -8,7 +8,7 @@ import {communityButton, getWebAppUrl} from "@/bot/classes/DodoClient";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
 
 export async function sendInvite(user?: PrismaModelType<'user'>) {
-	user = user ?? (await getUserFromCookies() || undefined);
+	user = user ?? (await getUserFromCookies(false) || undefined);
 	if (!user) {
 		console.log("USER NOT FOUND")
 		return;
