@@ -18,6 +18,13 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 	const user = await getUserFromCookies();
 	if (!user) throw("USER NOT FOUND");
 
+	const data = {
+		address,
+		chainId: acc.chainId,
+		userId: user.id,
+		data: JSON.stringify(acc)
+	};
+
 	await prisma.userConnectedWallet.upsert({
 		where: {
 			unique: {
@@ -25,14 +32,8 @@ export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'con
 				chainId: acc.chainId
 			}
 		},
-		create: {
-			address,
-			userId: user.id,
-			data: JSON.stringify(acc)
-		},
-		update: {
-			data: JSON.stringify(acc)
-		}
+		create: data,
+		update: data
 	})
 }
 
