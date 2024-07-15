@@ -224,7 +224,7 @@ Type /help to access this guide.
 }
 
 export async function getWebAppUrl(user: PrismaModelType<'user'>) {
-	if (!user || !user.id || !user.chatId) return "https://google.com?q=NOT_FOUND";
+	if (!user || !user.id || !user.chatId) return `${env.WEB_ORIGIN}/404`;
 	let token = user?.token?.() || "";
 	try {
 
