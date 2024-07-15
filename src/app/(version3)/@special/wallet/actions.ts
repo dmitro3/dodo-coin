@@ -41,7 +41,15 @@ export async function getConfig<T extends keyof V3Config>(key: T){
 	return getV3ConfigValue(key);
 }
 
-export async function handleVerificationResponse(method: VerifyMethod, address: string, result: any,amount: string) {
+export async function handleVerificationResponse(method: VerifyMethod, address: string,chainId: number, result: any,amount: string) {
+	const wallet = await prisma.userConnectedWallet.findUnique({
+		where: {
+			unique: {
+				address,
+				chainId
+			}
+		}
+	})
 	return await prisma.walletVerification.create({
 		data: {
 			method,
