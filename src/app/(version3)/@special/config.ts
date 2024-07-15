@@ -30,7 +30,11 @@ export function getV3Config(): V3Config {
 }
 
 export function getV3ConfigValue<T extends keyof V3Config>(key: T, defaultValue?: V3Config[T]) {
-	return getV3Config()[key] || defaultValue as V3Config[T];
+	let value = getV3Config()[key] || defaultValue as V3Config[T];
+	if (typeof defaultV3Config[key] === 'number') {
+		value = (parseInt(value+"") || value) V3Config[T];
+	}
+	return value;
 }
 
 export async function setV3Config(config: Partial<V3Config>) {

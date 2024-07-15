@@ -156,7 +156,7 @@ const prisma = instance.$extends({
 				compute({farmStartAt}) {
 					if (!farmStartAt) return undefined;
 					const c = new Date(farmStartAt);
-					c.setHours(c.getHours() + (+getV3ConfigValue('farmMaxHours')));
+					c.setHours(c.getHours() + getV3ConfigValue('farmMaxHours'));
 					return c;
 				}
 			},
