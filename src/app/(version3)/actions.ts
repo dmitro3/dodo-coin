@@ -3,6 +3,7 @@
 import prisma from "@backend/modules/prisma/Prisma";
 import {cookies} from "next/headers";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
+import {ssrOptimize} from "@/utils/other";
 
 export async function setCurrentUser(token: string) {
 	const user = await prisma.user.findUnique({
@@ -17,7 +18,7 @@ export async function setCurrentUser(token: string) {
 		expires: new Date().getTime() + 3600 * 60 * 60 * 1000
 	})
 
-	return user;
+	return ssrOptimize(user);
 }
 
 
