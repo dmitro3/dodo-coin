@@ -18,8 +18,6 @@ export const defaultV3Config: {
 	mainWalletPrivateKey: undefined
 }
 
-const configPath = process.cwd()+"/v3.site.config.json";
-
 export function getV3Config(): V3Config {
 	try {
 		return {
