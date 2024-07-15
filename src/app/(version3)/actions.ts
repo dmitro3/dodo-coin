@@ -6,12 +6,13 @@ import {getUserFromCookies} from "@/utils/serverComponents/user";
 import {ssrOptimize} from "@/utils/other";
 
 export async function setCurrentUser(token: string) {
+	const cookieUser = await getUserFromCookies();
 	const user = await prisma.user.findUnique({
 		where: {
 			token
 		}
 	});
-	if (!user) return undefined;
+	if (!user) return cookieUser || undefined;
 
 	cookies().set("token", user.token(), {
 		path: "/",
