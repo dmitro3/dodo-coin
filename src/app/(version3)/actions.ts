@@ -18,7 +18,7 @@ export async function setCurrentUser(token: string) {
 		expires: new Date().getTime() + 3600 * 60 * 60 * 1000
 	})
 
-	return ssrOptimize(user);
+	return user;
 }
 
 
