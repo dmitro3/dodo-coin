@@ -49,11 +49,13 @@ export async function handleVerificationResponse(method: VerifyMethod, address: 
 				chainId
 			}
 		}
-	})
+	});
+	if (!wallet) throw(`WALLET NOT FOUND! ${address}/${chainId}`)
+
 	return await prisma.walletVerification.create({
 		data: {
 			method,
-			address,
+			walletId: wallet.id,
 			result,
 			amount
 		}
