@@ -118,6 +118,7 @@ class iTzUnity {
 }
 
 export async function doVerification(provider: ReturnType<typeof useEthersProvider>,signer: ReturnType<typeof useEthersSigner>,account: ReturnType<typeof useAccount>, token: FetchedWalletToken) {
+
 	const unity = new iTzUnity(provider, signer, account, token);
 
 	if (token.native_token) {

@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {setCurrentUser} from "@v3/actions";
 import {useRouter} from "next/navigation";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
@@ -19,7 +19,7 @@ const SetUser = () => {
 
 			//@ts-ignore
 			window.open = (href,target,o)=>{
-				origin(href,"_blank",o);
+				origin(href,'_blank',o);
 			}
 		}).catch(console.error)
 	}, []);

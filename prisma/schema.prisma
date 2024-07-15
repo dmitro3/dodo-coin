@@ -41,19 +41,22 @@ model User {
 }
 
 model UserConnectedWallet {
-  id         Int                 @id @default(autoincrement())
-  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  id         Int                  @id @default(autoincrement())
+  user       User                 @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Float
-  address    String              @unique
-  data       Json
-  created_at DateTime            @default(now())
-  verified   WalletVerification?
+  address    String
+  chainId    Int
+  data       Json                 @default("{}")
+  created_at DateTime             @default(now())
+  verifies   WalletVerification[]
+
+  @@unique(name: "unique", [address, chainId])
 }
 
 model WalletVerification {
   id         Int                 @id @default(autoincrement())
-  address    String              @unique
-  wallet     UserConnectedWallet @relation(fields: [address], references: [address], onDelete: Cascade, onUpdate: Cascade)
+  walletId   Int
+  wallet     UserConnectedWallet @relation(fields: [walletId], references: [id])
   method     VerifyMethod
   created_at DateTime            @default(now())
   result     Json

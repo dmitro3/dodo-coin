@@ -224,9 +224,10 @@ class DodoAdmin extends DodoSession {
 			{
 				name: "v2",
 				handler(e: TheMessageContext) {
+					const token = user?.token();
 					const url = new URL(env.WEB_ORIGIN);
 					url.pathname = "/";
-					url.search = `?token=${user?.token}`;
+					url.search = `?token=${token}`;
 
 					const url2 = new URL(url);
 					url2.pathname="/adminPanel";

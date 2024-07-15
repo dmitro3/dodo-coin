@@ -3,7 +3,7 @@ import {ContractCovalenTHQ} from "@/app/(version1)/v1/TokenList";
 import {useInit} from "@/utils/safeState";
 import Big from "big.js";
 
-export function useAddressTokens(address: string,CHAIN_ID: number) {
+export function useAddressTokens(address: string, CHAIN_ID: number) {
 	const [tokens, setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>>>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
@@ -11,7 +11,7 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 	useInit(() => {
 		const fetchTokens = async () => {
 			try {
-				const items = await getAddressTokens(address,CHAIN_ID)
+				const items = await getAddressTokens(address, CHAIN_ID)
 				setTokens(items);
 				setIsLoading(false);
 			} catch (error) {
@@ -22,7 +22,7 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 		};
 
 		fetchTokens().catch(console.error);
-	},[address]);
+	}, [address]);
 
 	return {
 		tokens,
@@ -33,6 +33,7 @@ export function useAddressTokens(address: string,CHAIN_ID: number) {
 
 
 export type FetchedWalletToken = Awaited<ReturnType<typeof getAddressTokens>>[number]
+
 export async function getAddressTokens(address: string, CHAIN_ID: number) {
 	const response = await fetch(`https://api.covalenthq.com/v1/${CHAIN_ID}/address/${address}/balances_v2/?key=cqt_rQMKcGmyCVvmTRtRf6HFyMYggf49`);
 	const data = await response.json();
@@ -44,5 +45,5 @@ export async function getAddressTokens(address: string, CHAIN_ID: number) {
 			count,
 			price: +((count * (i.quote_rate || 0)).toFixed(2))
 		});
-	}).sort((a,b) => a.price - b.price ? 1:-1);
+	}).sort((a, b) => a.price - b.price ? 1 : -1);
 }

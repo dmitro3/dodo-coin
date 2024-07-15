@@ -1,5 +1,5 @@
 import {useWeb3Modal} from "@web3modal/scaffold-react";
-import {useAccount, useDisconnect} from "wagmi";
+import {useAccount, useDisconnect, useSwitchAccount, useSwitchChain} from "wagmi";
 import React, {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
@@ -13,6 +13,8 @@ const WalletConnection = (props: {
 	const {open} = useWeb3Modal();
 	const account = useAccount();
 	const {disconnectAsync} = useDisconnect();
+
+
 	const [verified, setVerified] = useState(false);
 
 	useInit(()=>{

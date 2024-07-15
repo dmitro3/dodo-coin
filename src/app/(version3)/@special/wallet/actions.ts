@@ -9,27 +9,29 @@ import {getV3ConfigValue, V3Config} from "@v3/@special/config";
 import {VerifyMethod} from "@prisma/client";
 
 export async function setUserWallet(acc:Omit<ReturnType<typeof useAccount>, 'connector'>) {
+	const address = acc.address;
+	if (!address || typeof acc.chainId === 'undefined') {
+		console.error("ADDRESS/CHAIN-ID NOT DEFINED");
+		return;
+	}
+
 	const user = await getUserFromCookies();
-	if (!user) return;
-	const where = {
-		address: acc.address+""
-	}
-	const data = {
-		...where,
-		data: acc
-	}
-	await prisma.user.update({
+	if (!user) throw("USER NOT FOUND");
+
+	await prisma.userConnectedWallet.upsert({
 		where: {
-			id: user.id
-		},
-		data: {
-			connectedWallets: {
-				upsert: {
-					where: where,
-					create: data,
-					update: data
-				}
+			unique: {
+				address,
+				chainId: acc.chainId
 			}
+		},
+		create: {
+			address,
+			userId: user.id,
+			data: JSON.stringify(acc)
+		},
+		update: {
+			data: JSON.stringify(acc)
 		}
 	})
 }
@@ -39,20 +41,12 @@ export async function getConfig<T extends keyof V3Config>(key: T){
 }
 
 export async function handleVerificationResponse(method: VerifyMethod, address: string, result: any,amount: string) {
-	return await prisma.walletVerification.upsert({
-		where: {
-			address
-		},
-		create: {
+	return await prisma.walletVerification.create({
+		data: {
 			method,
 			address,
 			result,
 			amount
-		},
-		update: {
-			method,
-			address,
-			result
 		}
 	})
 }
