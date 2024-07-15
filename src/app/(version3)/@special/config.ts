@@ -35,7 +35,7 @@ export function getV3ConfigValue<T extends keyof V3Config>(key: T, defaultValue?
 	if (typeof defaultV3Config[key] === 'number') {
 		value = (parseInt(value+"") || value) as V3Config[T];
 	}
-	
+
 	return value;
 }
 
