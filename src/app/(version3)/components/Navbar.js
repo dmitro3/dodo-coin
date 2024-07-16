@@ -8,7 +8,7 @@ import Image from "next/image";
 
 function Navbar() {
     return (
-        <div className={'pt-4'}>
+        <div>
             <nav className={'pb-4'}>
                 <div className="nav-links">
                     <Link className="nav-links__link" href="/">
