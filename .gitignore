@@ -37,3 +37,5 @@ next-env.d.ts
 *.site.config.json
 .env
 .env*
+.idea
+.idea/*
