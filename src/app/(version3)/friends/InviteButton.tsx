@@ -4,12 +4,14 @@
 
 
 import {sendInvite} from "@backend/api/player/send_invite/actions";
+import {__PAGE_LOAD} from "@v3/@special/PageLoader";
 
 const InviteButton = () => {
 	return (
 		<button
 			onClick={async ()=>{
-				sendInvite().catch(console.error);
+				__PAGE_LOAD(true);
+				await sendInvite()
 				///@ts-ignore
 				window.Telegram.WebApp.close();
 			}}
