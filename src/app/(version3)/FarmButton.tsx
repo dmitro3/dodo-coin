@@ -163,7 +163,7 @@ const FarmButton = (props: {
 					)}
 
 				</div>
-				{!active ? (
+				{!active && (
 					<div className="farmButton bg-2 flex flex-col gap-2 items-stretch"
 						style={{background: "none"}}>
 						<div></div>
@@ -186,27 +186,27 @@ const FarmButton = (props: {
 						)}
 
 					</div>
-				) : (
-					<>
-						{!user.farmed ? (
-							<div className={'farmButton flex flex-col gap-3 items-center'}>
-								<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
-								<p className={'button-title font-extrabold'}>{user.farmed.toLocaleString()}</p>
-							</div>
-						) : (
-							<div className="farmButton bg-1 cursor-pointer" onClick={() => {
-								setActive(true)
-							}}>
-								<p className="button-title tracking-widest font-extrabold"
-								   style={{fontSize: 50}}>
-									Farm
-								</p>
-							</div>
-						)}
-					</>
 				)}
-
 			</div>
+			{active && (
+				<>
+					{!user.farmed ? (
+						<div className={'farmButton flex flex-col gap-3 items-center'}>
+							<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
+							<p className={'button-title font-extrabold'}>{user.farmed.toLocaleString()}</p>
+						</div>
+					) : (
+						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
+							setActive(true)
+						}}>
+							<p className="button-title tracking-widest font-extrabold"
+							   style={{fontSize: 50}}>
+								Farm
+							</p>
+						</div>
+					)}
+				</>
+			)}
 		</div>
 	);
 };
