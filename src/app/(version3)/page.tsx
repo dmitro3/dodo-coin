@@ -55,7 +55,6 @@ const Page = async () => {
 									</div>
 								</div>
 								<FarmButton user={user}/>
-								<br/>
 								<div className={'flex gap-2 w-full items-center'}>
 									<ClaimButton user={user}/>
 									<a href={'#boost'} className={'flex-grow'}>
