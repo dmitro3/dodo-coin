@@ -78,7 +78,7 @@ const FarmButton = (props: {
 		<div className={'relative'}>
 			<div className="ebat">
 				<div id="cont" data-pct={100}>
-					{!active ? (
+					{active ? (
 						<svg
 							id="svg"
 							width={200}
