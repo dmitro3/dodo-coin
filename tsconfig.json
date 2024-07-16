@@ -25,7 +25,7 @@
     "types": [
       "@daochild/tronweb-typescript",
       "jest",
-      "@types/"
+      "@types/telegram-web-app"
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
