@@ -51,6 +51,10 @@ main {
     flex: 1;
 }
 
+main.holder {
+    display: flex;
+}
+
 main::-webkit-scrollbar {
     display: none;
 }
