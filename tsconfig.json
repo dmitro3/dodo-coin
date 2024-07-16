@@ -24,7 +24,8 @@
     },
     "types": [
       "@daochild/tronweb-typescript",
-      "jest"
+      "jest",
+      "@types/"
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
