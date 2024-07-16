@@ -16,7 +16,10 @@ const ClaimButton = (props: {
 	return (
 		<button className={'flex-grow'} onClick={()=>{
 			setLoading(true);
-			claimFarm().finally(router.refresh)
+			claimFarm().finally(()=>{
+				router.refresh();
+				setLoading(false);
+			})
 		}} disabled={loading || !user?.isExpired || !user.farmed}>
 			{loading ? <Loader color={"white"} size={'sm'} />:"Claim"}
 		</button>
