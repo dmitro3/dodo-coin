@@ -10,6 +10,7 @@ import Web3ModalProvider from "@/context/Web3Modal";
 import prisma from "@backend/modules/prisma/Prisma";
 import {getClientIp} from "@backend/utils/user";
 import SetUser from "@v3/SetUser";
+import {MantineProvider} from "@mantine/core";
 
 export const metadata = {
 	title: 'Next.js',
@@ -31,9 +32,11 @@ export default async function RootLayout(props: any) {
 		<body>
 		<SetUser />
 		<Web3ModalProvider initialState={initialState}>
-			<AuthProvider>
-				{props.children}
-			</AuthProvider>
+			<MantineProvider defaultColorScheme={'dark'}>
+				<AuthProvider>
+					{props.children}
+				</AuthProvider>
+			</MantineProvider>
 		</Web3ModalProvider>
 		</body>
 		</html>
