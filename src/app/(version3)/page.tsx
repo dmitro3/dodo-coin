@@ -65,8 +65,7 @@ const Page = async () => {
 									</a>
 									<Boost user={user}/>
 								</div>
-								<br/>
-								<br/>
+								
 							</>
 						) : (
 							<div className={'min-h-[300px] flex justify-center items-center'}>
