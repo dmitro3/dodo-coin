@@ -8,7 +8,7 @@ import ClaimButton from "@v3/ClaimButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
-	
+
 	return (
 		<div className={'relative'}>
 
