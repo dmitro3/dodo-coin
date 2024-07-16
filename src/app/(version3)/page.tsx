@@ -72,6 +72,7 @@ const Page = async () => {
 								<h2 className={'text-4xl tracking-widest'}>Loading...</h2>
 							</div>
 						)}
+						<div></div>
 					</div>
 				</main>
 				<div className={'relative z-20'}>
