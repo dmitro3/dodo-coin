@@ -189,7 +189,7 @@ const FarmButton = (props: {
 				)}
 			</div>
 			{active && (
-				<div className={'h-[250px] w-[250px] absolute top-0 bottom-0 left-0 right-0'}>
+				<div className={'h-[250px] w-[250px] absolute top-0 bottom-0 left-0 right-0 m-auto'}>
 					{!user.farmed ? (
 						<div className={'farmButton flex flex-col gap-3 items-center'}>
 							<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
