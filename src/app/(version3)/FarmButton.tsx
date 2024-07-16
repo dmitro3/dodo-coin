@@ -166,7 +166,6 @@ const FarmButton = (props: {
 				{active && (
 					<div className="farmButton bg-2 flex flex-col gap-2 items-stretch"
 						style={{background: "none"}}>
-					
 						<div className={'flex flex-col justify-center items-center gap-5'}>
 							<div className="button-title tracking-wider font-bold" style={{fontSize: 42}}>
 								Farming
