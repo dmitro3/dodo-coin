@@ -8,7 +8,7 @@ import ClaimButton from "@v3/ClaimButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
-	window.Telegram.WebApp
+	window.Telegram.WebView.onEvent("viewport_changed")
 	return (
 		<div className={'relative'}>
 
