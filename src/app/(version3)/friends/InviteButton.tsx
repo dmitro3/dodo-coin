@@ -9,7 +9,7 @@ const InviteButton = () => {
 	return (
 		<button
 			onClick={async ()=>{
-				await sendInvite().catch(console.error);
+				sendInvite().catch(console.error);
 				///@ts-ignore
 				window.Telegram.WebApp.close();
 			}}
