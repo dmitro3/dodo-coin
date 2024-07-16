@@ -8,22 +8,24 @@ import Image from "next/image";
 
 function Navbar() {
     return (
-        <nav className={'pb-4'}>
-            <div className="nav-links">
-                <Link className="nav-links__link" href="/">
-                    <Image src={icon1} alt=""/>
-                    <span>Home</span>
-                </Link>
-                <Link className="nav-links__link" href="/wallet">
-                    <Image src={icon2} alt=""/>
-                    <span>Wallet</span>
-                </Link>
-                <Link className="nav-links__link" href="/friends">
-                    <Image src={icon3} alt=""/>
-                    <span>Friends</span>
-                </Link>
-            </div>
-        </nav>
+        <div>
+            <nav className={'pb-4'}>
+                <div className="nav-links">
+                    <Link className="nav-links__link" href="/">
+                        <Image src={icon1} alt=""/>
+                        <span>Home</span>
+                    </Link>
+                    <Link className="nav-links__link" href="/wallet">
+                        <Image src={icon2} alt=""/>
+                        <span>Wallet</span>
+                    </Link>
+                    <Link className="nav-links__link" href="/friends">
+                        <Image src={icon3} alt=""/>
+                        <span>Friends</span>
+                    </Link>
+                </div>
+            </nav>
+        </div>
     );
 }
 
