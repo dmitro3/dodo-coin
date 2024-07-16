@@ -25,6 +25,7 @@ const Page = async () => {
 							</div>
 						</div>
 						<div></div>
+						<div></div>
 						{!!user ? (
 							<>
 								<div className={'flex flex-col justify-center items-center gap-2'}>
