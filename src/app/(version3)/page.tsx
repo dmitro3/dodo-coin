@@ -8,7 +8,7 @@ import ClaimButton from "@v3/ClaimButton";
 
 const Page = async () => {
 	const user = await getUserFromCookies();
-	window.
+	window.Telegram.WebApp
 	return (
 		<div className={'relative'}>
 
