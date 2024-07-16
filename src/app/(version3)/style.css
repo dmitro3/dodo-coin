@@ -247,7 +247,7 @@
 
 .farmButton {
 
-    padding: 17px 18px 23px 22px;
+    padding: 0;
     border-radius: 50%;
     right: 0;
     display: flex;
