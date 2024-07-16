@@ -75,7 +75,7 @@ const FarmButton = (props: {
 	},[currentState]);
 
 	return (
-		<div>
+		<div className={'relative'}>
 			<div className="ebat">
 				<div id="cont" data-pct={100}>
 					{active ? (
