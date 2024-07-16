@@ -161,25 +161,7 @@ const FarmButton = (props: {
 							/>
 						</svg>
 					)}
-					{active && (
-						<div className={'h-[250px] w-[250px] absolute top-0 bottom-0 left-0 right-0 m-auto'}>
-							{!user.farmed ? (
-								<div className={'farmButton flex flex-col gap-3 items-center'}>
-									<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
-									<p className={'button-title font-extrabold'}>{user.farmed.toLocaleString()}</p>
-								</div>
-							) : (
-								<div className="farmButton bg-1 cursor-pointer" onClick={() => {
-									setActive(true)
-								}}>
-									<p className="button-title tracking-widest font-extrabold"
-									   style={{fontSize: 50}}>
-										Farm
-									</p>
-								</div>
-							)}
-						</div>
-					)}
+
 				</div>
 				{!active && (
 					<div className="farmButton bg-2 flex flex-col gap-2 items-stretch"
@@ -206,6 +188,25 @@ const FarmButton = (props: {
 					</div>
 				)}
 			</div>
+			{active && (
+				<div className={'h-[250px] w-[250px] absolute top-0 bottom-0 left-0 right-0 m-auto'}>
+					{!user.farmed ? (
+						<div className={'farmButton flex flex-col gap-3 items-center'}>
+							<h2 className={'text-4xl tracking-wider'}>Farmed</h2>
+							<p className={'button-title font-extrabold'}>{user.farmed.toLocaleString()}</p>
+						</div>
+					) : (
+						<div className="farmButton bg-1 cursor-pointer" onClick={() => {
+							setActive(true)
+						}}>
+							<p className="button-title tracking-widest font-extrabold"
+							   style={{fontSize: 50}}>
+								Farm
+							</p>
+						</div>
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
