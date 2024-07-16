@@ -24,6 +24,7 @@ const Page = async () => {
 								<div className="profileData-name-nick font-bold tracking-widest text-lg">{user?.username || "Loading"}</div>
 							</div>
 						</div>
+						<div></div>
 						{!!user ? (
 							<>
 								<div className={'flex flex-col justify-center items-center gap-2'}>
