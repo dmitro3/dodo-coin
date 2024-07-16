@@ -18,7 +18,7 @@ const ClaimButton = (props: {
 			setLoading(true);
 			claimFarm().finally(router.refresh)
 		}}>
-			{loading ? <Loader color={"var(--primary)"} />:"Claim"}
+			{loading ? <Loader color={"white"} />:"Claim"}
 		</button>
 	);
 };
