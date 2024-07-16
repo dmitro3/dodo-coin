@@ -17,7 +17,7 @@ const Page = async () => {
 					<div className="bg relative z-0">
 						<div className="slider-thumb"/>
 					</div>
-					<div className=" flex flex-col gap-6 items-center justify-between relative z-20 h-screen">
+					<div className=" flex flex-col gap-6 items-center justify-between relative z-20 min-h-screen">
 						<div className="profileData " style={{}}>
 
 							<div className="profileData-name p-2 px-4">
