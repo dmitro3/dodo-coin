@@ -53,6 +53,7 @@ main {
 
 main.holder {
     display: flex;
+    
 }
 
 main::-webkit-scrollbar {
