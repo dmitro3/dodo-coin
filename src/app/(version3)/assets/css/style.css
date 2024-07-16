@@ -23,8 +23,9 @@
 }
 
 body {
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Inter Tight', sans-serif !important;
     font-size: 0.75rem;
+    background-color: black !important;
     line-height: 1rem;
     font-weight: 600;
     margin: 0;
@@ -39,7 +40,7 @@ main {
     min-height: calc(100vh - 60px);
     width: 100%;
     color: white;
-    background-color: black;
+    background-color: black !important;
     padding: 25px;
     padding-top: 10px;
     display: flex;
