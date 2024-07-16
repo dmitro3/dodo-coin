@@ -1,6 +1,7 @@
 import {AuthProvider} from "@/app/(version3)/contexts/AuthContext";
 import "./index.css"
 import "./assets/css/style.css"
+import "@mantine/core/styles.css"
 import {cookieToInitialState} from "wagmi";
 import {config} from "@/context/config";
 import {headers} from "next/headers";
