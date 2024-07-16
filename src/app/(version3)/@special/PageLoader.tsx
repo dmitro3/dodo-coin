@@ -14,11 +14,16 @@ export function usePageLoading() {
 	const search = useSearchParams();
 
 	function registerLinks() {
+
+
 		const links = window?.document?.querySelectorAll('a:not(a[registered="true"],a[target="_blank"]), button[data-changer]:not(button[registered="true"])');
 
 		links.forEach(link => {
+			const href = link?.getAttribute("href") + "";
+
+			if (href.startsWith("#")) return;
+
 			link.addEventListener('click', () => {
-				const href = link?.getAttribute("href") + "";
 				if (href === pathname) return;
 				setLoading(true);
 			});
