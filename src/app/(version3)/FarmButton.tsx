@@ -187,7 +187,7 @@ const FarmButton = (props: {
 					</div>
 				)}
 			</div>
-			{active && user.isExpired && (
+
 				<div className={'h-[250px] w-[250px] absolute top-0 bottom-0 left-0 right-0 m-auto'}>
 					{user.farmed ? (
 						<div className={'farmButton flex flex-col gap-3 items-center'}>
@@ -205,7 +205,7 @@ const FarmButton = (props: {
 						</div>
 					)}
 				</div>
-			)}
+			
 		</div>
 	);
 };
