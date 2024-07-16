@@ -11,6 +11,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {getClientIp} from "@backend/utils/user";
 import SetUser from "@v3/SetUser";
 import {MantineProvider} from "@mantine/core";
+import OverrideWindow from "@v3/OverrideWindow";
 
 export const metadata = {
 	title: 'Next.js',
@@ -30,6 +31,7 @@ export default async function RootLayout(props: any) {
 			<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		</head>
 		<body>
+		<OverrideWindow />
 		<SetUser />
 		<Web3ModalProvider initialState={initialState}>
 			<MantineProvider defaultColorScheme={'dark'}>

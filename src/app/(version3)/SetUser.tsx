@@ -15,12 +15,6 @@ const SetUser = () => {
 		setCurrentUser(new URL(window.location.href).searchParams.get('token')+"").then((u)=>{
 			router.refresh();
 			window.user = u;
-			const origin = window.open;
-
-			//@ts-ignore
-			window.open = (href,target,o)=>{
-				origin(href,'_blank',o);
-			}
 		}).catch(console.error)
 	}, []);
 	return null;
