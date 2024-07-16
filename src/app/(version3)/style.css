@@ -273,6 +273,7 @@
 }
 
 .farmButton .time {
+    margin-top: 10px;
     color: #828282;
     font-size: 17px;
     font-weight: 500
