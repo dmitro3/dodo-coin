@@ -50,7 +50,6 @@ const PageLoader = (props: any) => {
 
 	return (
 		<>
-			{loading+""}
 			{loading && (
 				<div className={'fixed h-full w-full left-0 top-0 bg-white z-50'}>
 					<LoadingOverlay />
