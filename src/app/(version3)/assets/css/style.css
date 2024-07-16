@@ -230,7 +230,7 @@ nav {
     height: auto;
     position: fixed;
     width: 100%;
-    border-color: #808080;
+    border-color: transparent;
     border-width: 0;
     border-style: solid;
     bottom: 0;
