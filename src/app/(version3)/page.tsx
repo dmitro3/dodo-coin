@@ -10,9 +10,9 @@ const Page = async () => {
 	const user = await getUserFromCookies();
 
 	return (
-		<div className={'relative'}>
+		<div className={'relative  overflow-hidden'}>
 
-			<div className={'relative z-20'}>
+			<div className={'relative z-20  overflow-hidden'}>
 				<main className={'holder relative overflow-hidden'}>
 					<div className="bg relative z-0">
 						<div className="slider-thumb"/>
