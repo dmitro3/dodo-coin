@@ -20,7 +20,7 @@ function Navbar() {
                         <span>Wallet</span>
                     </Link>
                     <Link className="nav-links__link" href="/friends">
-                        <Image src={icon3} alt=""/>
+                        <Image src={icon3} alt="" fill={'white'}/>
                         <span>Friends</span>
                     </Link>
                 </div>
