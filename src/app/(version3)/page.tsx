@@ -77,9 +77,7 @@ const Page = async () => {
 						<div></div>
 					</div>
 				</main>
-				<div className={'relative z-20'}>
-					<Navbar/>
-				</div>
+				<Navbar/>
 			</div>
 
 		</div>
