@@ -34,8 +34,6 @@ button[disabled] {
 }
 
 body {
-    background: black
-}
-* {
+    background: black;
     overflow: hidden;
 }
