@@ -10,8 +10,6 @@ import {PerFriendBonus} from "@/bot/classes/DodoBot";
 
 const Page = async () => {
 	const friends = await getFriends();
-
-
 	const empty = friends.length === 0;
 
 	return (
