@@ -17,6 +17,7 @@ export async function getFriends() {
 					refs: true
 				}
 			}
-		}
+		},
+		take: 10
 	})
 }
