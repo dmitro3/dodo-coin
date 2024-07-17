@@ -234,7 +234,7 @@ main::-webkit-scrollbar {
 
 nav {
     height: auto;
-    position: sticky;
+    position: fixed;
     width: 100%;
     border-color: transparent;
     border-width: 0;
