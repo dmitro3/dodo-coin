@@ -5,7 +5,10 @@ import prisma from "@backend/modules/prisma/Prisma";
 
 export async function getFriends() {
 	const user = await getUserFromCookies();
-	if (!user) return [];
+	if (!user) return {
+		friends: [],
+		total: 0
+	};
 
 	return {
 		friends: await prisma.user.findMany({
