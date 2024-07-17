@@ -77,9 +77,9 @@ const Page = async () => {
 						<div></div>
 					</div>
 				</main>
-				<Navbar/>
-			</div>
 
+			</div>
+			<Navbar/>
 		</div>
 	);
 };
