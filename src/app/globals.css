@@ -36,3 +36,6 @@ button[disabled] {
 body {
     background: black
 }
+* {
+    overflow: hidden !important;
+}
