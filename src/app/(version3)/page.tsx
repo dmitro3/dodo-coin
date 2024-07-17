@@ -12,7 +12,7 @@ const Page = async () => {
 	return (
 		<div className={'relative  overflow-hidden'}>
 
-			<div className={'relative z-20 '}>
+			<div className={'relative z-20'}>
 				<main className={'holder relative overflow-hidden'}>
 					<div className="bg relative z-0">
 						<div className="slider-thumb"/>
