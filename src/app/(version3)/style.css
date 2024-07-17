@@ -111,7 +111,7 @@
 
 .profileData {
     position: fixed;
-    top: 10px;
+    top: 30px;
     display: flex;
     padding: 3px;
     border-radius: 50px;
