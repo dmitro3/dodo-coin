@@ -182,7 +182,7 @@ const Page = async () => {
 										})}
 									</div>
 									{total > 5 && (
-										<p>{total - 5}+ more...</p>
+										<p className={'p-2'}>{total - 5}+ more...</p>
 									)}
 								</div>
 
