@@ -57,7 +57,7 @@ const OverrideWindow = () => {
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
 				<div className={'fixed flex-col gap-2 p-3 h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
-					<Image width={500} height={500} src={spinner} alt="" id="spinner"
+					<Image width={300} height={300} src={spinner} alt="" id="spinner"
 						  className="spinner__image"
 						  draggable="false"/>
 					<p className={'text-center'}>Click here to Confirm Open External link to your browser</p>
