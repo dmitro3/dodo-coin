@@ -40,6 +40,8 @@ body {
 
 html, body {
     overflow-x: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
 }
 body {
     position: relative;
