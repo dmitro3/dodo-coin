@@ -55,7 +55,7 @@ const OverrideWindow = () => {
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
 				<div onClick={()=>{
-					window.Telegram.WebApp.openLink(exitLink, {
+					window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
 						try_instant_view: false
 					});
 					setExitLink(undefined);
