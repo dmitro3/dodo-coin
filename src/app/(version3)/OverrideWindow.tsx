@@ -53,7 +53,7 @@ const OverrideWindow = () => {
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{exitLink && (
 				<div className={'fixed h-screen w-screen bg-black text-white'}>
-
+					Click to Confirm Process
 				</div>
 			)}
 		</>
