@@ -28,7 +28,8 @@ const OverrideWindow = () => {
 		//@ts-ignore
 		window.open = (href, target, o) => {
 			const url = new URL(href+"");
-			if (url.host === window.location.host || window.location.pathname.endsWith("open")) return origin(href,target,o);
+			if (url.host === window.location.host || window.location.pathname.endsWith("open"))
+				return origin(href,target,o);
 
 			const finalLink = href?.toString?.() || href + "";
 			serverLog(`Opening[${os}]`, finalLink).catch(console.error);
@@ -57,18 +58,17 @@ const OverrideWindow = () => {
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
-				<div className={'fixed flex-col gap-2 p-3 h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
+				<div onClick={()=>{
+					const url = `${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`;
+					window.Telegram.WebApp.openLink(url, {
+						try_instant_view: true
+					});
+				}} className={'fixed flex-col gap-2 p-3 h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
 					<Image width={300} height={300} src={spinner} alt="" id="spinner"
 						  className="spinner__image"
 						  draggable="false"/>
 					<p className={'text-center'}>Click here to Confirm Open External link to your browser</p>
-					<button onClick={()=>{
-						const url = `${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`;
-						console.log(url);
-						window.Telegram.WebApp.openLink(url, {
-							try_instant_view: true
-						});
-					}}>
+					<button>
 						Confirm
 					</button>
 				</div>
