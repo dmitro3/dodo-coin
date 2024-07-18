@@ -57,7 +57,7 @@ const OverrideWindow = () => {
 						try_instant_view: false
 					});
 					setExitLink(undefined);
-				}} className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg'}>
+				}} className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
 					Click here to Confirm Process
 				</div>
 			)}
