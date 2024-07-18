@@ -13,7 +13,7 @@ const Page = () => {
 		const url = new URL(window.location.href);
 		try {
 			window.open(url.searchParams.get("url")+"","_self","noreferer");
-			setMsg("Close this tab, You can back to telegram.");
+			setMsg("Connect your wallet then You can back to telegram.");
 		} catch {
 			setMsg("Seems like you don't have this wallet!");
 		}
