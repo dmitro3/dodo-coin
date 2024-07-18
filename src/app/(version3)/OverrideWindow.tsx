@@ -62,7 +62,9 @@ const OverrideWindow = () => {
 						  draggable="false"/>
 					<p className={'text-center'}>Click here to Confirm Open External link to your browser</p>
 					<button onClick={()=>{
-						window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
+						const url = `${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`;
+						console.log(url);
+						window.Telegram.WebApp.openLink(url, {
 							try_instant_view: false
 						});
 					}}>
