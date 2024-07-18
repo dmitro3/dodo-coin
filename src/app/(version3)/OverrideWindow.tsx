@@ -1,13 +1,17 @@
 'use client';
 import {useEffect, useState} from "react";
+import {useOs} from "@mantine/hooks";
 
 const OverrideWindow = () => {
 	const [style, setStyle] = useState("");
+	const os = useOs();
+
 	useEffect(()=>{
 		const origin = window.open;
 
 		//@ts-ignore
 		window.open = (href,target,o)=>{
+			
 			origin(href,'_blank',o);
 		}
 
