@@ -27,6 +27,7 @@ const OverrideWindow = () => {
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
+			console.log("OPEN",href,target,o);
 			if (window.location.pathname.endsWith("open")) return origin(href,target,o);
 
 			const finalLink = href?.toString?.() || href + "";
