@@ -3,7 +3,7 @@
 import LoadingOverlay from "@v3/components/LoadingOverlay";
 import {useEffect, useState} from "react";
 import {useInit} from "@/utils/safeState";
-import {serverLog} from "@v3/actions";
+import {serverLog as sLog} from "@v3/actions";
 
 const Page = () => {
 
@@ -33,6 +33,11 @@ const Page = () => {
 		</div>
 	);
 };
+
+async function serverLog(...args: any[]) {
+	alert(args[0]+"");
+	await sLog(...args);
+}
 
 async function forceOpenLink(url: string) {
 	await serverLog(`TRY TO OPENING ${url} in all ways!`);
