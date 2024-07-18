@@ -16,7 +16,7 @@ const Page = () => {
 		} catch {
 			setMsg("Seems like you don't have this wallet!");
 		}
-	}, [url])
+	}, [])
 
 	return !msg ? <LoadingOverlay />:(
 		<div className={'h-screen w-screen flex items-center justify-center'}>
