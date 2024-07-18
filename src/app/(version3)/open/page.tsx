@@ -14,7 +14,7 @@ const Page = () => {
 		const url = new URL(window.location.href);
 		try {
 			setTimeout(()=>{
-				window.open(url.searchParams.get("url")+"","_self","noreferer");
+				forceOpenLink(url.searchParams.get("url")+"").catch(serverLog);
 				setMsg("Connect your wallet then You can back to telegram.");
 			}, 2000);
 		} catch {
