@@ -16,21 +16,18 @@ const OverrideWindow = () => {
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
-			serverLog(`Opening[${os}]`,href).catch(console.error);
-			if (os === "android") {
-				return origin(href, "_blank", o)
-			} else {
-				try {
-					window.Telegram.WebApp.openLink(href?.toString?.() || href+"",{
-						try_instant_view: false
-					});
-				} catch (e) {
-					serverLog("open Err",e).catch()
-					window.Telegram.WebApp.openLink(href?.toString?.() || href+"",{
-						try_instant_view: true
-					});
-				}
+			serverLog(`Opening[${os}]`, href).catch(console.error);
+			try {
+				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
+					try_instant_view: false
+				});
+			} catch (e) {
+				serverLog("open Err", e).catch()
+				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
+					try_instant_view: true
+				});
 			}
+
 		}
 
 		if (window.Telegram) {
