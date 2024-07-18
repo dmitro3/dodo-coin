@@ -52,8 +52,13 @@ const OverrideWindow = () => {
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{exitLink && (
-				<div className={'fixed h-screen w-screen bg-black text-white'}>
-					Click to Confirm Process
+				<div onClick={()=>{
+					window.Telegram.WebApp.openLink(exitLink, {
+						try_instant_view: false
+					});
+					setExitLink(undefined);
+				}} className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg'}>
+					Click here to Confirm Process
 				</div>
 			)}
 		</>
