@@ -15,7 +15,7 @@ const OverrideWindow = () => {
 			if (os === "android") {
 				return origin(href, "_blank", o)
 			} else if (os === "ios") {
-				forceOpenLink(href?.toString?.() || href + "").catch(console.error);
+				window.Telegram.WebApp.openLink(href?.toString?.() || href+"");
 			} else {
 				return origin(href, target, o);
 			}
@@ -29,6 +29,7 @@ const OverrideWindow = () => {
 				}
 				`);
 			})
+
 		}
 	}, [])
 	return (
