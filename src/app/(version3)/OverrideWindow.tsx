@@ -24,7 +24,7 @@ const OverrideWindow = () => {
 			} catch (e: any) {
 				serverLog("open Err", e?.message ?? e+"").catch()
 				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
-					try_instant_view: true
+					try_instant_view: false
 				});
 			}
 
