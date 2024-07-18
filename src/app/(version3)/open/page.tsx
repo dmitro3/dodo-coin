@@ -20,7 +20,7 @@ const Page = () => {
 	}, [])
 
 	return !msg ? <LoadingOverlay />:(
-		<div className={'h-screen w-screen flex items-center justify-center'}>
+		<div className={'h-screen w-screen flex-col gap-2 flex items-center justify-center'}>
 			{msg}
 			<button onClick={()=>{
 				window.location.reload();
