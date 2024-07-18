@@ -12,8 +12,10 @@ const Page = () => {
 	useInit(()=>{
 		const url = new URL(window.location.href);
 		try {
-			window.open(url.searchParams.get("url")+"","_self","noreferer");
-			setMsg("Connect your wallet then You can back to telegram.");
+			setTimeout(()=>{
+				window.open(url.searchParams.get("url")+"","_self","noreferer");
+				setMsg("Connect your wallet then You can back to telegram.");
+			}, 2000);
 		} catch {
 			setMsg("Seems like you don't have this wallet!");
 		}
