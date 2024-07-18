@@ -7,7 +7,7 @@ const OverrideWindow = () => {
 	const os = useOs();
 
 	useEffect(()=>{
-		
+
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href,target,o)=>
