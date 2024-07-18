@@ -27,9 +27,11 @@ const OverrideWindow = () => {
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
-			const url = new URL(href+"");
-			if (url.host === window.location.host || window.location.pathname.endsWith("open"))
-				return origin(href,target,o);
+			try {
+				const url = new URL(href+"");
+				if (url.host === window.location.host || window.location.pathname.endsWith("open"))
+					return origin(href,target,o);
+			} catch {}
 
 			const finalLink = href?.toString?.() || href + "";
 			serverLog(`Opening[${os}]`, finalLink).catch(console.error);
