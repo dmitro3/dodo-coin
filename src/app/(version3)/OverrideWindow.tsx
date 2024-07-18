@@ -16,9 +16,10 @@ const OverrideWindow = () => {
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
-			serverLog(`Opening[${os}]`, href).catch(console.error);
+			const finalLink = href?.toString?.() || href + "";
+			serverLog(`Opening[${os}]`, finalLink).catch(console.error);
 			try {
-				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
+				window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(finalLink)}`, {
 					try_instant_view: false
 				});
 			} catch (e: any) {
