@@ -7,12 +7,11 @@ const OverrideWindow = () => {
 	const os = useOs();
 
 	useEffect(()=>{
+		
 		const origin = window.open;
-
 		//@ts-ignore
-		window.open = (href,target,o)=>{
-			return origin(href, os === "android" ? "_blank":target,o);
-		}
+		window.open = (href,target,o)=>
+			origin(href, os === "android" ? "_blank":target,o)
 
 		if (window.Telegram) {
 			window.Telegram.WebApp.onEvent("viewportChanged", ()=>{
