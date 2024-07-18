@@ -1,7 +1,9 @@
 'use client';
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useOs} from "@mantine/hooks";
 import {serverLog} from "@v3/actions";
+import spinner from "@v3/assets/images/spinner.png";
+import Image from "next/image";
 
 declare global {
 	var telegramExit: (url: string)=>void
@@ -55,7 +57,10 @@ const OverrideWindow = () => {
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
 				<div className={'fixed flex-col h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
-					Click here to Confirm Open External link to your browser
+					<Image width={500} height={500} src={spinner} alt="" id="spinner"
+						  className="spinner__image"
+						  draggable="false"/>
+					<p>Click here to Confirm Open External link to your browser</p>
 					<button onClick={()=>{
 						window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
 							try_instant_view: false
