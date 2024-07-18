@@ -14,7 +14,7 @@ const OverrideWindow = () => {
 			if (os === "android") {
 				origin(href, "_blank",o)
 			} else if (os === "ios") {
-
+				forceOpenLink(href);
 			} else {
 				origin(href,target,o);
 			}
