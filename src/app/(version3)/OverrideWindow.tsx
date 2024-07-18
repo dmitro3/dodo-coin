@@ -12,7 +12,7 @@ const OverrideWindow = () => {
 	const os = useOs();
 	const init = useRef(false);
 	const [exitLink, setExitLink] = useState<string>();
-
+	window.telegramExit = setExitLink;
 
 
 	useEffect(() => {
