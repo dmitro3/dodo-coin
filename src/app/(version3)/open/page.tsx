@@ -4,11 +4,12 @@ import LoadingOverlay from "@v3/components/LoadingOverlay";
 import {useEffect, useState} from "react";
 
 const Page = () => {
-	const url = new URL(window.location.href);
+
 	const [msg, setMsg] = useState("");
 	const [loading, setLoading] = useState(true)
 
 	useEffect(()=>{
+		const url = new URL(window.location.href);
 		try {
 			window.open(url.searchParams.get("url")+"","_self","noreferer");
 			setMsg("Close this tab, You can back to telegram.");
