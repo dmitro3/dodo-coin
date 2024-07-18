@@ -65,7 +65,6 @@ const OverrideWindow = () => {
 						window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
 							try_instant_view: false
 						});
-						setExitLink(undefined);
 					}}>
 						Confirm
 					</button>
