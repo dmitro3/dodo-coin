@@ -22,7 +22,7 @@ export async function getFriends() {
 					}
 				}
 			},
-			take: 10
+			take: 5
 		}),
 		total: await prisma.user.count({
 			where: {
