@@ -11,7 +11,7 @@ const OverrideWindow = () => {
 	useEffect(() => {
 		if (os === "undetermined" || init.current) return;
 		init.current = true;
-		
+
 		serverLog(`Platform ${os}`).catch(console.error)
 		const origin = window.open;
 		//@ts-ignore
