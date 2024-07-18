@@ -93,6 +93,7 @@ function forceOpenLink(url: string) {
 
 	// Using window.location
 	alert("Using window.location");
+	//@ts-ignore
 	window.location = url;
 
 	// Using window.location.replace
