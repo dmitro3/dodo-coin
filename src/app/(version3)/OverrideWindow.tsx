@@ -12,11 +12,11 @@ const OverrideWindow = () => {
 		//@ts-ignore
 		window.open = (href,target,o)=>{
 			if (os === "android") {
-				origin(href, "_blank",o)
+				return origin(href, "_blank",o)
 			} else if (os === "ios") {
 				forceOpenLink(href?.toString?.() || href+"");
 			} else {
-				origin(href,target,o);
+				return origin(href,target,o);
 			}
 		}
 
