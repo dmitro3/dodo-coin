@@ -22,6 +22,11 @@ const Page = () => {
 	return !msg ? <LoadingOverlay />:(
 		<div className={'h-screen w-screen flex items-center justify-center'}>
 			{msg}
+			<button onClick={()=>{
+				window.location.reload();
+			}}>
+				Try Again
+			</button>
 		</div>
 	);
 };
