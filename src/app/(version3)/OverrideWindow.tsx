@@ -54,13 +54,16 @@ const OverrideWindow = () => {
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
-				<div onClick={()=>{
-					window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
-						try_instant_view: false
-					});
-					setExitLink(undefined);
-				}} className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
-					Click here to Confirm Process
+				<div className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
+					Click here to Confirm Open External link to your browser
+					<button onClick={()=>{
+						window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
+							try_instant_view: false
+						});
+						setExitLink(undefined);
+					}}>
+						Confirm
+					</button>
 				</div>
 			)}
 		</>
