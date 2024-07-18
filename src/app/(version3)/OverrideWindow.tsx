@@ -8,6 +8,8 @@ const OverrideWindow = () => {
 	const os = useOs();
 
 	useEffect(() => {
+		if (os === "undetermined") return;
+		
 		serverLog(`Platform ${os}`).catch(console.error)
 		const origin = window.open;
 		//@ts-ignore
