@@ -1,15 +1,16 @@
 'use client';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useOs} from "@mantine/hooks";
 import {serverLog} from "@v3/actions";
 
 const OverrideWindow = () => {
 	const [style, setStyle] = useState("");
 	const os = useOs();
+	const init = useRef(false);
 
 	useEffect(() => {
-		if (os === "undetermined") return;
-
+		if (os === "undetermined" || init.current) return;
+		init.current = true;
 		serverLog(`Platform ${os}`).catch(console.error)
 		const origin = window.open;
 		//@ts-ignore
