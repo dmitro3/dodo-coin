@@ -54,7 +54,7 @@ const OverrideWindow = () => {
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
-				<div className={'fixed h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
+				<div className={'fixed flex-col h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
 					Click here to Confirm Open External link to your browser
 					<button onClick={()=>{
 						window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`, {
