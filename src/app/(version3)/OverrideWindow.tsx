@@ -26,6 +26,9 @@ const OverrideWindow = () => {
 					});
 				} catch (e) {
 					serverLog("open Err",e).catch()
+					window.Telegram.WebApp.openLink(href?.toString?.() || href+"",{
+						try_instant_view: true
+					});
 				}
 			}
 		}
