@@ -8,7 +8,7 @@ const Page = () => {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(()=>{
-		window.open(url);
+		window.open(url,"_self","noreferer");
 	}, [url])
 
 	return loading ? <LoadingOverlay />:(
