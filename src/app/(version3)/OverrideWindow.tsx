@@ -16,6 +16,7 @@ const OverrideWindow = () => {
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
+			serverLog(`Opening[${os}]`,href).catch(console.error);
 			if (os === "android") {
 				return origin(href, "_blank", o)
 			} else {
