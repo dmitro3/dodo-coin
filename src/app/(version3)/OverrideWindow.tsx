@@ -65,6 +65,7 @@ const OverrideWindow = () => {
 					window.Telegram.WebApp.openLink(url, {
 						try_instant_view: false
 					});
+					setExitLink(undefined);
 				}} className={'fixed flex-col gap-2 p-3 h-screen w-screen bg-black text-white flex items-center justify-center text-lg z-[999999]'}>
 					<Image width={300} height={300} src={spinner} alt="" id="spinner"
 						  className="spinner__image"
