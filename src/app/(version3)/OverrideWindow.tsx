@@ -3,10 +3,17 @@ import {useEffect, useRef, useState} from "react";
 import {useOs} from "@mantine/hooks";
 import {serverLog} from "@v3/actions";
 
+declare global {
+	var telegramExit: (url: string)=>void
+}
+
 const OverrideWindow = () => {
 	const [style, setStyle] = useState("");
 	const os = useOs();
 	const init = useRef(false);
+	const [exitLink, setExitLink] = useState<string>();
+
+
 
 	useEffect(() => {
 		if (os === "undetermined" || init.current) return;
@@ -21,9 +28,7 @@ const OverrideWindow = () => {
 			const finalLink = href?.toString?.() || href + "";
 			serverLog(`Opening[${os}]`, finalLink).catch(console.error);
 			try {
-				window.Telegram.WebApp.openLink(`${window.location.origin}/open?url=${encodeURIComponent(finalLink)}`, {
-					try_instant_view: false
-				});
+				window.telegramExit(finalLink)
 			} catch (e: any) {
 				serverLog("open Err", e?.message ?? e+"").catch()
 				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
@@ -46,6 +51,11 @@ const OverrideWindow = () => {
 	return (
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
+			{exitLink && (
+				<div className={'fixed h-screen w-screen bg-black text-white'}>
+
+				</div>
+			)}
 		</>
 	);
 };
