@@ -14,7 +14,7 @@ const OverrideWindow = () => {
 			if (os === "android") {
 				origin(href, "_blank",o)
 			} else if (os === "ios") {
-				forceOpenLink(href);
+				forceOpenLink(href?.toString?.() || href+"");
 			} else {
 				origin(href,target,o);
 			}
@@ -38,6 +38,7 @@ const OverrideWindow = () => {
 };
 
 function forceOpenLink(url: string) {
+	alert(`TRY TO OPENING ${url} in all ways!`);
 	// Open in a new tab
 	alert("Opening with target='_blank'");
 	let a = document.createElement('a');
