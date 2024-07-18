@@ -36,7 +36,11 @@ const OverrideWindow = () => {
 			const finalLink = href?.toString?.() || href + "";
 			serverLog(`Opening[${os}]`, finalLink).catch(console.error);
 			try {
-				window.telegramExit(finalLink)
+				if (os === 'android') {
+					origin(href,"_blank", o);
+				} else {
+					window.telegramExit(finalLink)
+				}
 			} catch (e: any) {
 				serverLog("open Err", e?.message ?? e+"").catch()
 				window.Telegram.WebApp.openLink(href?.toString?.() || href + "", {
