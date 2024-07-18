@@ -6,14 +6,20 @@ import spinner from "@v3/assets/images/spinner.png";
 import Image from "next/image";
 
 declare global {
-	var telegramExit: (url: string)=>void
+	var telegramExit: (o: ExLink)=>void
 }
+
+type ExLink = {
+	url: string,
+	target: string,
+	features: string
+};
 
 const OverrideWindow = () => {
 	const [style, setStyle] = useState("");
 	const os = useOs();
 	const init = useRef(false);
-	const [exitLink, setExitLink] = useState<string>();
+	const [exitLink, setExitLink] = useState<ExLink>();
 	if (typeof window !== 'undefined') {
 		window.telegramExit = setExitLink;
 	}
@@ -39,7 +45,11 @@ const OverrideWindow = () => {
 				if (os === 'android') {
 					return origin(href,"_blank", o);
 				} else {
-					window.telegramExit(finalLink)
+					window.telegramExit({
+						url: finalLink,
+						target: target+"",
+						features: o+""
+					})
 				}
 			} catch (e: any) {
 				serverLog("open Err", e?.message ?? e+"").catch()
@@ -65,8 +75,12 @@ const OverrideWindow = () => {
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
 			{!!exitLink && (
 				<div onClick={()=>{
-					const url = `${window.location.origin}/open?url=${encodeURIComponent(exitLink)}`;
-					window.Telegram.WebApp.openLink(url, {
+					const u = new URL(window.location.origin);
+					u.pathname = '/open';
+					for (let [k, v] of Object.entries(exitLink)) {
+						u.searchParams.set(k,v);
+					}
+					window.Telegram.WebApp.openLink(u.toString(), {
 						try_instant_view: false
 					});
 					setExitLink(undefined);
@@ -84,116 +98,5 @@ const OverrideWindow = () => {
 	);
 };
 
-async function forceOpenLink(url: string) {
-	await serverLog(`TRY TO OPENING ${url} in all ways!`);
-	// Open in a new tab
-	await serverLog("Opening with target='_blank'");
-	try {
-		let a = document.createElement('a');
-		a.href = url;
-		a.target = "_blank";
-		a.click();
-		try {
-			// Open in the same tab
-			await serverLog("Opening with target='_self'");
-			a = document.createElement('a');
-			a.href = url;
-			a.target = "_self";
-			a.click();
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Open in the parent frame
-			await serverLog("Opening with target='_parent'");
-			a = document.createElement('a');
-			a.href = url;
-			a.target = "_parent";
-			a.click();
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Open in the topmost frame
-			await serverLog("Opening with target='_top'");
-			a = document.createElement('a');
-			a.href = url;
-			a.target = "_top";
-			a.click();
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using window.open with different targets
-			await serverLog("Using window.open with target='_blank'");
-			window.open(url, "_blank");
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			await serverLog("Using window.open with target='_self'");
-			window.open(url, "_self");
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			await serverLog("Using window.open with target='_parent'");
-			window.open(url, "_parent");
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			await serverLog("Using window.open with target='_top'");
-			window.open(url, "_top");
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using location.href
-			await serverLog("Using location.href");
-			window.location.href = url;
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using location.assign
-			await serverLog("Using location.assign");
-			window.location.assign(url);
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using location.replace
-			await serverLog("Using location.replace");
-			window.location.replace(url);
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using window.location
-			await serverLog("Using window.location");
-			//@ts-ignore
-			window.location = url;
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using window.location.replace
-			await serverLog("Using window.location.replace again");
-			window.location.replace(url);
-		} catch (e) {
-			await serverLog(e);
-		}
-		try {
-			// Using window.location.assign
-			await serverLog("Using window.location.assign again");
-			window.location.assign(url);
-		} catch (e) {
-			await serverLog(e);
-		}
-	} catch (e) {
-		await serverLog(e);
-	}
-}
 
 export default OverrideWindow;
