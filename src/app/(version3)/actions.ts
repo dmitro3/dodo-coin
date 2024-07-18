@@ -57,5 +57,5 @@ export async function claimFarm() {
 
 
 export async function serverLog(...args: any[]) {
-	console.log(...args);
+	console.log("[CLIENT]",...args);
 }
