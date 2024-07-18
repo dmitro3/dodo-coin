@@ -2,13 +2,14 @@
 
 import LoadingOverlay from "@v3/components/LoadingOverlay";
 import {useEffect, useState} from "react";
+import {useInit} from "@/utils/safeState";
 
 const Page = () => {
 
 	const [msg, setMsg] = useState("");
 	const [loading, setLoading] = useState(true)
 
-	useEffect(()=>{
+	useInit(()=>{
 		const url = new URL(window.location.href);
 		try {
 			window.open(url.searchParams.get("url")+"","_self","noreferer");
