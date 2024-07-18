@@ -29,7 +29,7 @@ const OverrideWindow = () => {
 			})
 
 		}
-	}, [])
+	}, [os])
 	return (
 		<>
 			<style dangerouslySetInnerHTML={{__html: style}}></style>
