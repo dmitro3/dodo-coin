@@ -11,8 +11,11 @@ const OverrideWindow = () => {
 
 		//@ts-ignore
 		window.open = (href,target,o)=>{
-			
-			origin(href,'_blank',o);
+			if (os === "android") {
+				return origin(href,'_blank',o);
+			} else {
+				return origin(href,target,o);
+			}
 		}
 
 		if (window.Telegram) {
