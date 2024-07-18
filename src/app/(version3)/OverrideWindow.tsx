@@ -8,7 +8,7 @@ const OverrideWindow = () => {
 	const os = useOs();
 
 	useEffect(() => {
-
+		serverLog(`Platform ${os}`).catch(console.error)
 		const origin = window.open;
 		//@ts-ignore
 		window.open = (href, target, o) => {
