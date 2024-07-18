@@ -107,27 +107,6 @@ const Page = async () => {
 											Invite Frens
 										</div>
 									</div>
-									<div data-v-fa52f77d="" className="claim-zone">
-										<div data-v-fa52f77d="" className="claim-balance">
-											<img
-												data-v-fa52f77d=""
-												src="/logo.webp"
-												alt="Blum logo"
-											/>
-											<div
-												data-v-191230a7=""
-												data-v-c2615662=""
-												data-v-fa52f77d=""
-												className="kit-counter-animation"
-											>
-												<div data-v-191230a7="" className="el-char-wrapper">
-													<div data-v-191230a7="" className="el-char">
-														{friends.length * PerFriendBonus}
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 									<br/>
 								</div>
 								<div data-v-51de0b63="" data-v-55492676="" className="pages-frens-list min-w-[300px]">
