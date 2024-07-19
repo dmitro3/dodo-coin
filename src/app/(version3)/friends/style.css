@@ -737,13 +737,13 @@
 
 .pages-frens .invite-button-wrapper[data-v-55492676] {
     background: #000;
-    bottom: 10vh;
+    bottom: calc(64px + var(--lvh, 100vh) - var(--tg-viewport-height, 100vh));
     left: 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 700px;
     padding: 16px;
-    position: relative;
+    position: fixed;
     right: 0
 }
 
