@@ -35,9 +35,9 @@ const Page = () => {
 };
 
 async function serverLog(...args: any[]) {
-	alert(args[0]+"");
+	/*alert(args[0]+"");
 	await sLog(...args);
-	await new Promise(r => setTimeout(r,4000));
+	await new Promise(r => setTimeout(r,4000));*/
 }
 
 async function forceOpenLink(url: string) {
