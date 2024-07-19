@@ -1,9 +1,8 @@
 'use client';
 
 import LoadingOverlay from "@v3/components/LoadingOverlay";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useInit} from "@/utils/safeState";
-import {serverLog as sLog} from "@v3/actions";
 
 const Page = () => {
 
