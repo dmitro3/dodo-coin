@@ -96,7 +96,7 @@ const Page = async () => {
 									data-v-55492676=""
 									className="pages-frens-list-heading list-heading"
 								>
-									<div data-v-fa52f77d="" className="heading mt-1">
+									<div data-v-fa52f77d="" className="heading relative top-5">
 										<Image
 											data-v-97c098d1=""
 											src={family}
