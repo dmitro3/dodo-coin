@@ -36,7 +36,7 @@ const Page = () => {
 
 async function serverLog(...args: any[]) {
 	/*alert(args[0]+"");
-	await sLog(...args);
+	await sLog(...args); TODO: Just for debug
 	await new Promise(r => setTimeout(r,4000));*/
 }
 
