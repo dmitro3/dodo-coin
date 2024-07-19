@@ -28,7 +28,7 @@ const Page = async () => {
 										data-v-97c098d1=""
 										src={family}
 										alt="Friends emoji"
-										className="emoji"
+										className="emoji  relative top-10 v"
 									/>
 									<div data-v-97c098d1="" className="title">
 										{" "}
