@@ -23,7 +23,7 @@ function PaymentPage(props) {
         if (params.has("amount")) {
             const amount = params.get('amount');
             createPosPayment(+amount).then(r => {
-                if (r.status === "success") {
+                if (r?.status === "success") {
                     console.log(r.result);
                     setAddress(r.result.address);
                     setPrice(r.result.amount_to_pay);
