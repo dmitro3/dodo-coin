@@ -54,7 +54,7 @@ const WalletConnection = (props: {
 						</div>
 						<button onClick={()=>{
 							disconnectAsync();
-						}} className={'border-red-500 text-red-500 rounded-lg hover:border-red-400 hover:text-red-400'}>
+						}} className={'border-red-500 text-white rounded-lg hover:border-red-400 hover:text-red-400'}>
 							<svg xmlns="http://www.w3.org/2000/svg" width={20} height={24} viewBox="0 0 24 24"
 								fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
 								strokeLinejoin="round"
