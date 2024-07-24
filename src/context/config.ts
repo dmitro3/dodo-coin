@@ -22,7 +22,6 @@ export const config = defaultWagmiConfig({
 	chains: [
 		mainnet,
 		bsc,
-		sepolia,
 		okc
 	],
 	projectId,
