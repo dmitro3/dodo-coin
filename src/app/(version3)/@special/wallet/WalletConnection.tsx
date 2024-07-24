@@ -24,7 +24,7 @@ const WalletConnection = (props: {
 		if (account.address) {
 			const finalAccount: Omit<typeof account, 'connector'> = fromEntries(entries(account).filter(([k, v]) => typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
-			setUserWallet(finalAccount).catch(console.error);
+			setUserWallet(JSON.parse(JSON.stringify(finalAccount))).catch(console.error);
 		} else window.localStorage.removeItem("lastAccount");
 	}, [account.address,account.addresses]);
 
