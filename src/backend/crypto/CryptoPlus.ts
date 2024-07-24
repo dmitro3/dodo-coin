@@ -78,9 +78,13 @@ export async function createPosPayment(amount: number) {
 		console.error(e);
 		return undefined;
 	}) as POSCreationResponse | undefined
-	console.log(R);
-	const id = (R?.result.invoice_id || R?.result.uuid)?.split("-")?.at?.(-1);
 
+	const id = (R?.result.invoice_id || R?.result.uuid)?.split("-")?.at?.(-1);
+	if (!id) {
+		console.error(`FAILED TO CHECK POS PAYMENT ${amount}`);
+		console.error(R);
+		return undefined;
+	}
 	PAYMENTS[id] = (await getUserFromCookies())?.id || -1;
 
 	return await fetch("https://api.cryptocloud.plus/v2/invoice/checkout/confirm", {
