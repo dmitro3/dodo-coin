@@ -1,10 +1,9 @@
 import {useWeb3Modal} from "@web3modal/scaffold-react";
-import {useAccount, useDisconnect, useSwitchAccount, useSwitchChain} from "wagmi";
+import {useAccount, useDisconnect} from "wagmi";
 import React, {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
-import {handleWalletVerification, WalletVerificationModal} from "@v3/@special/wallet/Verification";
-import {setState} from "jest-circus";
+import {WalletVerificationModal} from "@v3/@special/wallet/Verification";
 import {useInit} from "@/utils/safeState";
 
 const WalletConnection = (props: {
@@ -29,7 +28,7 @@ const WalletConnection = (props: {
 			setUserWallet(finalAccount).catch(console.error);
 		} else window.localStorage.removeItem("lastAccount");
 	}, [account.address]);
-	
+
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified + "");
 	}, [verified]);
