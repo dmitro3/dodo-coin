@@ -29,11 +29,7 @@ const WalletConnection = (props: {
 			setUserWallet(finalAccount).catch(console.error);
 		} else window.localStorage.removeItem("lastAccount");
 	}, [account.address]);
-	useEffect(() => {
-		if (account?.address && !verified) {
-			handleWalletVerification(account);
-		}
-	}, [account.address]);
+	
 	useEffect(() => {
 		window.localStorage.setItem("walletVerified", verified + "");
 	}, [verified]);
