@@ -21,6 +21,7 @@ const WalletConnection = (props: {
 	})
 
 	useEffect(() => {
+		console.log(account);
 		if (account.address) {
 			const finalAccount: Omit<typeof account, 'connector'> = fromEntries(entries(account).filter(([k, v]) => typeof v !== 'object'));
 			window.localStorage.setItem("lastAccount", JSON.stringify(finalAccount));
