@@ -3,7 +3,6 @@ import {useAccount, useDisconnect} from "wagmi";
 import React, {ReactNode, useEffect, useState} from "react";
 import {setUserWallet} from "@v3/@special/wallet/actions";
 import {entries, fromEntries} from "@/utils/built-in";
-import {WalletVerificationModal} from "@v3/@special/wallet/Verification";
 import {useInit} from "@/utils/safeState";
 
 const WalletConnection = (props: {
