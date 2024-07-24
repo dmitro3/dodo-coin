@@ -10,7 +10,7 @@ const shopId = "PPJjJrocLrv3h7LM";
 export type POSCreationResponse = {
 	status: string
 	result: {
-		uuid: string
+		uuid?: string
 		created: string
 		address: string
 		expiry_date: string
@@ -29,7 +29,7 @@ export type POSCreationResponse = {
 		is_email_required: boolean,
 		invoice_status?: string,
 		link: string
-		invoice_id: any
+		invoice_id?: string
 		currency: {
 			id: number
 			code: string
@@ -79,7 +79,7 @@ export async function createPosPayment(amount: number) {
 		return undefined;
 	}) as POSCreationResponse | undefined
 	console.log(R);
-	const id = (R?.result.invoice_id || R?.result.uuid || "N-N").split("-")?.at?.(-1);
+	const id = (R?.result.invoice_id || R?.result.uuid)?.split("-")?.at?.(-1);
 
 	PAYMENTS[id] = (await getUserFromCookies())?.id || -1;
 
@@ -100,7 +100,12 @@ export async function createPosPayment(amount: number) {
 export async function checkPosPayment(id: string) {
 	const R = (await fetch(`https://api.cryptocloud.plus/v2/invoice/checkout/info?invoice_uuid=${id}`).then(r=>r.json())) as POSCreationResponse | undefined;
 	const st = R?.result?.invoice_status;
-	const pId = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
+	const pId = (R?.result.invoice_id || R?.result.uuid)?.split("-")?.at?.(-1);
+	if (!pId) {
+		console.error(R);
+		console.error("FAILED TO CHECK POS PAYMENT ID",id);
+		return undefined;
+	}
 
 	const userId = PAYMENTS[pId]
 	if (st?.includes("paid") && userId) {
