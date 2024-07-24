@@ -3,8 +3,6 @@
 import {User} from "@prisma/client";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import prisma from "@backend/modules/prisma/Prisma";
-import Big from "big.js";
-import {PerFriendBonus} from "@/bot/classes/DodoBot";
 
 
 const shopId = "PPJjJrocLrv3h7LM";
