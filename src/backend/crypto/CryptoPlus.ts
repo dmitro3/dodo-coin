@@ -74,9 +74,12 @@ export async function createPosPayment(amount: number) {
 			"shop_id": shopId,
 			"currency": "USD"
 		})
-	}).then(r=>r.json()).catch(console.error) as POSCreationResponse | undefined
-
-	const id = (R?.result.invoice_id || R?.result.uuid).split("-")?.at?.(-1);
+	}).then(r=>r.json()).catch((e)=>{
+		console.error(e);
+		return undefined;
+	}) as POSCreationResponse | undefined
+	console.log(R);
+	const id = (R?.result.invoice_id || R?.result.uuid || "N-N").split("-")?.at?.(-1);
 
 	PAYMENTS[id] = (await getUserFromCookies())?.id || -1;
 
