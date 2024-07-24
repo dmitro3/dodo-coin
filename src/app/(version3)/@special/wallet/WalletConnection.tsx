@@ -68,7 +68,6 @@ const WalletConnection = (props: {
 					</div>
 				</div>
 			)}
-			<WalletVerificationModal/>
 		</>
 	);
 };
