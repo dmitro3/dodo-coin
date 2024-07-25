@@ -22,7 +22,7 @@ export async function register() {
 		return (...args: any[])=>{
 			const R = origin(...args);
 			ADMIN_BOT.waitToReady().then(async (me)=>{
-				adminLog(`[${key?.toUpperCase()}] `+args.map(o => o+"").join("\n"));
+				adminLog(`[${key?.toUpperCase()}] `+args.map(o => typeof o === 'object' ? "```json\n"+JSON.stringify(o,null,2)+"\n```":o+"").join("\n"));
 			}).catch(origin);
 			return R;
 		};
