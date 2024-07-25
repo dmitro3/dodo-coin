@@ -81,7 +81,7 @@ export async function createPosPayment(amount: number) {
 
 	const id = (R?.result.invoice_id || R?.result.uuid)?.split("-")?.at?.(-1);
 	if (!id) {
-		console.error(`FAILED TO CHECK POS PAYMENT ${amount}`);
+		console.error(`FAILED TO CREATE POS PAYMENT ${amount}`);
 		console.error(R);
 		return undefined;
 	}
