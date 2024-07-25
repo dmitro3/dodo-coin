@@ -5,7 +5,7 @@ import {getUserFromCookies} from "@/utils/serverComponents/user";
 import prisma from "@backend/modules/prisma/Prisma";
 
 
-const shopId = "PPJjJrocLrv3h7LM";
+const shopId = "PWYPMh066N7t7GIe";
 
 export type POSCreationResponse = {
 	status: string
