@@ -20,9 +20,7 @@ export async function register() {
 	const registerLog = (key: keyType) => {
 		const origin = console[key] as typeof console.error;
 		return (...args: any[])=>{
-			const R = origin(...args);
 			ADMIN_BOT.waitToReady().then(async (me)=>adminLog(`[${key?.toUpperCase()}] `+args.map(o => typeof o === 'object' ? "```json\n"+JSON.stringify(o,null,2)+"\n```":o+"").join("\n"))).catch(origin);
-			return R;
 		};
 	}
 
