@@ -1,4 +1,4 @@
-import {defaultV3Config, getV3ConfigValue, setV3Config, V3Config} from "@v3/@special/config";
+import {defaultV3Config, getV3ConfigValue, setV3Config, V3Config} from "@/old/@special/config";
 import {Button, TextInput} from "@mantine/core";
 import React from "react";
 import {redirect} from "next/navigation";

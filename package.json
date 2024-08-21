@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:trubo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -31,6 +32,7 @@
     "sharp": "^0.33.4",
     "superjson": "^2.2.1",
     "telegraf": "^4.16.3",
+    "tonweb": "^0.0.66",
     "tronweb": "^3.2.7",
     "ts-appconfig": "^1.2.0",
     "ts-async-bootstrap": "^2.1.0",

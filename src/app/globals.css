@@ -35,7 +35,6 @@ button[disabled] {
 
 body {
     background: black;
-    overflow: hidden;
 }
 
 html, body {
@@ -45,4 +44,13 @@ html, body {
 }
 body {
     position: relative;
+    @apply text-white 
+}
+
+.center {
+  @apply flex items-center justify-center
+}
+
+p {
+  @apply text-white
 }

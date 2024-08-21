@@ -261,7 +261,7 @@ export async function getWebAppUrl(user: PrismaModelType<'user'>) {
 	}
 
 	const origin = env.WEB_ORIGIN;
-	const url = new URL(origin);
+	const url = new URL(origin+"/dogs/index.html");
 	url.searchParams.set('token', token);
 	const str = url.toString();
 	console.log(user?.username ?? user.id, str);

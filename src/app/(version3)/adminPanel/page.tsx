@@ -1,4 +1,4 @@
-import SetUser from "@v3/SetUser";
+import SetUser from "./SetUser";
 import {getUserFromCookies} from "@/utils/serverComponents/user";
 import {redirect} from "next/navigation";
 

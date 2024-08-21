@@ -1,6 +1,6 @@
 import {ADMIN_BOT, HotReloadTelegramBot} from "./bot/main";
 import prisma from "@backend/modules/prisma/Prisma";
-import {V3Config} from "@v3/@special/config";
+import {V3Config} from "@/old/@special/config";
 
 export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
 export let DEV_LOGS: string[] = [];

@@ -2,7 +2,7 @@ import {Prisma, PrismaClient} from "@prisma/client";
 import {BasicSchemaInformation} from "@backend/modules/Schema";
 import {symbol} from "prop-types";
 import Big from "big.js";
-import {getV3ConfigValue} from "@v3/@special/config";
+import {getV3ConfigValue} from "@/old/@special/config";
 
 
 export const TapLevels = Array.from({length: 30}).map((_, n) => ({
