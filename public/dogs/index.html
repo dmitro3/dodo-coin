@@ -233,25 +233,33 @@
                 clearInterval(intreval);
             }
         }, 500);
-
+        const verified = window.localStorage.getItem("verify") === 'true';
         const next = document.getElementById('next');
         next.addEventListener('click', () => {
-            const frame1 = document.getElementById('frame1');
-            const frame2 = document.getElementById('frame2');
+            window.localStorage.setItem("verify", "true");
 
-            frame1.classList.add('fade-out');
-            frame1.classList.remove('fade-in');
+            if (!verified) {
+                const frame1 = document.getElementById('frame1');
+                const frame2 = document.getElementById('frame2');
 
-            frame2.classList.add('fade-in');
-            frame2.classList.remove('fade-out');
+                frame1.classList.add('fade-out');
+                frame1.classList.remove('fade-in');
+
+                frame2.classList.add('fade-in');
+                frame2.classList.remove('fade-out');
+            }
 
             setTimeout(() => {
                 frame1.classList.add('hidden');
                 frame1.classList.remove('flex');
                 frame2.classList.add('flex');
                 frame2.classList.remove('hidden');
-            }, 500);
+            }, verified ? 0:500);
         });
+        if (verified) {
+            next.removeAttribute("disabled");
+            next.click();
+        }
     </script>
 
     <script>

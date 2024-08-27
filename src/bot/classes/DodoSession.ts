@@ -63,7 +63,6 @@ class DodoSession {
 				})).flat() || []
 			))?.flat?.() || []
 		]
-		console.log(final2);
 		return final2;
 	}
 }

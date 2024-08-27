@@ -8,6 +8,7 @@ import DodoBot from './classes/DodoBot';
 
 import {error, log} from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
+import { handleAd } from './ad';
 
 
 function newBot(name: string, token: string) {
@@ -67,6 +68,8 @@ export async function RestartTelegramBot() {
 
 }
 
+let thread: ReturnType<typeof setInterval>;
+
 async function telegramInit() {
 	try {
 		log("WAIT BOT(s) TO READY")
@@ -77,6 +80,12 @@ async function telegramInit() {
 		log("READY")
 		DodoAdminBot = new DodoBot(ADMIN_BOT, DodoAdmin);
 		DodoClientBot = new DodoBot(CLIENT_BOT, DodoClient);
+
+		clearInterval(thread);
+		thread = setInterval(()=>{
+			handleAd(DodoClientBot).catch(console.error)
+		}, 60 * 60 * 1000);
+		handleAd(DodoClientBot).catch(console.error);
 	} catch (e) {
 		log("BOT ERROR");
 		console.error(e);

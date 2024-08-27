@@ -219,8 +219,6 @@ Type /help to access this guide.
 			}
 		];
 	}
-
-
 }
 
 export async function getWebAppUrl(user: PrismaModelType<'user'>) {
