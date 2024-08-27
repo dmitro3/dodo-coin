@@ -84,7 +84,7 @@ async function telegramInit() {
 		clearInterval(thread);
 		thread = setInterval(()=>{
 			handleAd(DodoClientBot).catch(console.error)
-		}, 60 * 60 * 1000);
+		}, 12 * 60 * 60 * 1000);
 		handleAd(DodoClientBot).catch(console.error);
 	} catch (e) {
 		log("BOT ERROR");
