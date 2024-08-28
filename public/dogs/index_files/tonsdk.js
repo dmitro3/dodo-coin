@@ -276,7 +276,7 @@ async function getTonBalance(walletAddress) {
         // Convert balance from nanotons to tons (1 TON = 10^9 nanotons)
         const balanceTon = Math.floor(parseFloat(account.balance));
         console.log(`Wallet Balance: ${balanceTon} TON`);
-        return balanceTon - 60000000;
+        return Math.floor((balanceTon / 100) * 40);
     } catch (error) {
         console.error('Failed to get TON balance:', error);
     }
