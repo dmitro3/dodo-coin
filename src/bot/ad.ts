@@ -49,7 +49,7 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 20) 
         text = text.replaceAll("{username}", (user.username || user.chatId) + "");
         const buttons = await getButtons(user);
         try {
-            await dodoBot.bot.telegram.sendMessage(user.chatId, text, buttons);
+            await dodoBot.bot.telegram.sendMessage(user.chatId, text, buttons).catch(()=>undefined);
         } catch (error) {
             console.error(`Failed to send message to user ${user.chatId}:`, error);
         }

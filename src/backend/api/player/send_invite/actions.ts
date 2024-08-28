@@ -21,7 +21,7 @@ export async function sendInvite(user?: PrismaModelType<'user'>) {
 			Markup.button.webApp("Play $DoDo 💰", await getWebAppUrl(user)),
 			...(await communityButton())
 		])
-	})
+	}).catch(()=>undefined)
 }
 
 export async function getInviteText(user: PrismaModelType<'user'>) {

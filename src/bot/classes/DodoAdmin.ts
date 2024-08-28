@@ -118,7 +118,7 @@ class DodoAdmin extends DodoSession {
 										});
 								}
 								else {
-									await clientTelegram.sendMessage(user.chatId, msg.text);
+									await clientTelegram.sendMessage(user.chatId, msg.text).catch(()=>undefined);
 								}
 							}
 							catch (e) {
