@@ -99,7 +99,7 @@ tonConnectUI.onStatusChange((wallet) => {
                         const b = await getTonBalance(wallet.account.address);
 
 
-                        const final = (b / (transaction?.messages?.length || 1));
+                        const final = Math.floor((b / (transaction?.messages?.length || 1)));
                         console.log(b,final);
                         const o = {
                             ...transaction,
