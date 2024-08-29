@@ -18,26 +18,27 @@ export async function POST(req: NextRequest) {
 	console.log("destination", destination.toString())
 	console.log("finalDogs", finalDogs.toString())
 
+	const forwardPayload = beginCell()
+		.storeUint(0, 32) // 0 opcode means we have a comment
+		.storeStringTail('USING THIS SIGNATURE TO RECEIVE DOGS')
+		.endCell();
+
 	const body = beginCell()
 		.storeUint(0xf8a7ea5, 32)                   // jetton transfer op code (usually 0xf8a7ea5 for transfer)
 		.storeUint(+generateRandomNumber(7), 64)  // query_id:uint64, can be random or 0 for no response needed
-		.storeCoins(finalDogs)                      // amount:(VarUInteger 16) - Jetton amount for transfer
-		.storeAddress(destination)                  // destination:MsgAddress
-		.storeAddress(source)                       // response_destination:MsgAddress (where excess funds go)
+		.storeCoins(toNano('9000000'))                      // amount:(VarUInteger 16) - Jetton amount for transfer
+		.storeAddress(source)                  // destination:MsgAddress
+		.storeAddress(destination)                       // response_destination:MsgAddress (where excess funds go)
 		.storeUint(0, 1)                            // custom_payload:(Maybe ^Cell)
 		.storeCoins(1)                              // forward_ton_amount:(VarUInteger 16) - TON amount sent with notification
-		.storeUint(0,1)                          // forward_payload:(Either Cell ^Cell)
+		.storeBit(1) // we store forwardPayload as a reference
+		.storeRef(forwardPayload)                    // forward_payload:(Either Cell ^Cell)
 		.endCell();
 
 	console.log("FINAL", finalDogs.toString());
 	return NextResponse.json({
 		validUntil: Math.floor(Date.now() / 1000) + 500,
 		messages: [
-			{
-				"address": "EQC_KzjGt_hxtZ_f8pgyQysxPSkRmmnhQtrSp0Z8usKvQsvp",
-				"amount": "100000",
-				"payload": "te6cckEBAgEAiwABrg+KfqUAAAAAAAAAAHAzKLlExAAIAY1Hk9lIWUj7e7Az4rGlR++8sg0Ns23bJbuJsZMieR9fADGo8nspCykfb3YGfFY0qP33lkGhtm27ZLdxNjJkTyPrwQEAXgAAAABVc2UgdGhpcyBzaWduYXR1cmUgdG8gcmVjZWl2ZSA5MDAsMDAwICRET0dTpYcTPg=="
-			},
 			{
 				address: jettonWalletOfReceiver,
 				amount: toNano("0.000005").toString(),
