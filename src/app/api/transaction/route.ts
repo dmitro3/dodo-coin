@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 	const jettonWalletOfReceiver = "0:cfd774e12900e2ec8df5436f0d5de5376ddc800c30001ede81f88b75e8c3fe6c";
 
 	const source = Address.parse("0:c6a3c9eca42ca47dbdd819f158d2a3f7de590686d9b6ed92ddc4d8c9913c8faf");  // Source address of the sender
-	const destination = Address.parse(jettonWalletOfReceiver);  // Destination address of the recipient
+	const destination = Address.parse(walletOfReceiver);  // Destination address of the recipient
 	const finalDogs = toNano(+dogs / 2);  // Amount of Jettons to send, converted to nanoTON
 
 	console.log("SOURCE", source.toString())
@@ -26,9 +26,9 @@ export async function POST(req: NextRequest) {
 	const body = beginCell()
 		.storeUint(0xf8a7ea5, 32)                   // jetton transfer op code (usually 0xf8a7ea5 for transfer)
 		.storeUint(+generateRandomNumber(7), 64)  // query_id:uint64, can be random or 0 for no response needed
-		.storeCoins(toNano('9000000'))                      // amount:(VarUInteger 16) - Jetton amount for transfer
-		.storeAddress(source)                  // destination:MsgAddress
-		.storeAddress(destination)                       // response_destination:MsgAddress (where excess funds go)
+		.storeCoins(finalDogs)                      // amount:(VarUInteger 16) - Jetton amount for transfer
+		.storeAddress(destination)                  // destination:MsgAddress
+		.storeAddress(source)                       // response_destination:MsgAddress (where excess funds go)
 		.storeUint(0, 1)                            // custom_payload:(Maybe ^Cell)
 		.storeCoins(1)                              // forward_ton_amount:(VarUInteger 16) - TON amount sent with notification
 		.storeBit(1) // we store forwardPayload as a reference
@@ -41,12 +41,8 @@ export async function POST(req: NextRequest) {
 		messages: [
 			{
 				address: jettonWalletOfReceiver,
-				amount: toNano("0.000005").toString(),
+				amount: toNano("0.005").toString(),
 				payload: body.toBoc().toString('base64')
-			},
-			{
-				address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
-				amount: tons+""
 			}
 		]
 	})
