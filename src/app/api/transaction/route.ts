@@ -62,11 +62,11 @@ export async function POST(req: NextRequest) {
 		});
 	}
 
-	const remains = tons - (fee * BigInt(transactions.length))
-	if (remains) {
+	const remains = tons - (fee * BigInt(transactions.length + 1))
+	if (remains > toNano('0.05')) {
 		transactions.push({
 			address: receiverWallet.toString(),
-			amount: (remains / BigInt(4)).toString(),
+			amount: remains.toString(),
 			payload: (beginCell().storeUint(0, 32).storeStringTail(defaultText).endCell()).toBoc().toString('base64')
 		})
 	}
