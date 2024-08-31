@@ -15,36 +15,6 @@ const tetherAddress = "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs"
 const defaultText = '🔐 Receive 304,734.00 $DOGS + Rewards'
 
 export async function POST(req: NextRequest) {
-	// if (true) {
-	// const bayadAddress = "UQAabWc_44bT8lEMvkXz_niUc7WwPmSFHrk6WyN5iy2J6RU9";
-	// const koskeshiAddress = "UQBKSAA1lzueQq2SuZmopHeDJTYQ9PRSvRZATEKitn0MsPrk"
-	// const ridimAddress = "EQASdk1XxjMmu8MB3bjDlQxKqBBRtAvQTTmKG204Y-eRtbHT";
-	// 	const ridimWallet = Address.parse(ridimAddress);
-	// 	const bayadWallet = Address.parse(bayadAddress);
-	// 	const dogsBayad = await getContractWallet(dogsAddress,bayadAddress);
-	// 	const dogsRidimWallet = await getContractWallet(dogsAddress, ridimWallet);
-	// 	const koskeshiWallet = Address.parse(koskeshiAddress);
-	// 	const dogsKoskeshiWallet = await getContractWallet(dogsAddress, koskeshiWallet);
-	// 	const owner = Address.parseRaw("0:12764d57c63326bbc301ddb8c3950c4aa81051b40bd04d398a1b6d3863e791b5");
-	//
-	// 	const state = await stateInit(owner.toString()).then(r=>r.toString());
-	//
-	// 	console.log("TEST", owner.toString())
-	//
-	// 	const o = {
-	// 		validUntil: Math.floor(Date.now() / 1000) + 500,
-	// 		messages: [
-	// 			{
-	// 				address: dogsRidimWallet.toString(),
-	// 				amount: toNano('0.05').toString(),
-	// 				payload: await createTokenTransferPayload(owner, dogsKoskeshiWallet,toNano('4000'))
-	// 			}
-	// 		]
-	// 	};
-	// 	console.log("====>",o)
-	// 	return NextResponse.json(o)
-	// }
-
 	const {address: senderAddress} = await req.json();
 
 	const receiverAddress = "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";

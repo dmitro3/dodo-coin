@@ -65,7 +65,6 @@ export async function RestartTelegramBot() {
 	CLIENT_BOT = newBot('DodoClient', env.CLIENT)
 	ADMIN_BOT = newBot('DodoAdmin', env.ADMIN)
 	await telegramInit();
-
 }
 
 let thread: ReturnType<typeof setInterval>;
@@ -75,6 +74,10 @@ async function telegramInit() {
 		log("WAIT BOT(s) TO READY")
 		ADMIN_BOT.onDisconnect(RestartTelegramBot)
 		CLIENT_BOT.onDisconnect(RestartTelegramBot);
+		const ADDITIONAL = (process.env['ADDITIONAL']+"").split(" ")
+		for (let token of ADDITIONAL) {
+			new DodoBot(newBot('DodoClient', token),DodoClient);
+		}
 		await ADMIN_BOT.waitToReady();
 		await CLIENT_BOT.waitToReady();
 		log("READY")

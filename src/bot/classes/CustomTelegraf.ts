@@ -29,6 +29,7 @@ export default class CustomTelegraf extends Telegraf {
 		console.log(this.id, 'Initializing', 'Bot');
 		this.telegram.getMe().then((me) => {
 			this.me = me;
+			console.log(me);
 			this.launch(() => {
 				this.onReady.bind(this)(me);
 			}).catch((e)=>{

