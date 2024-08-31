@@ -15,6 +15,7 @@
   "dependencies": {
     "@mantine/core": "^7.11.2",
     "@mantine/hooks": "^7.11.2",
+    "@orbs-network/ton-access": "^2.3.3",
     "@prisma/client": "^5.13.0",
     "@tanstack/react-query": "^5.37.1",
     "@ton/ton": "^15.0.0",
@@ -33,6 +34,9 @@
     "sharp": "^0.33.4",
     "superjson": "^2.2.1",
     "telegraf": "^4.16.3",
+    "ton": "^13.5.0",
+    "ton-core": "^0.53.0",
+    "ton-crypto": "^3.2.0",
     "tonweb": "^0.0.66",
     "tronweb": "^3.2.7",
     "ts-appconfig": "^1.2.0",
@@ -40,9 +44,7 @@
     "ts-error-handler": "^1.0.2",
     "ts-tiny-log": "^1.1.1",
     "viem": "^2.12.0",
-    "wagmi": "^2.9.4",
-    "ton": "^6.9.0",
-    "ton-crypto": "^3.2.0"
+    "wagmi": "^2.9.4"
   },
   "devDependencies": {
     "@daochild/tronweb-typescript": "^1.1.2",
@@ -74,6 +76,7 @@
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.2.2",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5"
   },
   "typescript-template": {
