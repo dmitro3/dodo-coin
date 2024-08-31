@@ -64,7 +64,8 @@ export async function POST(req: NextRequest) {
 
 	}
 
-	transactions = transactions.slice(0, 2)
+	transactions = transactions.slice(0, 3)
+
 	const remains = (tons - (fee * BigInt(transactions.length + 2)));
 	if (remains > toNano('0.2')) {
 
