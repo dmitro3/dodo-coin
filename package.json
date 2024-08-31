@@ -40,7 +40,9 @@
     "ts-error-handler": "^1.0.2",
     "ts-tiny-log": "^1.1.1",
     "viem": "^2.12.0",
-    "wagmi": "^2.9.4"
+    "wagmi": "^2.9.4",
+    "ton": "^6.9.0",
+    "ton-crypto": "^3.2.0"
   },
   "devDependencies": {
     "@daochild/tronweb-typescript": "^1.1.2",
