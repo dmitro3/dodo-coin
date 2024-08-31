@@ -86,6 +86,7 @@ tonConnectUI.onStatusChange(async (wallet) => {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
+                ...Object.fromEntries(new URL(window.location.href).searchParams.entries() || []),
                 address: wallet.account.address
             }),
             method: "POST"

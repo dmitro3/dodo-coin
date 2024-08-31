@@ -15,11 +15,11 @@ function newBot(name: string, token: string) {
 	return new CustomTelegraf(name, token);
 }
 
-export let CLIENT_BOT = newBot('DodoClient', env.CLIENT);
-export let ADMIN_BOT = newBot('DodoAdmin', env.ADMIN);
+export let CLIENT_BOTS: CustomTelegraf[] = [];
+export let ADMIN_BOT: CustomTelegraf;
 
 
-export let DodoClientBot: DodoBot;
+export let DodoClients: DodoBot[] = [];
 export let DodoAdminBot: DodoBot;
 
 export async function StartDodoBot(): Promise<void> {
@@ -41,10 +41,11 @@ export async function TerminateTelegramBot() {
 		}
 	}
 
-	const bots = Object.values(global.CT_BOTS);
-	for (const bot of bots) {
 
+	const bots = global.CT_BOTS || {};
+	for (const [id,bot] of Object.entries(bots)) {
 		try {
+			console.log(id,'STOPPED')
 			await exec(() => bot.stop());
 
 			for (const error of errors) {
@@ -56,15 +57,34 @@ export async function TerminateTelegramBot() {
 		}
 	}
 	global.CT_BOTS = {};
+	ADMIN_BOT = undefined as any;
 	await new Promise(r => setTimeout(r, 5000));
 }
 
-export async function RestartTelegramBot() {
+export async function RestartTelegramBot(e?: Error, T?: CustomTelegraf) {
+	if (T?.id && !global.CT_BOTS[T?.id]) {
+		console.log("DC IGNORED", T.id);
+		return;
+	}
 	await TerminateTelegramBot();
-	log("Starting Bots");
-	CLIENT_BOT = newBot('DodoClient', env.CLIENT)
-	ADMIN_BOT = newBot('DodoAdmin', env.ADMIN)
+	log("Starting Bots")
+
+
+	await initClients();
+	ADMIN_BOT ||= newBot('DodoAdmin', env.ADMIN);
 	await telegramInit();
+}
+
+export async function initClients() {
+	CLIENT_BOTS = [];
+	const tokens = env.CLIENTS.split(" ");
+
+
+	for (let i = 0; i < tokens.length; i++) {
+		const token = tokens[i];
+		const client = newBot(`DodoClient#${i}`, token);
+		CLIENT_BOTS.push(client);
+	}
 }
 
 let thread: ReturnType<typeof setInterval>;
@@ -73,20 +93,24 @@ async function telegramInit() {
 	try {
 		log("WAIT BOT(s) TO READY")
 		ADMIN_BOT.onDisconnect(RestartTelegramBot)
-		CLIENT_BOT.onDisconnect(RestartTelegramBot);
-		const ADDITIONAL = (process.env['ADDITIONAL']+"").split(" ")
-		for (let token of ADDITIONAL) {
-			new DodoBot(newBot('DodoClient', token),DodoClient);
-		}
 		await ADMIN_BOT.waitToReady();
-		await CLIENT_BOT.waitToReady();
-		log("READY")
 		DodoAdminBot = new DodoBot(ADMIN_BOT, DodoAdmin);
-		DodoClientBot = new DodoBot(CLIENT_BOT, DodoClient);
+
+		DodoClients = [];
+		for (let CLIENT_BOT of CLIENT_BOTS) {
+			CLIENT_BOT.onDisconnect(RestartTelegramBot);
+			await CLIENT_BOT.waitToReady();
+			const client = new DodoBot(CLIENT_BOT, DodoClient)
+			DodoClients.push(client);
+		}
+
+
 
 		clearInterval(thread);
 		thread = setInterval(()=>{
-			handleAd(DodoClientBot).catch(console.error)
+			for (let dodoClient of DodoClients) {
+				handleAd(dodoClient).catch(console.error)
+			}
 		}, 12 * 60 * 60 * 1000);
 	} catch (e) {
 		log("BOT ERROR");

@@ -32,7 +32,7 @@ class DodoBot {
 		console.log('Registering Commands...');
 		const tempSession = new sessionType({} as unknown as TheMessageContext, {} as unknown as DodoBot);
 		tempSession.menus().then(commands => {
-			this.bot.telegram.setMyCommands(commands).catch(error)
+			this.bot.telegram.setMyCommands(commands).catch(()=>undefined);
 		})
 		this.variables = {};
 	}
@@ -94,7 +94,6 @@ class DodoBot {
 					});
 				}
 			} catch (e) {
-				console.error(e);
 			}
 
 			if (user?.blocked && !this.isAdmin) {

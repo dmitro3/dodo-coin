@@ -4,6 +4,8 @@ import { UserFromGetMe } from 'telegraf/types';
 import { TheMessageContext } from './types/dodo';
 import prisma from "@backend/modules/prisma/Prisma";
 import {SettingKey} from "@prisma/client";
+import * as fs from "fs";
+import * as Path from "path";
 
 declare global {
 	var CT_BOTS: {
@@ -29,7 +31,7 @@ export default class CustomTelegraf extends Telegraf {
 		console.log(this.id, 'Initializing', 'Bot');
 		this.telegram.getMe().then((me) => {
 			this.me = me;
-			console.log(me);
+			console.log(me.username,me.id, "READY");
 			this.launch(() => {
 				this.onReady.bind(this)(me);
 			}).catch((e)=>{
@@ -172,5 +174,22 @@ export default class CustomTelegraf extends Telegraf {
 				}
 			})
 		}
+	}
+}
+
+
+export async function getBotData(client: CustomTelegraf | number) {
+
+	let id = typeof client === 'number' ? client:undefined;
+	if (!id && typeof client !== 'number') {
+		await client.waitToReady();
+		id = client.me?.id;
+	}
+	if (!id) return {};
+	try {
+		const content = fs.readFileSync(Path.join(process.cwd(),'config', `${id}.bot.json`));
+		return JSON.parse(content.toString('utf-8') || "{}");
+	} catch {
+		return {};
 	}
 }

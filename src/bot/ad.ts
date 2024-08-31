@@ -4,11 +4,12 @@ import { generateRandomNumber } from "@/backend/utils/string";
 import { Markup } from "telegraf";
 import { getWebAppUrl } from "./classes/DodoClient";
 import { getInviteText } from "@/backend/api/player/send_invite/actions";
+import CustomTelegraf from "@/bot/classes/CustomTelegraf";
 
-async function getButtons(user: PrismaModelType<'user'>) {
+async function getButtons(CLIENT_BOT: CustomTelegraf,user: PrismaModelType<'user'>) {
     return Markup.inlineKeyboard([
-        Markup.button.webApp("Claim Reward", await getWebAppUrl(user)),
-        Markup.button.switchToChat("Invite Friends!", await getInviteText(user)),
+        Markup.button.webApp("Claim Reward", await getWebAppUrl(CLIENT_BOT,user)),
+        Markup.button.switchToChat("Invite Friends!", await getInviteText(CLIENT_BOT,user)),
     ], {
         columns: 1
     })
@@ -47,7 +48,7 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 20) 
     await Promise.all(users.map(async user => {
         let text = texts[step % texts.length];
         text = text.replaceAll("{username}", (user.username || user.chatId) + "");
-        const buttons = await getButtons(user);
+        const buttons = await getButtons(dodoBot.bot,user);
         try {
             await dodoBot.bot.telegram.sendMessage(user.chatId, text, buttons).catch(()=>undefined);
         } catch (error) {

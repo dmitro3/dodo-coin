@@ -1,9 +1,6 @@
 "use client";
 import React, {useState} from 'react';
 import {useRouter} from "next/navigation";
-import {useAuth} from '@v3/hooks/useAuth';
-import {postData} from '@v3/utils/api';
-import Big from "big.js";
 import semicircle from "../../assets/images/icon_semicircle.svg";
 import Link from "next/link";
 import {PrismaModelType} from "@backend/modules/prisma/Prisma";
