@@ -118,7 +118,7 @@ async function telegramInit() {
 export async function handleAutoMessenger(client: DodoBot) {
 	let time = (await getBotData(client.bot)).time ?? "12";
 	let disabled = false;
-	if (time === 'random' || isNaN(time)) {
+	if (time === 'random' || isNaN(+time)) {
 		time = +generateRandomNumber(1);
 	}
 	if (time === "0") {

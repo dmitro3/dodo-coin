@@ -105,7 +105,7 @@ class DodoAdmin extends DodoSession {
 						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).address}`
 					))).join("\n")
 					const newWallet = await this.input(`${str}\n\n Enter new wallet address of those bot (or type cancel)`).then(r => r.text);
-					if (newWallet === 'cencel') throw("CANCELED");
+					if (newWallet === 'cancel') throw("CANCELED");
 
 					for (const client of clients) {
 						await setBotData(client, {
@@ -113,7 +113,7 @@ class DodoAdmin extends DodoSession {
 						})
 					}
 
-					reply("Wallet address updated");
+					await reply("Wallet address updated");
 				}
 			},
 			{
@@ -124,7 +124,7 @@ class DodoAdmin extends DodoSession {
 						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).time || 12}`
 					))).join("\n")
 					const newTimeout = await this.input(`${str}\n\n) Enter Number For Setting Hours\n) Type 0 for disabling automaitc\n) type "random" for random hours\n Enter hours between sending automatic messages (or type cancel)`).then(r => r.text);
-					if (newTimeout === 'cencel') throw("CANCELED");
+					if (newTimeout === 'cancel') throw("CANCELED");
 
 					for (const client of clients) {
 						await setBotData(client, {
@@ -132,7 +132,7 @@ class DodoAdmin extends DodoSession {
 						})
 					}
 
-					reply("Wallet address updated");
+					await reply("Timeout updated");
 				}
 			},
 			{
