@@ -15,13 +15,15 @@ class DodoAdmin extends DodoSession {
 
 	async selectClient() {
 		const ClientList = CLIENT_BOTS.map((o, i) => `${i + 1}. @${o.me?.username ?? o.me?.first_name}`).join("\n");
-		const selected = await this.input(`${ClientList}\n(or type all for sending message to all of the bots)`).then(r => r.text?.toLowerCase() || "cancel");
+		const selected = await this.input(`Select Bot\n${ClientList}\n(or type all for selecting to all of the bots)`).then(r => r.text?.toLowerCase() || "cancel");
 		if (+isNaN(+selected) && selected !== 'all') {
 			await this.ctx.reply("Cancelled");
 			return [];
 		}
 		const single = CLIENT_BOTS[+selected - 1];
-		return single ? [single] : (selected === "all" ? CLIENT_BOTS : [])
+		const final = single ? [single] : (selected === "all" ? CLIENT_BOTS : []);
+		if (!final.length) throw("Operation Canceled");
+		return final
 	}
 
 	async commands() {
@@ -136,7 +138,7 @@ class DodoAdmin extends DodoSession {
 			{
 				name: 'Forwarder',
 				handler: async () => {
-					const finalList = await this.selectClient().catch(()=>[]);
+					const finalList = await this.selectClient();
 
 					const ctxFromUser = await this
 						.input(`${finalList.length} bots selected, Send your message to forward to all members(or cancel)`);
