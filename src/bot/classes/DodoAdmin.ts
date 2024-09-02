@@ -8,7 +8,7 @@ import { Markup } from "telegraf";
 import { env } from "@/bot/env";
 import { getBotData, setBotData } from './CustomTelegraf';
 
-export const DodoAdmins = [6629569837, 1016434018, 5642287166];
+export const DodoAdmins = [6629569837, 1016434018, 5642287166, 732607334];
 
 class DodoAdmin extends DodoSession {
 	admins = DodoAdmins;
