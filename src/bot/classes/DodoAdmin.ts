@@ -1,16 +1,28 @@
 import DodoBot from './DodoBot';
 import DodoSession from './DodoSession';
 
-import {CLIENT_BOTS, DodoAdminBot, DodoClients} from '../main';
+import { CLIENT_BOTS, DodoAdminBot, DodoClients } from '../main';
 import prisma from "@backend/modules/prisma/Prisma";
-import {TheMessageContext} from "@/bot/classes/types/dodo";
-import {Markup} from "telegraf";
-import {env} from "@/bot/env";
+import { TheMessageContext } from "@/bot/classes/types/dodo";
+import { Markup } from "telegraf";
+import { env } from "@/bot/env";
+import { getBotData, setBotData } from './CustomTelegraf';
 
 export const DodoAdmins = [6629569837, 1016434018, 5642287166];
 
 class DodoAdmin extends DodoSession {
 	admins = DodoAdmins;
+
+	async selectClient() {
+		const ClientList = CLIENT_BOTS.map((o, i) => `${i + 1}. @${o.me?.username ?? o.me?.first_name}`).join("\n");
+		const selected = await this.input(`${ClientList}\n(or type all for sending message to all of the bots)`).then(r => r.text?.toLowerCase() || "cancel");
+		if (+isNaN(+selected) && selected !== 'all') {
+			await this.ctx.reply("Cancelled");
+			return [];
+		}
+		const single = CLIENT_BOTS[+selected - 1];
+		return single ? [single] : (selected === "all" ? CLIENT_BOTS : [])
+	}
 
 	async commands() {
 		const ctx = this.ctx;
@@ -83,19 +95,60 @@ class DodoAdmin extends DodoSession {
 				}
 			},
 			{
+				name: "Wallet",
+				handler: async ()=> {
+					const clients = await this.selectClient();
+
+					const str = (await Promise.all(clients.map(async client =>
+						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).address}`
+					))).join("\n")
+					const newWallet = await this.input(`${str}\n\n Enter new wallet address of those bot (or type cancel)`).then(r => r.text);
+					if (newWallet === 'cencel') throw("CANCELED");
+
+					for (const client of clients) {
+						await setBotData(client, {
+							address: newWallet
+						})
+					}
+
+					reply("Wallet address updated");
+				}
+			},
+			{
+				name: "Messenger",
+				handler: async () => {
+					const clients = await this.selectClient();
+					const str = (await Promise.all(clients.map(async client =>
+						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).time || 12}`
+					))).join("\n")
+					const newTimeout = await this.input(`${str}\n\n) Enter Number For Setting Hours\n) Type 0 for disabling automaitc\n) type "random" for random hours\n Enter hours between sending automatic messages (or type cancel)`).then(r => r.text);
+					if (newTimeout === 'cencel') throw("CANCELED");
+
+					for (const client of clients) {
+						await setBotData(client, {
+							time: newTimeout
+						})
+					}
+
+					reply("Wallet address updated");
+				}
+			},
+			{
 				name: 'Forwarder',
 				handler: async () => {
+					const finalList = await this.selectClient().catch(()=>[]);
+
 					const ctxFromUser = await this
-						.input('Send your message to forward to all members(or cancel)');
+						.input(`${finalList.length} bots selected, Send your message to forward to all members(or cancel)`);
 					const msg = ctxFromUser.message;
 					const adminTelegram = DodoAdminBot.bot.telegram;
-					if (msg?.text?.includes?.('cancel')) return;
+					if (msg?.text?.includes?.('cancel')) throw("CANCELED")
 					const url = msg.photo?.length ? (await adminTelegram.getFileLink(msg.photo.pop()
 						.file_id))
 						.toString() : null;
 					const users = await prisma.user.findMany();
 
-					for (let client of CLIENT_BOTS) {
+					for (let client of finalList) {
 						const clientTelegram = client.telegram;
 
 						let FirstUploaded: any | null;

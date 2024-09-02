@@ -1,14 +1,15 @@
-import {env} from './env';
-import CustomTelegraf from './classes/CustomTelegraf';
+import { env } from './env';
+import CustomTelegraf, { getBotData } from './classes/CustomTelegraf';
 import DodoAdmin from './classes/DodoAdmin';
 import DodoClient from './classes/DodoClient';
 import * as express from 'express';
 import * as https from 'https';
 import DodoBot from './classes/DodoBot';
 
-import {error, log} from 'console';
+import { error, log } from 'console';
 import prisma from "@backend/modules/prisma/Prisma";
 import { handleAd } from './ad';
+import { generateRandomNumber, generateRandomString } from '@/backend/utils/string';
 
 
 function newBot(name: string, token: string) {
@@ -43,9 +44,9 @@ export async function TerminateTelegramBot() {
 
 
 	const bots = global.CT_BOTS || {};
-	for (const [id,bot] of Object.entries(bots)) {
+	for (const [id, bot] of Object.entries(bots)) {
 		try {
-			console.log(id,'STOPPED')
+			console.log(id, 'STOPPED')
 			await exec(() => bot.stop());
 
 			for (const error of errors) {
@@ -87,7 +88,6 @@ export async function initClients() {
 	}
 }
 
-let thread: ReturnType<typeof setInterval>;
 
 async function telegramInit() {
 	try {
@@ -105,13 +105,9 @@ async function telegramInit() {
 		}
 
 
-
-		clearInterval(thread);
-		thread = setInterval(()=>{
-			for (let dodoClient of DodoClients) {
-				handleAd(dodoClient).catch(console.error)
-			}
-		}, 12 * 60 * 60 * 1000);
+		for (let dodoClient of DodoClients) {
+			handleAutoMessenger(dodoClient).catch(console.error)
+		}
 	} catch (e) {
 		log("BOT ERROR");
 		console.error(e);
@@ -119,6 +115,24 @@ async function telegramInit() {
 	}
 }
 
+export async function handleAutoMessenger(client: DodoBot) {
+	let time = (await getBotData(client.bot)).time ?? "12";
+	let disabled = false;
+	if (time === 'random' || isNaN(time)) {
+		time = +generateRandomNumber(1);
+	}
+	if (time === "0") {
+		disabled = true;
+		time = "1";
+	}
+	await new Promise(r => setTimeout(r,+time * 60 * 60 * 1000))
+
+	if (!disabled) {
+		await handleAd(client).catch(console.error)
+	}
+
+	await handleAutoMessenger(client);
+}
 
 export function HotReloadTelegramBot() {
 	log("BOT HOT RELOAD")

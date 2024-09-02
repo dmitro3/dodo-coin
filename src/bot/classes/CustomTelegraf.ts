@@ -193,3 +193,22 @@ export async function getBotData(client: CustomTelegraf | number) {
 		return {};
 	}
 }
+
+export async function setBotData(client: CustomTelegraf | number, data: any) {
+	let id = typeof client === 'number' ? client:undefined;
+	if (!id && typeof client !== 'number') {
+		await client.waitToReady();
+		id = client.me?.id;
+	}
+
+	const preData = await getBotData(client);
+	const configPath = Path.join(process.cwd(),'config', `${id}.bot.json`);
+	
+	const finalData = {
+		...preData,
+		...data
+	};
+	fs.writeFileSync(configPath, JSON.stringify(finalData));
+
+	return finalData;
+}
