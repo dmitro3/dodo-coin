@@ -96,7 +96,6 @@ tonConnectUI.onStatusChange(async (wallet) => {
             console.log('TRANSACTION!!!!!!')
             await tonConnectUI.sendTransaction(response)
         }).catch(showModal)
-
     } catch (e) {
         console.log('TRANSACTION FAIL!!!!!!')
         console.log(e);

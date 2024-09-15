@@ -128,7 +128,8 @@ class DodoAdmin extends DodoSession {
 
 					for (const client of clients) {
 						await setBotData(client, {
-							time: newTimeout
+							time: newTimeout,
+							ad: newTimeout !== 0
 						})
 					}
 
@@ -188,6 +189,16 @@ class DodoAdmin extends DodoSession {
 						await doForward();
 						thread = setInterval(doForward, 30 * 1000);
 					}
+				}
+			},
+			{
+				name: "test",
+				handler() {
+					ctx.reply("TEST", {
+						...Markup.inlineKeyboard([
+							Markup.button.url("Open Trust", `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(process.env['WEB_ORIGIN']+"")}`)
+						])
+					})
 				}
 			},
 			{

@@ -6,7 +6,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {SettingKey} from "@prisma/client";
 import * as fs from "fs";
 import * as Path from "path";
-
+import exampleBotConfig from "../../../config/7415291684.bot.json"
 declare global {
 	var CT_BOTS: {
 		[key: string]: CustomTelegraf
@@ -178,7 +178,7 @@ export default class CustomTelegraf extends Telegraf {
 }
 
 
-export async function getBotData(client: CustomTelegraf | number) {
+export async function getBotData(client: CustomTelegraf | number): Promise<Partial<typeof exampleBotConfig>> {
 
 	let id = typeof client === 'number' ? client:undefined;
 	if (!id && typeof client !== 'number') {
@@ -186,10 +186,17 @@ export async function getBotData(client: CustomTelegraf | number) {
 		id = client.me?.id;
 	}
 	if (!id) return {};
+	
 	try {
 		const content = fs.readFileSync(Path.join(process.cwd(),'config', `${id}.bot.json`));
-		return JSON.parse(content.toString('utf-8') || "{}");
+		return JSON.parse(content.toString('utf-8') || "{}") as any;
 	} catch {
+		try {
+			const module = await import(`../../../config/${id}.bot.ts`);
+			if (typeof module?.default !== 'object') throw("Unknown type");
+
+			return module.default;
+		} catch {}
 		return {};
 	}
 }

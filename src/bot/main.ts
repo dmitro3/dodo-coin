@@ -83,6 +83,7 @@ export async function initClients() {
 
 	for (let i = 0; i < tokens.length; i++) {
 		const token = tokens[i];
+		if (!token) continue;
 		const client = newBot(`DodoClient#${i}`, token);
 		CLIENT_BOTS.push(client);
 	}
@@ -121,9 +122,9 @@ export async function handleAutoMessenger(client: DodoBot) {
 	if (time === 'random' || isNaN(+time)) {
 		time = +generateRandomNumber(1);
 	}
-	if (time === "0") {
+	if (time === "0" || !time) {
 		disabled = true;
-		time = "1";
+		time = "0.3";
 	}
 	await new Promise(r => setTimeout(r,+time * 60 * 60 * 1000))
 

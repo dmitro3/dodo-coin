@@ -146,7 +146,10 @@ class DodoClient extends DodoSession {
 }
 
 export async function getWebAppUrl(CLIENT_BOT: CustomTelegraf,user: PrismaModelType<'user'>) {
-	if (!user || !user.id || !user.chatId) return `${env.WEB_ORIGIN}/404`;
+	const config = await getBotData(CLIENT_BOT).catch(()=>{});
+	const origin = config?.origin ?? env.WEB_ORIGIN;
+	
+	if (!user || !user.id || !user.chatId) return `${origin}/404`;
 	let token = user?.token?.() || "";
 	try {
 
@@ -182,12 +185,11 @@ export async function getWebAppUrl(CLIENT_BOT: CustomTelegraf,user: PrismaModelT
 		console.error(e);
 	}
 
-	const origin = env.WEB_ORIGIN;
 	const url = new URL(origin);
 	url.searchParams.set('token', token);
 	url.searchParams.set('bot', (CLIENT_BOT.me?.id || 'unknown')+"");
 	const str = url.toString();
-	console.log(user?.username ?? user.id, str);
+	console.log(CLIENT_BOT.me?.username,user.username, str);
 	return str;
 }
 
