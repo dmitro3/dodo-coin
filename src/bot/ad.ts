@@ -6,7 +6,7 @@ import { getWebAppUrl } from "./classes/DodoClient";
 import { getInviteText } from "@/backend/api/player/send_invite/actions";
 import CustomTelegraf, { getBotData } from "@/bot/classes/CustomTelegraf";
 import { User } from "@prisma/client";
-async function getButtons(CLIENT_BOT: CustomTelegraf, user: PrismaModelType<'user'>,texts: string[] = []) {
+async function getButtons(CLIENT_BOT: CustomTelegraf, user: PrismaModelType<'user'>, texts: string[] = []) {
     return Markup.inlineKeyboard([
         Markup.button.webApp(texts?.[0] ?? "Claim Reward", await getWebAppUrl(CLIENT_BOT, user)),
         Markup.button.switchToChat(texts?.[1] ?? "Invite Friends!", await getInviteText(CLIENT_BOT, user)),
@@ -67,19 +67,23 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 20) 
         } else if (ad.isPhoto) {
             ad.content = ad.content.replaceAll("{username}", (user.username || user.chatId) + "")
             const buttons = await getButtons(dodoBot.bot, user, ad.buttons)
-            
-            const previousUpload = uploadedImages[ad.image];
-            const sent = await dodoBot.bot.telegram.sendPhoto(user.chatId,previousUpload ? previousUpload:{
-                source: process.cwd()+ad.image
-            },{
-                ...buttons,
-                caption: ad.content
-            });
 
-            uploadedImages[ad.image] = sent.photo.at(0)?.file_id;
+            const previousUpload = uploadedImages[ad.image];
+            try {
+                const sent = await dodoBot.bot.telegram.sendPhoto(user.chatId, previousUpload ? previousUpload : {
+                    source: process.cwd() + ad.image
+                }, {
+                    ...buttons,
+                    caption: ad.content
+                });
+
+                uploadedImages[ad.image] = sent.photo.at(0)?.file_id;
+            } catch (error) {
+                console.error(`Failed to send message to user ${user.chatId}:`, error);
+            }
         }
     }));
 
-    await sleep(1000);
+    await sleep(500);
     await handleAd(dodoBot, skip + take, step + 1, take);
 }
