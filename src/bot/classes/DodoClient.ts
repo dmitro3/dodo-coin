@@ -120,7 +120,7 @@ class DodoClient extends DodoSession {
 						caption: text.trim()
 						,
 						...(Markup.inlineKeyboard([
-							Markup.button.webApp("Claim $DOGS", await getWebAppUrl(this.dodoBot.bot,user)),
+							Markup.button.webApp(config?.buttonText ?? "Claim $DOGS", await getWebAppUrl(this.dodoBot.bot,user)),
 							Markup.button.switchToChat("Invite Friends!", await getInviteText(this.dodoBot.bot,user)),
 							...(await communityButton(this.dodoBot.bot))
 						],{

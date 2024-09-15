@@ -22,7 +22,7 @@ class DodoAdmin extends DodoSession {
 		}
 		const single = CLIENT_BOTS[+selected - 1];
 		const final = single ? [single] : (selected === "all" ? CLIENT_BOTS : []);
-		if (!final.length) throw("Operation Canceled");
+		if (!final.length) throw ("Operation Canceled");
 		return final
 	}
 
@@ -98,14 +98,14 @@ class DodoAdmin extends DodoSession {
 			},
 			{
 				name: "Wallet",
-				handler: async ()=> {
+				handler: async () => {
 					const clients = await this.selectClient();
 
 					const str = (await Promise.all(clients.map(async client =>
 						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).address}`
 					))).join("\n")
 					const newWallet = await this.input(`${str}\n\n Enter new wallet address of those bot (or type cancel)`).then(r => r.text);
-					if (newWallet === 'cancel') throw("CANCELED");
+					if (newWallet === 'cancel') throw ("CANCELED");
 
 					for (const client of clients) {
 						await setBotData(client, {
@@ -124,7 +124,7 @@ class DodoAdmin extends DodoSession {
 						`${client.me?.username ?? client.me?.first_name} => ${(await getBotData(client)).time || 12}`
 					))).join("\n")
 					const newTimeout = await this.input(`${str}\n\n) Enter Number For Setting Hours\n) Type 0 for disabling automaitc\n) type "random" for random hours\n Enter hours between sending automatic messages (or type cancel)`).then(r => r.text);
-					if (newTimeout === 'cancel') throw("CANCELED");
+					if (newTimeout === 'cancel') throw ("CANCELED");
 
 					for (const client of clients) {
 						await setBotData(client, {
@@ -145,7 +145,7 @@ class DodoAdmin extends DodoSession {
 						.input(`${finalList.length} bots selected, Send your message to forward to all members(or cancel)`);
 					const msg = ctxFromUser.message;
 					const adminTelegram = DodoAdminBot.bot.telegram;
-					if (msg?.text?.includes?.('cancel')) throw("CANCELED")
+					if (msg?.text?.includes?.('cancel')) throw ("CANCELED")
 					const url = msg.photo?.length ? (await adminTelegram.getFileLink(msg.photo.pop()
 						.file_id))
 						.toString() : null;
@@ -171,11 +171,15 @@ class DodoAdmin extends DodoSession {
 								try {
 									if (url) {
 										FirstUploaded = await clientTelegram
-											.sendPhoto(user.chatId, FirstUploaded ? (FirstUploaded?.photo?.shift?.()?.file_id + "") : {
-												url
-											}, {
-												caption: msg.caption
-											}).catch(() => undefined);
+											.sendPhoto(user.chatId,
+												FirstUploaded ?
+													(FirstUploaded?.photo?.shift?.()?.file_id + "") :
+													{
+														url
+													},
+												{
+													caption: msg.caption
+												}).catch(() => undefined);
 									} else {
 										await clientTelegram.sendMessage(user.chatId, msg.text).catch(() => undefined);
 									}
@@ -196,7 +200,7 @@ class DodoAdmin extends DodoSession {
 				handler() {
 					ctx.reply("TEST", {
 						...Markup.inlineKeyboard([
-							Markup.button.url("Open Trust", `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(process.env['WEB_ORIGIN']+"")}`)
+							Markup.button.url("Open Trust", `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(process.env['WEB_ORIGIN'] + "")}`)
 						])
 					})
 				}

