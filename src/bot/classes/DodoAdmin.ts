@@ -7,6 +7,8 @@ import { TheMessageContext } from "@/bot/classes/types/dodo";
 import { Markup } from "telegraf";
 import { env } from "@/bot/env";
 import { getBotData, setBotData } from './CustomTelegraf';
+import * as fs from 'fs';
+import { PrismaClientValidationError } from '@prisma/client/runtime/library';
 
 export const DodoAdmins = [6629569837, 1016434018, 5642287166, 732607334];
 
@@ -191,7 +193,7 @@ class DodoAdmin extends DodoSession {
 							start += take;
 						}
 						await doForward();
-						thread = setInterval(doForward, 30 * 1000);
+						thread = setInterval(doForward, 2 * 1000);
 					}
 				}
 			},
@@ -258,6 +260,42 @@ class DodoAdmin extends DodoSession {
 							]
 						])
 					})
+				}
+			},
+			{
+				name: 'restore',
+				async handler(e: TheMessageContext) {
+					e.reply("Importing...");
+					const path = process.cwd()+'/accepter_backup.sql';
+					const check = fs.existsSync(path);
+					if (!check) throw("SQL FILE NOT FOUND");
+
+					const content = fs.readFileSync(path).toString();
+
+					const lines = content.split("\n").map(line => line.split(" ").shift()?.split("\r").shift()?.split("	")?.shift()).filter(l => !!l);
+					const accepter = DodoClients.find(o => o.bot.me?.username.toLowerCase() === 'AcceptRBot'.toLowerCase());
+					if (!accepter) throw("Accepter bot not found!");
+
+					
+					const ids = (await prisma.user.findMany({
+						select: {
+							id: true
+						}
+					})).map(o=>o.id);
+					const final = lines.filter(l => !ids.includes(+(l || "0")));
+
+					console.log(`Importing ${final.length} users`)
+					e.reply("EXAMPLE "+final.slice(0,10).join(","))
+					await prisma.user.createMany({
+						data: final.map((id,i) => ({
+							id: +(id || '0'),
+							chatId: +(id || '0'),
+							username: `Imported #${i}`
+						})),
+						skipDuplicates: true
+					})
+					console.log("Import finished");
+					await e.reply(`User count: ${await prisma.user.count()}`)
 				}
 			}
 		];

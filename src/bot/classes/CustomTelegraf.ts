@@ -6,7 +6,7 @@ import prisma from "@backend/modules/prisma/Prisma";
 import {SettingKey} from "@prisma/client";
 import * as fs from "fs";
 import * as Path from "path";
-import exampleBotConfig from "../../../config/7415291684.bot.json"
+import exampleBotConfig from "../../../config/7050560980.bot.json"
 declare global {
 	var CT_BOTS: {
 		[key: string]: CustomTelegraf

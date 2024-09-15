@@ -161,3 +161,8 @@ enum CryptoCurrency {
   /// @name ترون
   TRX
 }
+
+model users {
+  id     BigInt   @id
+  singup DateTime @default(now())
+}
