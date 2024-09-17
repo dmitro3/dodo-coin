@@ -39,6 +39,8 @@ let userSteps: {
     [id: string]: number | undefined
 } = {}
 export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 50) {
+    await dodoBot.bot.waitToReady();
+    
     const users_count = await prisma.user.count();
     if (users_count <= skip) {
         console.log(dodoBot.bot.me?.username,"AD FINISHED", users_count);

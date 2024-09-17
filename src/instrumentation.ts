@@ -20,17 +20,24 @@ export async function register() {
 	const registerLog = (key: keyType) => {
 		const origin = console[key] as typeof console.error;
 		return (...args: any[]) => {
-			ADMIN_BOT.waitToReady().then(async (me) => adminLog(`[${key?.toUpperCase()}] ` + args.map(o => typeof o === 'object' ? JSON.stringify(o, null, 2):o+"").join("\n"))).catch((e) => {
+			try {
+				ADMIN_BOT.waitToReady().then(async (me) => adminLog(`[${key?.toUpperCase()}] ` + args.map(o => typeof o === 'object' ? JSON.stringify(o, null, 2) : o + "").join("\n"))).catch((e) => {
+					origin(...args);
+					origin(e);
+				});
+			} catch (e) {
 				origin(...args);
 				origin(e);
-			});
+			}
 		};
 	}
 
-	if (process.env.NODE_ENV === 'production') {
+	if (process.env.NODE_ENV === 'production' && DEV_USER) {
 		for (const key of ['warn', 'log', 'error']) {
 			console[key as keyType] = registerLog(key as keyType);
 		}
+	} else if (!DEV_USER) {
+		console.error("DEV USER NOT FOUND!");
 	}
 }
 
