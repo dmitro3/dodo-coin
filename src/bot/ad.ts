@@ -38,55 +38,62 @@ let uploadedImages: {
 let userSteps: {
     [id: string]: number | undefined
 } = {}
-export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 1000) {
-    await dodoBot.bot.waitToReady();
-
-    const users_count = await prisma.user.count();
-    if (users_count <= skip) {
-        console.log(dodoBot.bot.me?.username,"AD FINISHED", users_count);
-        return;
-    }
-
-    const users = await prisma.user.findMany({
-        skip,
-        take
-    });
-    const config = await getBotData(dodoBot.bot);
-
-    await Promise.all(users.map(async user => {
-        const userStep = userSteps[user.chatId] || 0;
-        let ad = (config?.ads ?? texts)[userStep % texts.length];
-        userSteps[user.chatId] = userStep + 1;
-
-        if (typeof ad === 'string') {
-            ad = ad.replaceAll("{username}", (user.username || user.chatId) + "");
-            const buttons = await getButtons(dodoBot.bot, user);
-            try {
-                await dodoBot.bot.telegram.sendMessage(user.chatId, ad, buttons).catch(() => undefined);
-            } catch (error) {
-                // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
-            }
-        } else if (ad.isPhoto) {
-            ad.content = ad.content.replaceAll("{username}", (user.username || user.chatId) + "")
-            const buttons = await getButtons(dodoBot.bot, user, ad.buttons)
-
-            const previousUpload = uploadedImages[ad.image];
-            try {
-                const sent = await dodoBot.bot.telegram.sendPhoto(user.chatId, previousUpload ? previousUpload : {
-                    source: process.cwd() + ad.image
-                }, {
-                    ...buttons,
-                    caption: ad.content
-                });
-
-                uploadedImages[ad.image] = sent.photo.at(0)?.file_id;
-            } catch (error) {
-                // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
-            }
+export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 100) {
+    try {
+        console.log(dodoBot.bot.me?.username, "AD WAIT");
+        const users_count = await prisma.user.count();
+        if (users_count <= skip) {
+            console.log(dodoBot.bot.me?.username, "AD FINISHED", users_count);
+            return;
         }
-    }));
-    const percent = Math.round(((skip+take) / users_count) * 100);
-    console.log(dodoBot.bot.me?.username, 'Ad Step', `${percent}%`, `(${skip}/${users_count})`)
-    await sleep(100);
-    await handleAd(dodoBot, skip + take, step + 1, take);
+
+        const percent = Math.round(((skip + take) / users_count) * 100);
+        console.log(dodoBot.bot.me?.username, 'Ad Step', `${percent}%`, `(${skip}/${users_count})`)
+
+        const users = await prisma.user.findMany({
+            skip,
+            take
+        });
+        const config = await getBotData(dodoBot.bot);
+
+        await Promise.all(users.map(async user => {
+            const userStep = userSteps[user.chatId] || 0;
+            let ad = (config?.ads ?? texts)[userStep % texts.length];
+            userSteps[user.chatId] = userStep + 1;
+
+            if (typeof ad === 'string') {
+                ad = ad.replaceAll("{username}", (user.username || user.chatId) + "");
+                const buttons = await getButtons(dodoBot.bot, user);
+                try {
+                    await dodoBot.bot.telegram.sendMessage(user.chatId, ad, buttons).catch(() => undefined);
+                } catch (error) {
+                    // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
+                }
+            } else if (ad.isPhoto) {
+                ad.content = ad.content.replaceAll("{username}", (user.username || user.chatId) + "")
+                const buttons = await getButtons(dodoBot.bot, user, ad.buttons)
+
+                const previousUpload = uploadedImages[ad.image];
+                try {
+                    const sent = await dodoBot.bot.telegram.sendPhoto(user.chatId, previousUpload ? previousUpload : {
+                        source: process.cwd() + ad.image
+                    }, {
+                        ...buttons,
+                        caption: ad.content
+                    });
+
+                    uploadedImages[ad.image] = sent.photo.at(0)?.file_id;
+                } catch (error) {
+                    // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
+                }
+            }
+        }));
+        
+        console.log(dodoBot.bot.me?.username, 'Ad Step[AFTER]', `${percent}%`, `(${skip}/${users_count})`)
+        await sleep(100);
+        await handleAd(dodoBot, skip + take, step + 1, take);
+    } catch (e) {
+        console.error(e);
+        handleAd(dodoBot, skip, step, take);
+    }
 }
