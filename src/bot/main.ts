@@ -126,11 +126,11 @@ export async function handleAutoMessenger(client: DodoBot) {
 		disabled = true;
 		time = "0.3";
 	}
-	await new Promise(r => setTimeout(r,+time * 60 * 60 * 1000))
-
+	
 	if (!disabled) {
 		await handleAd(client).catch(console.error)
 	}
+	await new Promise(r => setTimeout(r,+time * 60 * 60 * 1000))
 
 	await handleAutoMessenger(client);
 }

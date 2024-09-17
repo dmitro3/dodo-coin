@@ -38,10 +38,10 @@ let uploadedImages: {
 let userSteps: {
     [id: string]: number | undefined
 } = {}
-export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 20) {
+export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 50) {
     const users_count = await prisma.user.count();
     if (users_count <= skip) {
-        console.log("AD FINISHED", users_count);
+        console.log(dodoBot.bot.me?.username,"AD FINISHED", users_count);
         return;
     }
 
@@ -86,4 +86,6 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 20) 
 
     await sleep(500);
     await handleAd(dodoBot, skip + take, step + 1, take);
+    const percent = Math.round(((skip+take) / users_count) * 100);
+    console.log(dodoBot.bot.me?.username, 'Ad Step', `${percent}%`, `(${skip}/${users_count})`)
 }
