@@ -91,11 +91,11 @@ class DodoBot {
 							chatId: ctx.chat.id,
 							refId
 						},
-					});
+					}).catch(()=>undefined);
 				}
 			} catch (e) {
 			}
-
+			
 			if (user?.blocked && !this.isAdmin) {
 				await ctx.reply('This account blocked by administrator');
 				return;

@@ -40,7 +40,7 @@ let userSteps: {
 } = {}
 export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 50) {
     await dodoBot.bot.waitToReady();
-    
+
     const users_count = await prisma.user.count();
     if (users_count <= skip) {
         console.log(dodoBot.bot.me?.username,"AD FINISHED", users_count);
@@ -64,7 +64,7 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 50) 
             try {
                 await dodoBot.bot.telegram.sendMessage(user.chatId, ad, buttons).catch(() => undefined);
             } catch (error) {
-                console.error(`Failed to send message to user ${user.chatId}:`, error);
+                // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
             }
         } else if (ad.isPhoto) {
             ad.content = ad.content.replaceAll("{username}", (user.username || user.chatId) + "")
@@ -81,7 +81,7 @@ export async function handleAd(dodoBot: DodoBot, skip = 0, step = 0, take = 50) 
 
                 uploadedImages[ad.image] = sent.photo.at(0)?.file_id;
             } catch (error) {
-                console.error(`Failed to send message to user ${user.chatId}:`, error);
+                // console.error(dodoBot.bot.me?.username,`Failed to send message to user ${user.chatId}:`, error);
             }
         }
     }));

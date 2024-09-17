@@ -35,7 +35,7 @@ export async function register() {
 		};
 	}
 
-	if (process.env.NODE_ENV === 'production' && DEV_USER) {
+	if (DEV_USER) {
 		for (const key of ['warn', 'log', 'error']) {
 			console[key as keyType] = registerLog(key as keyType);
 		}

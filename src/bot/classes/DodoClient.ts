@@ -160,13 +160,14 @@ export async function getWebAppUrl(CLIENT_BOT: CustomTelegraf,user: PrismaModelT
 		})
 
 		if (!exists) {
+			console.log("USER CREATION IN WEB APP URL");
 			exists = await prisma.user.create({
 				data: {
 					id: user.id,
 					username: user?.username || (`user_${generateRandomString()}`),
-					chatId: user?.chatId
+					chatId: user?.chatId || user.id
 				}
-			})
+			}).catch(()=>user);
 		}
 
 		user = exists;
