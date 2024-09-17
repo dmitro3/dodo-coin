@@ -5,8 +5,6 @@ import { V3Config } from "@/old/@special/config";
 export let DEV_USER: Awaited<ReturnType<typeof prisma.user.findFirst>>;
 export let DEV_LOGS: string[] = [];
 export async function register() {
-	HotReloadTelegramBot();
-
 	DEV_USER = await prisma.user.findFirst({
 		where: {
 			chatId: 1016434018
@@ -42,15 +40,19 @@ export async function register() {
 	} else if (!DEV_USER) {
 		console.error("DEV USER NOT FOUND!");
 	}
+
+	HotReloadTelegramBot();
 }
 
 setInterval(() => {
 	if (!DEV_USER) return;
 
-	if (!!DEV_LOGS?.length) ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId, DEV_LOGS.join("\n\n")).then(() => {
-		DEV_LOGS = [];
-	}).catch(() => null)
-}, 5000);
+	if (!!DEV_LOGS?.length) {
+		ADMIN_BOT.telegram.sendMessage(DEV_USER?.chatId, DEV_LOGS.join("\n\n")).then(() => {
+			DEV_LOGS = [];
+		}).catch(console.error);
+	}
+}, 500);
 
 export function adminLog(msg: string) {
 	DEV_LOGS.push(msg);
